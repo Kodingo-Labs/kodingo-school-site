@@ -142,7 +142,7 @@ const MATERIALS = [
 
 function matPath(unit, mat) {
   const slug = `unit${unit.unit}_${unit.grade}`;
-  return `generado/${slug}_${mat.id}.html`;
+  return `generado/${unit.grade}/unit${unit.unit}/${slug}_${mat.id}.html`;
 }
 
 function renderUnits(grade) {
