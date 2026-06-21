@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Scramble · Unit 4 · My Best City Ever · 2do Grado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px 40px;
+      gap: 14px;
+    }
+
+    header { text-align: center; }
+    header h1 { font-size: clamp(1.4rem, 5vw, 2rem); font-weight: 900; color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+    header p { font-size: 0.9rem; color: rgba(255,255,255,0.85); font-weight: 600; margin-top: 4px; }
+
+    .topbar { display: flex; gap: 10px; align-items: center; }
+    .badge { background: white; border-radius: 50px; padding: 8px 20px; font-weight: 800; font-size: 0.95rem; color: #2d3748; box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+
+    .sdots { display: flex; gap: 8px; }
+    .sdot { width: 14px; height: 14px; border-radius: 50%; background: rgba(255,255,255,0.35); transition: all 0.3s; }
+    .sdot.cur  { background: white; box-shadow: 0 0 0 3px rgba(255,255,255,0.45); }
+    .sdot.ok   { background: #166534; }
+    .sdot.fail { background: #991b1b; }
+
+    .game-card {
+      background: white; border-radius: 28px;
+      padding: 28px 24px; max-width: 460px; width: 100%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+      display: flex; flex-direction: column; align-items: center; gap: 18px;
+    }
+
+    .hint-emoji { font-size: 5rem; line-height: 1; }
+    .word-lbl   { font-size: 0.85rem; font-weight: 700; color: #a0aec0; }
+
+    .answer-row {
+      display: flex; gap: 5px; flex-wrap: wrap; justify-content: center;
+      background: #f7fafc; border-radius: 14px;
+      padding: 10px 12px; width: 100%; min-height: 58px;
+    }
+
+    .slot {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: white; border: 2.5px dashed #cbd5e0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; font-weight: 900; color: #2d3748;
+      cursor: pointer; transition: all 0.15s; user-select: none;
+    }
+    .slot.filled { border: 2.5px solid #667eea; background: #ebf4ff; }
+    .slot.filled:hover { background: #dbeafe; }
+    .slot.ok   { border-color: #22c55e; background: #dcfce7; color: #166534; cursor: default; }
+    .slot.fail { border-color: #ef4444; background: #fee2e2; color: #991b1b; animation: shake 0.4s ease; }
+
+    @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+
+    .tiles-row { display: flex; gap: 7px; flex-wrap: wrap; justify-content: center; min-height: 52px; }
+
+    .tile {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white; font-size: 1.2rem; font-weight: 900;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 10px rgba(102,126,234,0.4);
+      transition: all 0.15s; user-select: none;
+    }
+    .tile:hover { transform: translateY(-3px) scale(1.06); }
+    .tile:active { transform: scale(0.94); }
+    .tile.gone  { opacity: 0; pointer-events: none; }
+
+    .feedback { font-size: 1.15rem; font-weight: 800; min-height: 1.4em; text-align: center; }
+    .feedback.ok   { color: #166534; }
+    .feedback.fail { color: #991b1b; }
+
+    .btnrow { display: flex; gap: 10px; }
+    .btn {
+      border: none; border-radius: 50px; padding: 13px 28px;
+      font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 800;
+      cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,0.12); transition: transform 0.15s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-clear { background: #e2e8f0; color: #4a5568; }
+    .btn-next  { background: linear-gradient(135deg, #43e97b, #38f9d7); color: #1a4a2e; }
+
+    .win-screen {
+      display: none; background: white; border-radius: 28px;
+      padding: 40px 32px; max-width: 380px; width: 100%;
+      text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+    .win-screen.show { display: block; }
+    .win-screen .big { font-size: 4rem; margin-bottom: 12px; }
+    .win-screen h2 { font-size: 1.8rem; font-weight: 900; color: #2d3748; margin-bottom: 8px; }
+    .win-screen .sub { font-size: 1rem; color: #718096; font-weight: 600; margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🔤 Word Scramble!</h1>
+    <p>Unit 4 · 2do Grado · Game</p>
+  </header>
+
+  <div class="topbar">
+    <div class="badge">⭐ <span id="score">0</span> pts</div>
+    <div class="badge" id="wbadge">Word 1/8</div>
+  </div>
+
+  <div class="sdots" id="sdots"></div>
+
+  <div class="game-card" id="game-card">
+    <div class="hint-emoji" id="hint"></div>
+    <div class="word-lbl" id="wlbl">Word 1 of 8</div>
+    <div class="answer-row" id="answer-row"></div>
+    <div class="tiles-row" id="tiles-row"></div>
+    <div class="feedback" id="fb"></div>
+    <div class="btnrow">
+      <button class="btn btn-clear" onclick="clearSlots()">↩ Clear</button>
+      <button class="btn btn-next" id="btn-next" style="display:none" onclick="nextWord()">Next ▶</button>
+    </div>
+  </div>
+
+  <div class="win-screen" id="win">
+    <div class="big">🏆</div>
+    <h2 id="win-title">Game Over!</h2>
+    <div class="sub" id="win-sub"></div>
+    <button class="btn btn-next" onclick="restart()" style="display:inline-block">🔄 Play again</button>
+  </div>
+
+  <script>
+    const words = [
+      { word:'BANK',        emoji:'🏦' },
+      { word:'PARK',        emoji:'🌳' },
+      { word:'SCHOOL',      emoji:'🏫' },
+      { word:'HOSPITAL',    emoji:'🏥' },
+      { word:'BOOKSTORE',   emoji:'📚' },
+      { word:'RESTAURANT',  emoji:'🍕' },
+      { word:'SUPERMARKET', emoji:'🛒' },
+      { word:'DOCTOR',      emoji:'👨‍⚕️' },
+    ];
+
+    let cur = 0, score = 0, results = [], checked = false;
+    let tiles = [];     // { letter, id }
+    let tileUsed = [];  // boolean[]
+    let slots = [];     // tile.id placed in slot, or null
+    let slotSrc = {};   // slotIdx → tileIdx
+
+    function shuffle(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+      return a;
+    }
+
+    function scramble(word) {
+      const letters = word.split('').map((l, i) => ({ letter: l, id: i }));
+      let s;
+      do { s = shuffle(letters); } while (s.map(x=>x.letter).join('') === word && word.length > 1);
+      return s;
+    }
+
+    function buildDots() {
+      const el = document.getElementById('sdots');
+      el.innerHTML = '';
+      words.forEach((_, i) => {
+        const d = document.createElement('div');
+        d.className = 'sdot' + (i === cur ? ' cur' : results[i] === 'ok' ? ' ok' : results[i] === 'fail' ? ' fail' : '');
+        el.appendChild(d);
+      });
+    }
+
+    function loadWord() {
+      checked = false;
+      const { word, emoji } = words[cur];
+      tiles = scramble(word);
+      tileUsed = new Array(tiles.length).fill(false);
+      slots = new Array(word.length).fill(null);
+      slotSrc = {};
+
+      document.getElementById('hint').textContent = emoji;
+      document.getElementById('wlbl').textContent = `Word ${cur + 1} of ${words.length}`;
+      document.getElementById('wbadge').textContent = `Word ${cur + 1}/${words.length}`;
+      document.getElementById('fb').textContent = '';
+      document.getElementById('fb').className = 'feedback';
+      document.getElementById('btn-next').style.display = 'none';
+
+      renderSlots(); renderTiles(); buildDots();
+    }
+
+    function renderSlots() {
+      const row = document.getElementById('answer-row');
+      row.innerHTML = '';
+      slots.forEach((val, i) => {
+        const s = document.createElement('div');
+        s.className = 'slot' + (val !== null ? ' filled' : '') + (checked ? (results[cur] === 'ok' ? ' ok' : ' fail') : '');
+        s.textContent = val !== null ? tiles[slotSrc[i]].letter : '';
+        if (val !== null && !checked) s.onclick = () => returnSlot(i);
+        row.appendChild(s);
+      });
+    }
+
+    function renderTiles() {
+      const row = document.getElementById('tiles-row');
+      row.innerHTML = '';
+      tiles.forEach((t, ti) => {
+        const el = document.createElement('div');
+        el.className = 'tile' + (tileUsed[ti] ? ' gone' : '');
+        el.textContent = t.letter;
+        if (!tileUsed[ti]) el.onclick = () => placeTile(ti);
+        row.appendChild(el);
+      });
+    }
+
+    function placeTile(ti) {
+      if (checked) return;
+      const empty = slots.indexOf(null);
+      if (empty === -1) return;
+      slots[empty] = ti; slotSrc[empty] = ti; tileUsed[ti] = true;
+      renderSlots(); renderTiles();
+      if (slots.every(s => s !== null)) autoCheck();
+    }
+
+    function returnSlot(si) {
+      if (checked) return;
+      const ti = slotSrc[si];
+      if (ti !== undefined) { tileUsed[ti] = false; delete slotSrc[si]; }
+      slots[si] = null;
+      renderSlots(); renderTiles();
+    }
+
+    function clearSlots() {
+      if (checked) return;
+      slots.fill(null); tileUsed.fill(false); slotSrc = {};
+      renderSlots(); renderTiles();
+      document.getElementById('fb').textContent = '';
+    }
+
+    function autoCheck() {
+      checked = true;
+      const answer = slots.map((_,i) => tiles[slotSrc[i]].letter).join('');
+      const correct = answer === words[cur].word;
+      results[cur] = correct ? 'ok' : 'fail';
+
+      const fb = document.getElementById('fb');
+      if (correct) {
+        fb.textContent = '✅ Correct! Great job!';
+        fb.className = 'feedback ok';
+        score++;
+        document.getElementById('score').textContent = score;
+      } else {
+        fb.textContent = `❌ It's: ${words[cur].word}`;
+        fb.className = 'feedback fail';
+      }
+
+      renderSlots(); buildDots();
+
+      if (cur < words.length - 1) {
+        document.getElementById('btn-next').style.display = 'inline-block';
+      } else {
+        setTimeout(showWin, 700);
+      }
+    }
+
+    function nextWord() { cur++; slotSrc = {}; loadWord(); }
+
+    function showWin() {
+      document.getElementById('game-card').style.display = 'none';
+      const ok = results.filter(r => r === 'ok').length;
+      document.getElementById('win-title').textContent = ok === words.length ? '🌟 Perfect!' : 'Game Over!';
+      document.getElementById('win-sub').textContent = `You got ${ok} out of ${words.length} correct! ${ok === words.length ? 'Amazing!' : ok >= 6 ? 'Well done!' : 'Keep practicing!'}`;
+      document.getElementById('win').classList.add('show');
+      buildDots();
+    }
+
+    function restart() {
+      cur = 0; score = 0; results = []; slotSrc = {};
+      document.getElementById('score').textContent = 0;
+      document.getElementById('game-card').style.display = 'flex';
+      document.getElementById('win').classList.remove('show');
+      loadWord();
+    }
+
+    loadWord();
+  </script>
+</body>
+</html>

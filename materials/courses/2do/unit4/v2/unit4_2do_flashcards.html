@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flashcards · Unit 4 · My Best City Ever · 2do Grado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px 36px;
+    }
+
+    header { text-align: center; margin-bottom: 12px; }
+    header h1 { font-size: clamp(1.4rem, 5vw, 2rem); font-weight: 900; color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+    header p { font-size: 0.9rem; color: rgba(255,255,255,0.8); font-weight: 600; margin-top: 4px; }
+
+    .counter { font-size: 0.9rem; font-weight: 700; color: rgba(255,255,255,0.9); margin: 10px 0 6px; }
+
+    .pbar-wrap { width: 100%; max-width: 360px; height: 6px; background: rgba(255,255,255,0.3); border-radius: 3px; margin-bottom: 20px; overflow: hidden; }
+    .pbar { height: 100%; background: #43e97b; border-radius: 3px; transition: width 0.4s ease; }
+
+    .scene { width: min(340px, 90vw); height: 400px; perspective: 1200px; cursor: pointer; margin-bottom: 24px; }
+
+    .card { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1); }
+    .card.flipped { transform: rotateY(180deg); }
+
+    .face {
+      position: absolute; inset: 0;
+      backface-visibility: hidden; -webkit-backface-visibility: hidden;
+      border-radius: 28px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 14px; padding: 32px 24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+    .face-front { background: white; }
+    .face-back { background: linear-gradient(145deg, #f093fb, #f5576c); transform: rotateY(180deg); }
+
+    .emoji { font-size: 5.5rem; line-height: 1; user-select: none; }
+    .eng-word { font-size: 2rem; font-weight: 900; color: #2d3748; text-align: center; }
+    .tap-hint { font-size: 0.82rem; color: #a0aec0; font-weight: 700; }
+    .es-word { font-size: 1.9rem; font-weight: 900; color: white; text-align: center; text-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+    .example { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.92); text-align: center; line-height: 1.5; font-style: italic; background: rgba(0,0,0,0.12); border-radius: 12px; padding: 10px 16px; }
+
+    .controls { display: flex; gap: 12px; align-items: center; margin-bottom: 20px; }
+
+    .btn {
+      background: white; border: none; border-radius: 50px;
+      padding: 13px 26px; font-family: 'Nunito', sans-serif;
+      font-size: 1rem; font-weight: 800; color: #4a5568; cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+      transition: transform 0.15s, box-shadow 0.15s; user-select: none;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.22); }
+    .btn:active { transform: translateY(0); }
+    .btn:disabled { opacity: 0.4; cursor: default; transform: none; box-shadow: none; }
+    .btn-next { background: linear-gradient(135deg, #43e97b, #38f9d7); color: #1a4a2e; }
+
+    .dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 360px; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: all 0.3s; }
+    .dot.seen { background: rgba(255,255,255,0.75); }
+    .dot.active { background: #43e97b; width: 12px; height: 12px; }
+
+    .celebration { display: none; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+    .celebration.show { display: flex; }
+    .celebration .big { font-size: 5rem; }
+    .celebration h2 { font-size: 2rem; font-weight: 900; color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+    .celebration p { font-size: 1.1rem; color: rgba(255,255,255,0.9); font-weight: 600; }
+
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🏙️ My Best City Ever</h1>
+    <p>Unit 4 · 2do Grado · Flashcards</p>
+  </header>
+
+  <div class="counter" id="counter">Card 1 of 16</div>
+  <div class="pbar-wrap" id="pbar-wrap"><div class="pbar" id="pbar" style="width:6.25%"></div></div>
+
+  <div class="scene" id="scene" onclick="flipCard()">
+    <div class="card" id="card">
+      <div class="face face-front">
+        <div class="emoji" id="front-emoji"></div>
+        <div class="eng-word" id="front-word"></div>
+        <div class="tap-hint">👆 Tap to see the translation</div>
+      </div>
+      <div class="face face-back">
+        <div class="emoji" id="back-emoji"></div>
+        <div class="es-word" id="back-es"></div>
+        <div class="example" id="back-example"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls" id="controls">
+    <button class="btn" id="btn-prev" onclick="navigate(-1)" disabled>◀ Back</button>
+    <button class="btn btn-next" id="btn-next" onclick="navigate(1)">Next ▶</button>
+  </div>
+
+  <div class="dots" id="dots"></div>
+
+  <div class="celebration" id="celebration">
+    <div class="big">🎉</div>
+    <h2>Amazing job!</h2>
+    <p>You studied all 16 places!</p>
+    <button class="btn btn-next" onclick="restart()">🔄 Study again</button>
+  </div>
+
+  <script>
+    const cards = [
+      { emoji:'🏦', word:'Bank',           es:'Banco',                  ex:'I go to the bank with my dad.' },
+      { emoji:'📚', word:'Bookstore',      es:'Librería',               ex:'I buy a book at the bookstore.' },
+      { emoji:'🚌', word:'Bus Stop',       es:'Parada de bus',          ex:'I wait for the bus at the bus stop.' },
+      { emoji:'💻', word:'Computer Store', es:'Tienda de computadoras', ex:'We buy a computer at the computer store.' },
+      { emoji:'⛽', word:'Gas Station',    es:'Grifo',                  ex:'Dad puts gas in the car at the gas station.' },
+      { emoji:'🏥', word:'Hospital',       es:'Hospital',               ex:'The doctor works at the hospital.' },
+      { emoji:'🎬', word:'Movie Theater',  es:'Cine',                   ex:'We see a movie at the movie theater.' },
+      { emoji:'🎵', word:'Music Store',    es:'Tienda de música',       ex:'I buy a guitar at the music store.' },
+      { emoji:'🌳', word:'Park',           es:'Parque',                 ex:'I play with my friends at the park.' },
+      { emoji:'🐾', word:'Pet Shop',       es:'Tienda de mascotas',     ex:'I buy a fish at the pet shop.' },
+      { emoji:'📮', word:'Post Office',    es:'Correos',                ex:'Mom mails a letter at the post office.' },
+      { emoji:'🍕', word:'Restaurant',     es:'Restaurante',            ex:'We eat pizza at the restaurant.' },
+      { emoji:'🏫', word:'School',         es:'Colegio',                ex:'I learn English at school.' },
+      { emoji:'🛍️', word:'Shopping Mall',  es:'Centro comercial',       ex:'We shop at the shopping mall.' },
+      { emoji:'🛒', word:'Supermarket',    es:'Supermercado',           ex:'Mom buys fruits at the supermarket.' },
+      { emoji:'🚂', word:'Train Station',  es:'Estación de tren',       ex:'We take the train at the train station.' },
+    ];
+
+    let cur = 0, flipped = false;
+    const seen = new Set([0]);
+
+    function buildDots() {
+      const el = document.getElementById('dots');
+      el.innerHTML = '';
+      cards.forEach((_, i) => {
+        const d = document.createElement('div');
+        d.className = 'dot' + (i === cur ? ' active' : seen.has(i) ? ' seen' : '');
+        el.appendChild(d);
+      });
+    }
+
+    function render() {
+      const c = cards[cur];
+      document.getElementById('front-emoji').textContent = c.emoji;
+      document.getElementById('front-word').textContent = c.word;
+      document.getElementById('back-emoji').textContent = c.emoji;
+      document.getElementById('back-es').textContent = c.es;
+      document.getElementById('back-example').textContent = c.ex;
+      document.getElementById('counter').textContent = `Card ${cur + 1} of ${cards.length}`;
+      document.getElementById('pbar').style.width = `${((cur + 1) / cards.length) * 100}%`;
+      document.getElementById('card').classList.remove('flipped');
+      flipped = false;
+      document.getElementById('btn-prev').disabled = cur === 0;
+      document.getElementById('btn-next').textContent = cur === cards.length - 1 ? 'Finish 🎉' : 'Next ▶';
+      buildDots();
+    }
+
+    function flipCard() { flipped = !flipped; document.getElementById('card').classList.toggle('flipped', flipped); }
+
+    function navigate(dir) {
+      const next = cur + dir;
+      if (next < 0) return;
+      if (next >= cards.length) {
+        ['scene','controls','dots','counter','pbar-wrap'].forEach(id => document.getElementById(id).classList.add('hidden'));
+        document.getElementById('celebration').classList.add('show');
+        return;
+      }
+      cur = next; seen.add(cur); render();
+    }
+
+    function restart() {
+      cur = 0; seen.clear(); seen.add(0);
+      ['scene','controls','dots','counter','pbar-wrap'].forEach(id => document.getElementById(id).classList.remove('hidden'));
+      document.getElementById('celebration').classList.remove('show');
+      render();
+    }
+
+    render();
+  </script>
+</body>
+</html>

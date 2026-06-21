@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Flashcards — The Best City Ever</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Nunito',Arial,sans-serif;background:#f0f4ff;min-height:100vh;padding:20px;color:#1e293b}
+  h1{text-align:center;font-size:1.6rem;font-weight:800;color:#1e40af;margin-bottom:6px}
+  .subtitle{text-align:center;color:#64748b;margin-bottom:28px;font-size:.9rem}
+  button{font-family:inherit;cursor:pointer;border:none;border-radius:10px;font-weight:700;transition:all .15s}
+  button:hover{opacity:.88;transform:translateY(-1px)}
+
+.container{max-width:480px;margin:0 auto}
+.progress{text-align:center;color:#64748b;font-size:.9rem;margin-bottom:16px}
+.scene{width:100%;height:280px;perspective:1000px;margin-bottom:20px;cursor:pointer}
+.card{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .5s}
+.card.flipped{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;backface-visibility:hidden;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.front{background:var(--c)}
+.back{transform:rotateY(180deg);background:#1e40af;color:white}
+.emoji{font-size:4rem;line-height:1}
+.word{font-size:2rem;font-weight:800;text-align:center;padding:0 16px}
+.hint{font-size:.85rem;color:#64748b;margin-top:-8px}
+.back .word{font-size:1.8rem}
+.back .hint{color:#bfdbfe}
+.controls{display:flex;gap:10px;justify-content:center;margin-bottom:16px}
+.btn{padding:10px 22px;font-size:1rem;background:#6366f1;color:white}
+.btn-sec{background:#e2e8f0;color:#374151}
+.btn-mix{background:#f59e0b;color:white}
+</style></head><body>
+<div class="container">
+  <h1>🃏 Flashcards</h1>
+  <p class="subtitle">The Best City Ever · 2do Grado · <span id="cnt"></span></p>
+  <div class="progress">Tarjeta <span id="idx">1</span> de <span id="tot"></span> — clic para voltear</div>
+  <div class="scene" onclick="flip()">
+    <div class="card" id="card">
+      <div class="face front" id="front"><div class="emoji" id="emoji"></div><div class="word" id="word"></div><div class="hint">clic para ver</div></div>
+      <div class="face back"><div class="word" id="back"></div></div>
+    </div>
+  </div>
+  <div class="controls">
+    <button class="btn btn-sec" onclick="prev()">← Anterior</button>
+    <button class="btn btn-mix" onclick="mix()">🔀 Mezclar</button>
+    <button class="btn" onclick="next()">Siguiente →</button>
+  </div>
+</div>
+<script>
+const ALL=[{"word":"Bank","emoji":"🏦💰","back":"Banco"},{"word":"Bookstore","emoji":"📚🔖","back":"Librería"},{"word":"Bus Stop","emoji":"🚌🛑","back":"Paradero"},{"word":"Computer Store","emoji":"💻🖥️","back":"Tienda de cómputo"},{"word":"Gas Station","emoji":"⛽🚗","back":"Grifo"},{"word":"Hospital","emoji":"🏥💊","back":"Hospital"},{"word":"Movie Theater","emoji":"🎬🍿","back":"Cine"},{"word":"Music Store","emoji":"🎵🎸","back":"Tienda de música"},{"word":"Park","emoji":"🌳🌿","back":"Parque"},{"word":"Pet Shop","emoji":"🐾🐕","back":"Tienda de mascotas"},{"word":"Post Office","emoji":"📮📬","back":"Correos"},{"word":"Restaurant","emoji":"🍽️🥘","back":"Restaurante"},{"word":"School","emoji":"🏫📝","back":"Colegio"},{"word":"Shopping Mall","emoji":"🛍️🏬","back":"Centro comercial"},{"word":"Supermarket","emoji":"🛒🥦","back":"Supermercado"},{"word":"Train Station","emoji":"🚂🏢","back":"Estación de tren"}];
+const COLORS=["#fde68a","#bfdbfe","#bbf7d0","#fecaca","#ddd6fe","#fed7aa","#99f6e4","#e9d5ff"];
+let cards=[...ALL],i=0,flipped=false;
+function show(){
+  const c=cards[i];
+  document.getElementById('card').classList.remove('flipped');
+  document.getElementById('front').style.setProperty('--c',COLORS[i%COLORS.length]);
+  document.getElementById('emoji').textContent=c.emoji;
+  document.getElementById('word').textContent=c.word;
+  document.getElementById('back').textContent=c.back;
+  document.getElementById('idx').textContent=i+1;
+  document.getElementById('tot').textContent=cards.length;
+  document.getElementById('cnt').textContent=cards.length+' palabras';
+  flipped=false;
+}
+function flip(){ document.getElementById('card').classList.toggle('flipped'); flipped=!flipped; }
+function next(){ i=(i+1)%cards.length; show(); }
+function prev(){ i=(i-1+cards.length)%cards.length; show(); }
+function mix(){ cards=cards.sort(()=>Math.random()-.5); i=0; show(); }
+show();
+</script></body></html>

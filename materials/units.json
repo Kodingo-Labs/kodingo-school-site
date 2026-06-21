@@ -1,0 +1,10 @@
+[
+  {
+    "type": "course",
+    "grade": "2do",
+    "unit": "4",
+    "name": "My Best City Ever",
+    "activeVersion": "v2",
+    "versions": ["v1", "v2"]
+  }
+]

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Story · Unit 4 · My Best City Ever · 2do Grado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px 40px;
+      gap: 18px;
+    }
+
+    header { text-align: center; }
+    header h1 { font-size: clamp(1.4rem, 5vw, 2rem); font-weight: 900; color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+    header p { font-size: 0.9rem; color: rgba(255,255,255,0.85); font-weight: 600; margin-top: 4px; }
+
+    .btn {
+      border: none; border-radius: 50px;
+      padding: 13px 28px; font-family: 'Nunito', sans-serif;
+      font-size: 1rem; font-weight: 800; cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15); transition: transform 0.15s;
+      background: white; color: #4a5568;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-read { background: linear-gradient(135deg, #43e97b, #38f9d7); color: #1a4a2e; }
+    .btn-read.speaking { background: linear-gradient(135deg, #f5576c, #f093fb); color: white; }
+
+    .story-card {
+      background: white; border-radius: 28px;
+      padding: 32px 28px; max-width: 540px; width: 100%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+    }
+
+    .story-title { font-size: 1.4rem; font-weight: 900; color: #2d3748; text-align: center; margin-bottom: 6px; }
+    .story-sub   { font-size: 0.85rem; color: #a0aec0; font-weight: 600; text-align: center; margin-bottom: 24px; }
+
+    .story-body { font-size: 1.15rem; font-weight: 600; color: #4a5568; line-height: 2; }
+    .story-body p { margin-bottom: 14px; }
+    .story-body p:last-child { margin-bottom: 0; }
+
+    .hl { background: #fef9c3; color: #92400e; border-radius: 6px; padding: 1px 5px; font-weight: 800; }
+
+    .sent {
+      display: inline; cursor: pointer; border-radius: 6px; padding: 1px 3px;
+      transition: background 0.2s;
+    }
+    .sent:hover { background: rgba(79,172,254,0.15); }
+    .sent.active { background: #bfdbfe; border-radius: 6px; }
+
+    .vocab-box {
+      background: white; border-radius: 20px;
+      padding: 18px 22px; max-width: 540px; width: 100%;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    }
+    .vocab-title { font-size: 0.95rem; font-weight: 800; color: #2d3748; text-align: center; margin-bottom: 12px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .chip { background: #e0f2fe; color: #0369a1; border-radius: 50px; padding: 6px 14px; font-weight: 700; font-size: 0.88rem; }
+
+    .tip { font-size: 0.82rem; color: rgba(255,255,255,0.75); font-weight: 600; text-align: center; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📖 A Day in My City</h1>
+    <p>Unit 4 · 2do Grado · Mini Story</p>
+  </header>
+
+  <button class="btn btn-read" id="btn-read" onclick="toggleRead()">🔊 Read Aloud</button>
+  <div class="tip">💡 Tap any sentence to hear it</div>
+
+  <div class="story-card">
+    <div class="story-title">🏙️ A Day in My City</div>
+    <div class="story-sub">A story about places in town</div>
+
+    <div class="story-body" id="body">
+      <p>
+        <span class="sent" data-i="0">Today, I go to the <span class="hl">city</span> with my family.</span>
+      </p>
+      <p>
+        <span class="sent" data-i="1">First, we go to the <span class="hl">supermarket</span>. 🛒</span>
+        <span class="sent" data-i="2"> Mom buys fruits and vegetables there.</span>
+      </p>
+      <p>
+        <span class="sent" data-i="3">Then, Dad puts gas in the car at the <span class="hl">gas station</span>. ⛽</span>
+      </p>
+      <p>
+        <span class="sent" data-i="4">After that, we go to the <span class="hl">park</span>. 🌳</span>
+        <span class="sent" data-i="5"> I play with my friends and we run and jump!</span>
+      </p>
+      <p>
+        <span class="sent" data-i="6">In the afternoon, we eat pizza at the <span class="hl">restaurant</span>. 🍕</span>
+        <span class="sent" data-i="7"> It is very delicious!</span>
+      </p>
+      <p>
+        <span class="sent" data-i="8">At night, we see a movie at the <span class="hl">movie theater</span>. 🎬</span>
+        <span class="sent" data-i="9"> I love my city! ❤️</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="vocab-box">
+    <div class="vocab-title">📚 Vocabulary in the story</div>
+    <div class="chips">
+      <div class="chip">🏙️ city</div>
+      <div class="chip">🛒 supermarket</div>
+      <div class="chip">⛽ gas station</div>
+      <div class="chip">🌳 park</div>
+      <div class="chip">🍕 restaurant</div>
+      <div class="chip">🎬 movie theater</div>
+    </div>
+  </div>
+
+  <script>
+    const lines = [
+      'Today, I go to the city with my family.',
+      'First, we go to the supermarket.',
+      'Mom buys fruits and vegetables there.',
+      'Then, Dad puts gas in the car at the gas station.',
+      'After that, we go to the park.',
+      'I play with my friends and we run and jump!',
+      'In the afternoon, we eat pizza at the restaurant.',
+      'It is very delicious!',
+      'At night, we see a movie at the movie theater.',
+      'I love my city!',
+    ];
+
+    let reading = false;
+    const synth = window.speechSynthesis;
+
+    function speak(text, onEnd) {
+      synth.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'en-US'; u.rate = 0.85;
+      if (onEnd) u.onend = onEnd;
+      synth.speak(u);
+    }
+
+    function clearActive() { document.querySelectorAll('.sent.active').forEach(el => el.classList.remove('active')); }
+
+    function toggleRead() {
+      if (reading) { synth.cancel(); stopRead(); return; }
+      startRead(0);
+    }
+
+    function startRead(i) {
+      reading = true;
+      const btn = document.getElementById('btn-read');
+      btn.textContent = '⏹ Stop'; btn.classList.add('speaking');
+      readLine(i);
+    }
+
+    function stopRead() {
+      reading = false;
+      const btn = document.getElementById('btn-read');
+      btn.textContent = '🔊 Read Aloud'; btn.classList.remove('speaking');
+      clearActive();
+    }
+
+    function readLine(i) {
+      if (!reading || i >= lines.length) { stopRead(); return; }
+      clearActive();
+      const el = document.querySelector(`.sent[data-i="${i}"]`);
+      if (el) el.classList.add('active');
+      speak(lines[i], () => { if (reading) readLine(i + 1); });
+    }
+
+    document.querySelectorAll('.sent').forEach(el => {
+      el.addEventListener('click', () => {
+        if (reading) { synth.cancel(); stopRead(); }
+        const i = parseInt(el.dataset.i);
+        clearActive(); el.classList.add('active');
+        speak(lines[i], () => el.classList.remove('active'));
+      });
+    });
+  </script>
+</body>
+</html>
