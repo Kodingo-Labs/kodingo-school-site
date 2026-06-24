@@ -1,10 +1,12 @@
 [
   {
+    "subject": "english",
     "type": "courses",
     "grade": "2do",
     "unit": "4",
     "name": "My Best City Ever",
     "activeVersion": "v2",
-    "versions": ["v1", "v2"]
+    "versions": ["v2"],
+    "materials": ["flashcards", "matching", "story", "game"]
   }
 ]

@@ -1,223 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>English — Innova Schools</title>
+  <title>Innova Schools · Práctica</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet" />
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Nunito', sans-serif;
-      min-height: 100vh;
-      background: linear-gradient(160deg, #e0e7ff 0%, #f0fdf4 100%);
-      color: #1e293b;
-      padding: 32px 20px 60px;
-    }
-
-    .header { text-align: center; margin-bottom: 32px; }
-    .header .crown { font-size: 3.5rem; display: block; margin-bottom: 8px; }
-    .header h1 { font-size: 2rem; font-weight: 900; color: #1e40af; }
-    .header p { color: #64748b; margin-top: 6px; font-size: 1rem; }
-
-    /* Tab de tipo: Courses / Workshops */
-    .type-tabs {
-      display: flex; gap: 10px; justify-content: center;
-      margin-bottom: 20px;
-    }
-    .type-btn {
-      padding: 10px 26px; border-radius: 99px; border: 3px solid transparent;
-      font-family: inherit; font-size: 1rem; font-weight: 900; cursor: pointer;
-      transition: all .2s; background: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,.08);
-    }
-    .type-btn.active.courses  { border-color: #6366f1; background: #eff6ff; color: #1d4ed8; transform: scale(1.05); }
-    .type-btn.active.workshops{ border-color: #d97706; background: #fffbeb; color: #92400e; transform: scale(1.05); }
-    .type-btn:not(.active)    { color: #64748b; }
-    .type-btn:not(.active):hover { border-color: #e2e8f0; background: #f8fafc; }
-
-    /* Selector de grado */
-    .kids { display: flex; gap: 12px; justify-content: center; margin-bottom: 28px; flex-wrap: wrap; }
-    .kid-btn {
-      padding: 10px 24px; border-radius: 99px; border: 3px solid transparent;
-      font-family: inherit; font-size: 0.95rem; font-weight: 800; cursor: pointer;
-      transition: all .2s; background: white;
-      box-shadow: 0 2px 8px rgba(0,0,0,.07);
-    }
-    .kid-btn.active { border-color: #64748b; background: #f1f5f9; color: #1e293b; }
-    .kid-btn:not(.active) { color: #94a3b8; }
-    .kid-btn:not(.active):hover { border-color: #e2e8f0; background: #f8fafc; }
-
-    /* Unidades */
-    .units { display: flex; flex-direction: column; gap: 16px; max-width: 640px; margin: 0 auto; }
-
-    .unit-card {
-      background: white; border-radius: 20px;
-      box-shadow: 0 4px 16px rgba(0,0,0,.08); overflow: hidden;
-    }
-    .unit-header {
-      padding: 18px 22px; display: flex; align-items: center; gap: 14px;
-      cursor: pointer; user-select: none;
-    }
-    .unit-icon { font-size: 2.2rem; }
-    .unit-info { flex: 1; }
-    .unit-name { font-size: 1.05rem; font-weight: 800; }
-    .unit-meta { font-size: 0.78rem; color: #94a3b8; margin-top: 2px; }
-    .unit-badge {
-      background: #dcfce7; color: #16a34a;
-      font-size: 0.72rem; font-weight: 800;
-      padding: 3px 10px; border-radius: 99px;
-    }
-    .unit-badge.workshop {
-      background: #fef3c7; color: #b45309;
-    }
-    .chevron { color: #94a3b8; font-size: 1.1rem; transition: transform .2s; }
-    .chevron.open { transform: rotate(90deg); }
-
-    .unit-materials {
-      border-top: 1px solid #f1f5f9;
-      padding: 14px 18px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
-    }
-    .mat-link {
-      display: flex; align-items: center; gap: 10px;
-      padding: 12px 14px; border-radius: 12px;
-      border: 2px solid #e2e8f0; background: #f8fafc;
-      text-decoration: none; color: #1e293b;
-      font-weight: 700; font-size: 0.9rem;
-      transition: all .15s;
-    }
-    .mat-link:hover { border-color: #6366f1; background: #eff6ff; transform: translateY(-2px); }
-    .mat-emoji { font-size: 1.5rem; }
-
-    /* Estado vacío */
-    .empty {
-      text-align: center; padding: 48px 20px;
-      background: white; border-radius: 20px;
-      box-shadow: 0 4px 16px rgba(0,0,0,.07);
-      max-width: 640px; margin: 0 auto; color: #94a3b8;
-    }
-    .empty .icon { font-size: 3rem; margin-bottom: 12px; }
-    .empty p { font-size: 0.95rem; line-height: 1.6; }
-
-    /* Footer */
-    footer { text-align: center; margin-top: 48px; color: #94a3b8; font-size: 0.8rem; }
-  </style>
+  <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
 
 <div class="header">
-  <span class="crown">📚</span>
-  <h1>My English Practice</h1>
-  <p>Innova Schools · Choose your materials below</p>
+  <span class="crown">🎒</span>
+  <h1>Innova Schools · Práctica</h1>
+  <p>Materiales interactivos para repasar en casa</p>
 </div>
 
-<!-- Tabs: Courses / Workshops -->
-<div class="type-tabs">
-  <button class="type-btn courses active" onclick="setType('courses', this)">📘 Courses</button>
-  <button class="type-btn workshops"      onclick="setType('workshops', this)">🎨 Workshops</button>
+<div class="subject-tabs">
+  <button class="subj-btn english active" data-subject="english">📘 Inglés</button>
+  <button class="subj-btn workshops"       data-subject="workshops">🖨️ Talleres</button>
 </div>
 
-<!-- Selector de grado -->
 <div class="kids">
-  <button class="kid-btn active" onclick="setGrade('2do', this)">🐣 2do Grado</button>
-  <button class="kid-btn"        onclick="setGrade('5to', this)">🎓 5to Grado</button>
+  <button class="kid-btn active" data-grade="2do">🐣 2do Grado</button>
+  <button class="kid-btn"        data-grade="5to">🎓 5to Grado</button>
 </div>
 
-<!-- Contenido -->
-<div id="units-container">
-  <div class="units" id="units-list"></div>
-</div>
+<div class="units" id="units-list"></div>
 
-<footer>
-  Innova Schools · English Practice · <span id="year"></span>
-</footer>
+<footer>Innova Schools · <span id="year"></span></footer>
 
-<script>
-const MATERIALS = [
-  { id: 'flashcards', label: 'Flashcards', emoji: '🃏' },
-  { id: 'matching',   label: 'Matching',   emoji: '🔗' },
-  { id: 'story',      label: 'Story',      emoji: '📖' },
-  { id: 'game',       label: 'Game',       emoji: '🎮' },
-];
-
-const GRADE_EMOJI = { '2do': '🐣', '5to': '🎓' };
-
-let allUnits = [];
-let currentType  = 'courses';
-let currentGrade = '2do';
-
-function matPath(unit, mat) {
-  const ver = unit.activeVersion ? `${unit.activeVersion}/` : '';
-  return `materials/${unit.type}/${unit.grade}/unit${unit.unit}/${ver}${mat.id}.html`;
-}
-
-function renderUnits() {
-  const container = document.getElementById('units-list');
-  const filtered  = allUnits.filter(u => u.type === currentType && u.grade === currentGrade);
-
-  if (filtered.length === 0) {
-    container.innerHTML = `
-      <div class="empty">
-        <div class="icon">📭</div>
-        <p>No materials yet for this section.<br>Check back after the next unit is processed!</p>
-      </div>`;
-    return;
-  }
-
-  const isWorkshop = currentType === 'workshops';
-  container.innerHTML = filtered.map((unit, idx) => `
-    <div class="unit-card">
-      <div class="unit-header" onclick="toggle('panel-${idx}')">
-        <span class="unit-icon">${unit.emoji || GRADE_EMOJI[unit.grade] || '📚'}</span>
-        <div class="unit-info">
-          <div class="unit-name">Unit ${unit.unit} — ${unit.name}</div>
-          <div class="unit-meta">${unit.grade} Grado · ${MATERIALS.length} activities</div>
-        </div>
-        <span class="unit-badge${isWorkshop ? ' workshop' : ''}">✓ Ready</span>
-        <span class="chevron" id="chev-${idx}">›</span>
-      </div>
-      <div class="unit-materials" id="panel-${idx}" style="display:none">
-        ${MATERIALS.map(mat => `
-          <a class="mat-link" href="${matPath(unit, mat)}" target="_blank">
-            <span class="mat-emoji">${mat.emoji}</span>
-            ${mat.label}
-          </a>`).join('')}
-      </div>
-    </div>`).join('');
-}
-
-function toggle(panelId) {
-  const panel = document.getElementById(panelId);
-  const chev  = document.getElementById(panelId.replace('panel-', 'chev-'));
-  const open  = panel.style.display !== 'none';
-  panel.style.display = open ? 'none' : 'grid';
-  chev.classList.toggle('open', !open);
-}
-
-function setType(type, btn) {
-  currentType = type;
-  document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderUnits();
-}
-
-function setGrade(grade, btn) {
-  currentGrade = grade;
-  document.querySelectorAll('.kid-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderUnits();
-}
-
-document.getElementById('year').textContent = new Date().getFullYear();
-
-fetch('materials/units.json?v=' + Date.now())
-  .then(r => r.ok ? r.json() : [])
-  .catch(() => [])
-  .then(units => {
-    allUnits = units;
-    renderUnits();
-  });
-</script>
+<script src="assets/app.js"></script>
 </body>
 </html>
