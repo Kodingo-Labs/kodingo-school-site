@@ -53,7 +53,11 @@ function resolveMaterials(unit) {
 }
 
 function filteredUnits() {
-  return allUnits.filter(u => u.subject === currentSubject && u.grade === currentGrade);
+  return allUnits.filter(u => {
+    if (u.subject !== currentSubject) return false;
+    if (u.subject === 'english') return u.grade === currentGrade;
+    return true;
+  });
 }
 
 // ── Templates ─────────────────────────────────────────────────────
@@ -70,6 +74,7 @@ function unitCardHTML(unit, idx) {
   const unitLabel = unit.unit ? `Unit ${unit.unit} — ` : '';
   const badge     = unit.subject === 'workshops' ? ' workshops' : '';
   const icon      = unit.emoji || GRADE_EMOJI[unit.grade] || '📚';
+  const gradeMeta = unit.subject === 'english' ? `${unit.grade} Grado · ` : '';
 
   return `
     <div class="unit-card">
@@ -77,7 +82,7 @@ function unitCardHTML(unit, idx) {
         <span class="unit-icon">${icon}</span>
         <div class="unit-info">
           <div class="unit-name">${unitLabel}${unit.name}</div>
-          <div class="unit-meta">${unit.grade} Grado · ${mats.length} actividades</div>
+          <div class="unit-meta">${gradeMeta}${mats.length} actividades</div>
         </div>
         <span class="unit-badge${badge}">✓ Listo</span>
         <span class="chevron" id="chev-${idx}">›</span>
@@ -124,6 +129,8 @@ document.querySelectorAll('.subj-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     currentSubject = btn.dataset.subject;
     activateButton('.subj-btn', btn);
+    document.querySelector('.kids').style.display =
+      currentSubject === 'english' ? 'flex' : 'none';
     render();
   });
 });

@@ -3,31 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Innova Schools · Práctica</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet" />
+  <title>Kodingo School</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
 
-<div class="header">
-  <span class="crown">🎒</span>
-  <h1>Innova Schools · Práctica</h1>
-  <p>Materiales interactivos para repasar en casa</p>
-</div>
+<header class="header">
+  <div class="logo">
+    <span class="logo-mark">K</span>
+    <div class="logo-text">
+      <h1><span class="brand-kodingo">Kodingo</span><span class="brand-school">School</span></h1>
+      <p>Materiales para repasar en casa</p>
+    </div>
+  </div>
+</header>
 
-<div class="subject-tabs">
+<nav class="subject-tabs">
   <button class="subj-btn english active" data-subject="english">📘 Inglés</button>
   <button class="subj-btn workshops"       data-subject="workshops">🖨️ Talleres</button>
-</div>
+</nav>
 
 <div class="kids">
   <button class="kid-btn active" data-grade="2do">🐣 2do Grado</button>
   <button class="kid-btn"        data-grade="5to">🎓 5to Grado</button>
 </div>
 
-<div class="units" id="units-list"></div>
+<main class="units" id="units-list"></main>
 
-<footer>Innova Schools · <span id="year"></span></footer>
+<footer>Kodingo School · <span id="year"></span></footer>
 
 <script src="assets/app.js"></script>
 </body>
