@@ -53,8 +53,7 @@ function matPath(unit, matId) {
 function filteredUnits() {
   return allUnits.filter(u => {
     if (u.subject !== currentSubject) return false;
-    if (u.subject === 'english') return u.grade === currentGrade;
-    return true;
+    return u.grade === currentGrade;
   });
 }
 
@@ -172,16 +171,21 @@ function render() {
 
   let html = '';
 
-  // Workshops: agrupar TODO (sessions + labs) en un único card por lab
   if (currentSubject === 'workshops') {
-    const byLab = {};
-    units.forEach(u => {
-      const key = u.lab || u.unit || 'general';
-      if (!byLab[key]) byLab[key] = { meta: u, classes: [] };
-      if (u.type === 'labs') byLab[key].classes.push(u);
+    // Sessions: tarjetas estándar por taller genérico
+    const sessions = units.filter(u => u.type === 'sessions');
+    sessions.forEach((u, i) => {
+      html += standardCardHTML(u, `panel-std-${i}`);
     });
-    Object.entries(byLab).forEach(([lab, { classes }]) => {
-      if (!classes.length) return;
+
+    // Labs: un card por lab con módulos y clases
+    const byLab = {};
+    units.filter(u => u.type === 'labs').forEach(u => {
+      const key = u.lab || 'general';
+      if (!byLab[key]) byLab[key] = [];
+      byLab[key].push(u);
+    });
+    Object.entries(byLab).forEach(([lab, classes]) => {
       const byModule = {};
       classes.forEach(u => {
         const mod = u.module || 'Clases';
@@ -229,7 +233,7 @@ document.querySelectorAll('.subj-btn').forEach(btn => {
     currentSubject = btn.dataset.subject;
     document.querySelectorAll('.subj-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    document.querySelector('.kids').style.display = currentSubject === 'english' ? 'flex' : 'none';
+    document.querySelector('.kids').style.display = 'flex';
     openPanels.clear();
     render();
   });
