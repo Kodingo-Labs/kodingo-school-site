@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Clase 3 — Marcador de libros 📖</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Nunito',sans-serif;background:#f0f9ff;color:#1e293b}.header{background:linear-gradient(135deg,#0369a1,#0ea5e9);color:white;padding:32px 24px}.mod-badge{font-size:12px;font-weight:800;letter-spacing:2px;opacity:.8;text-transform:uppercase;margin-bottom:8px}.header-title{font-size:26px;font-weight:900;line-height:1.2;margin-bottom:16px}.badges{display:flex;gap:8px;flex-wrap:wrap}.badge{background:rgba(255,255,255,.2);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:700}.progress-wrap{background:white;padding:12px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.1)}.progress-label{font-size:12px;font-weight:700;color:#64748b;margin-bottom:6px}.prog-bar{height:8px;background:#e2e8f0;border-radius:999px}.prog-fill{height:100%;background:linear-gradient(90deg,#0ea5e9,#22c55e);border-radius:999px;transition:width .4s ease}main{max-width:720px;margin:0 auto;padding:24px 16px 120px}.card{background:white;border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.06)}.card-title{font-size:20px;font-weight:800;margin-bottom:16px}.objetivo-box{font-size:16px;font-weight:700;line-height:1.6;color:#0369a1;background:#e0f2fe;padding:16px;border-radius:12px;border-left:4px solid #0ea5e9}.resultado-tag{display:inline-block;background:#dcfce7;color:#15803d;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:800;margin-top:12px}.tools-wrap{display:flex;gap:10px;flex-wrap:wrap}.tool-pill{background:#f1f5f9;border:2px solid #e2e8f0;padding:10px 18px;border-radius:999px;font-size:14px;font-weight:700}.glos-item{border:2px solid #e0f2fe;border-radius:12px;padding:14px;margin-bottom:10px}.glos-term{font-size:16px;font-weight:800;color:#0369a1;margin-bottom:4px}.glos-def{font-size:14px;color:#475569;line-height:1.5}.glos-tip{font-size:13px;color:#0ea5e9;font-weight:700;margin-top:6px}.step{display:flex;gap:16px;align-items:flex-start;padding:16px;border-radius:12px;margin-bottom:12px;border:2px solid #e2e8f0;transition:all .3s}.step.done{background:#f0fdf4;border-color:#22c55e}.s-num{width:40px;height:40px;min-width:40px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#64748b;transition:all .3s}.step.done .s-num{background:#22c55e;color:white}.s-body{flex:1}.s-title{font-size:16px;font-weight:800;margin-bottom:8px}.s-cb{margin-left:auto;width:28px;height:28px;cursor:pointer;accent-color:#22c55e}.sub{margin-top:8px}.sub-row{display:flex;gap:10px;margin-bottom:8px;font-size:14px;line-height:1.5}.sub-lbl{font-weight:900;color:#0369a1;min-width:22px}.see{background:#f0fdf4;border:2px solid #22c55e;border-radius:10px;padding:12px 14px;margin-top:10px;font-size:13px;font-weight:700;color:#15803d}.see::before{content:"✅ Lo que deberías ver: "}.warn{background:#fffbeb;border:2px solid #f59e0b;border-radius:10px;padding:12px 14px;margin-top:8px;font-size:13px;font-weight:700;color:#92400e}.warn::before{content:"⚠️ Si algo va mal: "}.yay{background:#fef3c7;border-radius:10px;padding:12px;margin-top:10px;font-size:14px;font-weight:800;color:#92400e;text-align:center}.guide-block{background:#f0f9ff;border:2px solid #7dd3fc;border-radius:12px;padding:18px;margin-bottom:12px}.guide-h{font-size:14px;font-weight:800;color:#0369a1;margin-bottom:10px}.guide-row{display:flex;gap:8px;margin-bottom:8px;font-size:14px;line-height:1.5}.guide-num{font-weight:900;color:#0369a1;min-width:22px}.wait-row{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:10px;background:#faf5ff;border:2px solid #e9d5ff;margin-bottom:8px;font-size:14px;font-weight:600}.wait-icon{font-size:20px;min-width:28px}.desafio{background:#fffbeb;border:3px solid #f59e0b;border-radius:16px;padding:20px}.desafio h3{font-size:18px;font-weight:900;color:#92400e;margin-bottom:8px}.desafio p{font-size:15px;color:#78350f;line-height:1.6}.cfg-card{background:#f0f9ff;border:2px solid #bae6fd}.cfg-table{width:100%;border-collapse:collapse}.cfg-table tr:nth-child(odd){background:#e0f2fe}.cfg-table td{padding:10px 14px;font-size:14px}.cfg-table td:first-child{font-weight:800;color:#0369a1}.cfg-note{font-size:13px;color:#0369a1;margin-bottom:12px;line-height:1.5}.quiz-q{background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;padding:16px;margin-bottom:12px}.quiz-q p{font-size:15px;font-weight:800;margin-bottom:10px}.quiz-opts{list-style:none}.quiz-opts li{padding:8px 12px;border-radius:8px;margin-bottom:6px;font-size:14px;font-weight:600}.quiz-opts li.ok{background:#dcfce7;color:#15803d;font-weight:800}.quiz-opts li.no{color:#94a3b8}.padres-box{background:#f8fafc;border:2px solid #cbd5e1;border-radius:12px;padding:20px}.padres-box h3{font-size:15px;font-weight:800;margin-bottom:8px;color:#334155;margin-top:14px}.padres-box h3:first-child{margin-top:0}.padres-box ul{padding-left:16px}.padres-box li{font-size:14px;line-height:1.7;color:#475569}.prob{background:white;border:2px solid #fca5a5;border-radius:10px;padding:12px;margin-bottom:8px}.prob-t{font-weight:800;color:#dc2626;margin-bottom:4px;font-size:14px}.prob-fix{color:#475569;font-size:13px;line-height:1.5}.sabias{background:linear-gradient(135deg,#fdf4ff,#fae8ff);border:2px solid #e9d5ff}.sabias p{font-size:15px;line-height:1.6}.celeb{display:none;background:linear-gradient(135deg,#fbbf24,#f59e0b);border-radius:20px;padding:40px 24px;text-align:center;margin-top:20px}.celeb.on{display:block;animation:pop .6s ease}@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}.celeb-ico{font-size:64px;margin-bottom:16px;animation:bob 1s infinite}@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}.celeb-t{font-size:26px;font-weight:900;color:#451a03;margin-bottom:12px}.celeb-txt{font-size:15px;color:#78350f;line-height:1.7}#cnf{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999}.foot{position:fixed;bottom:0;left:0;right:0;background:white;border-top:2px solid #e2e8f0;padding:12px 24px;display:flex;gap:12px;justify-content:space-between;align-items:center;box-shadow:0 -4px 16px rgba(0,0,0,.1)}.btn-nav{padding:12px 24px;border-radius:999px;font-family:Nunito;font-size:15px;font-weight:800;border:none;cursor:pointer;text-decoration:none;display:inline-block}.btn-prev{background:#f1f5f9;color:#475569}.btn-next{background:linear-gradient(135deg,#0ea5e9,#0369a1);color:white}.btn-dis{opacity:.4;pointer-events:none;cursor:default}.btn-reset{font-size:12px;color:#94a3b8;background:none;border:none;cursor:pointer;font-family:Nunito;font-weight:700}@media(max-width:600px){.header-title{font-size:20px}main{padding:16px 12px 100px}}
+</style>
+</head>
+<body>
+<canvas id="cnf"></canvas>
+
+<header class="header">
+  <div class="mod-badge">Módulo 1 — ¡Primero Imprimimos! · Clase 3 de 3</div>
+  <div class="header-title">📖 Imprimimos un marcador de libros</div>
+  <div class="badges">
+    <span class="badge">⏱️ 45 min clase</span>
+    <span class="badge">🖨️ 35 min impresión</span>
+    <span class="badge">⭐ Dificultad 1/5</span>
+    <span class="badge">🔰 Solo observamos e imprimimos</span>
+  </div>
+</header>
+
+<div class="progress-wrap">
+  <div class="progress-label">Tu progreso: <span id="pt">0 de 7 pasos completados</span></div>
+  <div class="prog-bar"><div class="prog-fill" id="pf" style="width:0%"></div></div>
+</div>
+
+<main>
+
+<div class="card">
+  <div class="card-title">🎯 ¿Qué vas a lograr hoy?</div>
+  <div class="objetivo-box">¿Recuerdas que en la Clase 2 aprendiste sobre las capas y el relleno? Hoy vas a usar ese conocimiento para imprimir algo que puedes usar en la vida real: un <strong>marcador de libros</strong> decorativo. Y vas a aprender un truco importante: cambiando solo la altura de capa, el objeto queda más fino y detallado.</div>
+  <span class="resultado-tag">🏆 Tu resultado: Un marcador de libros rectangular con diseño decorativo (estrella, cohete o dinosaurio)</span>
+</div>
+
+<div class="card">
+  <div class="card-title">🛠️ Lo que necesitas hoy</div>
+  <div class="tools-wrap">
+    <span class="tool-pill">🖨️ Bambu Lab A1</span>
+    <span class="tool-pill">💻 Bambu Studio</span>
+    <span class="tool-pill">🧵 Filamento PLA</span>
+    <span class="tool-pill">📁 Archivo marcador.stl (descargado)</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">📖 Palabras de hoy — ¡Tu glosario!</div>
+  <div class="glos-item">
+    <div class="glos-term">📏 Altura de capa (layer height)</div>
+    <div class="glos-def">Qué tan "gruesa" es cada capa de plástico. 0.2mm es normal. 0.15mm es más fino. 0.1mm es muy fino y detallado. Capas más finas = más tiempo de impresión pero resultado más liso.</div>
+    <div class="glos-tip">💡 Es como lijar madera: papel de lija grueso va rápido pero queda rayado. Papel de lija fino tarda más pero queda suave como seda.</div>
+  </div>
+  <div class="glos-item">
+    <div class="glos-term">🕐 Tiempo de impresión</div>
+    <div class="glos-def">Cuánto tiempo tarda la impresora en terminar el objeto. Depende del tamaño, de la altura de capa y de la velocidad elegida. Bambu Studio te lo dice exactamente antes de imprimir.</div>
+    <div class="glos-tip">💡 El marcador de hoy tarda 35 minutos porque usamos 0.15mm (más fino que el llavero de la Clase 1 que era 0.2mm).</div>
+  </div>
+  <div class="glos-item">
+    <div class="glos-term">🔗 Adhesión a la placa (bed adhesion)</div>
+    <div class="glos-def">Qué tan bien se pega el plástico a la placa durante la impresión. Si no pega bien, el objeto se mueve y la impresión falla. La placa texturizada de la Bambu Lab A1 ayuda mucho con esto.</div>
+    <div class="glos-tip">💡 Es como cuando pegas un sticker: si la superficie está limpia y seca, pega perfecto. Si está sucia o húmeda, se despega.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">🚀 ¡La aventura comienza! — Paso a paso</div>
+
+  <div class="step" id="s1">
+    <div class="s-num">1</div>
+    <div class="s-body">
+      <div class="s-title">Abre Bambu Studio y carga el marcador</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Abre Bambu Studio (doble clic en el ícono del escritorio).</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Arrastra el archivo <strong>marcador.stl</strong> desde Descargas hasta la cama gris.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>¡El marcador de libros aparece en 3D! Es un rectángulo delgado con un diseño en relieve.</span></div>
+      </div>
+      <div class="see">Un rectángulo delgado con un diseño decorativo en relieve (puede ser una estrella, cohete o dinosaurio) sobre la cama de Bambu Studio.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="1" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s2">
+    <div class="s-num">2</div>
+    <div class="s-body">
+      <div class="s-title">Cambia la calidad a 0.15mm — ¡Más fino!</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Mira el panel derecho de Bambu Studio. Busca donde dice la calidad de impresión.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Ahora dice <strong>"0.20mm Standard"</strong>. Haz clic en ese menú desplegable.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Selecciona <strong>"0.15mm Optimal"</strong> de la lista.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>¿Por qué? El marcador tiene un diseño decorativo en relieve — con capas más finas, el diseño va a quedar mucho más bonito y liso.</span></div>
+      </div>
+      <div class="see">El campo de calidad ahora dice "0.15mm Optimal". El tiempo estimado aumentará un poco comparado con 0.20mm.</div>
+      <div style="background:#e0f2fe;border-radius:8px;padding:10px;margin-top:8px;font-size:13px;color:#0369a1;font-weight:700">Con 0.15mm cada capa es un 25% más delgada que con 0.20mm. ¡Eso significa un resultado más suave y detallado!</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="2" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s3">
+    <div class="s-num">3</div>
+    <div class="s-body">
+      <div class="s-title">Verifica la adhesión a la placa</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>El marcador es un objeto plano y delgado — la adhesión es muy importante para que no se mueva.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Pídele al adulto que revise que la placa texturizada esté <strong>limpia y seca</strong> (sin huellas de dedos).</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Si la placa tiene huellas, limpiarla con un papel con un poco de alcohol isopropílico.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>Una placa limpia = mejor adhesión = impresión exitosa.</span></div>
+      </div>
+      <div class="see">La placa texturizada está limpia, sin huellas de dedos visibles a contraluz.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="3" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s4">
+    <div class="s-num">4</div>
+    <div class="s-body">
+      <div class="s-title">Haz Slice y revisa el tiempo</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Haz clic en el botón <strong>azul "Slice"</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Espera los segundos de procesamiento.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Mira abajo de la pantalla — el tiempo estimado debe ser aproximadamente <strong>35 minutos</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>Usa el slider para ver las capas — ¿ves cuántas más capas tiene que el llavero de la Clase 1?</span></div>
+      </div>
+      <div class="see">El marcador se ve de colores con muchas capas finas. El tiempo dice aproximadamente 35 minutos.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="4" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s5">
+    <div class="s-num">5</div>
+    <div class="s-body">
+      <div class="s-title">Envía a imprimir y confirma en la impresora</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Haz clic en el botón de imprimir, selecciona <strong>Bambu Lab A1</strong>, y haz clic en <strong>"Print"</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Ve a la impresora y toca el botón de confirmar en la pantalla táctil.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Espera el calentamiento (2-3 min) y la auto-nivelación (1 min).</span></div>
+      </div>
+      <div class="see">La impresora se calienta y empieza la secuencia automática de preparación.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="5" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s6">
+    <div class="s-num">6</div>
+    <div class="s-body">
+      <div class="s-title">¡Observa la diferencia con 0.15mm!</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Cuando empiece a imprimir, observa las líneas de la primera capa.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>¿Parecen más finas que las del llavero de la Clase 1? ¡Es porque son más finas!</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Observa cómo el diseño decorativo (estrella/cohete/dinosaurio) empieza a aparecer en relieve conforme sube la impresión.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>El relieve del diseño va a quedar más nítido y liso gracias a las capas más finas.</span></div>
+      </div>
+      <div class="see">Líneas de primera capa bien pegadas y finas. A medida que sube, el diseño decorativo empieza a sobresalir del fondo rectangular.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="6" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s7">
+    <div class="s-num">7</div>
+    <div class="s-body">
+      <div class="s-title">Saca el marcador y úsalo en tu libro favorito</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Espera el pitido de "Print Complete" y 2-3 minutos de enfriamiento.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Saca la placa y dóblala suavemente — el marcador se suelta solo.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Toca la superficie: ¿sientes que es más lisa que el llavero de 0.2mm?</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>¡Colócalo en tu libro favorito! Es tuyo para usar.</span></div>
+      </div>
+      <div class="see">Un marcador de libros plano con diseño decorativo en relieve, superficie más lisa que los objetos de 0.2mm. ¡Funcional y listo para usar!</div>
+      <div class="yay">🎉 ¡Terminaste el Módulo 1! Ahora conoces la impresora, las capas, el relleno y la altura de capa. ¡Eres un experto en impresión 3D!</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="7" onchange="chk(this)">
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">🖨️ Guía visual — Bambu Lab A1 hoy</div>
+  <div class="guide-block">
+    <div class="guide-h">🔍 Qué observar durante la impresión del marcador</div>
+    <div class="guide-row"><span class="guide-num">→</span><span>El marcador es plano y delgado — las primeras capas son las más críticas. Si se pegan bien, todo saldrá perfecto.</span></div>
+    <div class="guide-row"><span class="guide-num">→</span><span>Cuando la impresora llega a la sección con el diseño decorativo, la cabeza cambia su patrón de movimiento — se mueve más "en zigzag" para crear el relieve.</span></div>
+    <div class="guide-row"><span class="guide-num">→</span><span>Las capas de 0.15mm se ven más "apretadas" entre sí cuando miras el costado del marcador conforme crece.</span></div>
+  </div>
+  <div class="guide-block">
+    <div class="guide-h">⭐ Al terminar</div>
+    <div class="guide-row"><span class="guide-num">1.</span><span>Espera el pitido y 2-3 minutos de enfriamiento.</span></div>
+    <div class="guide-row"><span class="guide-num">2.</span><span>Dobla la placa suavemente — el marcador plano se suelta fácil.</span></div>
+    <div class="guide-row"><span class="guide-num">3.</span><span>Pasa el dedo por el diseño en relieve — deberías sentirlo claramente.</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">⏳ Mientras la impresora trabaja... (35 minutos)</div>
+  <div class="wait-row"><span class="wait-icon">📚</span><span><strong>Elige el libro</strong> en el que vas a usar el marcador cuando esté listo. ¿En qué página lo vas a poner primero?</span></div>
+  <div class="wait-row"><span class="wait-icon">🔍</span><span><strong>Compara:</strong> Mira el llavero de la Clase 1 y el cubo de la Clase 2. ¿Puedes sentir la diferencia de textura en la superficie con el dedo?</span></div>
+  <div class="wait-row"><span class="wait-icon">✏️</span><span><strong>Diseña tu próximo marcador:</strong> En papel, dibuja cómo sería un marcador con tu diseño favorito. ¡En el Módulo 2 vas a poder diseñarlo tú mismo!</span></div>
+  <div class="wait-row"><span class="wait-icon">🤔</span><span><strong>Piensa:</strong> ¿Qué altura de capa usarías para una figura decorativa muy detallada? ¿Y para una caja simple?</span></div>
+</div>
+
+<div class="card">
+  <div class="desafio">
+    <h3>💡 El desafío del día</h3>
+    <p>¿Te atreves a imprimir el mismo marcador pero ahora con <strong>0.2mm</strong> en vez de 0.15mm? Compara los dos marcadores: ¿notas la diferencia en la superficie? ¿El diseño se ve igual de nítido? ¡Eso es hacer ciencia!</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">🤔 ¿Qué aprendiste hoy? — Mini quiz</div>
+  <div class="quiz-q">
+    <p>1. ¿Qué pasa si usas capas más finas (0.15mm en vez de 0.20mm)?</p>
+    <ul class="quiz-opts">
+      <li class="ok">a) El objeto queda más liso y detallado, pero tarda más ✅</li>
+      <li class="no">b) El objeto queda igual pero usa menos plástico</li>
+      <li class="no">c) La impresora va más rápido y ahorra tiempo</li>
+    </ul>
+  </div>
+  <div class="quiz-q">
+    <p>2. ¿Por qué es importante que la placa esté limpia antes de imprimir?</p>
+    <ul class="quiz-opts">
+      <li class="no">a) Para que la impresora se vea bonita</li>
+      <li class="ok">b) Para que el plástico se pegue bien a la placa ✅</li>
+      <li class="no">c) Para que el filamento salga más caliente</li>
+    </ul>
+  </div>
+  <div class="quiz-q">
+    <p>3. ¿Qué tipo de objeto se beneficia MÁS de usar 0.15mm en vez de 0.20mm?</p>
+    <ul class="quiz-opts">
+      <li class="no">a) Una caja simple sin decoración</li>
+      <li class="ok">b) Un objeto con diseño decorativo en relieve o detalles finos ✅</li>
+      <li class="no">c) Un objeto que va a estar oculto dentro de otro</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card cfg-card">
+  <div class="card-title" style="color:#0369a1">⚙️ Configuración de impresión — Bambu Lab A1</div>
+  <p class="cfg-note">Usamos 0.15mm para que el diseño decorativo en relieve quede más nítido y liso. Las líneas de cada capa son un 25% más delgadas que con 0.20mm.</p>
+  <table class="cfg-table">
+    <tr><td>🖨️ Impresora</td><td>Bambu Lab A1</td></tr>
+    <tr><td>🎨 Filamento</td><td>PLA</td></tr>
+    <tr><td>📐 Altura de capa</td><td>0.15mm Optimal</td></tr>
+    <tr><td>⚡ Velocidad</td><td>Standard</td></tr>
+    <tr><td>🏗️ Soportes</td><td>No</td></tr>
+    <tr><td>🟫 Placa</td><td>Texturizada (Textured PEI)</td></tr>
+    <tr><td>🔁 Relleno (infill)</td><td>15%</td></tr>
+    <tr><td>🕐 Tiempo estimado</td><td>~35 minutos</td></tr>
+  </table>
+</div>
+
+<div class="card sabias">
+  <div class="card-title">💡 ¿Sabías que...?</div>
+  <p>Los joyeros y artistas usan impresoras 3D con resolución de hasta <strong>0.05mm</strong> (4 veces más fino que lo que hacemos hoy) para crear joyas con detalles microscópicos. ¡Una sola joya puede tener más de 5000 capas! La diferencia entre una impresión "normal" y una "artística" es exactamente eso: la altura de capa.</p>
+</div>
+
+<div class="card">
+  <div class="card-title">🧑‍🏫 Para quien acompaña a Mateo</div>
+  <div class="padres-box">
+    <h3>✅ Lo que Mateo aprendió en el Módulo 1 (Clases 1-3)</h3>
+    <ul>
+      <li>Cómo usar Bambu Studio: abrir archivos, configurar ajustes, slice, enviar a imprimir</li>
+      <li>Qué es el filamento PLA, el nozzle, las capas y el relleno (infill)</li>
+      <li>Cómo afecta la altura de capa al resultado final (0.20mm vs 0.15mm)</li>
+      <li>Cómo sacar objetos de la placa texturizada de la Bambu Lab A1</li>
+    </ul>
+    <h3>⚠️ Posibles problemas</h3>
+    <div class="prob">
+      <div class="prob-t">El marcador se despega de la placa a mitad de impresión</div>
+      <div class="prob-fix">Es el problema más común con objetos planos largos. Solución: limpiar la placa con alcohol, verificar que no haya corrientes de aire cerca de la impresora, y en Bambu Studio activar "Brim" (un borde extra alrededor del objeto que mejora la adhesión).</div>
+    </div>
+    <div class="prob">
+      <div class="prob-t">El diseño en relieve no se ve bien definido</div>
+      <div class="prob-fix">Verificar que la calidad sea 0.15mm (no 0.20mm). Si el diseño es muy pequeño, puede que se necesite 0.10mm para verlo bien. La Bambu Lab A1 puede hacer 0.10mm sin problemas.</div>
+    </div>
+    <h3>🏠 Cómo reforzar en casa</h3>
+    <p style="font-size:14px;color:#475569;line-height:1.6">Con los tres objetos del Módulo 1 (llavero, cubo, marcador), pedir a Mateo que los ordene del más rugoso al más liso al tacto. Discutir por qué el marcador (0.15mm) es más liso que el llavero (0.20mm). Esto consolida el concepto de altura de capa de forma táctil.</p>
+  </div>
+</div>
+
+<div class="celeb" id="celeb">
+  <div class="celeb-ico">📖</div>
+  <div class="celeb-t">¡Módulo 1 completado, Mateo!</div>
+  <div class="celeb-txt">
+    ¡Eres un experto en impresión 3D! En tres clases aprendiste a usar Bambu Studio, entendiste las capas y el relleno, descubriste la diferencia entre 0.15mm y 0.20mm, y ahora tienes tres objetos reales hechos por la impresora. ¡Un llavero, un cubo y un marcador de libros!<br><br>
+    <strong>En el Módulo 2 va a pasar algo increíble: vas a dejar de solo imprimir y vas a empezar a DISEÑAR. La próxima clase vas a conocer Tinkercad y vas a crear tu primera forma 3D desde cero. ¡El diseñador que hay en ti está por despertar!</strong>
+  </div>
+</div>
+
+</main>
+
+<footer class="foot">
+  <a href="../../clase2/v1/clase.html" class="btn-nav btn-prev">⬅️ Clase 2</a>
+  <button class="btn-reset" onclick="reset()">↺ Reiniciar progreso</button>
+  <a href="../../clase4/v1/clase.html" class="btn-nav btn-next">Clase 4 ➡️</a>
+</footer>
+
+<script>
+const KEY='studio3d-clase3',TOTAL=7;
+function load(){const s=JSON.parse(localStorage.getItem(KEY)||'{}');document.querySelectorAll('.scb').forEach(cb=>{if(s[cb.dataset.n]){cb.checked=true;mark(cb.dataset.n,true);}});upd();}
+function chk(cb){const n=cb.dataset.n;mark(n,cb.checked);const s=JSON.parse(localStorage.getItem(KEY)||'{}');s[n]=cb.checked;localStorage.setItem(KEY,JSON.stringify(s));upd();}
+function mark(n,on){const el=document.getElementById('s'+n);const num=el.querySelector('.s-num');if(on){el.classList.add('done');num.textContent='✓';}else{el.classList.remove('done');num.textContent=n;}}
+function upd(){const done=document.querySelectorAll('.scb:checked').length;const p=done/TOTAL*100;document.getElementById('pf').style.width=p+'%';document.getElementById('pt').textContent=done+' de '+TOTAL+' pasos completados';if(done===TOTAL){const c=document.getElementById('celeb');c.classList.add('on');c.scrollIntoView({behavior:'smooth'});confetti();}}
+function reset(){if(!confirm('¿Reiniciar el progreso de esta clase?'))return;localStorage.removeItem(KEY);document.querySelectorAll('.scb').forEach(cb=>{cb.checked=false;});for(let i=1;i<=TOTAL;i++)mark(i,false);document.getElementById('celeb').classList.remove('on');upd();}
+function confetti(){const c=document.getElementById('cnf'),ctx=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const ps=Array.from({length:130},()=>({x:Math.random()*c.width,y:-10,r:Math.random()*7+3,d:Math.random()*3+1,col:['#0ea5e9','#22c55e','#f59e0b','#ec4899','#8b5cf6'][Math.floor(Math.random()*5)],ta:0,ts:Math.random()*.1+.05}));let f=0;(function draw(){ctx.clearRect(0,0,c.width,c.height);ps.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.col;ctx.fill();p.y+=p.d;p.ta+=p.ts;p.x+=Math.sin(p.ta);if(p.y>c.height){p.y=-10;p.x=Math.random()*c.width;}});if(++f<350)requestAnimationFrame(draw);else ctx.clearRect(0,0,c.width,c.height);})();}
+load();
+</script>
+</body>
+</html>

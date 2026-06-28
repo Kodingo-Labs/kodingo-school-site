@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Clase 13 — Planeamos el proyecto final 📝</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Nunito',sans-serif;background:#fff7ed;color:#1e293b}.header{background:linear-gradient(135deg,#c2410c,#f97316);color:white;padding:32px 24px}.mod-badge{font-size:12px;font-weight:800;letter-spacing:2px;opacity:.8;text-transform:uppercase;margin-bottom:8px}.header-title{font-size:26px;font-weight:900;line-height:1.2;margin-bottom:16px}.badges{display:flex;gap:8px;flex-wrap:wrap}.badge{background:rgba(255,255,255,.2);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:700}.progress-wrap{background:white;padding:12px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.1)}.progress-label{font-size:12px;font-weight:700;color:#64748b;margin-bottom:6px}.prog-bar{height:8px;background:#e2e8f0;border-radius:999px}.prog-fill{height:100%;background:linear-gradient(90deg,#f97316,#c2410c);border-radius:999px;transition:width .4s ease}main{max-width:720px;margin:0 auto;padding:24px 16px 120px}.card{background:white;border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.06)}.card-title{font-size:20px;font-weight:800;margin-bottom:16px}.objetivo-box{font-size:16px;font-weight:700;line-height:1.6;color:#c2410c;background:#fff7ed;padding:16px;border-radius:12px;border-left:4px solid #f97316}.resultado-tag{display:inline-block;background:#dcfce7;color:#15803d;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:800;margin-top:12px}.glos-item{border:2px solid #fed7aa;border-radius:12px;padding:14px;margin-bottom:10px}.glos-term{font-size:16px;font-weight:800;color:#c2410c;margin-bottom:4px}.glos-def{font-size:14px;color:#475569;line-height:1.5}.glos-tip{font-size:13px;color:#f97316;font-weight:700;margin-top:6px}.step{display:flex;gap:16px;align-items:flex-start;padding:16px;border-radius:12px;margin-bottom:12px;border:2px solid #e2e8f0;transition:all .3s}.step.done{background:#fff7ed;border-color:#f97316}.s-num{width:40px;height:40px;min-width:40px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#64748b;transition:all .3s}.step.done .s-num{background:#f97316;color:white}.s-body{flex:1}.s-title{font-size:16px;font-weight:800;margin-bottom:8px}.s-cb{margin-left:auto;width:28px;height:28px;cursor:pointer;accent-color:#f97316}.sub{margin-top:8px}.sub-row{display:flex;gap:10px;margin-bottom:8px;font-size:14px;line-height:1.5}.sub-lbl{font-weight:900;color:#c2410c;min-width:22px}.see{background:#fff7ed;border:2px solid #f97316;border-radius:10px;padding:12px 14px;margin-top:10px;font-size:13px;font-weight:700;color:#c2410c}.see::before{content:"✅ Al terminar este paso verás: "}.yay{background:#fef3c7;border-radius:10px;padding:12px;margin-top:10px;font-size:14px;font-weight:800;color:#92400e;text-align:center}.boceto-box{background:#f8fafc;border:3px dashed #cbd5e1;border-radius:16px;padding:24px;text-align:center;margin:16px 0}.boceto-box p{font-size:15px;font-weight:700;color:#64748b;margin-bottom:8px}.boceto-box span{font-size:36px}.preguntas-item{background:#fff7ed;border:2px solid #fed7aa;border-radius:12px;padding:16px;margin-bottom:12px}.preguntas-num{font-size:28px;font-weight:900;color:#f97316;margin-bottom:8px}.preguntas-q{font-size:18px;font-weight:900;color:#1e293b;margin-bottom:8px}.preguntas-hint{font-size:14px;color:#78350f;background:#fef3c7;padding:10px 14px;border-radius:8px;margin-top:8px}.desafio{background:#fffbeb;border:3px solid #f59e0b;border-radius:16px;padding:20px}.desafio h3{font-size:18px;font-weight:900;color:#92400e;margin-bottom:8px}.desafio p{font-size:15px;color:#78350f;line-height:1.6}.padres-box{background:#f8fafc;border:2px solid #cbd5e1;border-radius:12px;padding:20px}.padres-box h3{font-size:15px;font-weight:800;margin-bottom:8px;color:#334155;margin-top:14px}.padres-box h3:first-child{margin-top:0}.padres-box ul{padding-left:16px}.padres-box li{font-size:14px;line-height:1.7;color:#475569}.sabias{background:linear-gradient(135deg,#fff7ed,#ffedd5);border:2px solid #fed7aa}.sabias p{font-size:15px;line-height:1.6}.celeb{display:none;background:linear-gradient(135deg,#f97316,#c2410c);border-radius:20px;padding:40px 24px;text-align:center;margin-top:20px}.celeb.on{display:block;animation:pop .6s ease}@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}.celeb-ico{font-size:64px;margin-bottom:16px;animation:bob 1s infinite}@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}.celeb-t{font-size:26px;font-weight:900;color:white;margin-bottom:12px}.celeb-txt{font-size:15px;color:#ffedd5;line-height:1.7}#cnf{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999}.foot{position:fixed;bottom:0;left:0;right:0;background:white;border-top:2px solid #e2e8f0;padding:12px 24px;display:flex;gap:12px;justify-content:space-between;align-items:center;box-shadow:0 -4px 16px rgba(0,0,0,.1)}.btn-nav{padding:12px 24px;border-radius:999px;font-family:Nunito;font-size:15px;font-weight:800;border:none;cursor:pointer;text-decoration:none;display:inline-block}.btn-prev{background:#f1f5f9;color:#475569}.btn-next{background:linear-gradient(135deg,#f97316,#c2410c);color:white}.btn-reset{font-size:12px;color:#94a3b8;background:none;border:none;cursor:pointer;font-family:Nunito;font-weight:700}@media(max-width:600px){.header-title{font-size:20px}main{padding:16px 12px 100px}}</style>
+</head>
+<body>
+<canvas id="cnf"></canvas>
+<header class="header">
+  <div class="mod-badge">Módulo 5 — ¡Tu Proyecto Final! · Clase 13</div>
+  <div class="header-title">📝 Planeamos el proyecto final</div>
+  <div class="badges">
+    <span class="badge">⏱️ 60 min clase</span>
+    <span class="badge">✏️ Solo planificación</span>
+    <span class="badge">⭐⭐⭐ Dificultad 3/5</span>
+    <span class="badge">🎨 Sin impresión hoy</span>
+  </div>
+</header>
+<div class="progress-wrap">
+  <div class="progress-label">Tu progreso: <span id="pt">0 de 8 pasos completados</span></div>
+  <div class="prog-bar"><div class="prog-fill" id="pf" style="width:0%"></div></div>
+</div>
+<main>
+
+<div class="card">
+  <div class="card-title">🌟 ¡Bienvenido al Módulo 5!</div>
+  <div class="objetivo-box">Este es el módulo más especial de todo el curso. No hay instrucciones de qué diseñar — eso te lo decidimos <strong>tú</strong>. En las últimas 3 clases vas a: (1) Planear qué hacer, (2) Diseñarlo en Tinkercad, (3) Imprimirlo y presentarlo. ¡El proyecto que elijas va a ser el símbolo de todo lo que aprendiste en Studio 3D!</div>
+  <span class="resultado-tag">🏆 Tu resultado hoy: Un plan completo de tu proyecto final — boceto + medidas + lista de formas Tinkercad</span>
+</div>
+
+<div class="card">
+  <div class="card-title">📖 Palabras de hoy</div>
+  <div class="glos-item">
+    <div class="glos-term">✏️ Boceto (Sketch)</div>
+    <div class="glos-def">Un dibujo rápido a mano de cómo quieres que sea tu objeto. No tiene que ser perfecto ni artístico — solo necesita capturar la idea. Los ingenieros hacen bocetos antes de abrir cualquier software.</div>
+    <div class="glos-tip">💡 El iPhone fue bocetado en servilletas. Los mejores diseños empiezan en papel, no en computadora.</div>
+  </div>
+  <div class="glos-item">
+    <div class="glos-term">👥 ¿Para quién?</div>
+    <div class="glos-def">Siempre que diseñes algo, la primera pregunta es: ¿para quién es? ¿Para ti? ¿Para alguien de tu familia? ¿Para tu maestra? El diseño cambia completamente según la persona.</div>
+    <div class="glos-tip">💡 Un regalo para tu abuela y un juguete para ti mismo tendrán formas, tamaños y detalles completamente diferentes.</div>
+  </div>
+  <div class="glos-item">
+    <div class="glos-term">📋 Lista de formas</div>
+    <div class="glos-def">Una lista de qué formas de Tinkercad vas a necesitar para construir tu objeto. Por ejemplo: "3 cilindros + 1 caja + 2 esferas". Planear esto evita sorpresas.</div>
+    <div class="glos-tip">💡 Es como planear los ingredientes antes de cocinar. Si llegas a la cocina y no tienes un ingrediente, todo se atrasa.</div>
+  </div>
+</div>
+
+<div class="card" style="background:#fff7ed;border:3px solid #f97316">
+  <div class="card-title" style="color:#c2410c">🤔 ¿Qué puedo diseñar?</div>
+  <p style="font-size:15px;color:#78350f;line-height:1.8;margin-bottom:12px">Aquí hay ideas para que te inspires — pero puedes elegir CUALQUIER cosa que quieras:</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+    <div style="background:white;border:2px solid #fed7aa;border-radius:10px;padding:12px;font-size:13px;font-weight:700;color:#c2410c">🎁 Un regalo para alguien especial</div>
+    <div style="background:white;border:2px solid #fed7aa;border-radius:10px;padding:12px;font-size:13px;font-weight:700;color:#c2410c">🏠 Algo útil para tu cuarto</div>
+    <div style="background:white;border:2px solid #fed7aa;border-radius:10px;padding:12px;font-size:13px;font-weight:700;color:#c2410c">🦕 Un animal favorito</div>
+    <div style="background:white;border:2px solid #fed7aa;border-radius:10px;padding:12px;font-size:13px;font-weight:700;color:#c2410c">🚀 Un vehículo o nave</div>
+    <div style="background:white;border:2px solid #fed7aa;border-radius:10px;padding:12px;font-size:13px;font-weight:700;color:#c2410c">📦 Una caja secreta</div>
+    <div style="background:white;border:2px solid #fed7aa;border-radius:10px;padding:12px;font-size:13px;font-weight:700;color:#c2410c">🏆 Un trofeo personalizado</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">🚀 Paso a paso</div>
+
+  <div class="step" id="s1">
+    <div class="s-num">1</div>
+    <div class="s-body">
+      <div class="s-title">Piensa y decide: ¿Qué vas a diseñar?</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Cierra los ojos por 1 minuto y piensa en algo que te gustaría tener o regalar. No tiene que ser complicado — solo tiene que importarte.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Habla con el adulto que te acompaña. Cuéntale tu idea. ¿Es posible hacerlo con las técnicas que aprendiste?</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Escribe tu idea en una hoja: <strong>"Mi proyecto final es: ___"</strong></span></div>
+      </div>
+      <div class="see">Una frase escrita en papel: "Mi proyecto final es: [tu idea]". Esta es la decisión más importante del curso.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="1" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s2">
+    <div class="s-num">2</div>
+    <div class="s-body">
+      <div class="s-title">Responde la pregunta de diseño: ¿Para quién?</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Escribe en el papel: <strong>"¿Para quién es?"</strong> → y la respuesta.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Si es para ti: ¿qué necesita ser? ¿Resistente? ¿Bonito? ¿Práctico?</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Si es para alguien más: ¿qué le gusta a esa persona? ¿Cuáles son sus colores favoritos, animales favoritos, hobbies?</span></div>
+      </div>
+      <div class="see">Una descripción del destinatario y sus gustos que informará cada decisión de diseño.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="2" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s3">
+    <div class="s-num">3</div>
+    <div class="s-body">
+      <div class="s-title">¡Dibuja el boceto! (el más importante de tu vida)</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Toma papel en blanco y un lápiz. NO una pantalla.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Dibuja tu objeto desde 3 ángulos: de frente, de lado y de arriba (como un plano de arquitecto).</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>No importa si no sabes dibujar bien — solo importa que TÚ puedas entender lo que dibujaste. Los ingenieros hacen bocetos así.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>Dibuja también los detalles importantes: ¿tiene agujeros? ¿texto? ¿partes móviles?</span></div>
+      </div>
+      <div class="boceto-box">
+        <span>✏️</span>
+        <p>Espacio para tu boceto — dibuja en papel y luego marca este paso</p>
+      </div>
+      <div class="see">Un boceto en papel con vistas de frente, lado y arriba. Con detalles y anotaciones escritas al lado.</div>
+      <div class="yay">🎉 ¡Tu boceto es el primer paso de todos los grandes inventores! Edison, Da Vinci y Steve Jobs todos llenaron cuadernos de bocetos.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="3" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s4">
+    <div class="s-num">4</div>
+    <div class="s-body">
+      <div class="s-title">Anota las medidas</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>En tu boceto, escribe las medidas de cada parte en milímetros. ¿Cuánto de largo? ¿Cuánto de alto? ¿Cuánto de ancho?</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Si no sabes qué medida poner, toma algo real y mídelo con una regla. Por ejemplo: si tu objeto es un soporte para el celular, mide el celular primero.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Regla general: ¿puede imprimir la Bambu Lab A1? El área de impresión es de <strong>256×256mm</strong>. Si tu objeto es más grande, divídelo en partes.</span></div>
+      </div>
+      <div class="see">El boceto ahora tiene dimensiones escritas en cada parte. Los números son en milímetros (mm).</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="4" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s5">
+    <div class="s-num">5</div>
+    <div class="s-body">
+      <div class="s-title">Haz la lista de formas Tinkercad</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Mirando tu boceto, escribe en papel: <strong>"Formas que voy a necesitar:"</strong></span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Por cada parte del objeto, anota qué forma de Tinkercad usarías: Box, Cylinder, Sphere, Cone, Torus, Text, o combinación de varias.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>También anota cuáles partes serán "Solid" y cuáles serán "Hole" (agujeros).</span></div>
+      </div>
+      <div class="see">Una lista como: "Parte 1: Cylinder (cuerpo principal, Solid) · Parte 2: Cylinder (agujero interior, Hole) · Parte 3: Text (nombre, Solid)".</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="5" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s6">
+    <div class="s-num">6</div>
+    <div class="s-body">
+      <div class="s-title">Identifica los desafíos</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>¿Hay alguna parte de tu diseño que no sabes cómo hacer? Escríbela con un ❓.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>¿Necesitas soportes? Si alguna parte "cuelga" en el aire, necesitarás soportes (como aprendiste en la Clase 10).</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>¿La impresión es muy larga? Estima el tiempo: objetos pequeños (~30min), medianos (~60min), grandes (~90min+).</span></div>
+      </div>
+      <div class="see">Una lista de posibles desafíos con planes para superarlos. Los diseñadores profesionales siempre analizan riesgos antes de empezar.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="6" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s7">
+    <div class="s-num">7</div>
+    <div class="s-body">
+      <div class="s-title">Presenta tu plan al adulto</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Explica tu proyecto en voz alta, señalando el boceto: "Mi proyecto es esto, para esta persona, porque..."</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Escucha el feedback: ¿Hay algo que mejorar del plan? ¿Algo que no funciona?</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Mejora el boceto si es necesario basándote en el feedback.</span></div>
+      </div>
+      <div class="see">Un plan que el adulto entiende y aprueba. Listo para diseñar en Tinkercad en la próxima clase.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="7" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s8">
+    <div class="s-num">8</div>
+    <div class="s-body">
+      <div class="s-title">Guarda el plan para la próxima clase</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Guarda el papel del boceto en un sobre o carpeta. Lo vas a necesitar en la Clase 14.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Si quieres, toma una foto del boceto con el celular de un adulto para tenerlo de respaldo.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>¡Ya tienes todo lo que necesitas para diseñar en Tinkercad! La próxima clase vas directo al diseño.</span></div>
+      </div>
+      <div class="see">El boceto guardado y listo para la Clase 14. ¡La planificación está completa!</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="8" onchange="chk(this)">
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">🤔 Preguntas de reflexión del diseñador</div>
+  <div class="preguntas-item">
+    <div class="preguntas-num">1</div>
+    <div class="preguntas-q">¿Por qué elegiste ESTE objeto y no otro?</div>
+    <div class="preguntas-hint">Piénsalo bien. Los mejores diseños nacen de una necesidad real o un sentimiento fuerte. "Porque me gusta" es válido, pero "porque [persona] lo necesita" es aún mejor.</div>
+  </div>
+  <div class="preguntas-item">
+    <div class="preguntas-num">2</div>
+    <div class="preguntas-q">¿Qué técnica de las 12 clases anteriores vas a usar más en este proyecto?</div>
+    <div class="preguntas-hint">Repasa mentalmente: cilindros huecos (Clase 6), texto 3D (Clase 7), imán con pocket (Clase 8), espejado (Clase 9), soportes (Clase 10), diseño en serie (Clase 12)...</div>
+  </div>
+  <div class="preguntas-item">
+    <div class="preguntas-num">3</div>
+    <div class="preguntas-q">¿Cómo sabrás que tu diseño fue un éxito?</div>
+    <div class="preguntas-hint">Si es para alguien: ¿qué dirá esa persona cuando lo vea? Si es funcional: ¿cómo verificarás que funciona? Si es decorativo: ¿qué sentirás cuando lo tengas en la mano?</div>
+  </div>
+</div>
+
+<div class="card"><div class="desafio"><h3>💡 Tarea para antes de la Clase 14</h3><p>Busca en internet (con ayuda de un adulto) <strong>imágenes de objetos similares</strong> al que quieres diseñar. No para copiarlos, sino para ver qué detalles tienen y cuáles te gustan. Guarda 2-3 fotos de referencia para abrirlas durante la Clase 14 mientras diseñas en Tinkercad.</p></div></div>
+
+<div class="card sabias"><div class="card-title">💡 Así planean los diseñadores de verdad</div><p>En las grandes empresas de diseño (como IDEO, la empresa que diseñó el primer mouse de Apple), la primera parte del proceso siempre es igual: <strong>entender al usuario, definir el problema, y bosquejar ideas a mano</strong>. Lo llaman "Design Thinking". Hoy hiciste exactamente eso: pensaste en quién va a usar tu objeto, definiste qué necesita y lo bocetaste. ¡Eres un Design Thinker!</p></div>
+
+<div class="card">
+  <div class="card-title">🧑‍🏫 Para quien acompaña a Mateo</div>
+  <div class="padres-box">
+    <h3>✅ Lo que Mateo hizo hoy</h3>
+    <ul><li>Tomó su primera decisión de diseño completamente libre y autónoma</li><li>Aprendió el proceso de Design Thinking (empatía → definición → boceto)</li><li>Identificó qué técnicas necesita para su proyecto y posibles desafíos</li></ul>
+    <h3>🎯 Rol del adulto en esta clase</h3>
+    <p style="font-size:14px;color:#475569;line-height:1.6;margin-bottom:8px">Hacer preguntas, no sugerir: "¿Por qué elegiste eso?" "¿Para quién es?" "¿Cómo lo imaginas?" Evitar decir "¿Por qué no hacer X?" — el objeto debe ser 100% la idea de Mateo. El adulto ayuda a clarificar y estructurar, no a elegir.</p>
+    <p style="font-size:14px;color:#475569;line-height:1.6">Si el proyecto elegido parece demasiado ambicioso para el tiempo disponible, ayudar a Mateo a simplificarlo él mismo haciendo preguntas: "¿Qué parte es la más importante? ¿Podríamos guardar la parte X para una versión 2?"</p>
+    <h3>📅 Antes de la Clase 14</h3>
+    <p style="font-size:14px;color:#475569;line-height:1.6">Buscar con Mateo 2-3 imágenes de referencia de objetos similares. Guardar el boceto en un lugar seguro. Si el proyecto es un regalo, mantenerlo en secreto.</p>
+  </div>
+</div>
+
+<div class="celeb" id="celeb">
+  <div class="celeb-ico">📝</div>
+  <div class="celeb-t">¡El plan está listo, Mateo!</div>
+  <div class="celeb-txt">Hoy hiciste algo que solo hacen los diseñadores de verdad: planificar antes de construir. Tu boceto en papel es el primer paso de tu proyecto más personal.<br><br><strong>En la próxima clase (Clase 14) vas a llevar ese boceto a Tinkercad y hacerlo realidad digital. Y en la Clase 15 — ¡LO IMPRIMES Y LO PRESENTAS! ¡El final del curso más épico!</strong></div>
+</div>
+
+</main>
+<footer class="foot">
+  <a href="../../clase12/v1/clase.html" class="btn-nav btn-prev">⬅️ Clase 12</a>
+  <button class="btn-reset" onclick="reset()">↺ Reiniciar</button>
+  <a href="../../clase14/v1/clase.html" class="btn-nav btn-next">Clase 14 ➡️</a>
+</footer>
+<script>
+const KEY='studio3d-clase13',TOTAL=8;
+function load(){const s=JSON.parse(localStorage.getItem(KEY)||'{}');document.querySelectorAll('.scb').forEach(cb=>{if(s[cb.dataset.n]){cb.checked=true;mark(cb.dataset.n,true);}});upd();}
+function chk(cb){const n=cb.dataset.n;mark(n,cb.checked);const s=JSON.parse(localStorage.getItem(KEY)||'{}');s[n]=cb.checked;localStorage.setItem(KEY,JSON.stringify(s));upd();}
+function mark(n,on){const el=document.getElementById('s'+n);const num=el.querySelector('.s-num');if(on){el.classList.add('done');num.textContent='✓';}else{el.classList.remove('done');num.textContent=n;}}
+function upd(){const done=document.querySelectorAll('.scb:checked').length;const p=done/TOTAL*100;document.getElementById('pf').style.width=p+'%';document.getElementById('pt').textContent=done+' de '+TOTAL+' pasos completados';if(done===TOTAL){const c=document.getElementById('celeb');c.classList.add('on');c.scrollIntoView({behavior:'smooth'});confetti();}}
+function reset(){if(!confirm('¿Reiniciar?'))return;localStorage.removeItem(KEY);document.querySelectorAll('.scb').forEach(cb=>{cb.checked=false;});for(let i=1;i<=TOTAL;i++)mark(i,false);document.getElementById('celeb').classList.remove('on');upd();}
+function confetti(){const c=document.getElementById('cnf'),ctx=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const ps=Array.from({length:130},()=>({x:Math.random()*c.width,y:-10,r:Math.random()*7+3,d:Math.random()*3+1,col:['#f97316','#fb923c','#f59e0b','#ec4899','#8b5cf6'][Math.floor(Math.random()*5)],ta:0,ts:Math.random()*.1+.05}));let f=0;(function draw(){ctx.clearRect(0,0,c.width,c.height);ps.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.col;ctx.fill();p.y+=p.d;p.ta+=p.ts;p.x+=Math.sin(p.ta);if(p.y>c.height){p.y=-10;p.x=Math.random()*c.width;}});if(++f<350)requestAnimationFrame(draw);else ctx.clearRect(0,0,c.width,c.height);})();}
+load();
+</script>
+</body>
+</html>

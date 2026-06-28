@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Clase 8 — Imán para la heladera 🧲</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Nunito',sans-serif;background:#f0f9ff;color:#1e293b}.header{background:linear-gradient(135deg,#0369a1,#0ea5e9);color:white;padding:32px 24px}.mod-badge{font-size:12px;font-weight:800;letter-spacing:2px;opacity:.8;text-transform:uppercase;margin-bottom:8px}.header-title{font-size:26px;font-weight:900;line-height:1.2;margin-bottom:16px}.badges{display:flex;gap:8px;flex-wrap:wrap}.badge{background:rgba(255,255,255,.2);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:700}.progress-wrap{background:white;padding:12px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.1)}.progress-label{font-size:12px;font-weight:700;color:#64748b;margin-bottom:6px}.prog-bar{height:8px;background:#e2e8f0;border-radius:999px}.prog-fill{height:100%;background:linear-gradient(90deg,#0ea5e9,#22c55e);border-radius:999px;transition:width .4s ease}main{max-width:720px;margin:0 auto;padding:24px 16px 120px}.card{background:white;border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.06)}.card-title{font-size:20px;font-weight:800;margin-bottom:16px}.objetivo-box{font-size:16px;font-weight:700;line-height:1.6;color:#0369a1;background:#e0f2fe;padding:16px;border-radius:12px;border-left:4px solid #0ea5e9}.resultado-tag{display:inline-block;background:#dcfce7;color:#15803d;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:800;margin-top:12px}.glos-item{border:2px solid #e0f2fe;border-radius:12px;padding:14px;margin-bottom:10px}.glos-term{font-size:16px;font-weight:800;color:#0369a1;margin-bottom:4px}.glos-def{font-size:14px;color:#475569;line-height:1.5}.glos-tip{font-size:13px;color:#0ea5e9;font-weight:700;margin-top:6px}.step{display:flex;gap:16px;align-items:flex-start;padding:16px;border-radius:12px;margin-bottom:12px;border:2px solid #e2e8f0;transition:all .3s}.step.done{background:#f0fdf4;border-color:#22c55e}.s-num{width:40px;height:40px;min-width:40px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#64748b;transition:all .3s}.step.done .s-num{background:#22c55e;color:white}.s-body{flex:1}.s-title{font-size:16px;font-weight:800;margin-bottom:8px}.s-cb{margin-left:auto;width:28px;height:28px;cursor:pointer;accent-color:#22c55e}.sub{margin-top:8px}.sub-row{display:flex;gap:10px;margin-bottom:8px;font-size:14px;line-height:1.5}.sub-lbl{font-weight:900;color:#0369a1;min-width:22px}.see{background:#f0fdf4;border:2px solid #22c55e;border-radius:10px;padding:12px 14px;margin-top:10px;font-size:13px;font-weight:700;color:#15803d}.see::before{content:"✅ Lo que deberías ver: "}.warn{background:#fffbeb;border:2px solid #f59e0b;border-radius:10px;padding:12px 14px;margin-top:8px;font-size:13px;font-weight:700;color:#92400e}.warn::before{content:"⚠️ Si algo va mal: "}.yay{background:#fef3c7;border-radius:10px;padding:12px;margin-top:10px;font-size:14px;font-weight:800;color:#92400e;text-align:center}.tink-block{background:#fdf4ff;border:2px solid #d8b4fe;border-radius:12px;padding:18px;margin-bottom:12px}.tink-h{font-size:14px;font-weight:800;color:#7c3aed;margin-bottom:10px}.tink-row{display:flex;gap:8px;margin-bottom:8px;font-size:14px;line-height:1.5}.tink-num{font-weight:900;color:#7c3aed;min-width:22px}.tink-see{background:#f5f3ff;border:2px solid #a78bfa;border-radius:10px;padding:12px 14px;margin-top:10px;font-size:13px;font-weight:700;color:#5b21b6}.tink-see::before{content:"🟣 En Tinkercad verás: "}.wait-row{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:10px;background:#faf5ff;border:2px solid #e9d5ff;margin-bottom:8px;font-size:14px;font-weight:600}.wait-icon{font-size:20px;min-width:28px}.desafio{background:#fffbeb;border:3px solid #f59e0b;border-radius:16px;padding:20px}.desafio h3{font-size:18px;font-weight:900;color:#92400e;margin-bottom:8px}.desafio p{font-size:15px;color:#78350f;line-height:1.6}.cfg-card{background:#f0f9ff;border:2px solid #bae6fd}.cfg-table{width:100%;border-collapse:collapse}.cfg-table tr:nth-child(odd){background:#e0f2fe}.cfg-table td{padding:10px 14px;font-size:14px}.cfg-table td:first-child{font-weight:800;color:#0369a1}.quiz-q{background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;padding:16px;margin-bottom:12px}.quiz-q p{font-size:15px;font-weight:800;margin-bottom:10px}.quiz-opts{list-style:none}.quiz-opts li{padding:8px 12px;border-radius:8px;margin-bottom:6px;font-size:14px;font-weight:600}.quiz-opts li.ok{background:#dcfce7;color:#15803d;font-weight:800}.quiz-opts li.no{color:#94a3b8}.padres-box{background:#f8fafc;border:2px solid #cbd5e1;border-radius:12px;padding:20px}.padres-box h3{font-size:15px;font-weight:800;margin-bottom:8px;color:#334155;margin-top:14px}.padres-box h3:first-child{margin-top:0}.padres-box ul{padding-left:16px}.padres-box li{font-size:14px;line-height:1.7;color:#475569}.prob{background:white;border:2px solid #fca5a5;border-radius:10px;padding:12px;margin-bottom:8px}.prob-t{font-weight:800;color:#dc2626;margin-bottom:4px;font-size:14px}.prob-fix{color:#475569;font-size:13px;line-height:1.5}.sabias{background:linear-gradient(135deg,#fdf4ff,#fae8ff);border:2px solid #e9d5ff}.sabias p{font-size:15px;line-height:1.6}.celeb{display:none;background:linear-gradient(135deg,#fbbf24,#f59e0b);border-radius:20px;padding:40px 24px;text-align:center;margin-top:20px}.celeb.on{display:block;animation:pop .6s ease}@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}.celeb-ico{font-size:64px;margin-bottom:16px;animation:bob 1s infinite}@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}.celeb-t{font-size:26px;font-weight:900;color:#451a03;margin-bottom:12px}.celeb-txt{font-size:15px;color:#78350f;line-height:1.7}#cnf{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999}.foot{position:fixed;bottom:0;left:0;right:0;background:white;border-top:2px solid #e2e8f0;padding:12px 24px;display:flex;gap:12px;justify-content:space-between;align-items:center;box-shadow:0 -4px 16px rgba(0,0,0,.1)}.btn-nav{padding:12px 24px;border-radius:999px;font-family:Nunito;font-size:15px;font-weight:800;border:none;cursor:pointer;text-decoration:none;display:inline-block}.btn-prev{background:#f1f5f9;color:#475569}.btn-next{background:linear-gradient(135deg,#0ea5e9,#0369a1);color:white}.btn-reset{font-size:12px;color:#94a3b8;background:none;border:none;cursor:pointer;font-family:Nunito;font-weight:700}@media(max-width:600px){.header-title{font-size:20px}main{padding:16px 12px 100px}}</style>
+</head>
+<body>
+<canvas id="cnf"></canvas>
+<header class="header">
+  <div class="mod-badge">Módulo 3 — Texto y Personalización · Clase 8</div>
+  <div class="header-title">🧲 Un imán para la heladera</div>
+  <div class="badges">
+    <span class="badge">⏱️ 45 min clase</span>
+    <span class="badge">🖨️ 30 min impresión</span>
+    <span class="badge">⭐⭐⭐ Dificultad 3/5</span>
+    <span class="badge">🎨 Diseña e imprime</span>
+  </div>
+</header>
+<div class="progress-wrap">
+  <div class="progress-label">Tu progreso: <span id="pt">0 de 10 pasos completados</span></div>
+  <div class="prog-bar"><div class="prog-fill" id="pf" style="width:0%"></div></div>
+</div>
+<main>
+
+<div class="card">
+  <div class="card-title">🎯 ¿Qué vas a lograr hoy?</div>
+  <div class="objetivo-box">Hoy combinas todo lo que aprendiste: diseño de formas + texto en relieve + hueco interior. Vas a crear un <strong>imán de heladera personalizado</strong> — un objeto decorativo con tu nombre adelante y un hueco atrás para pegar el imán real. ¡Toda la familia lo va a ver todos los días!</div>
+  <span class="resultado-tag">🏆 Tu resultado: Un imán de heladera con "MATEO" en relieve y espacio para el imán de disco detrás</span>
+</div>
+
+<div class="card">
+  <div class="card-title">🛠️ Materiales extra que necesitas</div>
+  <div style="background:#fef3c7;border:2px solid #f59e0b;border-radius:12px;padding:16px">
+    <p style="font-size:15px;font-weight:700;color:#92400e">Antes de empezar, asegúrate de tener:</p>
+    <p style="font-size:14px;color:#78350f;margin-top:8px;line-height:1.8">🧲 <strong>Un imán de disco pequeño</strong> — los imanes de nevera redondos de 10-12mm de diámetro y 2mm de grosor (se consiguen en ferreterías o tiendas de manualidades).<br>🔵 <strong>Pegamento fuerte</strong> (super glue o silicona caliente) para pegar el imán dentro del hueco.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">📖 Palabras de hoy</div>
+  <div class="glos-item">
+    <div class="glos-term">🕳️ Hueco para imán (pocket)</div>
+    <div class="glos-def">Un agujero pequeño en la parte de atrás del imán para que quepa el disco magnético. Debe ser EXACTAMENTE del tamaño del imán — 12mm de diámetro y 2mm de profundidad.</div>
+    <div class="glos-tip">💡 Si el hueco es más grande, el imán queda flojo. Si es más pequeño, no entra. Por eso las medidas son importantes al décimo de milímetro.</div>
+  </div>
+  <div class="glos-item">
+    <div class="glos-term">✨ Acabado fino (0.15mm)</div>
+    <div class="glos-def">Capas de 0.15mm en vez de 0.20mm. La impresión queda más lisa y el texto se ve más nítido, pero tarda un poco más.</div>
+    <div class="glos-tip">💡 Es la diferencia entre pintar una pared con brocha gruesa vs brocha fina — la brocha fina deja un acabado más liso.</div>
+  </div>
+  <div class="glos-item">
+    <div class="glos-term">🔗 Combinar texto + forma</div>
+    <div class="glos-def">Poner texto encima de una forma base y agrupar todo junto. Aprendiste texto en la Clase 7, ahora lo vas a combinar con una forma decorativa.</div>
+    <div class="glos-tip">💡 Hoy el diseño tiene 3 capas: la base decorativa, el texto arriba, y el hueco atrás.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">🚀 Paso a paso</div>
+
+  <div class="step" id="s1">
+    <div class="s-num">1</div>
+    <div class="s-body">
+      <div class="s-title">Diseña la forma base del imán</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Abre Tinkercad → Nuevo diseño → <strong>"Imán Mateo"</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Elige una forma para la base: un <strong>Box</strong> (rectangular) de <strong>70mm x 30mm x 5mm</strong>, o un <strong>Cylinder</strong> de 40mm x 40mm x 5mm. Elige la que más te guste.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Esta es la "cara frontal" del imán — lo que se ve en la heladera.</span></div>
+      </div>
+      <div class="see">Una forma plana (rectangular o circular) de 5mm de alto sobre el plano.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="1" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s2">
+    <div class="s-num">2</div>
+    <div class="s-body">
+      <div class="s-title">Agrega el texto MATEO en relieve al frente</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Panel derecho → buscar "text" → arrastra la forma Text al plano.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Escribe <strong>MATEO</strong>. Fuente: la que más te gustó en la clase anterior. Altura del texto: <strong>3mm</strong> (para que quede en relieve sobre la base de 5mm).</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Ajusta el tamaño para que quepa en la base. Centra el texto usando <strong>Align</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>Sube el texto <strong>5mm</strong> en el eje Z (para que quede encima de la base).</span></div>
+      </div>
+      <div class="see">El texto MATEO en 3D encima de la base, sobresaliendo 3mm hacia arriba.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="2" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s3">
+    <div class="s-num">3</div>
+    <div class="s-body">
+      <div class="s-title">Crea el hueco para el imán en la parte de atrás</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Arrastra un <strong>Cylinder</strong> al plano. Dimensiones: <strong>12mm de diámetro · 2mm de alto</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Cámbialo a <strong>Hole</strong> en el panel derecho.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Posición: centra el cilindro agujero en el centro de la base, pero en la <strong>parte de abajo</strong> (el fondo plano). Bájalo con la flecha hasta que esté justo pegado a la base desde abajo.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>El cilindro agujero debe entrar solo 2mm dentro de la base de 5mm — así quedan 3mm de pared frontal sólida. Ajusta la posición Z del cilindro a 0mm (en el suelo del plano).</span></div>
+      </div>
+      <div class="see">Un cilindro rayado (agujero) posicionado en la parte de abajo de la base, entrando 2mm.</div>
+      <div class="warn">El agujero del imán va en la parte de ABAJO (la que queda contra la heladera). Si está en la parte de ARRIBA, el imán quedaría visible por el frente.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="3" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s4">
+    <div class="s-num">4</div>
+    <div class="s-body">
+      <div class="s-title">Verifica el diseño en vista 3D</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Rota la vista para ver el imán desde abajo — ¿ves el hueco circular de 12mm?</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Rota para ver el frente — ¿ves el texto MATEO en relieve?</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>¿Todo se ve correcto? ¿La forma base es sólida? ¿El texto está encima?</span></div>
+      </div>
+      <div class="see">Desde el frente: texto en relieve. Desde atrás: hueco circular de 12mm. Desde el costado: base de 5mm con texto que sobresale 3mm arriba y hueco de 2mm abajo.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="4" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s5">
+    <div class="s-num">5</div>
+    <div class="s-body">
+      <div class="s-title">Agrupa todo el diseño</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Selecciona todo (base + texto + agujero de imán).</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Presiona <strong>Ctrl + G</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>¡Todo se fusiona! El texto queda en relieve al frente y el hueco queda al fondo.</span></div>
+      </div>
+      <div class="see">Un solo objeto: el imán de heladera completo. Si lo rotas, ves el relieve por un lado y el hueco por el otro.</div>
+      <div class="yay">🎉 ¡Diseño completo! Ahora a imprimir con alta calidad.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="5" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s6">
+    <div class="s-num">6</div>
+    <div class="s-body">
+      <div class="s-title">Exporta STL y abre en Bambu Studio</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Exportar → .STL → Descargas.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Arrastra a Bambu Studio. Selecciona <strong>0.15mm Optimal</strong> — queremos acabado fino para el texto.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Verifica que el imán está orientado con el <strong>frente hacia arriba</strong> (el texto debe imprimir al final, no al principio).</span></div>
+      </div>
+      <div class="see">El imán en Bambu Studio con la cara del texto mirando hacia arriba. La parte plana (sin texto) toca la placa de impresión.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="6" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s7">
+    <div class="s-num">7</div>
+    <div class="s-body">
+      <div class="s-title">Slice y verifica el hueco del imán</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Clic en <strong>Slice</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Con el slider, ve a las primeras capas. ¿Ves el hueco circular en la capa inferior?</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Si el hueco se ve: ¡perfecto! Si no se ve: el agujero del imán no quedó en la posición correcta — volver a Tinkercad.</span></div>
+      </div>
+      <div class="see">En las primeras capas del slice, un espacio circular hueco donde irá el imán de disco.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="7" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s8">
+    <div class="s-num">8</div>
+    <div class="s-body">
+      <div class="s-title">Imprime en la Bambu Lab A1</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Enviar a la impresora → confirmar en la pantalla táctil.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Calentamiento → auto-nivelación → purge line → impresión (~30 min).</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Observa cómo se construye el texto al final de la impresión — las capas más pequeñas y detalladas son las letras.</span></div>
+      </div>
+      <div class="see">La impresora imprime primero la base plana y al final aparecen las letras tridimensionales.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="8" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s9">
+    <div class="s-num">9</div>
+    <div class="s-body">
+      <div class="s-title">Saca e inspecciona el imán</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Pitido → espera 3 min → dobla placa → saca el imán.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>¿El hueco del imán quedó limpio? ¿Las letras se leen bien?</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Prueba insertar el imán de disco en el hueco — ¿entra con precisión?</span></div>
+      </div>
+      <div class="see">Un imán de heladera en plástico PLA con relieve de letras. El hueco trasero encaja perfectamente con el imán de disco.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="9" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s10">
+    <div class="s-num">10</div>
+    <div class="s-body">
+      <div class="s-title">Pega el imán y ponlo en la heladera</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span><strong>Con ayuda de un adulto:</strong> aplica una gota de super glue o silicona caliente dentro del hueco.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Inserta el imán de disco. Espera 2 minutos para que seque.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>¡Pon el imán de MATEO en la heladera de tu casa! Toda la familia lo verá.</span></div>
+      </div>
+      <div class="see">El imán de MATEO pegado en la heladera de la cocina. Cada vez que alguien abra la heladera, verá el nombre en 3D.</div>
+      <div class="yay">🎉 ¡MATEO ahora está en la heladera de su casa! ¡Un objeto imprimido 3D que la familia usa todos los días!</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="10" onchange="chk(this)">
+  </div>
+</div>
+
+<div class="card" style="background:#fdf4ff;border:2px solid #d8b4fe">
+  <div class="card-title" style="color:#7c3aed">🟠 Tinkercad — El imán por capas</div>
+  <div class="tink-block">
+    <div class="tink-h">🧩 Los 3 componentes del imán</div>
+    <div class="tink-row"><span class="tink-num">1.</span><span><strong>Base:</strong> Box o Cylinder, 5mm de alto → la estructura principal del imán.</span></div>
+    <div class="tink-row"><span class="tink-num">2.</span><span><strong>Texto:</strong> forma Text en Solid, 3mm de alto, posicionado 5mm arriba de la base → el relieve visible al frente.</span></div>
+    <div class="tink-row"><span class="tink-num">3.</span><span><strong>Agujero imán:</strong> Cylinder de 12mm x 2mm en Hole, posicionado en la base desde abajo → el espacio donde va el imán real.</span></div>
+    <div class="tink-row"><span class="tink-num">→</span><span><strong>Seleccionar todo → Ctrl+G</strong> → los 3 se fusionan en un solo objeto.</span></div>
+    <div class="tink-see">Un objeto que desde el frente muestra relieve de letras y desde atrás muestra un hueco circular perfecto de 12mm.</div>
+  </div>
+</div>
+
+<div class="card"><div class="desafio"><h3>💡 El desafío del día</h3><p>Haz un <strong>segundo imán para alguien de tu familia</strong>. ¿Tu mamá? ¿Tu hermano? Cambia el texto y la forma base. Haz una pequeña serie de imanes personalizados para todos.</p></div></div>
+
+<div class="card">
+  <div class="card-title">🤔 Mini quiz</div>
+  <div class="quiz-q"><p>1. ¿Por qué el hueco del imán va en la parte de ABAJO (contra la heladera)?</p><ul class="quiz-opts"><li class="ok">a) Para que el imán quede oculto y solo se vea el diseño frontal ✅</li><li class="no">b) Porque la impresora no puede hacer agujeros en la parte de arriba</li><li class="no">c) Para que el imán sea más fuerte</li></ul></div>
+  <div class="quiz-q"><p>2. El imán de disco mide 12mm de diámetro y 2mm de grosor. ¿Cuánto debe medir el hueco en Tinkercad?</p><ul class="quiz-opts"><li class="no">a) 10mm de diámetro y 1mm de profundidad (más pequeño que el imán)</li><li class="ok">b) 12mm de diámetro y 2mm de profundidad (igual al imán) ✅</li><li class="no">c) 15mm de diámetro y 4mm de profundidad (más grande)</li></ul></div>
+  <div class="quiz-q"><p>3. ¿Por qué usamos 0.15mm en este imán?</p><ul class="quiz-opts"><li class="no">a) Porque los imanes necesitan capas especiales</li><li class="ok">b) Para que el texto y el acabado queden más lisos y nítidos ✅</li><li class="no">c) Para que el hueco del imán sea más preciso</li></ul></div>
+</div>
+
+<div class="card cfg-card">
+  <div class="card-title" style="color:#0369a1">⚙️ Configuración — Bambu Lab A1</div>
+  <table class="cfg-table">
+    <tr><td>🖨️ Impresora</td><td>Bambu Lab A1</td></tr>
+    <tr><td>🎨 Filamento</td><td>PLA</td></tr>
+    <tr><td>📐 Altura de capa</td><td>0.15mm Optimal</td></tr>
+    <tr><td>⚡ Velocidad</td><td>Standard</td></tr>
+    <tr><td>🏗️ Soportes</td><td>No</td></tr>
+    <tr><td>🟫 Placa</td><td>Texturizada</td></tr>
+    <tr><td>🔁 Relleno</td><td>15%</td></tr>
+    <tr><td>🕐 Tiempo</td><td>~30 minutos</td></tr>
+    <tr><td>📐 Orientación</td><td>Texto mirando hacia arriba</td></tr>
+  </table>
+</div>
+
+<div class="card sabias"><div class="card-title">💡 ¿Sabías que...?</div><p>El hueco que diseñaste hoy se llama "pocket" en diseño industrial. Ingenieros de todo el mundo diseñan pockets para insertar piezas de metal, tornillos, tuercas o magnetos dentro de partes de plástico. Es una técnica que se usa en los auriculares inalámbricos (tienen magnetos pequeños), en la tapa de los laptops y en muchos juguetes.</p></div>
+
+<div class="card">
+  <div class="card-title">🧑‍🏫 Para quien acompaña a Mateo</div>
+  <div class="padres-box">
+    <h3>✅ Lo que Mateo aprendió hoy</h3>
+    <ul><li>Combinar múltiples técnicas: forma base + texto relieve + agujero interior</li><li>Diseñar con propósito funcional específico (alojar un imán de disco de medidas exactas)</li><li>La importancia de la precisión de medidas en diseño: ±1mm puede hacer que el imán no entre</li></ul>
+    <h3>⚠️ Posibles problemas</h3>
+    <div class="prob"><div class="prob-t">El imán de disco no entra en el hueco</div><div class="prob-fix">El hueco quedó más pequeño que 12mm. En Tinkercad, el cilindro agujero debe ser exactamente 12mm. Verificar que el campo Width = 12 y Length = 12 en el cilindro. Reimprimir si es necesario.</div></div>
+    <div class="prob"><div class="prob-t">El texto no se imprimió bien (letras aplastadas)</div><div class="prob-fix">Verificar que el imán se imprimió con la cara de texto mirando hacia arriba. Si se imprimió al revés, las letras habrán impreso apoyadas en la placa. Reimprimir rotando el objeto en Bambu Studio.</div></div>
+    <h3>🏠 Actividad de seguimiento</h3>
+    <p style="font-size:14px;color:#475569;line-height:1.6">Con la familia, pegar el imán en la heladera y celebrarlo. Este es el primer objeto de Mateo que "vive" en el hogar de forma permanente — refuerza el orgullo del creador.</p>
+  </div>
+</div>
+
+<div class="celeb" id="celeb">
+  <div class="celeb-ico">🧲</div>
+  <div class="celeb-t">¡Tu imán está en la heladera, Mateo!</div>
+  <div class="celeb-txt">Este fue el proyecto más complejo hasta ahora: combinaste forma + texto + agujero funcional y lo mediste al milímetro para que el imán real encajara perfectamente. Eso es lo que hacen los ingenieros de productos todos los días.<br><br><strong>La próxima clase vas a aprender una habilidad que muy pocos conocen: el espejado en 3D. ¿Qué pasa cuando volteas un objeto en el espejo? ¡Lo vas a descubrir creando un sello con tu inicial!</strong></div>
+</div>
+
+</main>
+<footer class="foot">
+  <a href="../../clase7/v1/clase.html" class="btn-nav btn-prev">⬅️ Clase 7</a>
+  <button class="btn-reset" onclick="reset()">↺ Reiniciar</button>
+  <a href="../../clase9/v1/clase.html" class="btn-nav btn-next">Clase 9 ➡️</a>
+</footer>
+<script>
+const KEY='studio3d-clase8',TOTAL=10;
+function load(){const s=JSON.parse(localStorage.getItem(KEY)||'{}');document.querySelectorAll('.scb').forEach(cb=>{if(s[cb.dataset.n]){cb.checked=true;mark(cb.dataset.n,true);}});upd();}
+function chk(cb){const n=cb.dataset.n;mark(n,cb.checked);const s=JSON.parse(localStorage.getItem(KEY)||'{}');s[n]=cb.checked;localStorage.setItem(KEY,JSON.stringify(s));upd();}
+function mark(n,on){const el=document.getElementById('s'+n);const num=el.querySelector('.s-num');if(on){el.classList.add('done');num.textContent='✓';}else{el.classList.remove('done');num.textContent=n;}}
+function upd(){const done=document.querySelectorAll('.scb:checked').length;const p=done/TOTAL*100;document.getElementById('pf').style.width=p+'%';document.getElementById('pt').textContent=done+' de '+TOTAL+' pasos completados';if(done===TOTAL){const c=document.getElementById('celeb');c.classList.add('on');c.scrollIntoView({behavior:'smooth'});confetti();}}
+function reset(){if(!confirm('¿Reiniciar?'))return;localStorage.removeItem(KEY);document.querySelectorAll('.scb').forEach(cb=>{cb.checked=false;});for(let i=1;i<=TOTAL;i++)mark(i,false);document.getElementById('celeb').classList.remove('on');upd();}
+function confetti(){const c=document.getElementById('cnf'),ctx=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const ps=Array.from({length:130},()=>({x:Math.random()*c.width,y:-10,r:Math.random()*7+3,d:Math.random()*3+1,col:['#0ea5e9','#22c55e','#f59e0b','#ec4899','#8b5cf6'][Math.floor(Math.random()*5)],ta:0,ts:Math.random()*.1+.05}));let f=0;(function draw(){ctx.clearRect(0,0,c.width,c.height);ps.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.col;ctx.fill();p.y+=p.d;p.ta+=p.ts;p.x+=Math.sin(p.ta);if(p.y>c.height){p.y=-10;p.x=Math.random()*c.width;}});if(++f<350)requestAnimationFrame(draw);else ctx.clearRect(0,0,c.width,c.height);})();}
+load();
+</script>
+</body>
+</html>

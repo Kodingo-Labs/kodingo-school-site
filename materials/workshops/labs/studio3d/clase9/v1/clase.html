@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Clase 9 — Sello con mi inicial 🔏</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Nunito',sans-serif;background:#f0f9ff;color:#1e293b}.header{background:linear-gradient(135deg,#0369a1,#0ea5e9);color:white;padding:32px 24px}.mod-badge{font-size:12px;font-weight:800;letter-spacing:2px;opacity:.8;text-transform:uppercase;margin-bottom:8px}.header-title{font-size:26px;font-weight:900;line-height:1.2;margin-bottom:16px}.badges{display:flex;gap:8px;flex-wrap:wrap}.badge{background:rgba(255,255,255,.2);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:700}.progress-wrap{background:white;padding:12px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.1)}.progress-label{font-size:12px;font-weight:700;color:#64748b;margin-bottom:6px}.prog-bar{height:8px;background:#e2e8f0;border-radius:999px}.prog-fill{height:100%;background:linear-gradient(90deg,#0ea5e9,#22c55e);border-radius:999px;transition:width .4s ease}main{max-width:720px;margin:0 auto;padding:24px 16px 120px}.card{background:white;border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.06)}.card-title{font-size:20px;font-weight:800;margin-bottom:16px}.objetivo-box{font-size:16px;font-weight:700;line-height:1.6;color:#0369a1;background:#e0f2fe;padding:16px;border-radius:12px;border-left:4px solid #0ea5e9}.resultado-tag{display:inline-block;background:#dcfce7;color:#15803d;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:800;margin-top:12px}.glos-item{border:2px solid #e0f2fe;border-radius:12px;padding:14px;margin-bottom:10px}.glos-term{font-size:16px;font-weight:800;color:#0369a1;margin-bottom:4px}.glos-def{font-size:14px;color:#475569;line-height:1.5}.glos-tip{font-size:13px;color:#0ea5e9;font-weight:700;margin-top:6px}.step{display:flex;gap:16px;align-items:flex-start;padding:16px;border-radius:12px;margin-bottom:12px;border:2px solid #e2e8f0;transition:all .3s}.step.done{background:#f0fdf4;border-color:#22c55e}.s-num{width:40px;height:40px;min-width:40px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#64748b;transition:all .3s}.step.done .s-num{background:#22c55e;color:white}.s-body{flex:1}.s-title{font-size:16px;font-weight:800;margin-bottom:8px}.s-cb{margin-left:auto;width:28px;height:28px;cursor:pointer;accent-color:#22c55e}.sub{margin-top:8px}.sub-row{display:flex;gap:10px;margin-bottom:8px;font-size:14px;line-height:1.5}.sub-lbl{font-weight:900;color:#0369a1;min-width:22px}.see{background:#f0fdf4;border:2px solid #22c55e;border-radius:10px;padding:12px 14px;margin-top:10px;font-size:13px;font-weight:700;color:#15803d}.see::before{content:"✅ Lo que deberías ver: "}.warn{background:#fffbeb;border:2px solid #f59e0b;border-radius:10px;padding:12px 14px;margin-top:8px;font-size:13px;font-weight:700;color:#92400e}.warn::before{content:"⚠️ Si algo va mal: "}.yay{background:#fef3c7;border-radius:10px;padding:12px;margin-top:10px;font-size:14px;font-weight:800;color:#92400e;text-align:center}.tink-block{background:#fdf4ff;border:2px solid #d8b4fe;border-radius:12px;padding:18px;margin-bottom:12px}.tink-h{font-size:14px;font-weight:800;color:#7c3aed;margin-bottom:10px}.tink-row{display:flex;gap:8px;margin-bottom:8px;font-size:14px;line-height:1.5}.tink-num{font-weight:900;color:#7c3aed;min-width:22px}.tink-see{background:#f5f3ff;border:2px solid #a78bfa;border-radius:10px;padding:12px 14px;margin-top:10px;font-size:13px;font-weight:700;color:#5b21b6}.tink-see::before{content:"🟣 En Tinkercad verás: "}.wait-row{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:10px;background:#faf5ff;border:2px solid #e9d5ff;margin-bottom:8px;font-size:14px;font-weight:600}.wait-icon{font-size:20px;min-width:28px}.desafio{background:#fffbeb;border:3px solid #f59e0b;border-radius:16px;padding:20px}.desafio h3{font-size:18px;font-weight:900;color:#92400e;margin-bottom:8px}.desafio p{font-size:15px;color:#78350f;line-height:1.6}.cfg-card{background:#f0f9ff;border:2px solid #bae6fd}.cfg-table{width:100%;border-collapse:collapse}.cfg-table tr:nth-child(odd){background:#e0f2fe}.cfg-table td{padding:10px 14px;font-size:14px}.cfg-table td:first-child{font-weight:800;color:#0369a1}.quiz-q{background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;padding:16px;margin-bottom:12px}.quiz-q p{font-size:15px;font-weight:800;margin-bottom:10px}.quiz-opts{list-style:none}.quiz-opts li{padding:8px 12px;border-radius:8px;margin-bottom:6px;font-size:14px;font-weight:600}.quiz-opts li.ok{background:#dcfce7;color:#15803d;font-weight:800}.quiz-opts li.no{color:#94a3b8}.padres-box{background:#f8fafc;border:2px solid #cbd5e1;border-radius:12px;padding:20px}.padres-box h3{font-size:15px;font-weight:800;margin-bottom:8px;color:#334155;margin-top:14px}.padres-box h3:first-child{margin-top:0}.padres-box ul{padding-left:16px}.padres-box li{font-size:14px;line-height:1.7;color:#475569}.prob{background:white;border:2px solid #fca5a5;border-radius:10px;padding:12px;margin-bottom:8px}.prob-t{font-weight:800;color:#dc2626;margin-bottom:4px;font-size:14px}.prob-fix{color:#475569;font-size:13px;line-height:1.5}.sabias{background:linear-gradient(135deg,#fdf4ff,#fae8ff);border:2px solid #e9d5ff}.sabias p{font-size:15px;line-height:1.6}.celeb{display:none;background:linear-gradient(135deg,#fbbf24,#f59e0b);border-radius:20px;padding:40px 24px;text-align:center;margin-top:20px}.celeb.on{display:block;animation:pop .6s ease}@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}.celeb-ico{font-size:64px;margin-bottom:16px;animation:bob 1s infinite}@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}.celeb-t{font-size:26px;font-weight:900;color:#451a03;margin-bottom:12px}.celeb-txt{font-size:15px;color:#78350f;line-height:1.7}#cnf{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999}.foot{position:fixed;bottom:0;left:0;right:0;background:white;border-top:2px solid #e2e8f0;padding:12px 24px;display:flex;gap:12px;justify-content:space-between;align-items:center;box-shadow:0 -4px 16px rgba(0,0,0,.1)}.btn-nav{padding:12px 24px;border-radius:999px;font-family:Nunito;font-size:15px;font-weight:800;border:none;cursor:pointer;text-decoration:none;display:inline-block}.btn-prev{background:#f1f5f9;color:#475569}.btn-next{background:linear-gradient(135deg,#0ea5e9,#0369a1);color:white}.btn-reset{font-size:12px;color:#94a3b8;background:none;border:none;cursor:pointer;font-family:Nunito;font-weight:700}@media(max-width:600px){.header-title{font-size:20px}main{padding:16px 12px 100px}}</style>
+</head>
+<body>
+<canvas id="cnf"></canvas>
+<header class="header">
+  <div class="mod-badge">Módulo 3 — Texto y Personalización · Clase 9</div>
+  <div class="header-title">🔏 Sello con mi inicial</div>
+  <div class="badges">
+    <span class="badge">⏱️ 45 min clase</span>
+    <span class="badge">🖨️ 35 min impresión</span>
+    <span class="badge">⭐⭐⭐ Dificultad 3/5</span>
+    <span class="badge">🎨 Diseña e imprime</span>
+  </div>
+</header>
+<div class="progress-wrap">
+  <div class="progress-label">Tu progreso: <span id="pt">0 de 10 pasos completados</span></div>
+  <div class="prog-bar"><div class="prog-fill" id="pf" style="width:0%"></div></div>
+</div>
+<main>
+
+<div class="card">
+  <div class="card-title">🎯 ¿Qué vas a lograr hoy?</div>
+  <div class="objetivo-box">¿Sabes por qué cuando estampas un sello en papel la letra no queda al revés? ¡Porque el sello está diseñado con la letra <strong>espejada (al revés)</strong>! Hoy vas a aprender exactamente eso: crear una letra "M" espejada que, al presionar sobre papel con tinta, queda derecha. ¡Tu propio sello personalizado en 3D!</div>
+  <span class="resultado-tag">🏆 Tu resultado: Un sello de goma-plástico con tu inicial "M" que deja marca en papel con pintura o tinta</span>
+</div>
+
+<div class="card">
+  <div class="card-title">📖 Palabras de hoy</div>
+  <div class="glos-item">
+    <div class="glos-term">🪞 Espejado (Mirror)</div>
+    <div class="glos-def">Voltear un objeto como si lo vieras en el espejo. La "M" espejada es una "M" que está invertida horizontalmente — cuando la presionas sobre papel, el papel queda con la "M" normal (no al revés).</div>
+    <div class="glos-tip">💡 Escribe "M" en un papel. Ponlo contra una ventana y míralo desde el otro lado — lo que ves en la ventana es la "M" espejada.</div>
+  </div>
+  <div class="glos-item">
+    <div class="glos-term">🔀 Texto invertido</div>
+    <div class="glos-def">En Tinkercad, se espeja escalando el objeto a -1 en el eje X. Suena complicado, pero vas a ver que es un solo clic.</div>
+    <div class="glos-tip">💡 Scale X = -1 significa "invertir en el eje horizontal". Es la forma matemática de decir "ponlo al espejo".</div>
+  </div>
+  <div class="glos-item">
+    <div class="glos-term">✊ Mango ergonómico</div>
+    <div class="glos-def">El "palo" del sello que agarras con la mano. Ergonómico significa que está diseñado para ser cómodo de usar. Vamos a hacer un cilindro grueso que encaje bien en los dedos.</div>
+    <div class="glos-tip">💡 Los mangos de los cuchillos de cocina son ergonómicos — están pensados para que la mano no se canse.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">🚀 Paso a paso</div>
+
+  <div class="step" id="s1">
+    <div class="s-num">1</div>
+    <div class="s-body">
+      <div class="s-title">Abre Tinkercad — crea la cabeza del sello (base)</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Nuevo diseño → <strong>"Sello M"</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Arrastra un <strong>Cylinder</strong>: <strong>40mm de diámetro · 5mm de alto</strong>. Este es el disco plano donde va la letra.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Esta es la "cara" del sello — la parte que toca el papel.</span></div>
+      </div>
+      <div class="see">Un disco plano circular de 40mm de diámetro y 5mm de alto.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="1" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s2">
+    <div class="s-num">2</div>
+    <div class="s-body">
+      <div class="s-title">Crea el mango del sello</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Arrastra otro <strong>Cylinder</strong>: <strong>20mm de diámetro · 30mm de alto</strong>. Este es el mango que agarras.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Centra el mango sobre la cabeza del sello usando <strong>Align</strong> (centrar en X y Y).</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Sube el mango <strong>5mm</strong> para que quede encima del disco base.</span></div>
+      </div>
+      <div class="see">Un disco grande (base) con un cilindro más pequeño y alto encima (el mango). Parece un sello de goma real.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="2" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s3">
+    <div class="s-num">3</div>
+    <div class="s-body">
+      <div class="s-title">Agrega la letra "M" en 3D</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Buscar "text" → arrastra forma Text al plano.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Escribe <strong>M</strong> (solo la letra inicial). Altura del texto: <strong>4mm</strong>. Tamaño: que quepa dentro del disco de 40mm.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Elige una fuente sólida y gruesa — <strong>"Anton"</strong> o <strong>"Open Sans"</strong> funcionan bien para sellos.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>Cambia el tipo a <strong>Hole</strong> (agujero). La M se vuelve el hueco que dejará la marca.</span></div>
+      </div>
+      <div class="see">Una letra "M" transparente con rayas (tipo Hole) sobre el plano.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="3" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s4">
+    <div class="s-num">4</div>
+    <div class="s-body">
+      <div class="s-title">¡Espeja la M! (el paso más especial de hoy)</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Con la letra M seleccionada, mira los campos de dimensiones en el panel derecho o en los controles del objeto.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>En la barra de herramientas superior, busca el botón de <strong>"Mirror"</strong> (parece dos triángulos simétricos). Haz clic en <strong>Mirror sobre el eje X</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>¡La M se voltea! Ahora está al espejo. Parece rara, pero eso es correcto — cuando la estampes en papel, quedará normal.</span></div>
+      </div>
+      <div class="see">La letra M está al revés (espejada). Si la compara con una M normal, está volteada horizontalmente.</div>
+      <div class="warn">Si tu Tinkercad no tiene el botón Mirror visible, puedes espejear cambiando la escala en X de 1 a -1 en los campos de dimensiones. El resultado es el mismo.</div>
+      <div class="yay">🎉 ¡Acabas de hacer algo que los maestros de sellos artesanales tardaron siglos en entender! Las letras de los sellos siempre van al espejo.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="4" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s5">
+    <div class="s-num">5</div>
+    <div class="s-body">
+      <div class="s-title">Posiciona la M espejada sobre la cara del sello</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Centra la M sobre el disco base con <strong>Align</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Baja la M al nivel de la base (posición Z = 0) y luego asegúrate de que no sobresalga por el fondo.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>La M debe estar en la cara inferior del disco (la que va a tocar el papel).</span></div>
+      </div>
+      <div class="see">La M espejada centrada debajo del disco base del sello, lista para hacer el hueco.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="5" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s6">
+    <div class="s-num">6</div>
+    <div class="s-body">
+      <div class="s-title">Agrupa todo el sello</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Selecciona todo: disco base + mango + letra M agujero.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Presiona <strong>Ctrl + G</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>¡El sello está completo! La M crea el hueco en la cara inferior del disco.</span></div>
+      </div>
+      <div class="see">Un sello completo: la cara inferior tiene la M hundida (en hueco). El mango cilíndrico sobresale arriba para tomarlo con la mano.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="6" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s7">
+    <div class="s-num">7</div>
+    <div class="s-body">
+      <div class="s-title">Exporta y configura en Bambu Studio</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Exportar → .STL → Descargas.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Arrastra a Bambu Studio. Selecciona <strong>0.10mm Ultra Quality</strong> — para que la letra quede perfectamente definida.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Orienta el sello con la cara de la letra mirando <strong>hacia abajo</strong> (apoyada en la placa). El mango apunta hacia arriba.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>Slice → verifica que la M se ve en las primeras capas.</span></div>
+      </div>
+      <div class="see">El sello en Bambu Studio con el mango apuntando hacia arriba y la cara de la M abajo. La estimación de tiempo: ~35 minutos.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="7" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s8">
+    <div class="s-num">8</div>
+    <div class="s-body">
+      <div class="s-title">Imprime el sello</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Enviar a Bambu Lab A1 → confirmar en pantalla táctil → esperar.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>0.10mm significa capas muy finas → mejor calidad, pero tarda un poco más.</span></div>
+      </div>
+      <div class="see">La impresora trabaja con capas muy finas creando el sello. El mango es la parte más alta que imprime al final.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="8" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s9">
+    <div class="s-num">9</div>
+    <div class="s-body">
+      <div class="s-title">Saca el sello y pruébalo en papel</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Pitido → espera → dobla placa → saca el sello.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Mira la cara del sello — la M está hundida (en hueco).</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Pon pintura o tinta de tampón en la cara del sello, presiona sobre un papel, ¡y verifica que la "M" queda derecha!</span></div>
+      </div>
+      <div class="see">La M imprimida en papel queda normal (no al revés). El sello funcionó perfectamente.</div>
+      <div class="yay">🎉 ¡El sello de la M funciona! La M espejada en el sello deja la M normal en el papel. ¡Magia matemática!</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="9" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s10">
+    <div class="s-num">10</div>
+    <div class="s-body">
+      <div class="s-title">Celebra y sella todo lo que puedas</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Usa el sello en cuadernos, libros, cartas, sobres. ¡Es tuyo!</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Limpia el sello con agua y jabón suave para que dure mucho tiempo.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Piensa: ¿qué otros sellos podrías crear? ¿Una estrella? ¿El sol? ¿Tus dos iniciales juntas?</span></div>
+      </div>
+      <div class="see">¡Un sello personalizado que funciona de verdad! El PLA es resistente al agua y puedes lavarlo para reutilizarlo.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="10" onchange="chk(this)">
+  </div>
+</div>
+
+<div class="card" style="background:#fdf4ff;border:2px solid #d8b4fe">
+  <div class="card-title" style="color:#7c3aed">🟠 Tinkercad — La técnica del espejado</div>
+  <div class="tink-block">
+    <div class="tink-h">🪞 Cómo espejear en Tinkercad</div>
+    <div class="tink-row"><span class="tink-num">Opción 1:</span><span>Selecciona el objeto → barra de herramientas superior → botón <strong>Mirror</strong> → clic en la flecha del eje X.</span></div>
+    <div class="tink-row"><span class="tink-num">Opción 2:</span><span>Selecciona el objeto → en los controles de la esquina inferior derecha o en el panel, busca los campos de <strong>Scale</strong> → cambia el valor de X de 1 a <strong>-1</strong>.</span></div>
+    <div class="tink-row"><span class="tink-num">→</span><span>Ambas opciones voltean el objeto horizontalmente.</span></div>
+    <div class="tink-see">La letra M se ve "al revés" en Tinkercad. Eso es correcto. Cuando la presiones sobre papel, el papel mostrará la M normal.</div>
+  </div>
+  <div class="tink-block">
+    <div class="tink-h">📐 Por qué los sellos necesitan espejado</div>
+    <div class="tink-row"><span class="tink-num">→</span><span>Los sellos funcionan por transferencia: la tinta pasa del sello al papel.</span></div>
+    <div class="tink-row"><span class="tink-num">→</span><span>Al presionar, el sello se "da vuelta" respecto al papel — la cara izquierda del sello toca el lado derecho del papel.</span></div>
+    <div class="tink-row"><span class="tink-num">→</span><span>Si la M estuviera normal en el sello, quedaría al revés en el papel (como si fuera una W rara).</span></div>
+    <div class="tink-row"><span class="tink-num">→</span><span>Espejando la M en el sello, al transferir al papel queda normal.</span></div>
+    <div class="tink-see">Pruébalo: escribe "M" en un papel, pon el papel contra la ventana y mira desde atrás. Lo que ves es la M espejada — así debe verse en tu sello.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">⏳ Mientras la impresora trabaja... (35 min)</div>
+  <div class="wait-row"><span class="wait-icon">🪞</span><span><strong>Experimento del espejo:</strong> Escribe tu nombre en un papel, ponlo contra una ventana y míralo desde el otro lado. ¿Qué observas? Todas las letras están espejadas.</span></div>
+  <div class="wait-row"><span class="wait-icon">📚</span><span><strong>Busca sellos en la vida real:</strong> ¿Hay algún sello de tinta en tu casa o escuela? ¿Una estampilla postal? Obsérvalos — ¿las letras están al revés?</span></div>
+  <div class="wait-row"><span class="wait-icon">✏️</span><span><strong>Diseña tu próximo sello:</strong> ¿Qué forma o símbolo pondrías en el próximo sello? ¿Un corazón? ¿Una estrella? ¿Las dos iniciales M+G juntas?</span></div>
+</div>
+
+<div class="card"><div class="desafio"><h3>💡 El desafío del día</h3><p>¿Puedes crear un sello de <strong>dos iniciales juntas</strong>? Por ejemplo "MG" (Mateo + apellido). Las dos letras deben estar espejadas para que al estampar queden correctas. Más difícil de centrar, ¡pero más impresionante!</p></div></div>
+
+<div class="card">
+  <div class="card-title">🤔 Mini quiz</div>
+  <div class="quiz-q"><p>1. ¿Por qué la letra del sello debe estar espejada (al revés)?</p><ul class="quiz-opts"><li class="ok">a) Porque al presionar el sello en papel, se transfiere volteada, y el espejo del espejo queda normal ✅</li><li class="no">b) Porque Tinkercad solo permite letras al revés</li><li class="no">c) Para que el sello sea más difícil de copiar</li></ul></div>
+  <div class="quiz-q"><p>2. ¿Cómo puedes espejear una forma en Tinkercad?</p><ul class="quiz-opts"><li class="no">a) Presionando Delete y redibujando al revés</li><li class="ok">b) Usando el botón Mirror o cambiando Scale X a -1 ✅</li><li class="no">c) Rotando 180 grados (no es espejado, es rotación)</li></ul></div>
+  <div class="quiz-q"><p>3. ¿Por qué la letra del sello se hace como "Hole" (agujero) en Tinkercad?</p><ul class="quiz-opts"><li class="ok">a) Para que la letra quede hundida en el sello y la tinta rellene ese hueco ✅</li><li class="no">b) Porque los sellos no pueden tener letras en relieve</li><li class="no">c) Para que la letra se vea al espejo automáticamente</li></ul></div>
+</div>
+
+<div class="card cfg-card">
+  <div class="card-title" style="color:#0369a1">⚙️ Configuración — Bambu Lab A1</div>
+  <table class="cfg-table">
+    <tr><td>🖨️ Impresora</td><td>Bambu Lab A1</td></tr>
+    <tr><td>🎨 Filamento</td><td>PLA</td></tr>
+    <tr><td>📐 Altura de capa</td><td>0.10mm Ultra Quality</td></tr>
+    <tr><td>⚡ Velocidad</td><td>Standard (más lento por capas finas)</td></tr>
+    <tr><td>🏗️ Soportes</td><td>No</td></tr>
+    <tr><td>🟫 Placa</td><td>Texturizada</td></tr>
+    <tr><td>📐 Orientación</td><td>Cara de la letra abajo, mango arriba</td></tr>
+    <tr><td>🕐 Tiempo</td><td>~35 minutos</td></tr>
+  </table>
+</div>
+
+<div class="card sabias"><div class="card-title">💡 ¿Sabías que...?</div><p>Los primeros libros de la historia (Gutenberg, siglo XV) se imprimían con sellos de metal — cada letra era un sello individual. El impresor tenía que ordenar cientos de letras al revés para que al imprimir quedaran correctas. Se tardaban días en componer una sola página. ¡Tú hiciste lo mismo en 45 minutos con una impresora 3D!</p></div>
+
+<div class="card">
+  <div class="card-title">🧑‍🏫 Para quien acompaña a Mateo</div>
+  <div class="padres-box">
+    <h3>✅ Lo que Mateo aprendió hoy</h3>
+    <ul><li>El concepto de espejado y por qué los sellos necesitan letras invertidas</li><li>La función Mirror de Tinkercad (o Scale X = -1)</li><li>Cómo combinar un mango cilíndrico con una cara de sello</li><li>Por qué 0.10mm da mejor resultado para detalles finos</li></ul>
+    <h3>⚠️ Posibles problemas</h3>
+    <div class="prob"><div class="prob-t">La M estampada queda al revés en el papel</div><div class="prob-fix">El espejado no se aplicó correctamente. Para verificar: mirar la cara del sello — la M debe parecer "al revés" visualmente. Si se ve normal, no fue espejada. Volver a Tinkercad, aplicar Mirror, reimprimir.</div></div>
+    <div class="prob"><div class="prob-t">La letra no deja marca clara al estampar</div><div class="prob-fix">El hueco de la letra es demasiado poco profundo o la tinta/pintura es muy gruesa. Para mejorar: rediseñar con la M hundida más profundamente (5mm de profundidad en vez de 3mm).</div></div>
+    <h3>🏠 Actividad en casa</h3>
+    <p style="font-size:14px;color:#475569;line-height:1.6">Usar el sello para personalizar libretas, cartas, sobres o tarjetas de regalo. El PLA aguanta agua y tintas de base acuosa — lavarlo con agua y jabón.</p>
+  </div>
+</div>
+
+<div class="celeb" id="celeb">
+  <div class="celeb-ico">🔏</div>
+  <div class="celeb-t">¡Maestro del espejado, Mateo!</div>
+  <div class="celeb-txt">Hoy aprendiste algo que muy poca gente entiende: por qué los sellos funcionan con letras al revés. Y lo entendiste diseñándolo tú mismo. Eso es aprender haciendo.<br><br><strong>¡Con esto completaste el Módulo 3 de Texto y Personalización! Siguiente nivel: el Módulo 4 — Objetos Avanzados. Tu primer proyecto será un monedero de dinosaurio. ¡Prepare para el reto más grande hasta ahora!</strong></div>
+</div>
+
+</main>
+<footer class="foot">
+  <a href="../../clase8/v1/clase.html" class="btn-nav btn-prev">⬅️ Clase 8</a>
+  <button class="btn-reset" onclick="reset()">↺ Reiniciar</button>
+  <a href="../../clase10/v1/clase.html" class="btn-nav btn-next">Clase 10 ➡️</a>
+</footer>
+<script>
+const KEY='studio3d-clase9',TOTAL=10;
+function load(){const s=JSON.parse(localStorage.getItem(KEY)||'{}');document.querySelectorAll('.scb').forEach(cb=>{if(s[cb.dataset.n]){cb.checked=true;mark(cb.dataset.n,true);}});upd();}
+function chk(cb){const n=cb.dataset.n;mark(n,cb.checked);const s=JSON.parse(localStorage.getItem(KEY)||'{}');s[n]=cb.checked;localStorage.setItem(KEY,JSON.stringify(s));upd();}
+function mark(n,on){const el=document.getElementById('s'+n);const num=el.querySelector('.s-num');if(on){el.classList.add('done');num.textContent='✓';}else{el.classList.remove('done');num.textContent=n;}}
+function upd(){const done=document.querySelectorAll('.scb:checked').length;const p=done/TOTAL*100;document.getElementById('pf').style.width=p+'%';document.getElementById('pt').textContent=done+' de '+TOTAL+' pasos completados';if(done===TOTAL){const c=document.getElementById('celeb');c.classList.add('on');c.scrollIntoView({behavior:'smooth'});confetti();}}
+function reset(){if(!confirm('¿Reiniciar?'))return;localStorage.removeItem(KEY);document.querySelectorAll('.scb').forEach(cb=>{cb.checked=false;});for(let i=1;i<=TOTAL;i++)mark(i,false);document.getElementById('celeb').classList.remove('on');upd();}
+function confetti(){const c=document.getElementById('cnf'),ctx=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const ps=Array.from({length:130},()=>({x:Math.random()*c.width,y:-10,r:Math.random()*7+3,d:Math.random()*3+1,col:['#0ea5e9','#22c55e','#f59e0b','#ec4899','#8b5cf6'][Math.floor(Math.random()*5)],ta:0,ts:Math.random()*.1+.05}));let f=0;(function draw(){ctx.clearRect(0,0,c.width,c.height);ps.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.col;ctx.fill();p.y+=p.d;p.ta+=p.ts;p.x+=Math.sin(p.ta);if(p.y>c.height){p.y=-10;p.x=Math.random()*c.width;}});if(++f<350)requestAnimationFrame(draw);else ctx.clearRect(0,0,c.width,c.height);})();}
+load();
+</script>
+</body>
+</html>

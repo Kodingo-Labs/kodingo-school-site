@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Clase 7 — Texto en 3D 🔤</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Nunito',sans-serif;background:#f0f9ff;color:#1e293b}.header{background:linear-gradient(135deg,#0369a1,#0ea5e9);color:white;padding:32px 24px}.mod-badge{font-size:12px;font-weight:800;letter-spacing:2px;opacity:.8;text-transform:uppercase;margin-bottom:8px}.header-title{font-size:26px;font-weight:900;line-height:1.2;margin-bottom:16px}.badges{display:flex;gap:8px;flex-wrap:wrap}.badge{background:rgba(255,255,255,.2);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:700}.progress-wrap{background:white;padding:12px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.1)}.progress-label{font-size:12px;font-weight:700;color:#64748b;margin-bottom:6px}.prog-bar{height:8px;background:#e2e8f0;border-radius:999px}.prog-fill{height:100%;background:linear-gradient(90deg,#0ea5e9,#22c55e);border-radius:999px;transition:width .4s ease}main{max-width:720px;margin:0 auto;padding:24px 16px 120px}.card{background:white;border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.06)}.card-title{font-size:20px;font-weight:800;margin-bottom:16px}.objetivo-box{font-size:16px;font-weight:700;line-height:1.6;color:#0369a1;background:#e0f2fe;padding:16px;border-radius:12px;border-left:4px solid #0ea5e9}.resultado-tag{display:inline-block;background:#dcfce7;color:#15803d;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:800;margin-top:12px}.tools-wrap{display:flex;gap:10px;flex-wrap:wrap}.tool-pill{background:#f1f5f9;border:2px solid #e2e8f0;padding:10px 18px;border-radius:999px;font-size:14px;font-weight:700}.glos-item{border:2px solid #e0f2fe;border-radius:12px;padding:14px;margin-bottom:10px}.glos-term{font-size:16px;font-weight:800;color:#0369a1;margin-bottom:4px}.glos-def{font-size:14px;color:#475569;line-height:1.5}.glos-tip{font-size:13px;color:#0ea5e9;font-weight:700;margin-top:6px}.step{display:flex;gap:16px;align-items:flex-start;padding:16px;border-radius:12px;margin-bottom:12px;border:2px solid #e2e8f0;transition:all .3s}.step.done{background:#f0fdf4;border-color:#22c55e}.s-num{width:40px;height:40px;min-width:40px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#64748b;transition:all .3s}.step.done .s-num{background:#22c55e;color:white}.s-body{flex:1}.s-title{font-size:16px;font-weight:800;margin-bottom:8px}.s-cb{margin-left:auto;width:28px;height:28px;cursor:pointer;accent-color:#22c55e}.sub{margin-top:8px}.sub-row{display:flex;gap:10px;margin-bottom:8px;font-size:14px;line-height:1.5}.sub-lbl{font-weight:900;color:#0369a1;min-width:22px}.see{background:#f0fdf4;border:2px solid #22c55e;border-radius:10px;padding:12px 14px;margin-top:10px;font-size:13px;font-weight:700;color:#15803d}.see::before{content:"✅ Lo que deberías ver: "}.warn{background:#fffbeb;border:2px solid #f59e0b;border-radius:10px;padding:12px 14px;margin-top:8px;font-size:13px;font-weight:700;color:#92400e}.warn::before{content:"⚠️ Si algo va mal: "}.yay{background:#fef3c7;border-radius:10px;padding:12px;margin-top:10px;font-size:14px;font-weight:800;color:#92400e;text-align:center}.tink-card{background:#fdf4ff;border:2px solid #d8b4fe}.tink-block{background:#fdf4ff;border:2px solid #d8b4fe;border-radius:12px;padding:18px;margin-bottom:12px}.tink-h{font-size:14px;font-weight:800;color:#7c3aed;margin-bottom:10px}.tink-row{display:flex;gap:8px;margin-bottom:8px;font-size:14px;line-height:1.5}.tink-num{font-weight:900;color:#7c3aed;min-width:22px}.tink-see{background:#f5f3ff;border:2px solid #a78bfa;border-radius:10px;padding:12px 14px;margin-top:10px;font-size:13px;font-weight:700;color:#5b21b6}.tink-see::before{content:"🟣 En Tinkercad verás: "}.guide-block{background:#f0f9ff;border:2px solid #7dd3fc;border-radius:12px;padding:18px;margin-bottom:12px}.guide-h{font-size:14px;font-weight:800;color:#0369a1;margin-bottom:10px}.guide-row{display:flex;gap:8px;margin-bottom:8px;font-size:14px;line-height:1.5}.guide-num{font-weight:900;color:#0369a1;min-width:22px}.wait-row{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:10px;background:#faf5ff;border:2px solid #e9d5ff;margin-bottom:8px;font-size:14px;font-weight:600}.wait-icon{font-size:20px;min-width:28px}.desafio{background:#fffbeb;border:3px solid #f59e0b;border-radius:16px;padding:20px}.desafio h3{font-size:18px;font-weight:900;color:#92400e;margin-bottom:8px}.desafio p{font-size:15px;color:#78350f;line-height:1.6}.cfg-card{background:#f0f9ff;border:2px solid #bae6fd}.cfg-table{width:100%;border-collapse:collapse}.cfg-table tr:nth-child(odd){background:#e0f2fe}.cfg-table td{padding:10px 14px;font-size:14px}.cfg-table td:first-child{font-weight:800;color:#0369a1}.cfg-note{font-size:13px;color:#0369a1;margin-bottom:12px;line-height:1.5}.quiz-q{background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;padding:16px;margin-bottom:12px}.quiz-q p{font-size:15px;font-weight:800;margin-bottom:10px}.quiz-opts{list-style:none}.quiz-opts li{padding:8px 12px;border-radius:8px;margin-bottom:6px;font-size:14px;font-weight:600}.quiz-opts li.ok{background:#dcfce7;color:#15803d;font-weight:800}.quiz-opts li.no{color:#94a3b8}.padres-box{background:#f8fafc;border:2px solid #cbd5e1;border-radius:12px;padding:20px}.padres-box h3{font-size:15px;font-weight:800;margin-bottom:8px;color:#334155;margin-top:14px}.padres-box h3:first-child{margin-top:0}.padres-box ul{padding-left:16px}.padres-box li{font-size:14px;line-height:1.7;color:#475569}.prob{background:white;border:2px solid #fca5a5;border-radius:10px;padding:12px;margin-bottom:8px}.prob-t{font-weight:800;color:#dc2626;margin-bottom:4px;font-size:14px}.prob-fix{color:#475569;font-size:13px;line-height:1.5}.sabias{background:linear-gradient(135deg,#fdf4ff,#fae8ff);border:2px solid #e9d5ff}.sabias p{font-size:15px;line-height:1.6}.celeb{display:none;background:linear-gradient(135deg,#fbbf24,#f59e0b);border-radius:20px;padding:40px 24px;text-align:center;margin-top:20px}.celeb.on{display:block;animation:pop .6s ease}@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}.celeb-ico{font-size:64px;margin-bottom:16px;animation:bob 1s infinite}@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}.celeb-t{font-size:26px;font-weight:900;color:#451a03;margin-bottom:12px}.celeb-txt{font-size:15px;color:#78350f;line-height:1.7}#cnf{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999}.foot{position:fixed;bottom:0;left:0;right:0;background:white;border-top:2px solid #e2e8f0;padding:12px 24px;display:flex;gap:12px;justify-content:space-between;align-items:center;box-shadow:0 -4px 16px rgba(0,0,0,.1)}.btn-nav{padding:12px 24px;border-radius:999px;font-family:Nunito;font-size:15px;font-weight:800;border:none;cursor:pointer;text-decoration:none;display:inline-block}.btn-prev{background:#f1f5f9;color:#475569}.btn-next{background:linear-gradient(135deg,#0ea5e9,#0369a1);color:white}.btn-reset{font-size:12px;color:#94a3b8;background:none;border:none;cursor:pointer;font-family:Nunito;font-weight:700}@media(max-width:600px){.header-title{font-size:20px}main{padding:16px 12px 100px}}</style>
+</head>
+<body>
+<canvas id="cnf"></canvas>
+<header class="header">
+  <div class="mod-badge">Módulo 3 — Texto y Personalización · Clase 7</div>
+  <div class="header-title">🔤 Ponemos texto en 3D</div>
+  <div class="badges">
+    <span class="badge">⏱️ 45 min clase</span>
+    <span class="badge">🖨️ 25 min impresión</span>
+    <span class="badge">⭐⭐ Dificultad 2/5</span>
+    <span class="badge">🎨 Diseña e imprime</span>
+  </div>
+</header>
+<div class="progress-wrap">
+  <div class="progress-label">Tu progreso: <span id="pt">0 de 9 pasos completados</span></div>
+  <div class="prog-bar"><div class="prog-fill" id="pf" style="width:0%"></div></div>
+</div>
+<main>
+
+<div class="card">
+  <div class="card-title">🎯 ¿Qué vas a lograr hoy?</div>
+  <div class="objetivo-box">¡Hoy vas a poner tu nombre en 3D! Vas a aprender a usar la herramienta de texto de Tinkercad para crear letras que sobresalen (en relieve) de una base plana. Es como un sello, pero al revés — las letras quedan levantadas, no hundidas.</div>
+  <span class="resultado-tag">🏆 Tu resultado: Una placa plana con "MATEO" en 3D en relieve, lista para usar en cualquier proyecto</span>
+</div>
+
+<div class="card">
+  <div class="card-title">📖 Palabras de hoy</div>
+  <div class="glos-item">
+    <div class="glos-term">🔤 Herramienta Texto (Text)</div>
+    <div class="glos-def">Una forma especial en Tinkercad que convierte letras en objetos 3D. Puedes escribir cualquier palabra y la herramienta la genera como una forma sólida que puedes poner en tu diseño.</div>
+    <div class="glos-tip">💡 Es como las letras de plástico que se pegan en las puertas para poner el número de la casa.</div>
+  </div>
+  <div class="glos-item">
+    <div class="glos-term">🔡 Fuente (Font / Tipo de letra)</div>
+    <div class="glos-def">El estilo de las letras. En Tinkercad puedes elegir entre varias fuentes — algunas son redondas y amigables, otras son más rectas y técnicas.</div>
+    <div class="glos-tip">💡 Es lo mismo que cuando cambias la fuente en Word — "Arial" vs "Times New Roman" vs "Comic Sans".</div>
+  </div>
+  <div class="glos-item">
+    <div class="glos-term">↕️ Relieve vs Agujero</div>
+    <div class="glos-def">El texto puede ser sólido (relieve — las letras sobresalen hacia arriba) o agujero (las letras crean huecos en el objeto, como un sello). Hoy hacemos relieve.</div>
+    <div class="glos-tip">💡 El relieve es como las letras en una medalla de oro — sobresalen. El agujero es como las letras en un sello de goma — están hundidas.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">🚀 Paso a paso</div>
+
+  <div class="step" id="s1">
+    <div class="s-num">1</div>
+    <div class="s-body">
+      <div class="s-title">Abre Tinkercad y crea la base plana</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Ve a tinkercad.com → Nuevo diseño → nombre: <strong>"Placa MATEO"</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Arrastra un <strong>Box</strong> al plano. Ponle estas dimensiones: <strong>80mm largo · 30mm ancho · 5mm alto</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Esta es la "base" de la placa — una tablita plana sobre la cual van a aparecer las letras.</span></div>
+      </div>
+      <div class="see">Una caja plana y larga (80×30×5mm) sobre el plano de Tinkercad — parece una tablita de madera.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="1" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s2">
+    <div class="s-num">2</div>
+    <div class="s-body">
+      <div class="s-title">Busca la herramienta Texto en el panel</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>En el panel derecho, busca la barra de búsqueda — dice "Search Shapes" o "Buscar formas".</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Escribe <strong>"text"</strong> y presiona Enter.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Aparece una forma especial llamada <strong>"Text"</strong> — tiene el ícono de una letra "A".</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>Arrastra esa forma "Text" hasta el plano de Tinkercad.</span></div>
+      </div>
+      <div class="see">Una forma de texto 3D aparece en el plano — dice "Text" por defecto en letras 3D.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="2" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s3">
+    <div class="s-num">3</div>
+    <div class="s-body">
+      <div class="s-title">Escribe "MATEO" y elige la fuente</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Con la forma Text seleccionada, mira el panel derecho — aparece una caja de texto que dice "Text".</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Haz clic dentro de esa caja, borra "Text" y escribe: <strong>MATEO</strong> (en mayúsculas — quedan más claras en 3D).</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Las letras en 3D cambian en tiempo real mientras escribes. ¡Tu nombre aparece en 3D!</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>Más abajo hay un menú <strong>"Font"</strong> (fuente). Prueba <strong>"Nunito"</strong>, <strong>"Open Sans"</strong> o <strong>"Anton"</strong> — elige la que más te guste.</span></div>
+      </div>
+      <div class="see">Las letras "MATEO" en 3D sobre el plano de Tinkercad, con la fuente que elegiste. Las letras son sólidas y tridimensionales.</div>
+      <div class="yay">🎉 ¡Tu nombre en 3D existe en Tinkercad! Ahora vamos a ponerlo sobre la placa.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="3" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s4">
+    <div class="s-num">4</div>
+    <div class="s-body">
+      <div class="s-title">Ajusta el tamaño del texto</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>En el panel derecho, también hay un campo de altura del texto. Cámbialo a <strong>4mm</strong> — así el texto sobresale 4mm de la base.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Ajusta el tamaño general del texto (largo y ancho) con los puntitos blancos o los campos de dimensiones. El texto debe caber en la base de 80mm de largo.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Trata de que el texto mida aproximadamente <strong>70mm de largo</strong> para que quepa con un poco de margen.</span></div>
+      </div>
+      <div class="see">Las letras MATEO en 3D con altura de 4mm. Cuando lo pones junto a la base, el texto debería caber cómodamente.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="4" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s5">
+    <div class="s-num">5</div>
+    <div class="s-body">
+      <div class="s-title">Posiciona el texto sobre la base</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Mueve las letras MATEO hasta que estén aproximadamente <strong>centradas sobre la base</strong> plana.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Ahora las letras están flotando en el aire. Necesitas "bajarlas" hasta que toquen la base.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Con las letras seleccionadas, busca la <strong>flecha negra</strong> que apunta hacia abajo (el eje Z). Arrástrate hacia abajo hasta que las letras descansen sobre la base.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>O usa el truco: selecciona las letras, presiona <strong>D</strong> para bajarlas al plano, luego sube 5mm (el alto de la base) con la flecha negra.</span></div>
+      </div>
+      <div class="see">Las letras MATEO están encima de la base plana, sobresaliendo hacia arriba. Desde el costado, la base mide 5mm y el texto añade 4mm más arriba.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="5" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s6">
+    <div class="s-num">6</div>
+    <div class="s-body">
+      <div class="s-title">Agrupa la base con el texto</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Selecciona todo (arrastra el cursor sobre la base y el texto).</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Presiona <strong>Ctrl + G</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>¡La placa y las letras son un solo objeto! El texto quedó fusionado con la base en relieve.</span></div>
+      </div>
+      <div class="see">Una placa única con las letras MATEO integradas en relieve. Es un solo objeto que puedes mover o rotar todo junto.</div>
+      <div class="yay">🎉 ¡MATEO en 3D completo! Ahora a imprimir.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="6" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s7">
+    <div class="s-num">7</div>
+    <div class="s-body">
+      <div class="s-title">Exporta como STL y abre en Bambu Studio</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Exportar → .STL → guardar en Descargas.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Arrastra a Bambu Studio. Configuración: Textured PEI · PLA · <strong>0.15mm Optimal</strong> (para que las letras queden más nítidas).</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Slice → verifica que el texto se vea en la vista de capas → envía a imprimir.</span></div>
+      </div>
+      <div class="see">La placa con letras en la vista de capas. Las letras deberían verse claramente como áreas de mayor altura en las capas superiores.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="7" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s8">
+    <div class="s-num">8</div>
+    <div class="s-body">
+      <div class="s-title">Confirma en la Bambu Lab A1</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Toca el botón de confirmar en la pantalla táctil.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Calentamiento → auto-nivelación → purge line → impresión.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Observa cómo las primeras capas forman la base plana, y luego las letras empiezan a sobresalir.</span></div>
+      </div>
+      <div class="see">Las primeras capas forman la base plana. Cuando llega a las capas del texto, la cabeza imprime en las zonas de las letras creando el relieve.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="8" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s9">
+    <div class="s-num">9</div>
+    <div class="s-body">
+      <div class="s-title">Saca la placa y pásale el dedo por las letras</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Pitido → espera → dobla placa → saca la placa MATEO.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Pasa el dedo por las letras — ¿las sientes sobresalir?</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Esta placa puedes usarla como etiqueta, como decoración o como base para futuros proyectos.</span></div>
+      </div>
+      <div class="see">Una placa plana con tu nombre MATEO en relieve. Las letras sobresalen claramente y se pueden sentir con el dedo.</div>
+      <div class="yay">🎉 ¡Tu nombre existe en plástico 3D! ¡MATEO en relieve para siempre!</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="9" onchange="chk(this)">
+  </div>
+</div>
+
+<div class="card tink-card">
+  <div class="card-title" style="color:#7c3aed">🟠 Tinkercad — Guía completa de la herramienta Texto</div>
+  <div class="tink-block">
+    <div class="tink-h">🔤 Paso a paso de la herramienta Text</div>
+    <div class="tink-row"><span class="tink-num">1.</span><span>En el panel derecho, escribe "text" en la barra de búsqueda y presiona Enter.</span></div>
+    <div class="tink-row"><span class="tink-num">2.</span><span>Arrastra la forma "Text" (ícono de la letra A) al plano de trabajo.</span></div>
+    <div class="tink-row"><span class="tink-num">3.</span><span>Con el texto seleccionado, en el panel derecho aparece el campo editable. Haz clic y escribe tu palabra.</span></div>
+    <div class="tink-row"><span class="tink-num">4.</span><span>Campos del panel: <strong>Text</strong> (la palabra), <strong>Font</strong> (fuente), <strong>Height</strong> (altura del relieve en mm), <strong>Size</strong> (tamaño general).</span></div>
+    <div class="tink-row"><span class="tink-num">5.</span><span>Para texto en RELIEVE: dejarlo en "Solid" (naranja). Para texto como AGUJERO: cambiar a "Hole" (rayado gris).</span></div>
+    <div class="tink-see">Las letras aparecen en 3D en tiempo real mientras escribes. Puedes hacer zoom para ver los detalles de cada letra.</div>
+  </div>
+  <div class="tink-block">
+    <div class="tink-h">📐 Cómo subir el texto exactamente sobre la base</div>
+    <div class="tink-row"><span class="tink-num">1.</span><span>Selecciona el texto → presiona <strong>D</strong> para bajarlo al plano (a 0mm de altura).</span></div>
+    <div class="tink-row"><span class="tink-num">2.</span><span>Mueve el texto con las flechas de movimiento horizontal hasta centrarlo sobre la base.</span></div>
+    <div class="tink-row"><span class="tink-num">3.</span><span>Con el texto seleccionado, mira el campo de altura en el panel → escribe <strong>5</strong> (el alto de la base) para subirlo exactamente sobre ella.</span></div>
+    <div class="tink-row"><span class="tink-num">4.</span><span>Ahora el texto está en la superficie de la base, sobresaliendo hacia arriba. ¡Listo para agrupar!</span></div>
+    <div class="tink-see">Desde el costado, la base ocupa los primeros 5mm y el texto ocupa los siguientes 4mm — total 9mm de altura.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">⏳ Mientras la impresora trabaja... (25 min)</div>
+  <div class="wait-row"><span class="wait-icon">🔍</span><span><strong>Observa el relieve:</strong> Cuando la impresora llegue a las capas del texto, la cabeza imprime solo en las zonas de las letras. Mira cómo cada letra crece capa por capa.</span></div>
+  <div class="wait-row"><span class="wait-icon">✏️</span><span><strong>Diseña el siguiente:</strong> Ahora que sabes poner texto, ¿qué palabras o nombres pondrías en los próximos proyectos? ¿"MAMÁ"? ¿"2025"? ¿Una palabra en otro idioma?</span></div>
+  <div class="wait-row"><span class="wait-icon">🎨</span><span><strong>Piensa en los colores:</strong> ¿Se te ocurre alguna forma de que el texto sea de un color y la base de otro? (Pista: con multi-color printing se puede, pero eso viene después).</span></div>
+</div>
+
+<div class="card"><div class="desafio"><h3>💡 El desafío del día</h3><p>¿Te atreves a crear la misma placa pero con el texto como <strong>agujero</strong> en vez de relieve? Haz lo mismo pero en vez de dejar el texto en "Solid", cámbialo a "Hole" antes de agrupar. ¿Cómo queda diferente? ¿Para qué sirve cada versión?</p></div></div>
+
+<div class="card">
+  <div class="card-title">🤔 Mini quiz</div>
+  <div class="quiz-q"><p>1. ¿Dónde encuentras la herramienta de texto en Tinkercad?</p><ul class="quiz-opts"><li class="no">a) En el menú "Editar"</li><li class="ok">b) Buscando "text" en la barra de búsqueda del panel derecho ✅</li><li class="no">c) En la barra de herramientas de arriba</li></ul></div>
+  <div class="quiz-q"><p>2. Si el texto está en "Solid" (sólido) y lo agrupas con la base, ¿qué pasa?</p><ul class="quiz-opts"><li class="ok">a) Las letras quedan en relieve, sobresaliendo de la base ✅</li><li class="no">b) Las letras hacen huecos en la base</li><li class="no">c) Las letras desaparecen</li></ul></div>
+  <div class="quiz-q"><p>3. ¿Por qué usamos 0.15mm en vez de 0.20mm para imprimir el texto?</p><ul class="quiz-opts"><li class="no">a) Porque el texto necesita menos plástico</li><li class="ok">b) Para que los detalles de las letras queden más nítidos y lisos ✅</li><li class="no">c) Porque 0.20mm no funciona con objetos que tienen texto</li></ul></div>
+</div>
+
+<div class="card cfg-card">
+  <div class="card-title" style="color:#0369a1">⚙️ Configuración — Bambu Lab A1</div>
+  <p class="cfg-note">Usamos 0.15mm para que los bordes de las letras queden más nítidos. Las letras pequeñas en 3D se ven mucho mejor con capas más finas.</p>
+  <table class="cfg-table">
+    <tr><td>🖨️ Impresora</td><td>Bambu Lab A1</td></tr>
+    <tr><td>🎨 Filamento</td><td>PLA</td></tr>
+    <tr><td>📐 Altura de capa</td><td>0.15mm Optimal</td></tr>
+    <tr><td>⚡ Velocidad</td><td>Standard</td></tr>
+    <tr><td>🏗️ Soportes</td><td>No</td></tr>
+    <tr><td>🟫 Placa</td><td>Texturizada</td></tr>
+    <tr><td>🔁 Relleno</td><td>15%</td></tr>
+    <tr><td>🕐 Tiempo</td><td>~25 minutos</td></tr>
+  </table>
+</div>
+
+<div class="card sabias"><div class="card-title">💡 ¿Sabías que...?</div><p>Las placas de identificación (como las que tienen el nombre en las puertas de las oficinas o los hoteles) se hacen exactamente así — un grabado en relieve sobre una superficie plana. La diferencia es que las de verdad se graban con máquinas de fresado, mientras que tú usas una impresora 3D. ¡El resultado es el mismo!</p></div>
+
+<div class="card">
+  <div class="card-title">🧑‍🏫 Para quien acompaña a Mateo</div>
+  <div class="padres-box">
+    <h3>✅ Lo que Mateo aprendió hoy</h3>
+    <ul><li>Cómo usar la herramienta Text de Tinkercad</li><li>Diferencia entre texto en relieve (Solid) y texto como agujero (Hole)</li><li>Cómo posicionar texto exactamente sobre una base usando la altura en mm</li></ul>
+    <h3>⚠️ Posibles problemas</h3>
+    <div class="prob"><div class="prob-t">Las letras quedan "dentro" de la base en vez de encima</div><div class="prob-fix">El texto fue agrupado sin subirlo sobre la base. Deshacer (Ctrl+Z), verificar que el texto esté posicionado 5mm arriba (el alto de la base) antes de agrupar.</div></div>
+    <div class="prob"><div class="prob-t">Las letras en la impresión no se ven claras</div><div class="prob-fix">Verificar que se usó 0.15mm y no 0.20mm. Si las letras son muy pequeñas (menos de 3mm de altura), aumentar a 5-6mm en Tinkercad antes de reimprimir.</div></div>
+    <h3>🏠 Cómo reforzar</h3>
+    <p style="font-size:14px;color:#475569;line-height:1.6">Buscar en casa objetos con texto en relieve (libros en tapa dura, monedas, medallas) y compararlos con la placa impresa. Hablar sobre cómo se habrán fabricado.</p>
+  </div>
+</div>
+
+<div class="celeb" id="celeb">
+  <div class="celeb-ico">🔤</div>
+  <div class="celeb-t">¡Tu nombre en 3D, Mateo!</div>
+  <div class="celeb-txt">Hoy aprendiste a personalizar cualquier objeto con texto. Esa habilidad cambia todo — ahora cada cosa que diseñes puede llevar tu nombre, un mensaje o una palabra especial.<br><br><strong>La próxima clase vas a combinar el texto con diseño funcional: vas a crear un imán para la heladera con tu nombre. ¡Algo que toda la familia va a ver todos los días!</strong></div>
+</div>
+
+</main>
+<footer class="foot">
+  <a href="../../clase6/v1/clase.html" class="btn-nav btn-prev">⬅️ Clase 6</a>
+  <button class="btn-reset" onclick="reset()">↺ Reiniciar</button>
+  <a href="../../clase8/v1/clase.html" class="btn-nav btn-next">Clase 8 ➡️</a>
+</footer>
+<script>
+const KEY='studio3d-clase7',TOTAL=9;
+function load(){const s=JSON.parse(localStorage.getItem(KEY)||'{}');document.querySelectorAll('.scb').forEach(cb=>{if(s[cb.dataset.n]){cb.checked=true;mark(cb.dataset.n,true);}});upd();}
+function chk(cb){const n=cb.dataset.n;mark(n,cb.checked);const s=JSON.parse(localStorage.getItem(KEY)||'{}');s[n]=cb.checked;localStorage.setItem(KEY,JSON.stringify(s));upd();}
+function mark(n,on){const el=document.getElementById('s'+n);const num=el.querySelector('.s-num');if(on){el.classList.add('done');num.textContent='✓';}else{el.classList.remove('done');num.textContent=n;}}
+function upd(){const done=document.querySelectorAll('.scb:checked').length;const p=done/TOTAL*100;document.getElementById('pf').style.width=p+'%';document.getElementById('pt').textContent=done+' de '+TOTAL+' pasos completados';if(done===TOTAL){const c=document.getElementById('celeb');c.classList.add('on');c.scrollIntoView({behavior:'smooth'});confetti();}}
+function reset(){if(!confirm('¿Reiniciar?'))return;localStorage.removeItem(KEY);document.querySelectorAll('.scb').forEach(cb=>{cb.checked=false;});for(let i=1;i<=TOTAL;i++)mark(i,false);document.getElementById('celeb').classList.remove('on');upd();}
+function confetti(){const c=document.getElementById('cnf'),ctx=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const ps=Array.from({length:130},()=>({x:Math.random()*c.width,y:-10,r:Math.random()*7+3,d:Math.random()*3+1,col:['#0ea5e9','#22c55e','#f59e0b','#ec4899','#8b5cf6'][Math.floor(Math.random()*5)],ta:0,ts:Math.random()*.1+.05}));let f=0;(function draw(){ctx.clearRect(0,0,c.width,c.height);ps.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.col;ctx.fill();p.y+=p.d;p.ta+=p.ts;p.x+=Math.sin(p.ta);if(p.y>c.height){p.y=-10;p.x=Math.random()*c.width;}});if(++f<350)requestAnimationFrame(draw);else ctx.clearRect(0,0,c.width,c.height);})();}
+load();
+</script>
+</body>
+</html>

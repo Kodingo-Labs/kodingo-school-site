@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Clase 10 — Monedero de dinosaurio 🦕</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Nunito',sans-serif;background:#f0f9ff;color:#1e293b}.header{background:linear-gradient(135deg,#15803d,#22c55e);color:white;padding:32px 24px}.mod-badge{font-size:12px;font-weight:800;letter-spacing:2px;opacity:.8;text-transform:uppercase;margin-bottom:8px}.header-title{font-size:26px;font-weight:900;line-height:1.2;margin-bottom:16px}.badges{display:flex;gap:8px;flex-wrap:wrap}.badge{background:rgba(255,255,255,.2);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:700}.progress-wrap{background:white;padding:12px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.1)}.progress-label{font-size:12px;font-weight:700;color:#64748b;margin-bottom:6px}.prog-bar{height:8px;background:#e2e8f0;border-radius:999px}.prog-fill{height:100%;background:linear-gradient(90deg,#22c55e,#16a34a);border-radius:999px;transition:width .4s ease}main{max-width:720px;margin:0 auto;padding:24px 16px 120px}.card{background:white;border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.06)}.card-title{font-size:20px;font-weight:800;margin-bottom:16px}.objetivo-box{font-size:16px;font-weight:700;line-height:1.6;color:#15803d;background:#dcfce7;padding:16px;border-radius:12px;border-left:4px solid #22c55e}.resultado-tag{display:inline-block;background:#dcfce7;color:#15803d;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:800;margin-top:12px}.glos-item{border:2px solid #bbf7d0;border-radius:12px;padding:14px;margin-bottom:10px}.glos-term{font-size:16px;font-weight:800;color:#15803d;margin-bottom:4px}.glos-def{font-size:14px;color:#475569;line-height:1.5}.glos-tip{font-size:13px;color:#22c55e;font-weight:700;margin-top:6px}.step{display:flex;gap:16px;align-items:flex-start;padding:16px;border-radius:12px;margin-bottom:12px;border:2px solid #e2e8f0;transition:all .3s}.step.done{background:#f0fdf4;border-color:#22c55e}.s-num{width:40px;height:40px;min-width:40px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#64748b;transition:all .3s}.step.done .s-num{background:#22c55e;color:white}.s-body{flex:1}.s-title{font-size:16px;font-weight:800;margin-bottom:8px}.s-cb{margin-left:auto;width:28px;height:28px;cursor:pointer;accent-color:#22c55e}.sub{margin-top:8px}.sub-row{display:flex;gap:10px;margin-bottom:8px;font-size:14px;line-height:1.5}.sub-lbl{font-weight:900;color:#15803d;min-width:22px}.see{background:#f0fdf4;border:2px solid #22c55e;border-radius:10px;padding:12px 14px;margin-top:10px;font-size:13px;font-weight:700;color:#15803d}.see::before{content:"✅ Lo que deberías ver: "}.warn{background:#fffbeb;border:2px solid #f59e0b;border-radius:10px;padding:12px 14px;margin-top:8px;font-size:13px;font-weight:700;color:#92400e}.warn::before{content:"⚠️ Si algo va mal: "}.yay{background:#fef3c7;border-radius:10px;padding:12px;margin-top:10px;font-size:14px;font-weight:800;color:#92400e;text-align:center}.tink-block{background:#fdf4ff;border:2px solid #d8b4fe;border-radius:12px;padding:18px;margin-bottom:12px}.tink-h{font-size:14px;font-weight:800;color:#7c3aed;margin-bottom:10px}.tink-row{display:flex;gap:8px;margin-bottom:8px;font-size:14px;line-height:1.5}.tink-num{font-weight:900;color:#7c3aed;min-width:22px}.tink-see{background:#f5f3ff;border:2px solid #a78bfa;border-radius:10px;padding:12px 14px;margin-top:10px;font-size:13px;font-weight:700;color:#5b21b6}.tink-see::before{content:"🟣 En Tinkercad verás: "}.soportes-box{background:#fef3c7;border:3px solid #f59e0b;border-radius:16px;padding:20px;margin-bottom:16px}.soportes-box h3{font-size:18px;font-weight:900;color:#92400e;margin-bottom:8px}.wait-row{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:10px;background:#f0fdf4;border:2px solid #bbf7d0;margin-bottom:8px;font-size:14px;font-weight:600}.wait-icon{font-size:20px;min-width:28px}.desafio{background:#fffbeb;border:3px solid #f59e0b;border-radius:16px;padding:20px}.desafio h3{font-size:18px;font-weight:900;color:#92400e;margin-bottom:8px}.desafio p{font-size:15px;color:#78350f;line-height:1.6}.cfg-card{background:#f0fdf4;border:2px solid #bbf7d0}.cfg-table{width:100%;border-collapse:collapse}.cfg-table tr:nth-child(odd){background:#dcfce7}.cfg-table td{padding:10px 14px;font-size:14px}.cfg-table td:first-child{font-weight:800;color:#15803d}.quiz-q{background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;padding:16px;margin-bottom:12px}.quiz-q p{font-size:15px;font-weight:800;margin-bottom:10px}.quiz-opts{list-style:none}.quiz-opts li{padding:8px 12px;border-radius:8px;margin-bottom:6px;font-size:14px;font-weight:600}.quiz-opts li.ok{background:#dcfce7;color:#15803d;font-weight:800}.quiz-opts li.no{color:#94a3b8}.padres-box{background:#f8fafc;border:2px solid #cbd5e1;border-radius:12px;padding:20px}.padres-box h3{font-size:15px;font-weight:800;margin-bottom:8px;color:#334155;margin-top:14px}.padres-box h3:first-child{margin-top:0}.padres-box ul{padding-left:16px}.padres-box li{font-size:14px;line-height:1.7;color:#475569}.prob{background:white;border:2px solid #fca5a5;border-radius:10px;padding:12px;margin-bottom:8px}.prob-t{font-weight:800;color:#dc2626;margin-bottom:4px;font-size:14px}.prob-fix{color:#475569;font-size:13px;line-height:1.5}.sabias{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:2px solid #bbf7d0}.sabias p{font-size:15px;line-height:1.6}.celeb{display:none;background:linear-gradient(135deg,#22c55e,#15803d);border-radius:20px;padding:40px 24px;text-align:center;margin-top:20px}.celeb.on{display:block;animation:pop .6s ease}@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}.celeb-ico{font-size:64px;margin-bottom:16px;animation:bob 1s infinite}@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}.celeb-t{font-size:26px;font-weight:900;color:white;margin-bottom:12px}.celeb-txt{font-size:15px;color:#dcfce7;line-height:1.7}#cnf{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999}.foot{position:fixed;bottom:0;left:0;right:0;background:white;border-top:2px solid #e2e8f0;padding:12px 24px;display:flex;gap:12px;justify-content:space-between;align-items:center;box-shadow:0 -4px 16px rgba(0,0,0,.1)}.btn-nav{padding:12px 24px;border-radius:999px;font-family:Nunito;font-size:15px;font-weight:800;border:none;cursor:pointer;text-decoration:none;display:inline-block}.btn-prev{background:#f1f5f9;color:#475569}.btn-next{background:linear-gradient(135deg,#22c55e,#15803d);color:white}.btn-reset{font-size:12px;color:#94a3b8;background:none;border:none;cursor:pointer;font-family:Nunito;font-weight:700}@media(max-width:600px){.header-title{font-size:20px}main{padding:16px 12px 100px}}</style>
+</head>
+<body>
+<canvas id="cnf"></canvas>
+<header class="header">
+  <div class="mod-badge">Módulo 4 — Objetos Avanzados · Clase 10</div>
+  <div class="header-title">🦕 Monedero de dinosaurio</div>
+  <div class="badges">
+    <span class="badge">⏱️ 60 min clase</span>
+    <span class="badge">🖨️ 60 min impresión</span>
+    <span class="badge">⭐⭐⭐⭐ Dificultad 4/5</span>
+    <span class="badge">🎨 Diseña avanzado</span>
+    <span class="badge">🏗️ Con soportes</span>
+  </div>
+</header>
+<div class="progress-wrap">
+  <div class="progress-label">Tu progreso: <span id="pt">0 de 11 pasos completados</span></div>
+  <div class="prog-bar"><div class="prog-fill" id="pf" style="width:0%"></div></div>
+</div>
+<main>
+
+<div class="card">
+  <div class="card-title">🎯 ¿Qué vas a lograr hoy?</div>
+  <div class="objetivo-box">¡Bienvenido al Módulo 4! Los proyectos de ahora son más complejos — tienen más partes, más tiempo de impresión y usan técnicas nuevas. Hoy vas a diseñar un <strong>monedero/alcancía con forma de dinosaurio</strong>: un cuerpo rectangular hueco con una cabeza de dino decorativa. La primera vez que usamos <strong>soportes</strong> para que se imprima sin caerse.</div>
+  <span class="resultado-tag">🏆 Tu resultado: Un monedero caja con decoración de dino que puedes guardar monedas o cosas pequeñas</span>
+</div>
+
+<div class="card">
+  <div class="card-title">📖 Palabras de hoy</div>
+  <div class="glos-item">
+    <div class="glos-term">🏗️ Soportes (Supports)</div>
+    <div class="glos-def">Estructuras temporales que la impresora construye para sostener partes del diseño que están "en el aire". Después de imprimir, los quitas a mano. Son como los andamios de una construcción.</div>
+    <div class="glos-tip">💡 Si un dinosaurio tiene la cola levantada, necesita soportes debajo — si no, la impresora intentaría imprimir plástico en el aire (¡y caería!).</div>
+  </div>
+  <div class="glos-item">
+    <div class="glos-term">🦕 Partes que sobresalen</div>
+    <div class="glos-def">Partes del diseño que "cuelgan" sin apoyo debajo. El dino puede tener una cabeza, patas o cola que sobresalen del cuerpo principal.</div>
+    <div class="glos-tip">💡 La regla general: si una parte forma un ángulo mayor a 45° con la horizontal, necesita soporte. Bambu Studio lo detecta automáticamente.</div>
+  </div>
+  <div class="glos-item">
+    <div class="glos-term">📐 Escalar proporcionalmente</div>
+    <div class="glos-def">Cambiar el tamaño manteniendo las proporciones exactas. Si escalas al 200%, todo se hace el doble de grande en todos los lados al mismo tiempo.</div>
+    <div class="glos-tip">💡 Es como usar el zoom en una foto — todo crece junto. Si escalas solo el ancho, el objeto se "aplasta" o "estira".</div>
+  </div>
+</div>
+
+<div class="card" style="background:#fef3c7;border:3px solid #f59e0b">
+  <div class="card-title" style="color:#92400e">🏗️ ¡NOVEDAD: Soportes activados!</div>
+  <p style="font-size:15px;color:#78350f;line-height:1.8">Esta es la primera clase donde activamos <strong>soportes</strong> en Bambu Studio. Los soportes son estructuras de plástico que la impresora construye automáticamente para sostener partes del dino que están "en el aire". Después de imprimir, las retiras fácilmente doblándolas y tirando. <br><br>¡No te preocupes! Bambu Studio los configura solo — tú solo necesitas activar la opción.</p>
+</div>
+
+<div class="card">
+  <div class="card-title">🚀 Paso a paso</div>
+
+  <div class="step" id="s1">
+    <div class="s-num">1</div>
+    <div class="s-body">
+      <div class="s-title">Diseña el cuerpo del monedero (caja hueca)</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Nuevo diseño Tinkercad → <strong>"Monedero Dino"</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Arrastra un <strong>Box</strong>: <strong>80mm largo · 50mm ancho · 60mm alto</strong>. Este es el cuerpo del monedero.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Arrastra un segundo Box más pequeño: <strong>70mm largo · 40mm ancho · 55mm alto</strong>. Cámbialo a <strong>Hole</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>Centra el agujero sobre el cuerpo (Align) y sube 5mm desde abajo → base sólida de 5mm.</span></div>
+        <div class="sub-row"><span class="sub-lbl">e.</span><span>Selecciona ambos → Ctrl+G. ¡La caja hueca está lista!</span></div>
+      </div>
+      <div class="see">Una caja de paredes de 5mm hueca por dentro y fondo sólido. Desde arriba se ve el espacio interior.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="1" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s2">
+    <div class="s-num">2</div>
+    <div class="s-body">
+      <div class="s-title">Crea la ranura para monedas en la tapa</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Arrastra un Box pequeño: <strong>30mm largo · 4mm ancho · 3mm alto</strong>. Cámbialo a <strong>Hole</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Posiciona este "agujero ranura" en la parte superior central de la caja.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Selecciona la caja + la ranura → Ctrl+G. ¡Ahora la caja tiene la ranura para monedas!</span></div>
+      </div>
+      <div class="see">La caja tiene una ranura rectangular en la parte superior — por ahí entran las monedas.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="2" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s3">
+    <div class="s-num">3</div>
+    <div class="s-body">
+      <div class="s-title">Agrega la cabeza del dinosaurio</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Para la cabeza: usa un <strong>Box</strong> redondeado o un <strong>Sphere</strong> como base.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Tamaño de la cabeza: <strong>35mm largo · 25mm ancho · 25mm alto</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Posiciona la cabeza en la parte superior-frontal de la caja, sobresaliendo un poco hacia afuera.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>Agrega dos esferas pequeñas (6mm) como ojos sobre la cabeza.</span></div>
+      </div>
+      <div class="see">La caja con una cabeza de dino decorativa en la parte de arriba-adelante. Los ojos son dos pequeñas esferas.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="3" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s4">
+    <div class="s-num">4</div>
+    <div class="s-body">
+      <div class="s-title">Agrega patas simples (opcional)</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>4 Cylinders de <strong>10mm diámetro · 15mm alto</strong> como patas en las esquinas de la base de la caja.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Posiciona cada pata en una esquina, ligeramente hacia afuera.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Si se te hace muy complicado, omite las patas — el monedero queda bien sin ellas.</span></div>
+      </div>
+      <div class="see">El dino tiene 4 patas en las esquinas que lo elevan del suelo, como un dinosaurio de pie.</div>
+      <div class="warn">Las patas que sobresalen hacia afuera necesitarán soportes al imprimir. Bambu Studio los generará automáticamente — no te preocupes.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="4" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s5">
+    <div class="s-num">5</div>
+    <div class="s-body">
+      <div class="s-title">Agrupa todo el diseño final</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Selecciona todos los elementos (caja + cabeza + ojos + patas).</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Ctrl + G → todo se fusiona en un objeto.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Rota la vista para verificar el diseño desde todos los ángulos.</span></div>
+      </div>
+      <div class="see">El monedero-dino completo como un solo objeto. Cuerpo rectangular, cabeza de dino arriba, patas abajo (si las agregaste).</div>
+      <div class="yay">🎉 ¡El diseño del dino está listo! El más complejo que has hecho hasta ahora.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="5" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s6">
+    <div class="s-num">6</div>
+    <div class="s-body">
+      <div class="s-title">Exporta STL y abre en Bambu Studio</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Exportar → .STL → Descargas.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Arrastra a Bambu Studio → selecciona 0.20mm Standard.</span></div>
+      </div>
+      <div class="see">El dino en Bambu Studio — verás que es el objeto más complejo que has importado hasta ahora.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="6" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s7">
+    <div class="s-num">7</div>
+    <div class="s-body">
+      <div class="s-title">¡ACTIVA LOS SOPORTES! — Paso más importante</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>En Bambu Studio, busca la sección <strong>"Support"</strong> en el panel izquierdo de configuración.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Activa la opción <strong>"Enable Support"</strong> o <strong>"Soportes automáticos"</strong> (poner en ON).</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Selecciona tipo de soporte: <strong>"Normal"</strong> (el tipo por defecto).</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>Haz clic en <strong>Slice</strong> y observa — las partes que necesitan soporte se ven en color diferente (naranja o amarillo).</span></div>
+      </div>
+      <div class="see">Después del Slice, las partes colgantes (cabeza, patas) tienen estructuras de soporte de color diferente debajo. El tiempo estimado sube a ~60 minutos.</div>
+      <div class="warn">Si olvidas activar los soportes, las partes que cuelgan quedarán "spaghetti" — filamento que cae al aire y se enreda. Siempre verifica el Slice antes de imprimir.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="7" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s8">
+    <div class="s-num">8</div>
+    <div class="s-body">
+      <div class="s-title">Envía a la Bambu Lab A1 y confirma</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Botón de imprimir → Bambu Lab A1 → Print.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Confirma en la pantalla táctil.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Observa cómo la impresora construye los soportes junto con el objeto.</span></div>
+      </div>
+      <div class="see">La impresora construye el dino y los soportes simultáneamente. Los soportes son estructuras más delgadas alrededor de las partes que cuelgan.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="8" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s9">
+    <div class="s-num">9</div>
+    <div class="s-body">
+      <div class="s-title">Saca el dino y retira los soportes</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Pitido → espera → dobla placa → saca el dino. Verás los soportes adjuntos.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span><strong>Con cuidado:</strong> dobla los soportes con los dedos o usa una herramienta de plástico. Los soportes están diseñados para romperse fácil — no necesitas cortarlos.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Tira de los soportes hacia afuera. Puede quedar alguna marca rugosa donde estaban — es normal.</span></div>
+      </div>
+      <div class="see">El dino sin soportes. Puede quedar alguna superficie ligeramente rugosa donde estaban los soportes — eso es normal y puede lijarse suavemente.</div>
+      <div class="warn">Si los soportes no salen fácil, no uses fuerza bruta — puedes romper el objeto. Pídele al adulto que use una herramienta delgada de plástico para aflojarlos primero.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="9" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s10">
+    <div class="s-num">10</div>
+    <div class="s-body">
+      <div class="s-title">Verifica que la ranura de monedas funciona</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Toma una moneda de 5, 10 o 25 centavos.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>¿Entra por la ranura? Si la ranura es muy estrecha (la moneda tiene ~1.5mm de grosor), puede que necesites un poco de lijado o reimprimir con 5mm de ancho en vez de 4mm.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Echa varias monedas y escucha el sonido al caer adentro. ¡El monedero funciona!</span></div>
+      </div>
+      <div class="see">Las monedas entran por la ranura y se escuchan caer al interior hueco del dino. El monedero está listo para guardar tus ahorros.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="10" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s11">
+    <div class="s-num">11</div>
+    <div class="s-body">
+      <div class="s-title">Pon el monedero-dino en tu cuarto</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Elige el lugar perfecto en tu cuarto — el escritorio o la mesita de noche.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Para sacar las monedas: en el siguiente diseño mejorado puedes agregar una tapa inferior removible o un agujero más grande.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Decora el dino con marcadores permanentes si quieres darle más personalidad.</span></div>
+      </div>
+      <div class="see">El dino en su lugar en el cuarto de Mateo, listo para recibir monedas y ahorros.</div>
+      <div class="yay">🦕 ¡Rawr! El monedero-dinosaurio de Mateo está completo. ¡El objeto imprimido más grande y complejo hasta ahora!</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="11" onchange="chk(this)">
+  </div>
+</div>
+
+<div class="card" style="background:#fdf4ff;border:2px solid #d8b4fe">
+  <div class="card-title" style="color:#7c3aed">🟠 Tinkercad — Diseño con múltiples partes</div>
+  <div class="tink-block">
+    <div class="tink-h">🧩 Estrategia para diseños complejos</div>
+    <div class="tink-row"><span class="tink-num">1.</span><span><strong>Empieza con la parte principal:</strong> La caja/cuerpo. Hazla correcta antes de agregar decoración.</span></div>
+    <div class="tink-row"><span class="tink-num">2.</span><span><strong>Agrega funcionalidad:</strong> El agujero interior + la ranura de monedas. Verifica que funcionen correctamente.</span></div>
+    <div class="tink-row"><span class="tink-num">3.</span><span><strong>Decora al final:</strong> La cabeza, ojos, patas. Si algo sale mal con la decoración, no afecta la funcionalidad.</span></div>
+    <div class="tink-row"><span class="tink-num">4.</span><span><strong>Ctrl+G al final:</strong> Solo agrupa cuando todo está posicionado correctamente.</span></div>
+    <div class="tink-see">Un proceso de diseño organizado evita tener que rehacer todo desde el principio. Igual que construir una casa: primero los cimientos, luego las paredes, luego la decoración.</div>
+  </div>
+  <div class="tink-block">
+    <div class="tink-h">📐 Escalar proporcionalmente en Tinkercad</div>
+    <div class="tink-row"><span class="tink-num">→</span><span>Selecciona el objeto → aparece el cubo con puntitos blancos en las esquinas.</span></div>
+    <div class="tink-row"><span class="tink-num">→</span><span>Arrastra desde una esquina (no desde el centro de un lado) → escala en todas las dimensiones al mismo tiempo.</span></div>
+    <div class="tink-row"><span class="tink-num">→</span><span>O usa los campos numéricos: activa el candadito 🔒 entre los campos de dimensiones para que cambiar uno cambie todos proporcionalmente.</span></div>
+    <div class="tink-see">Si el dino mide 80×50×60mm y lo escalas al 150%, quedará en 120×75×90mm manteniendo exactamente las mismas proporciones.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">⏳ Mientras el dino se imprime... (60 min)</div>
+  <div class="wait-row"><span class="wait-icon">👀</span><span><strong>Observa los soportes:</strong> Mira cómo la impresora construye tanto el dino como los soportes. ¿Puedes distinguir cuál es el objeto y cuáles son los soportes por el patrón de impresión?</span></div>
+  <div class="wait-row"><span class="wait-icon">🦕</span><span><strong>Investiga sobre dinosaurios:</strong> El Stegosaurus tenía placas dorsales. ¿Cómo agregarías placas al diseño de tu dino? ¿Cuántos soportes necesitarían?</span></div>
+  <div class="wait-row"><span class="wait-icon">💰</span><span><strong>Cuenta tus monedas:</strong> ¿Cuántas monedas caben en un espacio de 70×40×55mm? Calcula el volumen y compara con una moneda real.</span></div>
+  <div class="wait-row"><span class="wait-icon">✏️</span><span><strong>Versión 2.0:</strong> ¿Qué mejorarías del diseño? ¿Le pondrías una tapa? ¿Lo harías más grande? ¿Le pondrías alas de pterodáctilo?</span></div>
+</div>
+
+<div class="card"><div class="desafio"><h3>💡 El desafío del día</h3><p>¿Puedes crear una <strong>tapa</strong> para el monedero? Sería un rectángulo del mismo tamaño de la abertura superior (70×40mm) con una pequeña pestaña para agarrarla. Imprime la tapa por separado y verifica que encaje perfectamente.</p></div></div>
+
+<div class="card">
+  <div class="card-title">🤔 Mini quiz</div>
+  <div class="quiz-q"><p>1. ¿Para qué sirven los soportes en la impresión 3D?</p><ul class="quiz-opts"><li class="ok">a) Para sostener partes del diseño que están "en el aire" durante la impresión ✅</li><li class="no">b) Para hacer el objeto más resistente</li><li class="no">c) Para imprimir más rápido</li></ul></div>
+  <div class="quiz-q"><p>2. Después de imprimir, ¿qué haces con los soportes?</p><ul class="quiz-opts"><li class="no">a) Los dejas — son parte del diseño final</li><li class="ok">b) Los retiras doblándolos o tirando de ellos, ya que están diseñados para romperse ✅</li><li class="no">c) Los cortas con tijeras de metal</li></ul></div>
+  <div class="quiz-q"><p>3. Para escalar el dino al doble de tamaño manteniendo las proporciones, ¿qué haces?</p><ul class="quiz-opts"><li class="no">a) Cambiar solo el alto al doble</li><li class="ok">b) Activar el candadito de proporciones y cambiar una dimensión al 200% ✅</li><li class="no">c) Duplicar el objeto y ponerlo al lado</li></ul></div>
+</div>
+
+<div class="card cfg-card">
+  <div class="card-title" style="color:#15803d">⚙️ Configuración — Bambu Lab A1</div>
+  <table class="cfg-table">
+    <tr><td>🖨️ Impresora</td><td>Bambu Lab A1</td></tr>
+    <tr><td>🎨 Filamento</td><td>PLA</td></tr>
+    <tr><td>📐 Altura de capa</td><td>0.20mm Standard</td></tr>
+    <tr><td>⚡ Velocidad</td><td>Standard</td></tr>
+    <tr><td>🏗️ Soportes</td><td>✅ SÍ — Normal Support</td></tr>
+    <tr><td>🟫 Placa</td><td>Texturizada</td></tr>
+    <tr><td>🔁 Relleno</td><td>15%</td></tr>
+    <tr><td>🕐 Tiempo</td><td>~60 minutos (con soportes)</td></tr>
+  </table>
+</div>
+
+<div class="card sabias"><div class="card-title">💡 ¿Sabías que...?</div><p>Los soportes son uno de los temas más investigados en la impresión 3D. Ingenieros trabajan para crear soportes que sean resistentes durante la impresión pero muy fáciles de quitar después. Las máquinas profesionales usan soportes de un material especial que se disuelve en agua — ¡solo metes la pieza en agua y los soportes desaparecen!</p></div>
+
+<div class="card">
+  <div class="card-title">🧑‍🏫 Para quien acompaña a Mateo</div>
+  <div class="padres-box">
+    <h3>✅ Lo que Mateo aprendió hoy</h3>
+    <ul><li>Qué son los soportes y cuándo usarlos</li><li>Diseño multi-parte: cuerpo + funcionalidad + decoración en orden</li><li>Cómo escalar objetos proporcionalmente en Tinkercad</li><li>Retirar soportes post-impresión sin dañar el objeto</li></ul>
+    <h3>⚠️ Posibles problemas</h3>
+    <div class="prob"><div class="prob-t">Los soportes no se retiran fácilmente</div><div class="prob-fix">Usar una herramienta de plástico delgada (palito de madera, espátula de plástico) para aflojar los soportes antes de jalar. Nunca usar fuerza bruta. Si la pieza se rompe, el diseño necesita soportes con menor densidad de contacto.</div></div>
+    <div class="prob"><div class="prob-t">La ranura es muy estrecha para las monedas</div><div class="prob-fix">Reimprimir con la ranura de 5mm de ancho en vez de 4mm. Las monedas peruanas tienen ~1.5-2mm de grosor según la denominación. Una ranura de 4mm suele ser suficiente pero puede ser difícil al principio.</div></div>
+    <h3>🏠 Refuerzo en casa</h3>
+    <p style="font-size:14px;color:#475569;line-height:1.6">Usar el monedero genuinamente. Cuando esté lleno, vaciarlo con Mateo — es una oportunidad para hablar de ahorro. El monedero tendrá más significado si se usa de verdad.</p>
+  </div>
+</div>
+
+<div class="celeb" id="celeb">
+  <div class="celeb-ico">🦕</div>
+  <div class="celeb-t">¡Rawr! ¡Bienvenido al Módulo 4, Mateo!</div>
+  <div class="celeb-txt">¡Terminaste el proyecto más complejo hasta ahora! Un monedero funcional con diseño decorativo, soportes y múltiples partes. Los ingenieros de producto hacen exactamente esto todos los días: diseñar algo que funciona Y se ve bien.<br><br><strong>La próxima clase vas a diseñar algo que usa el sol para sobrevivir: ¡una maceta para plantas! Vas a aprender sobre diseño orgánico y el importantísimo agujero de drenaje.</strong></div>
+</div>
+
+</main>
+<footer class="foot">
+  <a href="../../clase9/v1/clase.html" class="btn-nav btn-prev">⬅️ Clase 9</a>
+  <button class="btn-reset" onclick="reset()">↺ Reiniciar</button>
+  <a href="../../clase11/v1/clase.html" class="btn-nav btn-next">Clase 11 ➡️</a>
+</footer>
+<script>
+const KEY='studio3d-clase10',TOTAL=11;
+function load(){const s=JSON.parse(localStorage.getItem(KEY)||'{}');document.querySelectorAll('.scb').forEach(cb=>{if(s[cb.dataset.n]){cb.checked=true;mark(cb.dataset.n,true);}});upd();}
+function chk(cb){const n=cb.dataset.n;mark(n,cb.checked);const s=JSON.parse(localStorage.getItem(KEY)||'{}');s[n]=cb.checked;localStorage.setItem(KEY,JSON.stringify(s));upd();}
+function mark(n,on){const el=document.getElementById('s'+n);const num=el.querySelector('.s-num');if(on){el.classList.add('done');num.textContent='✓';}else{el.classList.remove('done');num.textContent=n;}}
+function upd(){const done=document.querySelectorAll('.scb:checked').length;const p=done/TOTAL*100;document.getElementById('pf').style.width=p+'%';document.getElementById('pt').textContent=done+' de '+TOTAL+' pasos completados';if(done===TOTAL){const c=document.getElementById('celeb');c.classList.add('on');c.scrollIntoView({behavior:'smooth'});confetti();}}
+function reset(){if(!confirm('¿Reiniciar?'))return;localStorage.removeItem(KEY);document.querySelectorAll('.scb').forEach(cb=>{cb.checked=false;});for(let i=1;i<=TOTAL;i++)mark(i,false);document.getElementById('celeb').classList.remove('on');upd();}
+function confetti(){const c=document.getElementById('cnf'),ctx=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const ps=Array.from({length:130},()=>({x:Math.random()*c.width,y:-10,r:Math.random()*7+3,d:Math.random()*3+1,col:['#22c55e','#86efac','#f59e0b','#ec4899','#8b5cf6'][Math.floor(Math.random()*5)],ta:0,ts:Math.random()*.1+.05}));let f=0;(function draw(){ctx.clearRect(0,0,c.width,c.height);ps.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.col;ctx.fill();p.y+=p.d;p.ta+=p.ts;p.x+=Math.sin(p.ta);if(p.y>c.height){p.y=-10;p.x=Math.random()*c.width;}});if(++f<350)requestAnimationFrame(draw);else ctx.clearRect(0,0,c.width,c.height);})();}
+load();
+</script>
+</body>
+</html>

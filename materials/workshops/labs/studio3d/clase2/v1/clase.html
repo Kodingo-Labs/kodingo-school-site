@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Clase 2 — ¿Cómo funciona la magia? 🔍</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Nunito',sans-serif;background:#f0f9ff;color:#1e293b}.header{background:linear-gradient(135deg,#0369a1,#0ea5e9);color:white;padding:32px 24px}.mod-badge{font-size:12px;font-weight:800;letter-spacing:2px;opacity:.8;text-transform:uppercase;margin-bottom:8px}.header-title{font-size:26px;font-weight:900;line-height:1.2;margin-bottom:16px}.badges{display:flex;gap:8px;flex-wrap:wrap}.badge{background:rgba(255,255,255,.2);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:700}.progress-wrap{background:white;padding:12px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.1)}.progress-label{font-size:12px;font-weight:700;color:#64748b;margin-bottom:6px}.prog-bar{height:8px;background:#e2e8f0;border-radius:999px}.prog-fill{height:100%;background:linear-gradient(90deg,#0ea5e9,#22c55e);border-radius:999px;transition:width .4s ease}main{max-width:720px;margin:0 auto;padding:24px 16px 120px}.card{background:white;border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.06)}.card-title{font-size:20px;font-weight:800;margin-bottom:16px}.objetivo-box{font-size:16px;font-weight:700;line-height:1.6;color:#0369a1;background:#e0f2fe;padding:16px;border-radius:12px;border-left:4px solid #0ea5e9}.resultado-tag{display:inline-block;background:#dcfce7;color:#15803d;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:800;margin-top:12px}.tools-wrap{display:flex;gap:10px;flex-wrap:wrap}.tool-pill{background:#f1f5f9;border:2px solid #e2e8f0;padding:10px 18px;border-radius:999px;font-size:14px;font-weight:700}.glos-item{border:2px solid #e0f2fe;border-radius:12px;padding:14px;margin-bottom:10px}.glos-term{font-size:16px;font-weight:800;color:#0369a1;margin-bottom:4px}.glos-def{font-size:14px;color:#475569;line-height:1.5}.glos-tip{font-size:13px;color:#0ea5e9;font-weight:700;margin-top:6px}.step{display:flex;gap:16px;align-items:flex-start;padding:16px;border-radius:12px;margin-bottom:12px;border:2px solid #e2e8f0;transition:all .3s}.step.done{background:#f0fdf4;border-color:#22c55e}.s-num{width:40px;height:40px;min-width:40px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#64748b;transition:all .3s}.step.done .s-num{background:#22c55e;color:white}.s-body{flex:1}.s-title{font-size:16px;font-weight:800;margin-bottom:8px}.s-cb{margin-left:auto;width:28px;height:28px;cursor:pointer;accent-color:#22c55e}.sub{margin-top:8px}.sub-row{display:flex;gap:10px;margin-bottom:8px;font-size:14px;line-height:1.5}.sub-lbl{font-weight:900;color:#0369a1;min-width:22px}.see{background:#f0fdf4;border:2px solid #22c55e;border-radius:10px;padding:12px 14px;margin-top:10px;font-size:13px;font-weight:700;color:#15803d}.see::before{content:"✅ Lo que deberías ver: "}.warn{background:#fffbeb;border:2px solid #f59e0b;border-radius:10px;padding:12px 14px;margin-top:8px;font-size:13px;font-weight:700;color:#92400e}.warn::before{content:"⚠️ Si algo va mal: "}.yay{background:#fef3c7;border-radius:10px;padding:12px;margin-top:10px;font-size:14px;font-weight:800;color:#92400e;text-align:center}.guide-block{background:#f0f9ff;border:2px solid #7dd3fc;border-radius:12px;padding:18px;margin-bottom:12px}.guide-h{font-size:14px;font-weight:800;color:#0369a1;margin-bottom:10px}.guide-row{display:flex;gap:8px;margin-bottom:8px;font-size:14px;line-height:1.5}.guide-num{font-weight:900;color:#0369a1;min-width:22px}.wait-row{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:10px;background:#faf5ff;border:2px solid #e9d5ff;margin-bottom:8px;font-size:14px;font-weight:600}.wait-icon{font-size:20px;min-width:28px}.desafio{background:#fffbeb;border:3px solid #f59e0b;border-radius:16px;padding:20px}.desafio h3{font-size:18px;font-weight:900;color:#92400e;margin-bottom:8px}.desafio p{font-size:15px;color:#78350f;line-height:1.6}.cfg-card{background:#f0f9ff;border:2px solid #bae6fd}.cfg-table{width:100%;border-collapse:collapse}.cfg-table tr:nth-child(odd){background:#e0f2fe}.cfg-table td{padding:10px 14px;font-size:14px}.cfg-table td:first-child{font-weight:800;color:#0369a1}.cfg-note{font-size:13px;color:#0369a1;margin-bottom:12px;line-height:1.5}.quiz-q{background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;padding:16px;margin-bottom:12px}.quiz-q p{font-size:15px;font-weight:800;margin-bottom:10px}.quiz-opts{list-style:none}.quiz-opts li{padding:8px 12px;border-radius:8px;margin-bottom:6px;font-size:14px;font-weight:600}.quiz-opts li.ok{background:#dcfce7;color:#15803d;font-weight:800}.quiz-opts li.no{color:#94a3b8}.padres-box{background:#f8fafc;border:2px solid #cbd5e1;border-radius:12px;padding:20px}.padres-box h3{font-size:15px;font-weight:800;margin-bottom:8px;color:#334155;margin-top:14px}.padres-box h3:first-child{margin-top:0}.padres-box ul{padding-left:16px}.padres-box li{font-size:14px;line-height:1.7;color:#475569}.prob{background:white;border:2px solid #fca5a5;border-radius:10px;padding:12px;margin-bottom:8px}.prob-t{font-weight:800;color:#dc2626;margin-bottom:4px;font-size:14px}.prob-fix{color:#475569;font-size:13px;line-height:1.5}.sabias{background:linear-gradient(135deg,#fdf4ff,#fae8ff);border:2px solid #e9d5ff}.sabias p{font-size:15px;line-height:1.6}.celeb{display:none;background:linear-gradient(135deg,#fbbf24,#f59e0b);border-radius:20px;padding:40px 24px;text-align:center;margin-top:20px}.celeb.on{display:block;animation:pop .6s ease}@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}.celeb-ico{font-size:64px;margin-bottom:16px;animation:bob 1s infinite}@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}.celeb-t{font-size:26px;font-weight:900;color:#451a03;margin-bottom:12px}.celeb-txt{font-size:15px;color:#78350f;line-height:1.7}#cnf{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999}.foot{position:fixed;bottom:0;left:0;right:0;background:white;border-top:2px solid #e2e8f0;padding:12px 24px;display:flex;gap:12px;justify-content:space-between;align-items:center;box-shadow:0 -4px 16px rgba(0,0,0,.1)}.btn-nav{padding:12px 24px;border-radius:999px;font-family:Nunito;font-size:15px;font-weight:800;border:none;cursor:pointer;text-decoration:none;display:inline-block}.btn-prev{background:#f1f5f9;color:#475569}.btn-next{background:linear-gradient(135deg,#0ea5e9,#0369a1);color:white}.btn-dis{opacity:.4;pointer-events:none;cursor:default}.btn-reset{font-size:12px;color:#94a3b8;background:none;border:none;cursor:pointer;font-family:Nunito;font-weight:700}@media(max-width:600px){.header-title{font-size:20px}main{padding:16px 12px 100px}}
+</style>
+</head>
+<body>
+<canvas id="cnf"></canvas>
+
+<header class="header">
+  <div class="mod-badge">Módulo 1 — ¡Primero Imprimimos! · Clase 2 de 3</div>
+  <div class="header-title">🔍 ¿Cómo funciona la magia? Observamos cada capa</div>
+  <div class="badges">
+    <span class="badge">⏱️ 30 min clase</span>
+    <span class="badge">🖨️ 25 min impresión</span>
+    <span class="badge">⭐ Dificultad 1/5</span>
+    <span class="badge">🔰 Solo observamos e imprimimos</span>
+  </div>
+</header>
+
+<div class="progress-wrap">
+  <div class="progress-label">Tu progreso: <span id="pt">0 de 7 pasos completados</span></div>
+  <div class="prog-bar"><div class="prog-fill" id="pf" style="width:0%"></div></div>
+</div>
+
+<main>
+
+<div class="card">
+  <div class="card-title">🎯 ¿Qué vas a lograr hoy?</div>
+  <div class="objetivo-box">¿Recuerdas que en la Clase 1 aprendiste a usar Bambu Studio? ¡Hoy vas a usarlo de nuevo! Pero esta vez vas a imprimir una figura simple y te vas a convertir en un <strong>detective de la impresión 3D</strong>: vas a descubrir exactamente cómo funciona la magia de las capas.</div>
+  <span class="resultado-tag">🏆 Tu resultado: Una figura sólida (cubo o esfera) que puedes examinar y entender cómo fue construida</span>
+</div>
+
+<div class="card">
+  <div class="card-title">🛠️ Lo que necesitas hoy</div>
+  <div class="tools-wrap">
+    <span class="tool-pill">🖨️ Bambu Lab A1</span>
+    <span class="tool-pill">💻 Bambu Studio</span>
+    <span class="tool-pill">🧵 Filamento PLA</span>
+    <span class="tool-pill">📁 Archivo cubo.stl (descargado)</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">📖 Palabras de hoy — ¡Tu glosario!</div>
+  <div class="glos-item">
+    <div class="glos-term">🔩 Nozzle (el pico de la impresora)</div>
+    <div class="glos-def">La punta metálica muy pequeña por donde sale el plástico derretido. Es la parte que "dibuja" cada capa de tu objeto.</div>
+    <div class="glos-tip">💡 Es como la punta de un lápiz — pero en vez de grafito, escribe con plástico caliente a 220°C.</div>
+  </div>
+  <div class="glos-item">
+    <div class="glos-term">🌡️ Temperatura</div>
+    <div class="glos-def">La impresora necesita calentarse para poder derretir el filamento. El nozzle llega a 220°C y la cama a 60°C para PLA.</div>
+    <div class="glos-tip">💡 220°C es más caliente que el horno de tu cocina cuando horneas galletas (que llega a 180°C). ¡Por eso no se toca!</div>
+  </div>
+  <div class="glos-item">
+    <div class="glos-term">⚡ Velocidad de impresión</div>
+    <div class="glos-def">Qué tan rápido se mueve la cabeza impresora. Más rápido = imprime antes pero puede quedar menos liso. Más lento = más tiempo pero mejor calidad.</div>
+    <div class="glos-tip">💡 Es como escribir: si escribes muy rápido, la letra queda fea. Si escribes despacio, queda más prolija.</div>
+  </div>
+  <div class="glos-item">
+    <div class="glos-term">🔲 Relleno (infill)</div>
+    <div class="glos-def">El patrón interior del objeto. Un relleno de 15% significa que adentro hay pocas líneas cruzadas (como una red). Un relleno de 100% sería sólido como un bloque.</div>
+    <div class="glos-tip">💡 Es como el relleno de un sándwich: puedes poner poco relleno (más liviano) o mucho relleno (más pesado y resistente).</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">🚀 ¡La aventura comienza! — Paso a paso</div>
+
+  <div class="step" id="s1">
+    <div class="s-num">1</div>
+    <div class="s-body">
+      <div class="s-title">Abre Bambu Studio y carga el archivo</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>¿Recuerdas cómo abrir Bambu Studio? Haz <strong>doble clic</strong> en su ícono en el escritorio.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Arrastra el archivo <strong>cubo.stl</strong> (o esfera.stl) desde la carpeta Descargas hasta la cama gris de Bambu Studio.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>¡El cubo aparece en 3D sobre la cama!</span></div>
+      </div>
+      <div class="see">Un cubo o esfera naranja o gris sobre la cama de Bambu Studio.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="1" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s2">
+    <div class="s-num">2</div>
+    <div class="s-body">
+      <div class="s-title">Cambia el relleno (infill) a 50%</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Mira el panel derecho de Bambu Studio. Busca donde dice <strong>"Strength"</strong> o <strong>"Infill"</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>El valor dice 15% por defecto. Haz clic sobre ese número.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Bórralo y escribe <strong>50</strong>, luego presiona Enter.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>¿Por qué 50%? Así cuando cortemos el cubo al terminar, vamos a ver bien el patrón de relleno interno.</span></div>
+      </div>
+      <div class="see">El campo de Infill ahora dice 50%. (Si no encuentras el campo, pídele ayuda al adulto).</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="2" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s3">
+    <div class="s-num">3</div>
+    <div class="s-body">
+      <div class="s-title">Haz Slice y observa el interior</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Haz clic en el botón <strong>azul "Slice"</strong> arriba a la derecha.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Cuando termine, el cubo se ve de colores (las capas).</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Busca un <strong>slider</strong> (barra deslizable) a la derecha de la pantalla — deslízalo hacia abajo para "cortar" el cubo y ver su interior.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>¡Vas a ver el patrón de relleno interno! Parece una red o panal de abeja.</span></div>
+      </div>
+      <div class="see">Al deslizar el slider, el cubo se "abre" y ves las líneas internas en forma de red o zigzag — ese es el relleno al 50%.</div>
+      <div class="yay">🎉 ¡Acabas de ver el interior de tu objeto ANTES de imprimirlo! Como una radiografía 3D.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="3" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s4">
+    <div class="s-num">4</div>
+    <div class="s-body">
+      <div class="s-title">Observa el número de capas</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Mira abajo de la pantalla de Bambu Studio — dice cuántas <strong>capas (layers)</strong> tiene el cubo.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Anota ese número en un papel: ______ capas.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Desliza el slider hasta la primera capa y la última para ver cómo empieza y termina la impresión.</span></div>
+      </div>
+      <div class="see">Un número de capas (probablemente entre 50 y 150 para un cubo pequeño) mostrado en la interfaz.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="4" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s5">
+    <div class="s-num">5</div>
+    <div class="s-body">
+      <div class="s-title">Envía a imprimir</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Haz clic en el botón de <strong>imprimir</strong> (ícono de impresora con flecha).</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Selecciona <strong>Bambu Lab A1</strong> y haz clic en <strong>"Print"</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Ve a la impresora y toca el botón de confirmar en la pantalla táctil.</span></div>
+      </div>
+      <div class="see">La impresora comienza la secuencia de calentamiento.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="5" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s6">
+    <div class="s-num">6</div>
+    <div class="s-body">
+      <div class="s-title">Observa la primera capa con mucha atención</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Cuando la impresora empieza, <strong>acércate mucho</strong> (sin tocar) para ver la primera capa.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Observa cómo la cabeza traza primero el <strong>perímetro exterior</strong> del cubo (el borde).</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Luego rellena el interior haciendo un patrón en zigzag o red.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>¡Eso que ves ahora en pequeño es exactamente lo que viste en la pantalla con el slider!</span></div>
+      </div>
+      <div class="see">La cabeza traza líneas paralelas en el interior del cubo después de dibujar el borde exterior. Las líneas brillan porque el plástico está caliente.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="6" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s7">
+    <div class="s-num">7</div>
+    <div class="s-body">
+      <div class="s-title">Saca el cubo y examínalo</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Cuando termine la impresión y se enfríe, saca el cubo doblando la placa texturizada.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Mira el cubo de costado — ¿puedes ver las líneas de las capas?</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Tócalo con el dedo: ¿sientes las capas como una textura muy suave?</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>Si el adulto lo permite, pueden usar un cuchillo de plástico para cortar el cubo y ver el relleno interno.</span></div>
+      </div>
+      <div class="see">Un cubo sólido con capas visibles en los costados. Al cortarlo (si se puede), se ve el patrón interno de relleno al 50%.</div>
+      <div class="yay">🎉 ¡Ya sabes exactamente cómo funciona una impresora 3D por dentro y por fuera, Mateo!</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="7" onchange="chk(this)">
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">🖨️ ¿Qué está pasando en la impresora? — Guía visual</div>
+  <div class="guide-block">
+    <div class="guide-h">🔬 Qué observar durante la impresión del cubo</div>
+    <div class="guide-row"><span class="guide-num">1.</span><span><strong>El perímetro:</strong> La cabeza dibuja el borde del cubo primero, como trazar el contorno de un dibujo.</span></div>
+    <div class="guide-row"><span class="guide-num">2.</span><span><strong>El relleno:</strong> Después rellena el interior con líneas en diagonal o patrón de red — eso es el infill al 50%.</span></div>
+    <div class="guide-row"><span class="guide-num">3.</span><span><strong>El cambio de capa:</strong> Cuando termina una capa, la cama baja 0.2mm y la cabeza empieza la siguiente. Es casi imperceptible.</span></div>
+    <div class="guide-row"><span class="guide-num">4.</span><span><strong>El techo (top layers):</strong> Las últimas capas son más densas para cerrar bien la superficie del cubo.</span></div>
+  </div>
+  <div class="guide-block">
+    <div class="guide-h">⭐ Al terminar — Sacar el cubo</div>
+    <div class="guide-row"><span class="guide-num">1.</span><span>Espera el pitido de "Print Complete" y 2-3 minutos de enfriamiento.</span></div>
+    <div class="guide-row"><span class="guide-num">2.</span><span>Saca la placa y dóblala suavemente — el cubo se suelta solo.</span></div>
+    <div class="guide-row"><span class="guide-num">3.</span><span>Examina los costados: deberías ver las líneas de las capas al tacto.</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">⏳ Mientras la impresora trabaja... (25 minutos)</div>
+  <div class="wait-row"><span class="wait-icon">🕵️</span><span><strong>Sé un detective:</strong> Cuenta en voz alta cuántas veces sube el nozzle para empezar una nueva capa. ¿Puedes verlo subir?</span></div>
+  <div class="wait-row"><span class="wait-icon">📐</span><span><strong>Mide con los ojos:</strong> ¿El cubo crece de a poco o de repente? Marca con un lápiz en un papel el tamaño del cubo cada 5 minutos.</span></div>
+  <div class="wait-row"><span class="wait-icon">🔊</span><span><strong>Escucha:</strong> ¿La impresora hace distintos sonidos cuando rellena el interior vs cuando traza el borde exterior?</span></div>
+  <div class="wait-row"><span class="wait-icon">🎨</span><span><strong>Dibuja:</strong> En papel, dibuja cómo crees que se ve el interior del cubo. Luego compara con lo que viste en Bambu Studio.</span></div>
+</div>
+
+<div class="card">
+  <div class="desafio">
+    <h3>💡 El desafío del día</h3>
+    <p>¿Te atreves a imprimir el mismo cubo pero con relleno de <strong>5%</strong> en vez de 50%? Pídele al adulto que te ayude a cambiar ese número en Bambu Studio. ¿Notarás la diferencia de peso y resistencia entre los dos cubos?</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">🤔 ¿Qué aprendiste hoy? — Mini quiz</div>
+  <div class="quiz-q">
+    <p>1. ¿Cómo se llama la punta metálica por donde sale el plástico derretido?</p>
+    <ul class="quiz-opts">
+      <li class="no">a) La aguja</li>
+      <li class="ok">b) El nozzle ✅</li>
+      <li class="no">c) El motor</li>
+    </ul>
+  </div>
+  <div class="quiz-q">
+    <p>2. Un relleno (infill) de 15% es...</p>
+    <ul class="quiz-opts">
+      <li class="no">a) Completamente sólido por dentro</li>
+      <li class="ok">b) Tiene pocas líneas internas — es más liviano ✅</li>
+      <li class="no">c) No tiene ningún relleno, está completamente hueco</li>
+    </ul>
+  </div>
+  <div class="quiz-q">
+    <p>3. ¿A qué temperatura trabaja el nozzle con filamento PLA?</p>
+    <ul class="quiz-opts">
+      <li class="no">a) 60°C (temperatura de la cama)</li>
+      <li class="no">b) 80°C (temperatura del agua caliente)</li>
+      <li class="ok">c) ~220°C (más caliente que un horno de cocina) ✅</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card cfg-card">
+  <div class="card-title" style="color:#0369a1">⚙️ Configuración de impresión — Bambu Lab A1</div>
+  <p class="cfg-note">Hoy cambiamos el relleno a 50% (en vez del 15% normal) para poder ver claramente el patrón interno. En objetos normales usamos 15% porque es suficientemente resistente y usa menos plástico.</p>
+  <table class="cfg-table">
+    <tr><td>🖨️ Impresora</td><td>Bambu Lab A1</td></tr>
+    <tr><td>🎨 Filamento</td><td>PLA</td></tr>
+    <tr><td>📐 Altura de capa</td><td>0.2mm</td></tr>
+    <tr><td>⚡ Velocidad</td><td>Standard</td></tr>
+    <tr><td>🏗️ Soportes</td><td>No</td></tr>
+    <tr><td>🟫 Placa</td><td>Texturizada (Textured PEI)</td></tr>
+    <tr><td>🔁 Relleno (infill)</td><td>50% (especial para esta clase)</td></tr>
+    <tr><td>🕐 Tiempo estimado</td><td>~25 minutos</td></tr>
+  </table>
+</div>
+
+<div class="card sabias">
+  <div class="card-title">💡 ¿Sabías que...?</div>
+  <p>Las impresoras 3D profesionales pueden imprimir con metales, cerámica, ¡y hasta con chocolate! Pero la tecnología básica es la misma: capa por capa. Los ingenieros eligen el relleno exacto según para qué va a usarse la pieza — una pieza de avión necesita 100% de relleno, pero una figura decorativa solo necesita 15%.</p>
+</div>
+
+<div class="card">
+  <div class="card-title">🧑‍🏫 Para quien acompaña a Mateo</div>
+  <div class="padres-box">
+    <h3>✅ Lo que Mateo aprendió hoy</h3>
+    <ul>
+      <li>Qué es el nozzle y a qué temperatura trabaja</li>
+      <li>Qué es el relleno (infill) y cómo afecta al objeto</li>
+      <li>Cómo observar el proceso de impresión capa por capa</li>
+      <li>Cómo usar el slider de capas en Bambu Studio para "ver" el interior</li>
+    </ul>
+    <h3>⚠️ Posibles problemas y soluciones</h3>
+    <div class="prob">
+      <div class="prob-t">No aparece la opción de Infill en el panel</div>
+      <div class="prob-fix">El panel puede estar en modo simplificado. Hacer clic en "More settings" o "Advanced" para mostrar todas las opciones. También puede estar bajo la pestaña "Strength" en el panel derecho.</div>
+    </div>
+    <div class="prob">
+      <div class="prob-t">El slider de capas no aparece después del Slice</div>
+      <div class="prob-fix">El slider aparece solo después de hacer Slice. Buscar en el lado derecho de la ventana 3D un ícono de "capas". En versiones recientes de Bambu Studio está en la toolbar lateral derecha.</div>
+    </div>
+    <h3>🏠 Cómo reforzar en casa</h3>
+    <p style="font-size:14px;color:#475569;line-height:1.6">Cortar el cubo impreso con un cuchillo de cocina (el adulto hace el corte) para que Mateo vea el patrón de relleno interno. Compararlo con objetos del hogar: ¿qué objetos crees que son "sólidos" y cuáles tienen un relleno interno? (Ejemplo: una caja de cartón corrugado tiene "infill" también).</p>
+  </div>
+</div>
+
+<div class="celeb" id="celeb">
+  <div class="celeb-ico">🔍</div>
+  <div class="celeb-t">¡Lo lograste, detective Mateo!</div>
+  <div class="celeb-txt">
+    Hoy aprendiste el secreto de la impresión 3D: capas, nozzle, temperatura y relleno. ¡Ya no es magia — es ciencia! Ahora cuando ves un objeto de plástico, sabes exactamente cómo fue construido capa por capa.<br><br>
+    <strong>La próxima clase vas a imprimir algo más fino y detallado: un marcador de libros. Vas a aprender que cambiando solo un número (la altura de capa) el objeto queda completamente diferente.</strong>
+  </div>
+</div>
+
+</main>
+
+<footer class="foot">
+  <a href="../../clase1/v1/clase.html" class="btn-nav btn-prev">⬅️ Clase 1</a>
+  <button class="btn-reset" onclick="reset()">↺ Reiniciar progreso</button>
+  <a href="../../clase3/v1/clase.html" class="btn-nav btn-next">Clase 3 ➡️</a>
+</footer>
+
+<script>
+const KEY='studio3d-clase2',TOTAL=7;
+function load(){const s=JSON.parse(localStorage.getItem(KEY)||'{}');document.querySelectorAll('.scb').forEach(cb=>{if(s[cb.dataset.n]){cb.checked=true;mark(cb.dataset.n,true);}});upd();}
+function chk(cb){const n=cb.dataset.n;mark(n,cb.checked);const s=JSON.parse(localStorage.getItem(KEY)||'{}');s[n]=cb.checked;localStorage.setItem(KEY,JSON.stringify(s));upd();}
+function mark(n,on){const el=document.getElementById('s'+n);const num=el.querySelector('.s-num');if(on){el.classList.add('done');num.textContent='✓';}else{el.classList.remove('done');num.textContent=n;}}
+function upd(){const done=document.querySelectorAll('.scb:checked').length;const p=done/TOTAL*100;document.getElementById('pf').style.width=p+'%';document.getElementById('pt').textContent=done+' de '+TOTAL+' pasos completados';if(done===TOTAL){const c=document.getElementById('celeb');c.classList.add('on');c.scrollIntoView({behavior:'smooth'});confetti();}}
+function reset(){if(!confirm('¿Reiniciar el progreso de esta clase?'))return;localStorage.removeItem(KEY);document.querySelectorAll('.scb').forEach(cb=>{cb.checked=false;});for(let i=1;i<=TOTAL;i++)mark(i,false);document.getElementById('celeb').classList.remove('on');upd();}
+function confetti(){const c=document.getElementById('cnf'),ctx=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const ps=Array.from({length:130},()=>({x:Math.random()*c.width,y:-10,r:Math.random()*7+3,d:Math.random()*3+1,col:['#0ea5e9','#22c55e','#f59e0b','#ec4899','#8b5cf6'][Math.floor(Math.random()*5)],ta:0,ts:Math.random()*.1+.05}));let f=0;(function draw(){ctx.clearRect(0,0,c.width,c.height);ps.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.col;ctx.fill();p.y+=p.d;p.ta+=p.ts;p.x+=Math.sin(p.ta);if(p.y>c.height){p.y=-10;p.x=Math.random()*c.width;}});if(++f<350)requestAnimationFrame(draw);else ctx.clearRect(0,0,c.width,c.height);})();}
+load();
+</script>
+</body>
+</html>

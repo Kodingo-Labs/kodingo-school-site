@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Clase 5 — Formas que se juntan y se cortan ✂️</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Nunito',sans-serif;background:#f0f9ff;color:#1e293b}.header{background:linear-gradient(135deg,#0369a1,#0ea5e9);color:white;padding:32px 24px}.mod-badge{font-size:12px;font-weight:800;letter-spacing:2px;opacity:.8;text-transform:uppercase;margin-bottom:8px}.header-title{font-size:26px;font-weight:900;line-height:1.2;margin-bottom:16px}.badges{display:flex;gap:8px;flex-wrap:wrap}.badge{background:rgba(255,255,255,.2);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:700}.progress-wrap{background:white;padding:12px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.1)}.progress-label{font-size:12px;font-weight:700;color:#64748b;margin-bottom:6px}.prog-bar{height:8px;background:#e2e8f0;border-radius:999px}.prog-fill{height:100%;background:linear-gradient(90deg,#0ea5e9,#22c55e);border-radius:999px;transition:width .4s ease}main{max-width:720px;margin:0 auto;padding:24px 16px 120px}.card{background:white;border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.06)}.card-title{font-size:20px;font-weight:800;margin-bottom:16px}.objetivo-box{font-size:16px;font-weight:700;line-height:1.6;color:#0369a1;background:#e0f2fe;padding:16px;border-radius:12px;border-left:4px solid #0ea5e9}.resultado-tag{display:inline-block;background:#dcfce7;color:#15803d;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:800;margin-top:12px}.tools-wrap{display:flex;gap:10px;flex-wrap:wrap}.tool-pill{background:#f1f5f9;border:2px solid #e2e8f0;padding:10px 18px;border-radius:999px;font-size:14px;font-weight:700}.glos-item{border:2px solid #e0f2fe;border-radius:12px;padding:14px;margin-bottom:10px}.glos-term{font-size:16px;font-weight:800;color:#0369a1;margin-bottom:4px}.glos-def{font-size:14px;color:#475569;line-height:1.5}.glos-tip{font-size:13px;color:#0ea5e9;font-weight:700;margin-top:6px}.step{display:flex;gap:16px;align-items:flex-start;padding:16px;border-radius:12px;margin-bottom:12px;border:2px solid #e2e8f0;transition:all .3s}.step.done{background:#f0fdf4;border-color:#22c55e}.s-num{width:40px;height:40px;min-width:40px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#64748b;transition:all .3s}.step.done .s-num{background:#22c55e;color:white}.s-body{flex:1}.s-title{font-size:16px;font-weight:800;margin-bottom:8px}.s-cb{margin-left:auto;width:28px;height:28px;cursor:pointer;accent-color:#22c55e}.sub{margin-top:8px}.sub-row{display:flex;gap:10px;margin-bottom:8px;font-size:14px;line-height:1.5}.sub-lbl{font-weight:900;color:#0369a1;min-width:22px}.see{background:#f0fdf4;border:2px solid #22c55e;border-radius:10px;padding:12px 14px;margin-top:10px;font-size:13px;font-weight:700;color:#15803d}.see::before{content:"✅ Lo que deberías ver: "}.warn{background:#fffbeb;border:2px solid #f59e0b;border-radius:10px;padding:12px 14px;margin-top:8px;font-size:13px;font-weight:700;color:#92400e}.warn::before{content:"⚠️ Si algo va mal: "}.yay{background:#fef3c7;border-radius:10px;padding:12px;margin-top:10px;font-size:14px;font-weight:800;color:#92400e;text-align:center}.tink-card{background:#fdf4ff;border:2px solid #d8b4fe}.tink-block{background:#fdf4ff;border:2px solid #d8b4fe;border-radius:12px;padding:18px;margin-bottom:12px}.tink-h{font-size:14px;font-weight:800;color:#7c3aed;margin-bottom:10px}.tink-row{display:flex;gap:8px;margin-bottom:8px;font-size:14px;line-height:1.5}.tink-num{font-weight:900;color:#7c3aed;min-width:22px}.tink-see{background:#f5f3ff;border:2px solid #a78bfa;border-radius:10px;padding:12px 14px;margin-top:10px;font-size:13px;font-weight:700;color:#5b21b6}.tink-see::before{content:"🟣 En Tinkercad verás: "}.guide-block{background:#f0f9ff;border:2px solid #7dd3fc;border-radius:12px;padding:18px;margin-bottom:12px}.guide-h{font-size:14px;font-weight:800;color:#0369a1;margin-bottom:10px}.guide-row{display:flex;gap:8px;margin-bottom:8px;font-size:14px;line-height:1.5}.guide-num{font-weight:900;color:#0369a1;min-width:22px}.wait-row{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:10px;background:#faf5ff;border:2px solid #e9d5ff;margin-bottom:8px;font-size:14px;font-weight:600}.wait-icon{font-size:20px;min-width:28px}.desafio{background:#fffbeb;border:3px solid #f59e0b;border-radius:16px;padding:20px}.desafio h3{font-size:18px;font-weight:900;color:#92400e;margin-bottom:8px}.desafio p{font-size:15px;color:#78350f;line-height:1.6}.cfg-card{background:#f0f9ff;border:2px solid #bae6fd}.cfg-table{width:100%;border-collapse:collapse}.cfg-table tr:nth-child(odd){background:#e0f2fe}.cfg-table td{padding:10px 14px;font-size:14px}.cfg-table td:first-child{font-weight:800;color:#0369a1}.cfg-note{font-size:13px;color:#0369a1;margin-bottom:12px;line-height:1.5}.quiz-q{background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;padding:16px;margin-bottom:12px}.quiz-q p{font-size:15px;font-weight:800;margin-bottom:10px}.quiz-opts{list-style:none}.quiz-opts li{padding:8px 12px;border-radius:8px;margin-bottom:6px;font-size:14px;font-weight:600}.quiz-opts li.ok{background:#dcfce7;color:#15803d;font-weight:800}.quiz-opts li.no{color:#94a3b8}.padres-box{background:#f8fafc;border:2px solid #cbd5e1;border-radius:12px;padding:20px}.padres-box h3{font-size:15px;font-weight:800;margin-bottom:8px;color:#334155;margin-top:14px}.padres-box h3:first-child{margin-top:0}.padres-box ul{padding-left:16px}.padres-box li{font-size:14px;line-height:1.7;color:#475569}.prob{background:white;border:2px solid #fca5a5;border-radius:10px;padding:12px;margin-bottom:8px}.prob-t{font-weight:800;color:#dc2626;margin-bottom:4px;font-size:14px}.prob-fix{color:#475569;font-size:13px;line-height:1.5}.sabias{background:linear-gradient(135deg,#fdf4ff,#fae8ff);border:2px solid #e9d5ff}.sabias p{font-size:15px;line-height:1.6}.celeb{display:none;background:linear-gradient(135deg,#fbbf24,#f59e0b);border-radius:20px;padding:40px 24px;text-align:center;margin-top:20px}.celeb.on{display:block;animation:pop .6s ease}@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}.celeb-ico{font-size:64px;margin-bottom:16px;animation:bob 1s infinite}@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}.celeb-t{font-size:26px;font-weight:900;color:#451a03;margin-bottom:12px}.celeb-txt{font-size:15px;color:#78350f;line-height:1.7}#cnf{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999}.foot{position:fixed;bottom:0;left:0;right:0;background:white;border-top:2px solid #e2e8f0;padding:12px 24px;display:flex;gap:12px;justify-content:space-between;align-items:center;box-shadow:0 -4px 16px rgba(0,0,0,.1)}.btn-nav{padding:12px 24px;border-radius:999px;font-family:Nunito;font-size:15px;font-weight:800;border:none;cursor:pointer;text-decoration:none;display:inline-block}.btn-prev{background:#f1f5f9;color:#475569}.btn-next{background:linear-gradient(135deg,#0ea5e9,#0369a1);color:white}.btn-dis{opacity:.4;pointer-events:none;cursor:default}.btn-reset{font-size:12px;color:#94a3b8;background:none;border:none;cursor:pointer;font-family:Nunito;font-weight:700}@media(max-width:600px){.header-title{font-size:20px}main{padding:16px 12px 100px}}</style>
+</head>
+<body>
+<canvas id="cnf"></canvas>
+<header class="header">
+  <div class="mod-badge">Módulo 2 — ¡Mis Primeros Diseños! · Clase 5</div>
+  <div class="header-title">✂️ Formas que se juntan y se cortan</div>
+  <div class="badges">
+    <span class="badge">⏱️ 45 min clase</span>
+    <span class="badge">🖨️ 20 min impresión</span>
+    <span class="badge">⭐⭐ Dificultad 2/5</span>
+    <span class="badge">🎨 Diseña e imprime</span>
+  </div>
+</header>
+<div class="progress-wrap">
+  <div class="progress-label">Tu progreso: <span id="pt">0 de 9 pasos completados</span></div>
+  <div class="prog-bar"><div class="prog-fill" id="pf" style="width:0%"></div></div>
+</div>
+<main>
+
+<div class="card">
+  <div class="card-title">🎯 ¿Qué vas a lograr hoy?</div>
+  <div class="objetivo-box">¿Recuerdas que en la Clase 4 aprendiste a poner formas en Tinkercad? ¡Hoy vas a aprender dos superpoderes nuevos! El primero: <strong>juntar formas</strong> para que sean una sola. El segundo: la <strong>varita mágica de recortar</strong> — que hace que una forma "corte" un hueco en otra. Con estas dos herramientas puedes crear casi cualquier cosa.</div>
+  <span class="resultado-tag">🏆 Tu resultado: Una figura compuesta que tú inventaste (cohete, árbol, animal) combinando al menos 2 formas</span>
+</div>
+
+<div class="card">
+  <div class="card-title">🛠️ Lo que necesitas hoy</div>
+  <div class="tools-wrap">
+    <span class="tool-pill">🟠 Tinkercad (ya la conoces)</span>
+    <span class="tool-pill">💻 Bambu Studio</span>
+    <span class="tool-pill">🖨️ Bambu Lab A1</span>
+    <span class="tool-pill">🧵 Filamento PLA</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">📖 Palabras de hoy — ¡Tu glosario!</div>
+  <div class="glos-item">
+    <div class="glos-term">🔗 Agrupar formas (Group)</div>
+    <div class="glos-def">Seleccionar dos o más formas y pegarlas en una sola. Después de agrupar, se mueven y redimensionan juntas como si fueran un único objeto.</div>
+    <div class="glos-tip">💡 Es como pegar piezas de Lego con pegamento — ya no se separan y las tratas como un solo bloque.</div>
+  </div>
+  <div class="glos-item">
+    <div class="glos-term">🕳️ Forma Agujero (Hole)</div>
+    <div class="glos-def">Una forma especial en Tinkercad que en vez de añadir plástico, lo quita. Al agruparla con una forma sólida, hace un hueco de la forma exacta del agujero.</div>
+    <div class="glos-tip">💡 Es como usar un cortante de galletas — donde la pones y aprietas, corta un hueco de esa forma en el objeto.</div>
+  </div>
+  <div class="glos-item">
+    <div class="glos-term">🏗️ Combinar para crear formas nuevas</div>
+    <div class="glos-def">La técnica de usar varias formas básicas (cubos, esferas, cilindros) juntas para crear objetos complejos. Un cohete = cilindro + cono. Un árbol = cilindro + esfera.</div>
+    <div class="glos-tip">💡 Es exactamente como Lego: las piezas individuales son simples, pero juntas crean algo increíble.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">🚀 ¡La aventura comienza! — Paso a paso</div>
+
+  <div class="step" id="s1">
+    <div class="s-num">1</div>
+    <div class="s-body">
+      <div class="s-title">Abre Tinkercad y crea un diseño nuevo</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Ve a <strong>tinkercad.com</strong>, inicia sesión y haz clic en <strong>"Nuevo diseño"</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Ponle nombre al diseño: <strong>"Mi figura - Mateo"</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Decide qué figura quieres hacer: ¿un cohete 🚀, un árbol 🌳, o un animal? Díselo al adulto.</span></div>
+      </div>
+      <div class="see">La pantalla de Tinkercad con el plano de trabajo gris vacío. Ya conoces este lugar.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="1" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s2">
+    <div class="s-num">2</div>
+    <div class="s-body">
+      <div class="s-title">Pon la forma principal de tu figura</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Si haces un <strong>cohete</strong>: arrastra un <strong>Cylinder</strong> (cilindro) al plano. Hazlo de 20mm ancho y 50mm alto.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Si haces un <strong>árbol</strong>: arrastra un <strong>Cylinder</strong> (el tronco) de 10mm ancho y 30mm alto.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Si haces un <strong>animal</strong>: empieza con un <strong>Box</strong> o <strong>Sphere</strong> para el cuerpo.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>Ajusta las dimensiones escribiendo los números como aprendiste en la Clase 4.</span></div>
+      </div>
+      <div class="see">La forma principal de tu figura en el plano de Tinkercad con las dimensiones correctas.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="2" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s3">
+    <div class="s-num">3</div>
+    <div class="s-body">
+      <div class="s-title">Agrega una segunda forma encima</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Si haces un <strong>cohete</strong>: arrastra un <strong>Cone</strong> (cono) del panel derecho. Es la punta del cohete. Hazlo del mismo ancho que el cilindro (20mm) y 25mm alto.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Si haces un <strong>árbol</strong>: arrastra una <strong>Sphere</strong> (esfera) para la copa. Hazla de 30mm.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Mueve la segunda forma para que quede <strong>encima</strong> de la primera. Usa la flecha negra que apunta hacia arriba para subirla.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>Que las dos formas se <strong>toquen o se superpongan un poquito</strong> (que compartan un borde).</span></div>
+      </div>
+      <div class="see">Dos formas juntas formando tu figura — como el cuerpo + la cabeza de un cohete o árbol.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="3" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s4">
+    <div class="s-num">4</div>
+    <div class="s-body">
+      <div class="s-title">Agrúpalas — ¡Hazte una sola forma!</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Haz clic en un área vacía del plano para deseleccionar todo.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Ahora selecciona TODAS las formas: arrastra el cursor sobre toda la figura (como si dibujaras un cuadrado alrededor de todo).</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Todas las formas se ponen de color azul — eso significa que están seleccionadas.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>Presiona <strong>Ctrl + G</strong> (o busca el botón "Group" en la barra de arriba).</span></div>
+        <div class="sub-row"><span class="sub-lbl">e.</span><span>¡Las formas se funden en una sola! Ahora son un único objeto.</span></div>
+      </div>
+      <div class="see">Tu figura ahora es un solo objeto naranja (o del color que tenía la primera forma). Ya no hay dos piezas separadas.</div>
+      <div class="yay">🎉 ¡Usaste "Agrupar" por primera vez! Tus dos formas ahora son una sola figura.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="4" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s5">
+    <div class="s-num">5</div>
+    <div class="s-body">
+      <div class="s-title">Agrega un Agujero — ¡La varita mágica!</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Arrastra un <strong>Cylinder</strong> (cilindro) pequeño al plano. Hazlo de 10mm de ancho y 60mm de alto.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Con ese cilindro seleccionado, mira el panel derecho — hay dos botones: <strong>"Solid"</strong> (sólido, naranja) y <strong>"Hole"</strong> (agujero, gris con rayas).</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Haz clic en <strong>"Hole"</strong> — el cilindro se vuelve transparente con rayas grises. ¡Ahora es un borrador!</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>Mueve ese cilindro-agujero para que entre <strong>dentro</strong> de tu figura (por ejemplo, para crear un canal vertical en el cohete).</span></div>
+      </div>
+      <div class="see">El cilindro ahora se ve transparente con rayas grises — eso indica que es un "agujero". Cuando lo pones dentro de la figura sólida, la atraviesa visualmente.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="5" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s6">
+    <div class="s-num">6</div>
+    <div class="s-body">
+      <div class="s-title">Agrupa el agujero con la figura — ¡Magia!</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Selecciona todo (arrastra el cursor sobre toda la figura y el agujero).</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Presiona <strong>Ctrl + G</strong> para agrupar.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>¡El agujero desaparece y deja un hueco perfecto en la figura!</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>Rota la vista (clic derecho + arrastrar) para ver el hueco desde arriba y desde los costados.</span></div>
+      </div>
+      <div class="see">Tu figura ahora tiene un hueco cilíndrico perfecto donde pusiste el agujero. ¡El cilindro-agujero desapareció y dejó un canal vacío!</div>
+      <div class="yay">🎉 ¡MATEO USÓ LA VARITA MÁGICA! Eso que acabas de hacer se llama "operación booleana" — los ingenieros lo usan todos los días.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="6" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s7">
+    <div class="s-num">7</div>
+    <div class="s-body">
+      <div class="s-title">Exporta el diseño como STL</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Haz clic en <strong>"Exportar"</strong> (esquina superior derecha de Tinkercad).</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Haz clic en <strong>".STL"</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>El archivo se guarda en Descargas.</span></div>
+      </div>
+      <div class="see">Un archivo .stl en la carpeta Descargas.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="7" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s8">
+    <div class="s-num">8</div>
+    <div class="s-body">
+      <div class="s-title">Abre en Bambu Studio y haz Slice</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Arrastra el .stl a Bambu Studio.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Configuración: Textured PEI · PLA · 0.20mm Standard.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Haz clic en <strong>"Slice"</strong> y observa las capas. ¿Puedes ver dónde aparece el hueco en la vista de capas?</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>Envía a imprimir a la Bambu Lab A1.</span></div>
+      </div>
+      <div class="see">Tu figura con el hueco visible en la vista de capas de Bambu Studio. ¡El hueco se ve como un espacio vacío en las capas centrales!</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="8" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s9">
+    <div class="s-num">9</div>
+    <div class="s-body">
+      <div class="s-title">Confirma en la impresora y admira tu creación</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Toca el botón de confirmar en la pantalla de la Bambu Lab A1.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Espera el calentamiento, auto-nivelación y purge line.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Cuando termine: pitido → espera → dobla placa → saca tu figura.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>Introduce un lápiz en el hueco — ¿entra perfectamente? ¡Así es como funciona el diseño funcional!</span></div>
+      </div>
+      <div class="see">Tu figura 3D combinada con un hueco cilíndrico perfecto. Puedes pasar luz o un lápiz delgado a través del hueco.</div>
+      <div class="yay">🎉 ¡Diseñaste y creaste una figura combinada con un agujero desde cero. ¡Eso es ingeniería, Mateo!</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="9" onchange="chk(this)">
+  </div>
+</div>
+
+<div class="card tink-card">
+  <div class="card-title" style="color:#7c3aed">🟠 Guía Tinkercad — Agrupar y Agujeros</div>
+  <div class="tink-block">
+    <div class="tink-h">🔗 Cómo agrupar formas (3 pasos)</div>
+    <div class="tink-row"><span class="tink-num">1.</span><span>Selecciona todas las formas que quieres juntar: arrastra el cursor alrededor de todas ellas, o Shift + clic en cada una.</span></div>
+    <div class="tink-row"><span class="tink-num">2.</span><span>Presiona <strong>Ctrl + G</strong> (o el botón "Group" en la barra de arriba — tiene ícono de dos cubos fusionándose).</span></div>
+    <div class="tink-row"><span class="tink-num">3.</span><span>¡Listo! Ya son una sola forma. Para desagrupar si te arrepentiste: <strong>Ctrl + Shift + G</strong>.</span></div>
+    <div class="tink-see">Las formas separadas se convierten en un único objeto del color de la primera forma. Los puntitos blancos ahora rodean toda la figura junta.</div>
+  </div>
+  <div class="tink-block">
+    <div class="tink-h">🕳️ Cómo usar la Forma Agujero (Hole) — la varita mágica</div>
+    <div class="tink-row"><span class="tink-num">1.</span><span>Arrastra cualquier forma al plano (caja, cilindro, esfera — la que tenga la forma del hueco que quieres).</span></div>
+    <div class="tink-row"><span class="tink-num">2.</span><span>Con esa forma seleccionada, en el panel derecho busca los botones <strong>"Solid"</strong> y <strong>"Hole"</strong>. Haz clic en <strong>"Hole"</strong>.</span></div>
+    <div class="tink-row"><span class="tink-num">3.</span><span>La forma se vuelve transparente con rayas grises — ¡ya es un agujero! Muévela hasta donde quieres el hueco.</span></div>
+    <div class="tink-row"><span class="tink-num">4.</span><span>Selecciona todo (la figura sólida + el agujero) y presiona <strong>Ctrl + G</strong>.</span></div>
+    <div class="tink-row"><span class="tink-num">5.</span><span>El agujero desaparece y deja un hueco perfecto de la forma exacta del agujero.</span></div>
+    <div class="tink-see">La figura sólida ahora tiene un hueco. Si giras la vista, puedes ver "a través" del objeto donde estaba el agujero.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">🖨️ Guía Bambu Lab A1 — Ya la conoces bien</div>
+  <div class="guide-block">
+    <div class="guide-h">⚡ Proceso rápido (Clases 1-4 ya lo practicaste)</div>
+    <div class="guide-row"><span class="guide-num">1.</span><span>Arrastra el .stl a Bambu Studio → verifica configuración → Slice → botón de imprimir → Bambu Lab A1 → Print.</span></div>
+    <div class="guide-row"><span class="guide-num">2.</span><span>En la impresora: confirmar → calentamiento → auto-nivelación (tick-tick) → purge line → ¡impresión!</span></div>
+    <div class="guide-row"><span class="guide-num">3.</span><span>Al terminar: pitido → esperar 3 min → doblar placa → sacar figura.</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">⏳ Mientras la impresora trabaja... (20 min)</div>
+  <div class="wait-row"><span class="wait-icon">🕳️</span><span><strong>Observa el hueco:</strong> Cuando la impresora llega a las capas donde está el hueco, la cabeza simplemente no imprime en esa zona. ¿Puedes verlo?</span></div>
+  <div class="wait-row"><span class="wait-icon">✏️</span><span><strong>Diseña en papel:</strong> ¿Qué otra figura compuesta podrías crear? Dibuja la idea combinando formas simples.</span></div>
+  <div class="wait-row"><span class="wait-icon">🤔</span><span><strong>Piensa:</strong> ¿Qué objetos del mundo real crees que fueron diseñados combinando formas simples? (Pista: ¡casi todos!)</span></div>
+</div>
+
+<div class="card">
+  <div class="desafio">
+    <h3>💡 El desafío del día</h3>
+    <p>¿Te atreves a crear una figura con <strong>3 formas</strong> combinadas en vez de 2? Por ejemplo, un cohete con cilindro + cono + 2 aletas laterales (cajas finas). Usa Ctrl+G para agrupar todo al final.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">🤔 ¿Qué aprendiste hoy? — Mini quiz</div>
+  <div class="quiz-q">
+    <p>1. ¿Qué teclas presionas para agrupar formas en Tinkercad?</p>
+    <ul class="quiz-opts"><li class="no">a) Ctrl + Z</li><li class="ok">b) Ctrl + G ✅</li><li class="no">c) Ctrl + S</li></ul>
+  </div>
+  <div class="quiz-q">
+    <p>2. ¿Qué hace una "Forma Agujero" (Hole) en Tinkercad?</p>
+    <ul class="quiz-opts"><li class="no">a) Agrega plástico en esa forma</li><li class="ok">b) Quita plástico en esa forma, creando un hueco ✅</li><li class="no">c) Cambia el color de la forma</li></ul>
+  </div>
+  <div class="quiz-q">
+    <p>3. Un cohete hecho en Tinkercad podría ser...</p>
+    <ul class="quiz-opts"><li class="no">a) Solo un cilindro</li><li class="ok">b) Un cilindro + un cono + aletas (cajas finas) agrupados ✅</li><li class="no">c) No se puede hacer en Tinkercad</li></ul>
+  </div>
+</div>
+
+<div class="card cfg-card">
+  <div class="card-title" style="color:#0369a1">⚙️ Configuración — Bambu Lab A1</div>
+  <p class="cfg-note">0.20mm es suficiente para esta figura — queremos que imprima rápido para que puedas verla pronto.</p>
+  <table class="cfg-table">
+    <tr><td>🖨️ Impresora</td><td>Bambu Lab A1</td></tr>
+    <tr><td>🎨 Filamento</td><td>PLA</td></tr>
+    <tr><td>📐 Altura de capa</td><td>0.20mm Standard</td></tr>
+    <tr><td>⚡ Velocidad</td><td>Standard</td></tr>
+    <tr><td>🏗️ Soportes</td><td>No</td></tr>
+    <tr><td>🟫 Placa</td><td>Texturizada</td></tr>
+    <tr><td>🔁 Relleno</td><td>15%</td></tr>
+    <tr><td>🕐 Tiempo</td><td>~20 minutos</td></tr>
+  </table>
+</div>
+
+<div class="card sabias">
+  <div class="card-title">💡 ¿Sabías que...?</div>
+  <p>La técnica que usaste hoy (combinar sólidos y agujeros) tiene nombre en matemáticas: se llama <strong>Geometría Constructiva de Sólidos (CSG)</strong>. Es la misma técnica que usan los ingenieros de Boeing para diseñar piezas de aviones. ¡Tú la acabas de dominar a los 7 años!</p>
+</div>
+
+<div class="card">
+  <div class="card-title">🧑‍🏫 Para quien acompaña a Mateo</div>
+  <div class="padres-box">
+    <h3>✅ Lo que Mateo aprendió hoy</h3>
+    <ul><li>Cómo agrupar formas en Tinkercad (Ctrl+G)</li><li>Cómo usar la Forma Agujero (Hole) para crear huecos</li><li>Cómo combinar múltiples formas para crear objetos complejos</li></ul>
+    <h3>⚠️ Posibles problemas</h3>
+    <div class="prob"><div class="prob-t">El agujero no aparece al agrupar</div><div class="prob-fix">Verificar que el agujero esté realmente dentro de la figura sólida (que se superpongan). Si el agujero está en el aire sin tocar la figura, no funcionará. Deshacer con Ctrl+Z, mover el agujero dentro de la figura y volver a agrupar.</div></div>
+    <div class="prob"><div class="prob-t">Las dos formas no se quedan juntas al moverlas</div><div class="prob-fix">No fueron agrupadas correctamente. Hacer Ctrl+Z para deshacer el grupo, seleccionar ambas formas y volver a hacer Ctrl+G. Las dos deben estar seleccionadas (azules) antes de agrupar.</div></div>
+    <h3>🏠 Cómo reforzar en casa</h3>
+    <p style="font-size:14px;color:#475569;line-height:1.6">Mirar objetos cotidianos y preguntarle a Mateo: "¿Cuántas formas básicas crees que tiene?" (Una silla = 4 cilindros + 1 caja. Un vaso = cilindro con agujero. Una botella = cilindros de diferentes tamaños).</p>
+  </div>
+</div>
+
+<div class="celeb" id="celeb">
+  <div class="celeb-ico">✂️</div>
+  <div class="celeb-t">¡Maestro de las formas, Mateo!</div>
+  <div class="celeb-txt">Hoy aprendiste a juntar formas y a usar la varita mágica de recortar. Con esas dos herramientas, puedes diseñar prácticamente cualquier objeto que imagines. ¡Tu figura compuesta existe porque tú la creaste!<br><br><strong>La próxima clase vas a aplicar todo lo que sabes para diseñar algo que realmente sirve: un porta-lápices que puedes usar en tu escritorio. ¡Tu primer objeto funcional!</strong></div>
+</div>
+
+</main>
+<footer class="foot">
+  <a href="../../clase4/v1/clase.html" class="btn-nav btn-prev">⬅️ Clase 4</a>
+  <button class="btn-reset" onclick="reset()">↺ Reiniciar progreso</button>
+  <a href="../../clase6/v1/clase.html" class="btn-nav btn-next">Clase 6 ➡️</a>
+</footer>
+<script>
+const KEY='studio3d-clase5',TOTAL=9;
+function load(){const s=JSON.parse(localStorage.getItem(KEY)||'{}');document.querySelectorAll('.scb').forEach(cb=>{if(s[cb.dataset.n]){cb.checked=true;mark(cb.dataset.n,true);}});upd();}
+function chk(cb){const n=cb.dataset.n;mark(n,cb.checked);const s=JSON.parse(localStorage.getItem(KEY)||'{}');s[n]=cb.checked;localStorage.setItem(KEY,JSON.stringify(s));upd();}
+function mark(n,on){const el=document.getElementById('s'+n);const num=el.querySelector('.s-num');if(on){el.classList.add('done');num.textContent='✓';}else{el.classList.remove('done');num.textContent=n;}}
+function upd(){const done=document.querySelectorAll('.scb:checked').length;const p=done/TOTAL*100;document.getElementById('pf').style.width=p+'%';document.getElementById('pt').textContent=done+' de '+TOTAL+' pasos completados';if(done===TOTAL){const c=document.getElementById('celeb');c.classList.add('on');c.scrollIntoView({behavior:'smooth'});confetti();}}
+function reset(){if(!confirm('¿Reiniciar el progreso de esta clase?'))return;localStorage.removeItem(KEY);document.querySelectorAll('.scb').forEach(cb=>{cb.checked=false;});for(let i=1;i<=TOTAL;i++)mark(i,false);document.getElementById('celeb').classList.remove('on');upd();}
+function confetti(){const c=document.getElementById('cnf'),ctx=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const ps=Array.from({length:130},()=>({x:Math.random()*c.width,y:-10,r:Math.random()*7+3,d:Math.random()*3+1,col:['#0ea5e9','#22c55e','#f59e0b','#ec4899','#8b5cf6'][Math.floor(Math.random()*5)],ta:0,ts:Math.random()*.1+.05}));let f=0;(function draw(){ctx.clearRect(0,0,c.width,c.height);ps.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.col;ctx.fill();p.y+=p.d;p.ta+=p.ts;p.x+=Math.sin(p.ta);if(p.y>c.height){p.y=-10;p.x=Math.random()*c.width;}});if(++f<350)requestAnimationFrame(draw);else ctx.clearRect(0,0,c.width,c.height);})();}
+load();
+</script>
+</body>
+</html>

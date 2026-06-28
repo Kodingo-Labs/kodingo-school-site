@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Clase 14 — Diseñamos en Tinkercad 🖥️</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Nunito',sans-serif;background:#fff7ed;color:#1e293b}.header{background:linear-gradient(135deg,#c2410c,#f97316);color:white;padding:32px 24px}.mod-badge{font-size:12px;font-weight:800;letter-spacing:2px;opacity:.8;text-transform:uppercase;margin-bottom:8px}.header-title{font-size:26px;font-weight:900;line-height:1.2;margin-bottom:16px}.badges{display:flex;gap:8px;flex-wrap:wrap}.badge{background:rgba(255,255,255,.2);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:700}.progress-wrap{background:white;padding:12px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.1)}.progress-label{font-size:12px;font-weight:700;color:#64748b;margin-bottom:6px}.prog-bar{height:8px;background:#e2e8f0;border-radius:999px}.prog-fill{height:100%;background:linear-gradient(90deg,#f97316,#c2410c);border-radius:999px;transition:width .4s ease}main{max-width:720px;margin:0 auto;padding:24px 16px 120px}.card{background:white;border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.06)}.card-title{font-size:20px;font-weight:800;margin-bottom:16px}.objetivo-box{font-size:16px;font-weight:700;line-height:1.6;color:#c2410c;background:#fff7ed;padding:16px;border-radius:12px;border-left:4px solid #f97316}.resultado-tag{display:inline-block;background:#dcfce7;color:#15803d;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:800;margin-top:12px}.step{display:flex;gap:16px;align-items:flex-start;padding:16px;border-radius:12px;margin-bottom:12px;border:2px solid #e2e8f0;transition:all .3s}.step.done{background:#fff7ed;border-color:#f97316}.s-num{width:40px;height:40px;min-width:40px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#64748b;transition:all .3s}.step.done .s-num{background:#f97316;color:white}.s-body{flex:1}.s-title{font-size:16px;font-weight:800;margin-bottom:8px}.s-cb{margin-left:auto;width:28px;height:28px;cursor:pointer;accent-color:#f97316}.sub{margin-top:8px}.sub-row{display:flex;gap:10px;margin-bottom:8px;font-size:14px;line-height:1.5}.sub-lbl{font-weight:900;color:#c2410c;min-width:22px}.see{background:#fff7ed;border:2px solid #f97316;border-radius:10px;padding:12px 14px;margin-top:10px;font-size:13px;font-weight:700;color:#c2410c}.see::before{content:"✅ Checkpoint: "}.warn{background:#fffbeb;border:2px solid #f59e0b;border-radius:10px;padding:12px 14px;margin-top:8px;font-size:13px;font-weight:700;color:#92400e}.warn::before{content:"⚠️ Si te trabas: "}.yay{background:#fef3c7;border-radius:10px;padding:12px;margin-top:10px;font-size:14px;font-weight:800;color:#92400e;text-align:center}.iteracion-box{background:#f0fdf4;border:2px solid #22c55e;border-radius:12px;padding:16px;margin:16px 0}.iteracion-box h3{font-size:16px;font-weight:800;color:#15803d;margin-bottom:8px}.iteracion-box ul{padding-left:20px}.iteracion-box li{font-size:14px;color:#15803d;line-height:1.8}.desafio{background:#fffbeb;border:3px solid #f59e0b;border-radius:16px;padding:20px}.desafio h3{font-size:18px;font-weight:900;color:#92400e;margin-bottom:8px}.desafio p{font-size:15px;color:#78350f;line-height:1.6}.padres-box{background:#f8fafc;border:2px solid #cbd5e1;border-radius:12px;padding:20px}.padres-box h3{font-size:15px;font-weight:800;margin-bottom:8px;color:#334155;margin-top:14px}.padres-box h3:first-child{margin-top:0}.padres-box ul{padding-left:16px}.padres-box li{font-size:14px;line-height:1.7;color:#475569}.sabias{background:linear-gradient(135deg,#fff7ed,#ffedd5);border:2px solid #fed7aa}.sabias p{font-size:15px;line-height:1.6}.celeb{display:none;background:linear-gradient(135deg,#f97316,#c2410c);border-radius:20px;padding:40px 24px;text-align:center;margin-top:20px}.celeb.on{display:block;animation:pop .6s ease}@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}.celeb-ico{font-size:64px;margin-bottom:16px;animation:bob 1s infinite}@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}.celeb-t{font-size:26px;font-weight:900;color:white;margin-bottom:12px}.celeb-txt{font-size:15px;color:#ffedd5;line-height:1.7}#cnf{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999}.foot{position:fixed;bottom:0;left:0;right:0;background:white;border-top:2px solid #e2e8f0;padding:12px 24px;display:flex;gap:12px;justify-content:space-between;align-items:center;box-shadow:0 -4px 16px rgba(0,0,0,.1)}.btn-nav{padding:12px 24px;border-radius:999px;font-family:Nunito;font-size:15px;font-weight:800;border:none;cursor:pointer;text-decoration:none;display:inline-block}.btn-prev{background:#f1f5f9;color:#475569}.btn-next{background:linear-gradient(135deg,#f97316,#c2410c);color:white}.btn-reset{font-size:12px;color:#94a3b8;background:none;border:none;cursor:pointer;font-family:Nunito;font-weight:700}@media(max-width:600px){.header-title{font-size:20px}main{padding:16px 12px 100px}}</style>
+</head>
+<body>
+<canvas id="cnf"></canvas>
+<header class="header">
+  <div class="mod-badge">Módulo 5 — ¡Tu Proyecto Final! · Clase 14</div>
+  <div class="header-title">🖥️ Diseñamos en Tinkercad</div>
+  <div class="badges">
+    <span class="badge">⏱️ 60 min clase</span>
+    <span class="badge">🖥️ Solo diseño</span>
+    <span class="badge">⭐⭐⭐⭐⭐ Dificultad 5/5</span>
+    <span class="badge">🎨 Tu diseño libre</span>
+  </div>
+</header>
+<div class="progress-wrap">
+  <div class="progress-label">Tu progreso: <span id="pt">0 de 10 pasos completados</span></div>
+  <div class="prog-bar"><div class="prog-fill" id="pf" style="width:0%"></div></div>
+</div>
+<main>
+
+<div class="card">
+  <div class="card-title">🎯 ¿Qué vas a lograr hoy?</div>
+  <div class="objetivo-box">Hoy es el día más creativo del curso. Con tu boceto de la Clase 13 en mano, vas a abrir Tinkercad y construir tu diseño libre. No hay instrucciones de qué forma usar — tú eres el diseñador. Esta guía te acompaña con el proceso, pero las decisiones son tuyas.</div>
+  <span class="resultado-tag">🏆 Tu resultado: Un archivo STL de tu proyecto personal, listo para imprimir en la Clase 15</span>
+</div>
+
+<div class="card">
+  <div class="card-title">📖 Antes de empezar — Recuerda tus herramientas</div>
+  <div style="background:#f0f9ff;border:2px solid #bae6fd;border-radius:12px;padding:16px">
+    <p style="font-size:14px;font-weight:800;color:#0369a1;margin-bottom:10px">Todas las técnicas que conoces:</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px">
+      <div style="background:white;padding:8px 12px;border-radius:8px;font-weight:700">📦 Box → formas rectangulares</div>
+      <div style="background:white;padding:8px 12px;border-radius:8px;font-weight:700">⭕ Cylinder → cilindros y tubos</div>
+      <div style="background:white;padding:8px 12px;border-radius:8px;font-weight:700">🔵 Sphere → esferas (cabezas, ojos)</div>
+      <div style="background:white;padding:8px 12px;border-radius:8px;font-weight:700">🕳️ Hole → crear huecos</div>
+      <div style="background:white;padding:8px 12px;border-radius:8px;font-weight:700">🔤 Text → letras 3D</div>
+      <div style="background:white;padding:8px 12px;border-radius:8px;font-weight:700">🪞 Mirror → espejear</div>
+      <div style="background:white;padding:8px 12px;border-radius:8px;font-weight:700">📋 Ctrl+D → duplicar</div>
+      <div style="background:white;padding:8px 12px;border-radius:8px;font-weight:700">🔗 Ctrl+G → agrupar</div>
+      <div style="background:white;padding:8px 12px;border-radius:8px;font-weight:700">📐 Align → centrar</div>
+      <div style="background:white;padding:8px 12px;border-radius:8px;font-weight:700">↩️ Ctrl+Z → deshacer</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">🚀 Proceso de diseño libre</div>
+
+  <div class="step" id="s1">
+    <div class="s-num">1</div>
+    <div class="s-body">
+      <div class="s-title">Abre Tinkercad con tu boceto al lado</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Ve a tinkercad.com → Nuevo diseño → nombre: <strong>"Proyecto Final — [tu nombre]"</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Pon el boceto de papel al lado de la computadora — lo mirarás constantemente.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Si tienes fotos de referencia de la Clase 13, ábrelas en otra pestaña del navegador.</span></div>
+      </div>
+      <div class="see">Un diseño nuevo en Tinkercad con el nombre de tu proyecto, y el boceto en papel junto a la pantalla.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="1" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s2">
+    <div class="s-num">2</div>
+    <div class="s-body">
+      <div class="s-title">Empieza por la parte principal</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>¿Qué es la parte más grande o más importante de tu diseño? Empieza por esa.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Arrastra la forma base y ajusta las dimensiones de tu boceto.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>No te preocupes si no queda perfecta al primer intento — puedes ajustar los números.</span></div>
+      </div>
+      <div class="see">La parte principal de tu diseño sobre el plano de Tinkercad. Puede que no sea perfecta todavía — eso está bien.</div>
+      <div class="warn">Si no sabes cómo hacer algo, mira la lista de técnicas arriba. ¿Cuál de esas técnicas se parece a lo que necesitas? El adulto también puede ayudarte.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="2" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s3">
+    <div class="s-num">3</div>
+    <div class="s-body">
+      <div class="s-title">Checkpoint 1 — ¿Se parece a lo que imaginaste?</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Para un momento. Compara lo que ves en Tinkercad con el boceto de papel.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>¿La parte principal tiene el tamaño y forma correctos? Si no, ajusta AHORA antes de agregar más partes.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Es mucho más fácil corregir errores al principio que al final.</span></div>
+      </div>
+      <div class="see">La parte principal del diseño verificada y ajustada. Lista para agregar los siguientes componentes.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="3" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s4">
+    <div class="s-num">4</div>
+    <div class="s-body">
+      <div class="s-title">Agrega las partes secundarias (detalles y funcionalidad)</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Una por una, agrega los demás componentes de tu lista de formas (de la Clase 13).</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>¿Necesitas huecos? Usa Hole. ¿Texto? Usa Text. ¿Piezas múltiples? Usa Ctrl+D.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Guarda el diseño con frecuencia (Ctrl+S o el botón de guardar) — ¡no pierdas tu trabajo!</span></div>
+      </div>
+      <div class="see">El diseño va tomando forma con cada componente que agregas. Cada parte que terminas es un logro.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="4" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s5">
+    <div class="s-num">5</div>
+    <div class="s-body">
+      <div class="s-title">Checkpoint 2 — Mitad del diseño</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Pausa de 5 minutos. Rota el diseño en Tinkercad para verlo desde todos los ángulos.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>¿Falta algo importante? ¿Hay algo que está mal posicionado?</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Escribe en papel los cambios que quieres hacer antes de seguir.</span></div>
+      </div>
+      <div class="see">El diseño a medias — lo principal está y los detalles siguen faltando. Una lista de ajustes a hacer.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="5" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s6">
+    <div class="s-num">6</div>
+    <div class="s-body">
+      <div class="s-title">Itera — Ajusta y mejora</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Implementa los cambios de tu lista. Mover, redimensionar, eliminar lo que no funciona.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span><strong>Iterar</strong> = hacer y mejorar varias veces. Los buenos diseños no nacen perfectos — se mejoran paso a paso.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Usa Ctrl+Z libremente para deshacer y probar cosas diferentes. No hay errores permanentes mientras no exportes.</span></div>
+      </div>
+      <div class="see">El diseño mejorado después de iterar. Cada revisión lo acerca más a lo que imaginaste en el boceto.</div>
+      <div class="yay">🎉 ¡Cada Ctrl+Z es una lección aprendida! Los mejores diseñadores son los que más veces se equivocan y corrigen.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="6" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s7">
+    <div class="s-num">7</div>
+    <div class="s-body">
+      <div class="s-title">Agrupa todo el diseño final</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Cuando estés satisfecho con el diseño, selecciona todo.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Presiona Ctrl+G → el diseño se convierte en un solo objeto.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Rota la vista final — ¿cómo se ve tu objeto completo desde todos los ángulos?</span></div>
+      </div>
+      <div class="see">Tu diseño final agrupado como un solo objeto en Tinkercad. El resultado de tu imaginación y trabajo.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="7" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s8">
+    <div class="s-num">8</div>
+    <div class="s-body">
+      <div class="s-title">Verifica el diseño en Bambu Studio (Slice)</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Exportar → .STL → Descargas.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Arrastra a Bambu Studio → configura los soportes si necesitas (activa si hay partes colgantes).</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Haz Slice → revisa con el slider que todo se ve bien en las capas.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>¿Hay algo que no se ve bien? Vuelve a Tinkercad y corrígelo (Ctrl+Z para desagrupar).</span></div>
+      </div>
+      <div class="see">El Slice del diseño se ve correcto — todas las partes están presentes, no hay problemas evidentes en las capas.</div>
+      <div class="warn">Si Bambu Studio muestra el tiempo en más de 90 minutos, puede que el objeto sea muy grande para imprimir en clase. Hablar con el adulto sobre cómo ajustar el tamaño o dividirlo en partes.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="8" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s9">
+    <div class="s-num">9</div>
+    <div class="s-body">
+      <div class="s-title">Exporta el STL final y guárdalo bien</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Exporta el STL con el nombre: <strong>"proyecto-final-mateo.stl"</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Guarda también el archivo de Tinkercad — tiene tu diseño editable si quieres hacer la versión 2 después.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>¡Este STL es tu tesoro! No lo borres.</span></div>
+      </div>
+      <div class="see">El archivo STL guardado en Descargas con el nombre correcto. El diseño existe como archivo listo para imprimir.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="9" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s10">
+    <div class="s-num">10</div>
+    <div class="s-body">
+      <div class="s-title">Prepara qué vas a decir en la presentación (Clase 15)</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>En papel, escribe 3 cosas que vas a contar en la presentación: ¿Qué es? ¿Para quién? ¿Qué técnicas usaste?</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Practica diciéndolo en voz alta — solo 1-2 minutos de presentación.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>¡Ya casi! La Clase 15 es el gran final.</span></div>
+      </div>
+      <div class="see">Un pequeño guión de 3 puntos para la presentación de la Clase 15. El diseñador sabe explicar su trabajo.</div>
+      <div class="yay">🎉 ¡EL DISEÑO ESTÁ LISTO! En la Clase 15 lo imprimimos y lo presentamos. ¡Es el gran final!</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="10" onchange="chk(this)">
+  </div>
+</div>
+
+<div class="iteracion-box">
+  <h3>🔄 La regla de oro del diseño: Iterar</h3>
+  <ul>
+    <li>Los diseñadores hacen versiones malas antes de hacer versiones buenas.</li>
+    <li>Cada vez que presionas Ctrl+Z y lo intentas diferente, estás diseñando como un profesional.</li>
+    <li>No hay "errores" en el diseño — hay "aprendizajes". ¡Úsalos todos!</li>
+    <li>Si el tiempo se acaba y el diseño no está perfecto: ESTÁ BIEN. Importa STL → imprime → la Versión 2 será mejor.</li>
+  </ul>
+</div>
+
+<div class="card"><div class="desafio"><h3>💡 El desafío de hoy</h3><p>Antes de agrupar todo, muestra el diseño a alguien y pídele que lo describa sin que tú le digas qué es. ¿Lo reconoce? Si sí: perfecto. Si no: ¿qué cambiarías para que se vea más como lo que imaginaste? Esta retroalimentación externa es parte del proceso profesional de diseño.</p></div></div>
+
+<div class="card sabias"><div class="card-title">💡 El nombre para esto es "CAD"</div><p>Lo que estás haciendo en Tinkercad se llama <strong>CAD (Computer-Aided Design — Diseño Asistido por Computadora)</strong>. Los ingenieros usan software CAD profesional (como SolidWorks, AutoCAD, Fusion 360) para diseñar desde aviones hasta puentes. Tinkercad es la versión para aprender — las habilidades que desarrollas aquí son exactamente las mismas que usan los ingenieros. ¡Tú ya eres un diseñador CAD!</p></div>
+
+<div class="card">
+  <div class="card-title">🧑‍🏫 Para quien acompaña a Mateo</div>
+  <div class="padres-box">
+    <h3>🎯 Rol del adulto hoy</h3>
+    <p style="font-size:14px;color:#475569;line-height:1.6;margin-bottom:8px">Esta clase es de MÁXIMA autonomía para Mateo. Evitar hacer el diseño por él — el objetivo es que él lo construya aunque quede imperfecto. Intervenir solo si está completamente bloqueado, y entonces hacerlo con preguntas: "¿Qué forma se parece más a lo que necesitas?" "¿Recuerdas cómo hicimos el hueco en la Clase 6?"</p>
+    <h3>✅ Señales de progreso saludable</h3>
+    <ul><li>Mateo prueba una idea, ve que no funciona, y prueba otra (iteración)</li><li>Usa Ctrl+Z libremente sin frustrarse</li><li>Compara Tinkercad con el boceto de papel regularmente</li><li>Pide ayuda cuando está bloqueado más de 5 minutos</li></ul>
+    <h3>⚠️ Si el diseño es demasiado ambicioso</h3>
+    <p style="font-size:14px;color:#475569;line-height:1.6">Si Mateo no logra completar el diseño en 60 minutos, hay dos opciones: (1) Simplificar el diseño — eliminar detalles y quedarse con la forma esencial. (2) Exportar lo que existe e imprimir la versión incompleta — que sea honesto al presentar: "Esta es la versión 1, la versión 2 tendrá X y Y". Ambas son respuestas válidas de un diseñador real.</p>
+  </div>
+</div>
+
+<div class="celeb" id="celeb">
+  <div class="celeb-ico">🖥️</div>
+  <div class="celeb-t">¡El diseño existe, Mateo!</div>
+  <div class="celeb-txt">¡Lo lograste! Tomaste una idea de tu cabeza, la bocetaste en papel y ahora existe como un objeto 3D digital. Eso es exactamente lo que hacen los diseñadores e ingenieros del mundo entero todos los días.<br><br><strong>La próxima clase es LA GRAN FINAL — la Clase 15. Vas a imprimir tu diseño y presentarlo. ¡Todo el curso ha sido preparación para este momento. No faltes!</strong></div>
+</div>
+
+</main>
+<footer class="foot">
+  <a href="../../clase13/v1/clase.html" class="btn-nav btn-prev">⬅️ Clase 13</a>
+  <button class="btn-reset" onclick="reset()">↺ Reiniciar</button>
+  <a href="../../clase15/v1/clase.html" class="btn-nav btn-next">Clase 15 ➡️</a>
+</footer>
+<script>
+const KEY='studio3d-clase14',TOTAL=10;
+function load(){const s=JSON.parse(localStorage.getItem(KEY)||'{}');document.querySelectorAll('.scb').forEach(cb=>{if(s[cb.dataset.n]){cb.checked=true;mark(cb.dataset.n,true);}});upd();}
+function chk(cb){const n=cb.dataset.n;mark(n,cb.checked);const s=JSON.parse(localStorage.getItem(KEY)||'{}');s[n]=cb.checked;localStorage.setItem(KEY,JSON.stringify(s));upd();}
+function mark(n,on){const el=document.getElementById('s'+n);const num=el.querySelector('.s-num');if(on){el.classList.add('done');num.textContent='✓';}else{el.classList.remove('done');num.textContent=n;}}
+function upd(){const done=document.querySelectorAll('.scb:checked').length;const p=done/TOTAL*100;document.getElementById('pf').style.width=p+'%';document.getElementById('pt').textContent=done+' de '+TOTAL+' pasos completados';if(done===TOTAL){const c=document.getElementById('celeb');c.classList.add('on');c.scrollIntoView({behavior:'smooth'});confetti();}}
+function reset(){if(!confirm('¿Reiniciar?'))return;localStorage.removeItem(KEY);document.querySelectorAll('.scb').forEach(cb=>{cb.checked=false;});for(let i=1;i<=TOTAL;i++)mark(i,false);document.getElementById('celeb').classList.remove('on');upd();}
+function confetti(){const c=document.getElementById('cnf'),ctx=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const ps=Array.from({length:130},()=>({x:Math.random()*c.width,y:-10,r:Math.random()*7+3,d:Math.random()*3+1,col:['#f97316','#fb923c','#f59e0b','#ec4899','#8b5cf6'][Math.floor(Math.random()*5)],ta:0,ts:Math.random()*.1+.05}));let f=0;(function draw(){ctx.clearRect(0,0,c.width,c.height);ps.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.col;ctx.fill();p.y+=p.d;p.ta+=p.ts;p.x+=Math.sin(p.ta);if(p.y>c.height){p.y=-10;p.x=Math.random()*c.width;}});if(++f<350)requestAnimationFrame(draw);else ctx.clearRect(0,0,c.width,c.height);})();}
+load();
+</script>
+</body>
+</html>

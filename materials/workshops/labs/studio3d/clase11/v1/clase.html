@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Clase 11 — Maceta para plantas 🌱</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Nunito',sans-serif;background:#f0f9ff;color:#1e293b}.header{background:linear-gradient(135deg,#15803d,#22c55e);color:white;padding:32px 24px}.mod-badge{font-size:12px;font-weight:800;letter-spacing:2px;opacity:.8;text-transform:uppercase;margin-bottom:8px}.header-title{font-size:26px;font-weight:900;line-height:1.2;margin-bottom:16px}.badges{display:flex;gap:8px;flex-wrap:wrap}.badge{background:rgba(255,255,255,.2);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:700}.progress-wrap{background:white;padding:12px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.1)}.progress-label{font-size:12px;font-weight:700;color:#64748b;margin-bottom:6px}.prog-bar{height:8px;background:#e2e8f0;border-radius:999px}.prog-fill{height:100%;background:linear-gradient(90deg,#22c55e,#16a34a);border-radius:999px;transition:width .4s ease}main{max-width:720px;margin:0 auto;padding:24px 16px 120px}.card{background:white;border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.06)}.card-title{font-size:20px;font-weight:800;margin-bottom:16px}.objetivo-box{font-size:16px;font-weight:700;line-height:1.6;color:#15803d;background:#dcfce7;padding:16px;border-radius:12px;border-left:4px solid #22c55e}.resultado-tag{display:inline-block;background:#dcfce7;color:#15803d;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:800;margin-top:12px}.glos-item{border:2px solid #bbf7d0;border-radius:12px;padding:14px;margin-bottom:10px}.glos-term{font-size:16px;font-weight:800;color:#15803d;margin-bottom:4px}.glos-def{font-size:14px;color:#475569;line-height:1.5}.glos-tip{font-size:13px;color:#22c55e;font-weight:700;margin-top:6px}.step{display:flex;gap:16px;align-items:flex-start;padding:16px;border-radius:12px;margin-bottom:12px;border:2px solid #e2e8f0;transition:all .3s}.step.done{background:#f0fdf4;border-color:#22c55e}.s-num{width:40px;height:40px;min-width:40px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#64748b;transition:all .3s}.step.done .s-num{background:#22c55e;color:white}.s-body{flex:1}.s-title{font-size:16px;font-weight:800;margin-bottom:8px}.s-cb{margin-left:auto;width:28px;height:28px;cursor:pointer;accent-color:#22c55e}.sub{margin-top:8px}.sub-row{display:flex;gap:10px;margin-bottom:8px;font-size:14px;line-height:1.5}.sub-lbl{font-weight:900;color:#15803d;min-width:22px}.see{background:#f0fdf4;border:2px solid #22c55e;border-radius:10px;padding:12px 14px;margin-top:10px;font-size:13px;font-weight:700;color:#15803d}.see::before{content:"✅ Lo que deberías ver: "}.warn{background:#fffbeb;border:2px solid #f59e0b;border-radius:10px;padding:12px 14px;margin-top:8px;font-size:13px;font-weight:700;color:#92400e}.warn::before{content:"⚠️ Si algo va mal: "}.yay{background:#fef3c7;border-radius:10px;padding:12px;margin-top:10px;font-size:14px;font-weight:800;color:#92400e;text-align:center}.wait-row{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:10px;background:#f0fdf4;border:2px solid #bbf7d0;margin-bottom:8px;font-size:14px;font-weight:600}.wait-icon{font-size:20px;min-width:28px}.desafio{background:#fffbeb;border:3px solid #f59e0b;border-radius:16px;padding:20px}.desafio h3{font-size:18px;font-weight:900;color:#92400e;margin-bottom:8px}.desafio p{font-size:15px;color:#78350f;line-height:1.6}.cfg-card{background:#f0fdf4;border:2px solid #bbf7d0}.cfg-table{width:100%;border-collapse:collapse}.cfg-table tr:nth-child(odd){background:#dcfce7}.cfg-table td{padding:10px 14px;font-size:14px}.cfg-table td:first-child{font-weight:800;color:#15803d}.quiz-q{background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;padding:16px;margin-bottom:12px}.quiz-q p{font-size:15px;font-weight:800;margin-bottom:10px}.quiz-opts{list-style:none}.quiz-opts li{padding:8px 12px;border-radius:8px;margin-bottom:6px;font-size:14px;font-weight:600}.quiz-opts li.ok{background:#dcfce7;color:#15803d;font-weight:800}.quiz-opts li.no{color:#94a3b8}.padres-box{background:#f8fafc;border:2px solid #cbd5e1;border-radius:12px;padding:20px}.padres-box h3{font-size:15px;font-weight:800;margin-bottom:8px;color:#334155;margin-top:14px}.padres-box h3:first-child{margin-top:0}.padres-box ul{padding-left:16px}.padres-box li{font-size:14px;line-height:1.7;color:#475569}.prob{background:white;border:2px solid #fca5a5;border-radius:10px;padding:12px;margin-bottom:8px}.prob-t{font-weight:800;color:#dc2626;margin-bottom:4px;font-size:14px}.prob-fix{color:#475569;font-size:13px;line-height:1.5}.sabias{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:2px solid #bbf7d0}.sabias p{font-size:15px;line-height:1.6}.celeb{display:none;background:linear-gradient(135deg,#22c55e,#15803d);border-radius:20px;padding:40px 24px;text-align:center;margin-top:20px}.celeb.on{display:block;animation:pop .6s ease}@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}.celeb-ico{font-size:64px;margin-bottom:16px;animation:bob 1s infinite}@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}.celeb-t{font-size:26px;font-weight:900;color:white;margin-bottom:12px}.celeb-txt{font-size:15px;color:#dcfce7;line-height:1.7}#cnf{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999}.foot{position:fixed;bottom:0;left:0;right:0;background:white;border-top:2px solid #e2e8f0;padding:12px 24px;display:flex;gap:12px;justify-content:space-between;align-items:center;box-shadow:0 -4px 16px rgba(0,0,0,.1)}.btn-nav{padding:12px 24px;border-radius:999px;font-family:Nunito;font-size:15px;font-weight:800;border:none;cursor:pointer;text-decoration:none;display:inline-block}.btn-prev{background:#f1f5f9;color:#475569}.btn-next{background:linear-gradient(135deg,#22c55e,#15803d);color:white}.btn-reset{font-size:12px;color:#94a3b8;background:none;border:none;cursor:pointer;font-family:Nunito;font-weight:700}@media(max-width:600px){.header-title{font-size:20px}main{padding:16px 12px 100px}}</style>
+</head>
+<body>
+<canvas id="cnf"></canvas>
+<header class="header">
+  <div class="mod-badge">Módulo 4 — Objetos Avanzados · Clase 11</div>
+  <div class="header-title">🌱 Maceta para plantas</div>
+  <div class="badges">
+    <span class="badge">⏱️ 60 min clase</span>
+    <span class="badge">🖨️ 55 min impresión</span>
+    <span class="badge">⭐⭐⭐⭐ Dificultad 4/5</span>
+    <span class="badge">🌿 Diseña avanzado</span>
+  </div>
+</header>
+<div class="progress-wrap">
+  <div class="progress-label">Tu progreso: <span id="pt">0 de 11 pasos completados</span></div>
+  <div class="prog-bar"><div class="prog-fill" id="pf" style="width:0%"></div></div>
+</div>
+<main>
+
+<div class="card">
+  <div class="card-title">🎯 ¿Qué vas a lograr hoy?</div>
+  <div class="objetivo-box">Hoy vas a diseñar una <strong>maceta real</strong> — algo que una planta viva va a usar. Eso significa que el diseño tiene que funcionar perfectamente: interior hueco para tierra, paredes resistentes al agua, y el importantísimo <strong>agujero de drenaje</strong> en el fondo para que las raíces no se pudran. ¡Diseño con responsabilidad!</div>
+  <span class="resultado-tag">🏆 Tu resultado: Una maceta en PLA con agujero de drenaje que Mateo puede usar con una planta real</span>
+</div>
+
+<div class="card">
+  <div class="card-title">📖 Palabras de hoy</div>
+  <div class="glos-item">
+    <div class="glos-term">🌊 Diseño orgánico</div>
+    <div class="glos-def">Diseñar formas que parecen naturales — curvas suaves, como las de una hoja, una piedra o un caracol. Las macetas bonitas suelen tener formas más orgánicas que rectangulares.</div>
+    <div class="glos-tip">💡 En Tinkercad, puedes lograr formas orgánicas combinando cilindros a distintas alturas (maceta troncocónica) o usando la forma "Paraboloid".</div>
+  </div>
+  <div class="glos-item">
+    <div class="glos-term">💧 Agujero de drenaje</div>
+    <div class="glos-def">Un agujero pequeño en el fondo de la maceta. Sin él, el agua se acumula y las raíces se pudren. Es el detalle más importante del diseño funcional de hoy.</div>
+    <div class="glos-tip">💡 Todas las macetas de jardín tienen agujeros de drenaje. Hoy vas a diseñar el tuyo — un cilindro agujero de 8mm en el centro del fondo.</div>
+  </div>
+  <div class="glos-item">
+    <div class="glos-term">🏗️ Uso real</div>
+    <div class="glos-def">Diseñar algo que realmente va a usar alguien (en este caso, una planta). El diseño debe aguantar agua, tierra, y estar al sol — eso afecta nuestras decisiones de diseño.</div>
+    <div class="glos-tip">💡 El PLA es biodegradable y aguanta agua, pero puede deformarse con calor extremo (más de 60°C). Para plantas de interior es perfecto. Para exterior con sol directo, mejor PETG (veremos eso más adelante).</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">🚀 Paso a paso</div>
+
+  <div class="step" id="s1">
+    <div class="s-num">1</div>
+    <div class="s-body">
+      <div class="s-title">Planea la maceta antes de abrir Tinkercad</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Decide el estilo: ¿cilíndrica (como un tubo) o troncocónica (más ancha arriba que abajo, como las macetas clásicas)?</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Decide el tamaño: recomendamos <strong>80mm de diámetro superior, 60mm de diámetro inferior, 70mm de alto</strong>. Esto es una maceta para plantas pequeñas.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Anota en papel: diámetro superior, diámetro inferior, altura, grosor de pared (5mm), tamaño del agujero de drenaje (8mm).</span></div>
+      </div>
+      <div class="see">Un "plano" dibujado en papel con las medidas de la maceta. Como el plano de un arquitecto, pero para un niño de 7 años.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="1" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s2">
+    <div class="s-num">2</div>
+    <div class="s-body">
+      <div class="s-title">Crea la forma exterior troncocónica</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Nuevo diseño Tinkercad → <strong>"Maceta Mateo"</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Arrastra un <strong>Cylinder</strong> al plano: <strong>80mm de diámetro y 70mm de alto</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Para hacerlo troncocónico: En el panel derecho busca los campos de la forma. Algunos cilindros en Tinkercad tienen opción de radio en la parte de arriba vs abajo. Alternativamente, usa la forma <strong>"Cone"</strong> y ajusta el radio superior.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>Si no encuentras la opción troncocónica, usa un cilindro recto de 80mm — también funciona muy bien.</span></div>
+      </div>
+      <div class="see">Un cilindro (o tronco de cono) sólido de 80mm de diámetro y 70mm de alto en el plano.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="2" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s3">
+    <div class="s-num">3</div>
+    <div class="s-body">
+      <div class="s-title">Crea el interior hueco de la maceta</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Arrastra un segundo Cylinder: <strong>70mm de diámetro y 65mm de alto</strong> (5mm más corto para dejar el fondo sólido).</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Cámbialo a <strong>Hole</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Centra el agujero sobre el exterior con <strong>Align</strong>. Colócalo en la parte de arriba (para que quede hueco por arriba y sólido por abajo).</span></div>
+      </div>
+      <div class="see">Un cilindro exterior sólido (80mm) con un agujero cilíndrico interior (70mm). El fondo (5mm) queda sólido.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="3" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s4">
+    <div class="s-num">4</div>
+    <div class="s-body">
+      <div class="s-title">¡El agujero de drenaje! — El paso más importante</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Arrastra un Cylinder pequeño: <strong>8mm de diámetro y 6mm de alto</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Cámbialo a <strong>Hole</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Centra este cilindro en el fondo de la maceta (posición X=0, Y=0, Z=0 — exactamente en el centro del fondo).</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>El cilindro agujero debe atravesar los 5mm del fondo completamente para crear el drenaje.</span></div>
+      </div>
+      <div class="see">El fondo de la maceta tiene un agujero circular de 8mm en el centro — así saldrá el agua de riego.</div>
+      <div class="warn">¡No olvides este agujero! Sin el agujero de drenaje, el agua se acumula, las raíces no respiran y la planta muere. Este es el detalle más funcional del diseño.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="4" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s5">
+    <div class="s-num">5</div>
+    <div class="s-body">
+      <div class="s-title">Agrega un borde superior decorativo (opcional)</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Para darle un acabado más bonito, agrega un <strong>Torus</strong> (dona) en el borde superior. Torus: 90mm de diámetro exterior, 80mm interior, 5mm de grosor.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Posiciona el Torus exactamente en el borde superior de la maceta.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Si no consigues el Torus, omite este paso — la maceta funciona igual.</span></div>
+      </div>
+      <div class="see">La maceta tiene un borde "labio" decorativo en la parte superior — como las macetas elegantes de cerámica.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="5" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s6">
+    <div class="s-num">6</div>
+    <div class="s-body">
+      <div class="s-title">Agrupa todo y exporta</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Selecciona todo → Ctrl+G.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Rota la vista y verifica: hueco interior visible desde arriba, agujero de drenaje visible desde abajo, paredes de 5mm.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Exportar → .STL → Descargas.</span></div>
+      </div>
+      <div class="see">La maceta completa como un solo objeto. Hueco interior visible arriba, agujero de drenaje en el centro del fondo.</div>
+      <div class="yay">🎉 ¡La maceta está diseñada! Ahora va a imprimir durante casi una hora.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="6" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s7">
+    <div class="s-num">7</div>
+    <div class="s-body">
+      <div class="s-title">Configura en Bambu Studio y verifica el drenaje en el Slice</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Arrastra .STL a Bambu Studio → 0.20mm Standard → Soportes: NO.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Clic en Slice → ve a las primeras capas con el slider.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>¿Ves el agujero de 8mm en el centro en las primeras capas? Si sí, ¡perfecto! Si no, el agujero no quedó en la posición correcta — volver a Tinkercad.</span></div>
+      </div>
+      <div class="see">En la primera capa del Slice se ve el anillo de la base de la maceta con el agujero central de 8mm claramente visible.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="7" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s8">
+    <div class="s-num">8</div>
+    <div class="s-body">
+      <div class="s-title">Imprime la maceta</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Enviar a Bambu Lab A1 → confirmar en pantalla táctil.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>La maceta tarda ~55 minutos por su altura y paredes. Cada capa es un anillo.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Observa la impresión: primero el fondo (con el agujero de drenaje), luego las paredes suben.</span></div>
+      </div>
+      <div class="see">Las primeras capas forman el fondo circular con un pequeño agujero central. Las capas siguientes construyen las paredes subiendo.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="8" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s9">
+    <div class="s-num">9</div>
+    <div class="s-body">
+      <div class="s-title">Saca la maceta y prueba el drenaje con agua</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Pitido → espera → saca la maceta.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Verifica el agujero de drenaje desde abajo. ¿Está limpio y abierto?</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Prueba: sobre el lavabo, echa un poco de agua adentro. ¿Sale por el agujero del fondo? ¡Si sale, el drenaje funciona!</span></div>
+      </div>
+      <div class="see">El agua entra por arriba de la maceta y sale en chorro por el agujero de drenaje del fondo. ¡El diseño funciona como una maceta real!</div>
+      <div class="yay">🎉 ¡El drenaje funciona! La maceta de Mateo puede alojar una planta viva sin problema.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="9" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s10">
+    <div class="s-num">10</div>
+    <div class="s-body">
+      <div class="s-title">Planta algo en la maceta</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Pon un plato pequeño debajo de la maceta para que el agua de drenaje no manche la superficie.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Rellena la maceta con tierra. Planta una planta pequeña — un suculenta, una hierba aromática o una semilla.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Riega y cuida la planta. Es tuya — la maceta y la planta.</span></div>
+      </div>
+      <div class="see">Una planta viva en la maceta imprimida en 3D por Mateo. Un objeto de plástico transformado en parte de un ser vivo.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="10" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s11">
+    <div class="s-num">11</div>
+    <div class="s-body">
+      <div class="s-title">Pon la maceta en su lugar y nómbrala</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Elige el lugar perfecto — una ventana con luz indirecta es ideal para la mayoría de plantas.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Ponle nombre a tu planta — las plantas crecen mejor cuando las cuidas con cariño.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Regístrala: ¿cuándo la plantaste? ¿Cuánto mide hoy? Síguele la pista en las próximas semanas.</span></div>
+      </div>
+      <div class="see">La maceta de Mateo en su lugar con una planta viva. Dentro de unas semanas, la planta habrá crecido en la maceta que Mateo diseñó e imprimió.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="11" onchange="chk(this)">
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">⏳ Mientras la maceta se imprime... (55 min)</div>
+  <div class="wait-row"><span class="wait-icon">💧</span><span><strong>Aprende sobre el drenaje:</strong> ¿Por qué las plantas necesitan drenaje? Si el agua no sale, se pudren las raíces. Busca en casa una maceta con agujero y compárala con la tuya.</span></div>
+  <div class="wait-row"><span class="wait-icon">🌱</span><span><strong>Decide qué plantar:</strong> ¿Una suculenta (necesita poca agua)? ¿Mint o albahaca (se come)? ¿Un cactus (muy fácil de cuidar)? Cada planta tiene requisitos diferentes.</span></div>
+  <div class="wait-row"><span class="wait-icon">📐</span><span><strong>Calcula cuánta tierra entra:</strong> El interior mide 70mm de diámetro y 60mm de alto. Volumen = π × (35mm)² × 60mm ≈ 231,000mm³ = 231ml de tierra.</span></div>
+</div>
+
+<div class="card"><div class="desafio"><h3>💡 El desafío del día</h3><p>¿Puedes agregar <strong>texto en relieve</strong> a la maceta con el nombre de la planta? Usando lo que aprendiste en la Clase 7, añade una pequeña placa con el nombre de tu planta en el exterior de la maceta.</p></div></div>
+
+<div class="card">
+  <div class="card-title">🤔 Mini quiz</div>
+  <div class="quiz-q"><p>1. ¿Por qué una maceta necesita un agujero en el fondo?</p><ul class="quiz-opts"><li class="ok">a) Para que el agua de riego salga y las raíces no se pudran ✅</li><li class="no">b) Para que la tierra no pese tanto</li><li class="no">c) Para que la planta pueda ver afuera</li></ul></div>
+  <div class="quiz-q"><p>2. En esta maceta, el interior mide 70mm y el exterior 80mm. ¿Cuánto mide cada pared?</p><ul class="quiz-opts"><li class="ok">a) 5mm (80-70 = 10mm total ÷ 2 lados = 5mm cada pared) ✅</li><li class="no">b) 10mm</li><li class="no">c) 2.5mm</li></ul></div>
+  <div class="quiz-q"><p>3. ¿Por qué el interior cilíndrico de la maceta es 65mm de alto si la maceta mide 70mm?</p><ul class="quiz-opts"><li class="ok">a) Para que el fondo quede sólido con 5mm de grosor ✅</li><li class="no">b) Porque Tinkercad no puede hacer cilindros de 70mm de alto</li><li class="no">c) Para que quepa más tierra</li></ul></div>
+</div>
+
+<div class="card cfg-card">
+  <div class="card-title" style="color:#15803d">⚙️ Configuración — Bambu Lab A1</div>
+  <table class="cfg-table">
+    <tr><td>🖨️ Impresora</td><td>Bambu Lab A1</td></tr>
+    <tr><td>🎨 Filamento</td><td>PLA</td></tr>
+    <tr><td>📐 Altura de capa</td><td>0.20mm Standard</td></tr>
+    <tr><td>⚡ Velocidad</td><td>Standard</td></tr>
+    <tr><td>🏗️ Soportes</td><td>No</td></tr>
+    <tr><td>🟫 Placa</td><td>Texturizada</td></tr>
+    <tr><td>🔁 Relleno</td><td>15%</td></tr>
+    <tr><td>🕐 Tiempo</td><td>~55 minutos</td></tr>
+  </table>
+</div>
+
+<div class="card sabias"><div class="card-title">💡 ¿Sabías que...?</div><p>Las macetas de plástico son uno de los productos más comunes en el mundo — se producen millones por año. Pero la mayoría son de plástico que no se recicla fácilmente. El PLA de tu maceta es biodegradable — si la entierras en un jardín de compost, se descompone en pocos años (a diferencia del plástico normal que tarda 500 años). ¡Tu maceta es más ecológica que las del supermercado!</p></div>
+
+<div class="card">
+  <div class="card-title">🧑‍🏫 Para quien acompaña a Mateo</div>
+  <div class="padres-box">
+    <h3>✅ Lo que Mateo aprendió hoy</h3>
+    <ul><li>Diseño funcional con requisitos biológicos (drenaje para plantas)</li><li>La importancia del agujero de drenaje y por qué existe</li><li>Verificar el diseño en la vista de Slice ANTES de imprimir</li><li>Responsabilidad sobre un ser vivo que depende de su diseño</li></ul>
+    <h3>⚠️ Posibles problemas</h3>
+    <div class="prob"><div class="prob-t">El agujero de drenaje se cerró durante la impresión</div><div class="prob-fix">El slicer puede cerrar huecos muy pequeños (menos de 5mm). Si en el Slice no se veía el agujero, reimprimir con un agujero de 10mm en vez de 8mm. Alternativamente, usar una broca de mano de 8mm para abrirlo después de imprimir.</div></div>
+    <div class="prob"><div class="prob-t">La maceta tiene filtraciones (el agua pasa por las paredes)</div><div class="prob-fix">El PLA impreso no es 100% impermeable en capas muy delgadas. Para mejor impermeabilidad, usar infill del 30-40% (más relleno en las paredes). Con 15% de infill puede haber micro-filtraciones leves que suelen sellarse con un poco de resina o barniz de madera diluido.</div></div>
+    <h3>🌱 Seguimiento de la planta</h3>
+    <p style="font-size:14px;color:#475569;line-height:1.6">Esta es una oportunidad de responsabilidad continua. Mateo debe regar la planta cada 2-3 días (depende de la planta) y observar su crecimiento. En 1-2 semanas ya notará cambios. Esta maceta conecta el diseño digital con el mundo vivo real.</p>
+  </div>
+</div>
+
+<div class="celeb" id="celeb">
+  <div class="celeb-ico">🌱</div>
+  <div class="celeb-t">¡Diseñador de vida, Mateo!</div>
+  <div class="celeb-txt">Hoy hiciste algo especial: diseñaste un objeto para un ser vivo. Tu maceta no es solo plástico — es el hogar de una planta que va a crecer durante semanas y meses gracias a tu diseño. El agujero de drenaje que pusiste en el fondo hará que las raíces respiren. ¡Eso es ingeniería con propósito!<br><br><strong>La próxima clase: diseño en serie. Vas a crear las piezas de un juego de mesa. ¿Imaginas jugar con fichas que diseñaste tú mismo?</strong></div>
+</div>
+
+</main>
+<footer class="foot">
+  <a href="../../clase10/v1/clase.html" class="btn-nav btn-prev">⬅️ Clase 10</a>
+  <button class="btn-reset" onclick="reset()">↺ Reiniciar</button>
+  <a href="../../clase12/v1/clase.html" class="btn-nav btn-next">Clase 12 ➡️</a>
+</footer>
+<script>
+const KEY='studio3d-clase11',TOTAL=11;
+function load(){const s=JSON.parse(localStorage.getItem(KEY)||'{}');document.querySelectorAll('.scb').forEach(cb=>{if(s[cb.dataset.n]){cb.checked=true;mark(cb.dataset.n,true);}});upd();}
+function chk(cb){const n=cb.dataset.n;mark(n,cb.checked);const s=JSON.parse(localStorage.getItem(KEY)||'{}');s[n]=cb.checked;localStorage.setItem(KEY,JSON.stringify(s));upd();}
+function mark(n,on){const el=document.getElementById('s'+n);const num=el.querySelector('.s-num');if(on){el.classList.add('done');num.textContent='✓';}else{el.classList.remove('done');num.textContent=n;}}
+function upd(){const done=document.querySelectorAll('.scb:checked').length;const p=done/TOTAL*100;document.getElementById('pf').style.width=p+'%';document.getElementById('pt').textContent=done+' de '+TOTAL+' pasos completados';if(done===TOTAL){const c=document.getElementById('celeb');c.classList.add('on');c.scrollIntoView({behavior:'smooth'});confetti();}}
+function reset(){if(!confirm('¿Reiniciar?'))return;localStorage.removeItem(KEY);document.querySelectorAll('.scb').forEach(cb=>{cb.checked=false;});for(let i=1;i<=TOTAL;i++)mark(i,false);document.getElementById('celeb').classList.remove('on');upd();}
+function confetti(){const c=document.getElementById('cnf'),ctx=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const ps=Array.from({length:130},()=>({x:Math.random()*c.width,y:-10,r:Math.random()*7+3,d:Math.random()*3+1,col:['#22c55e','#86efac','#f59e0b','#ec4899','#8b5cf6'][Math.floor(Math.random()*5)],ta:0,ts:Math.random()*.1+.05}));let f=0;(function draw(){ctx.clearRect(0,0,c.width,c.height);ps.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.col;ctx.fill();p.y+=p.d;p.ta+=p.ts;p.x+=Math.sin(p.ta);if(p.y>c.height){p.y=-10;p.x=Math.random()*c.width;}});if(++f<350)requestAnimationFrame(draw);else ctx.clearRect(0,0,c.width,c.height);})();}
+load();
+</script>
+</body>
+</html>

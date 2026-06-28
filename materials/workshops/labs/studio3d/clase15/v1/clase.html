@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Clase 15 — ¡Lo imprimimos y presentamos! 🏆</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Nunito',sans-serif;background:linear-gradient(135deg,#fff7ed,#fdf4ff);color:#1e293b}.header{background:linear-gradient(135deg,#6d28d9,#f97316,#22c55e);color:white;padding:32px 24px}.mod-badge{font-size:12px;font-weight:800;letter-spacing:2px;opacity:.8;text-transform:uppercase;margin-bottom:8px}.header-title{font-size:28px;font-weight:900;line-height:1.2;margin-bottom:16px}.badges{display:flex;gap:8px;flex-wrap:wrap}.badge{background:rgba(255,255,255,.2);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:700}.progress-wrap{background:white;padding:12px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.1)}.progress-label{font-size:12px;font-weight:700;color:#64748b;margin-bottom:6px}.prog-bar{height:8px;background:#e2e8f0;border-radius:999px}.prog-fill{height:100%;background:linear-gradient(90deg,#6d28d9,#f97316,#22c55e);border-radius:999px;transition:width .4s ease}main{max-width:720px;margin:0 auto;padding:24px 16px 120px}.card{background:white;border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.06)}.card-title{font-size:20px;font-weight:800;margin-bottom:16px}.objetivo-box{font-size:16px;font-weight:700;line-height:1.6;color:#6d28d9;background:#faf5ff;padding:16px;border-radius:12px;border-left:4px solid #8b5cf6}.resultado-tag{display:inline-block;background:#dcfce7;color:#15803d;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:800;margin-top:12px}.step{display:flex;gap:16px;align-items:flex-start;padding:16px;border-radius:12px;margin-bottom:12px;border:2px solid #e2e8f0;transition:all .3s}.step.done{background:linear-gradient(135deg,#f0fdf4,#faf5ff);border-color:#8b5cf6}.s-num{width:40px;height:40px;min-width:40px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#64748b;transition:all .3s}.step.done .s-num{background:linear-gradient(135deg,#8b5cf6,#22c55e);color:white}.s-body{flex:1}.s-title{font-size:16px;font-weight:800;margin-bottom:8px}.s-cb{margin-left:auto;width:28px;height:28px;cursor:pointer;accent-color:#8b5cf6}.sub{margin-top:8px}.sub-row{display:flex;gap:10px;margin-bottom:8px;font-size:14px;line-height:1.5}.sub-lbl{font-weight:900;color:#6d28d9;min-width:22px}.see{background:#faf5ff;border:2px solid #8b5cf6;border-radius:10px;padding:12px 14px;margin-top:10px;font-size:13px;font-weight:700;color:#5b21b6}.see::before{content:"✅ Checkpoint: "}.yay{background:#fef3c7;border-radius:10px;padding:12px;margin-top:10px;font-size:14px;font-weight:800;color:#92400e;text-align:center}.presentacion-box{background:linear-gradient(135deg,#faf5ff,#f0fdf4);border:3px solid #8b5cf6;border-radius:16px;padding:24px;margin:16px 0}.presentacion-box h3{font-size:20px;font-weight:900;color:#6d28d9;margin-bottom:16px}.presentacion-paso{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px}.pres-num{background:#8b5cf6;color:white;width:32px;height:32px;min-width:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900}.pres-content{flex:1}.pres-title{font-size:16px;font-weight:800;color:#1e293b;margin-bottom:4px}.pres-text{font-size:14px;color:#475569;line-height:1.6}.pres-frase{background:white;border:2px solid #e9d5ff;border-radius:10px;padding:12px;margin-top:8px;font-size:14px;font-weight:800;color:#6d28d9;font-style:italic}.logros-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}.logro-item{background:white;border:2px solid #e9d5ff;border-radius:12px;padding:14px;text-align:center}.logro-emoji{font-size:28px;margin-bottom:6px}.logro-title{font-size:13px;font-weight:800;color:#1e293b;margin-bottom:4px}.logro-sub{font-size:12px;color:#64748b}.cfg-card{background:#f0f9ff;border:2px solid #bae6fd}.cfg-table{width:100%;border-collapse:collapse}.cfg-table tr:nth-child(odd){background:#e0f2fe}.cfg-table td{padding:10px 14px;font-size:14px}.cfg-table td:first-child{font-weight:800;color:#0369a1}.padres-box{background:#f8fafc;border:2px solid #cbd5e1;border-radius:12px;padding:20px}.padres-box h3{font-size:15px;font-weight:800;margin-bottom:8px;color:#334155;margin-top:14px}.padres-box h3:first-child{margin-top:0}.padres-box ul{padding-left:16px}.padres-box li{font-size:14px;line-height:1.7;color:#475569}.gran-celeb{display:none;background:linear-gradient(135deg,#6d28d9,#f97316,#22c55e);border-radius:20px;padding:48px 24px;text-align:center;margin-top:20px}.gran-celeb.on{display:block;animation:pop .6s ease}@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}.celeb-ico{font-size:80px;margin-bottom:16px;animation:bob 1s infinite}@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}.celeb-t{font-size:30px;font-weight:900;color:white;margin-bottom:16px}.celeb-txt{font-size:16px;color:rgba(255,255,255,.9);line-height:1.8;margin-bottom:24px}.logros-finales{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}.logro-badge{background:rgba(255,255,255,.2);color:white;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:800}#cnf{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999}.foot{position:fixed;bottom:0;left:0;right:0;background:white;border-top:2px solid #e2e8f0;padding:12px 24px;display:flex;gap:12px;justify-content:space-between;align-items:center;box-shadow:0 -4px 16px rgba(0,0,0,.1)}.btn-nav{padding:12px 24px;border-radius:999px;font-family:Nunito;font-size:15px;font-weight:800;border:none;cursor:pointer;text-decoration:none;display:inline-block}.btn-prev{background:#f1f5f9;color:#475569}.btn-fin{background:linear-gradient(135deg,#6d28d9,#f97316);color:white}.btn-reset{font-size:12px;color:#94a3b8;background:none;border:none;cursor:pointer;font-family:Nunito;font-weight:700}@media(max-width:600px){.header-title{font-size:22px}main{padding:16px 12px 100px}.logros-grid{grid-template-columns:1fr}}</style>
+</head>
+<body>
+<canvas id="cnf"></canvas>
+<header class="header">
+  <div class="mod-badge">Módulo 5 — ¡Tu Proyecto Final! · Clase 15 — ¡LA GRAN FINAL!</div>
+  <div class="header-title">🏆 ¡Lo imprimimos y presentamos!</div>
+  <div class="badges">
+    <span class="badge">⏱️ 90 min clase</span>
+    <span class="badge">🖨️ Impresión variable</span>
+    <span class="badge">🎤 Presentación</span>
+    <span class="badge">🎓 ¡Graduación!</span>
+  </div>
+</header>
+<div class="progress-wrap">
+  <div class="progress-label">Tu progreso: <span id="pt">0 de 8 pasos completados</span></div>
+  <div class="prog-bar"><div class="prog-fill" id="pf" style="width:0%"></div></div>
+</div>
+<main>
+
+<div class="card">
+  <div class="card-title">🌟 ¡El día más importante del curso!</div>
+  <div class="objetivo-box">¡Llegaste! Esta es la clase más especial de todo el año. Hoy vas a imprimir tu proyecto final, presentarlo en voz alta y recibir tu certificado de graduación de Studio 3D. Tres semanas de aprendizaje, 14 clases, y docenas de técnicas — todo confluye en este momento. ¡Disfrútalo!</div>
+  <span class="resultado-tag">🏆 Tu resultado: Tu proyecto final impreso en 3D + presentación completada + ¡graduado de Studio 3D!</span>
+</div>
+
+<div class="card">
+  <div class="card-title">📋 Lista de logros — Todo lo que aprendiste</div>
+  <div class="logros-grid">
+    <div class="logro-item"><div class="logro-emoji">🖨️</div><div class="logro-title">Imprimir en 3D</div><div class="logro-sub">Bambu Lab A1 · 12 clases</div></div>
+    <div class="logro-item"><div class="logro-emoji">🖥️</div><div class="logro-title">Diseño CAD</div><div class="logro-sub">Tinkercad · Clases 4-14</div></div>
+    <div class="logro-item"><div class="logro-emoji">🕳️</div><div class="logro-title">Objetos huecos</div><div class="logro-sub">Porta-lápices · Clase 6</div></div>
+    <div class="logro-item"><div class="logro-emoji">🔤</div><div class="logro-title">Texto 3D</div><div class="logro-sub">Relieve · Agujero · Clases 7-8</div></div>
+    <div class="logro-item"><div class="logro-emoji">🪞</div><div class="logro-title">Espejado</div><div class="logro-sub">Sello con inicial · Clase 9</div></div>
+    <div class="logro-item"><div class="logro-emoji">🏗️</div><div class="logro-title">Soportes</div><div class="logro-sub">Dino monedero · Clase 10</div></div>
+    <div class="logro-item"><div class="logro-emoji">🌱</div><div class="logro-title">Diseño funcional</div><div class="logro-sub">Maceta · Imán · Clases 8,11</div></div>
+    <div class="logro-item"><div class="logro-emoji">📋</div><div class="logro-title">Diseño en serie</div><div class="logro-sub">Fichas juego · Clase 12</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">🚀 El gran día — paso a paso</div>
+
+  <div class="step" id="s1">
+    <div class="s-num">1</div>
+    <div class="s-body">
+      <div class="s-title">Carga el STL final en Bambu Studio</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Abre Bambu Studio → arrastra el archivo <strong>"proyecto-final-mateo.stl"</strong> de la Clase 14.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Selecciona la configuración adecuada según el objeto: ¿0.20mm Standard? ¿0.15mm Optimal? ¿Necesita soportes?</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Haz Slice → verifica que todo se ve bien → mira el tiempo estimado.</span></div>
+      </div>
+      <div class="see">El proyecto final en Bambu Studio listo para imprimir. El tiempo de impresión aparece en la pantalla.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="1" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s2">
+    <div class="s-num">2</div>
+    <div class="s-body">
+      <div class="s-title">Envía a imprimir en la Bambu Lab A1</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Botón de imprimir → Bambu Lab A1 → Print → confirmar en la pantalla táctil.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Calentamiento → auto-nivelación → purge line → ¡comienza la impresión del proyecto más especial!</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Observa las primeras capas con atención — son la base de tu creación.</span></div>
+      </div>
+      <div class="see">La impresora comienza a construir tu proyecto final. Las primeras capas aparecen en la placa.</div>
+      <div class="yay">🎉 ¡TU PROYECTO FINAL ESTÁ SIENDO CREADO POR LA IMPRESORA! ¡Este es el momento!</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="2" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s3">
+    <div class="s-num">3</div>
+    <div class="s-body">
+      <div class="s-title">Mientras imprime — Practica tu presentación</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Toma el papel con las 3 cosas que ibas a decir (de la Clase 14).</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Practica tu presentación en voz alta con el adulto.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Recuerda que vas a hablar de: ¿Qué es? ¿Para quién? ¿Qué fue lo más difícil? ¿Qué mejorarías?</span></div>
+      </div>
+      <div class="see">La presentación practicada y lista. Mateo puede hablar 1-2 minutos fluido sobre su proyecto.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="3" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s4">
+    <div class="s-num">4</div>
+    <div class="s-body">
+      <div class="s-title">Saca el proyecto terminado</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Pitido de "Print Complete" → espera 3-5 minutos a que la placa se enfríe.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Dobla la placa suavemente → el proyecto sale de la placa.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Si tiene soportes, retíralos con cuidado.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>Toma tu objeto en las manos. Siéntelo. Pésalo. Es real. Lo hiciste tú.</span></div>
+      </div>
+      <div class="see">Tu proyecto final en tus manos. Plástico PLA que era solo una idea hace 3 semanas y ahora es un objeto real que puedes tocar.</div>
+      <div class="yay">🏆 ¡EL OBJETO EXISTE! ¡Lo diseñaste tú, lo programaste tú y la impresora lo construyó para ti!</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="4" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s5">
+    <div class="s-num">5</div>
+    <div class="s-body">
+      <div class="s-title">Inspecciona el resultado</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Compara el objeto real con el boceto de la Clase 13. ¿Se parece a lo que imaginaste?</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>¿Qué partes quedaron perfectas? ¿Qué partes mejorarías en la versión 2?</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>¿El objeto funciona como planeaste? (si es funcional: pruébalo)</span></div>
+      </div>
+      <div class="see">El objeto inspeccionado. Una lista mental de lo que salió bien y lo que mejorarías. Eso es pensamiento de diseñador.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="5" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s6">
+    <div class="s-num">6</div>
+    <div class="s-body">
+      <div class="s-title">¡LA PRESENTACIÓN!</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Párate con tu objeto en la mano.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Habla de tu proyecto — usa el esquema de abajo como guía.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>El adulto puede hacerte preguntas al final.</span></div>
+      </div>
+      <div class="see">Mateo presentó su proyecto en voz alta, con el objeto en mano, explicando qué es, para quién es y cómo lo hizo.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="6" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s7">
+    <div class="s-num">7</div>
+    <div class="s-body">
+      <div class="s-title">Entrega o guarda el objeto</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Si es un regalo: ¡entrégalo a la persona para quien lo hiciste! Cuéntale que lo diseñaste e imprimiste tú.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Si es para ti: encuentra el lugar perfecto para guardarlo en tu cuarto.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Toma una foto con el objeto — es el recuerdo de tu proyecto final de Studio 3D.</span></div>
+      </div>
+      <div class="see">El objeto entregado o en su lugar definitivo. La foto que registra este momento para siempre.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="7" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s8">
+    <div class="s-num">8</div>
+    <div class="s-body">
+      <div class="s-title">¡GRADUACIÓN! — Recibe tu reconocimiento</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Completa el último checkbox. La celebración final de Studio 3D se activa.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>¡Felicidades! Completaste las 15 clases de Studio 3D — el curso de impresión 3D más completo para tu edad.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>El próximo nivel: ¡Continúa explorando! Tinkercad tiene formas más avanzadas, Bambu Studio tiene configuraciones profesionales, y el mundo del diseño 3D es infinito.</span></div>
+      </div>
+      <div class="yay">🎓 ¡GRADUADO DE STUDIO 3D! ¡Mateo, Diseñador e Impresor 3D Nivel 1!</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="8" onchange="chk(this)">
+  </div>
+</div>
+
+<div class="presentacion-box">
+  <h3>🎤 Guía de presentación (1-2 minutos)</h3>
+  <div class="presentacion-paso">
+    <div class="pres-num">1</div>
+    <div class="pres-content">
+      <div class="pres-title">¿Qué es tu objeto?</div>
+      <div class="pres-text">Describe con tus propias palabras qué hiciste.</div>
+      <div class="pres-frase">"Mi proyecto final es un/una ___ que ___."</div>
+    </div>
+  </div>
+  <div class="presentacion-paso">
+    <div class="pres-num">2</div>
+    <div class="pres-content">
+      <div class="pres-title">¿Para quién es y por qué?</div>
+      <div class="pres-text">Cuenta la historia detrás del diseño.</div>
+      <div class="pres-frase">"Lo diseñé para ___ porque ___."</div>
+    </div>
+  </div>
+  <div class="presentacion-paso">
+    <div class="pres-num">3</div>
+    <div class="pres-content">
+      <div class="pres-title">¿Cómo lo hiciste?</div>
+      <div class="pres-text">Menciona las técnicas que usaste de las 15 clases.</div>
+      <div class="pres-frase">"Usé ___ y ___ en Tinkercad. Lo imprimí con la Bambu Lab A1 a ___mm de capa."</div>
+    </div>
+  </div>
+  <div class="presentacion-paso">
+    <div class="pres-num">4</div>
+    <div class="pres-content">
+      <div class="pres-title">¿Qué fue lo más difícil?</div>
+      <div class="pres-text">Hablar de los retos es parte de ser diseñador.</div>
+      <div class="pres-frase">"Lo más difícil fue ___ porque ___. Lo resolví ___."</div>
+    </div>
+  </div>
+  <div class="presentacion-paso">
+    <div class="pres-num">5</div>
+    <div class="pres-content">
+      <div class="pres-title">¿Qué mejorarías?</div>
+      <div class="pres-text">Todo diseño tiene una versión 2. ¿Cuál sería la tuya?</div>
+      <div class="pres-frase">"Si hiciera la versión 2, le agregaría/cambiaría ___."</div>
+    </div>
+  </div>
+</div>
+
+<div class="card cfg-card">
+  <div class="card-title" style="color:#0369a1">⚙️ Configuración del proyecto final — Bambu Lab A1</div>
+  <table class="cfg-table">
+    <tr><td>🖨️ Impresora</td><td>Bambu Lab A1</td></tr>
+    <tr><td>🎨 Filamento</td><td>PLA</td></tr>
+    <tr><td>📐 Altura de capa</td><td>Según el diseño (0.20mm recomendado)</td></tr>
+    <tr><td>🏗️ Soportes</td><td>Si el diseño los necesita</td></tr>
+    <tr><td>🕐 Tiempo</td><td>Variable (depende del tamaño)</td></tr>
+    <tr><td>🎓 Ocasión</td><td>¡GRADUACIÓN Studio 3D!</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <div class="card-title">🧑‍🏫 Para quien acompañó a Mateo en Studio 3D</div>
+  <div class="padres-box">
+    <h3>🎓 Lo que Mateo logró en 15 clases</h3>
+    <ul>
+      <li>Operó de forma independiente una impresora 3D profesional (Bambu Lab A1)</li>
+      <li>Diseñó más de 10 objetos únicos en Tinkercad usando CAD</li>
+      <li>Aprendió conceptos de ingeniería: tolerancias, soportes, capas, relleno, espejado</li>
+      <li>Completó un ciclo completo de diseño: idea → boceto → CAD → STL → impresión → presentación</li>
+      <li>Conectó el diseño digital con el mundo físico (imán en heladera, planta en maceta, juego con fichas)</li>
+    </ul>
+    <h3>🚀 Próximos pasos sugeridos</h3>
+    <ul>
+      <li>Tinkercad avanzado: Formas orgánicas con el editor de sólidos, importar SVGs</li>
+      <li>Bambu Studio avanzado: Impresión multi-color, diferentes materiales (PETG, TPU)</li>
+      <li>Proyectos colaborativos: Diseñar algo para el cole o un proyecto solidario</li>
+      <li>Matemáticas del diseño 3D: volúmenes, áreas de superficie, tolerancias</li>
+    </ul>
+    <h3>🏆 Cómo celebrar el logro</h3>
+    <p style="font-size:14px;color:#475569;line-height:1.6">Este es un logro genuinamente significativo. Un niño de 7-8 años que puede diseñar e imprimir objetos en 3D tiene habilidades que la mayoría de adultos no tienen. Considerar: mostrar los proyectos a la familia extendida, compartir en redes (con permiso), o guardar los objetos como colección de Studio 3D para mirar en el futuro.</p>
+  </div>
+</div>
+
+<div class="gran-celeb" id="celeb">
+  <div class="celeb-ico">🏆</div>
+  <div class="celeb-t">¡GRADUADO DE STUDIO 3D, MATEO!</div>
+  <div class="celeb-txt">
+    Empezaste sin saber nada de impresoras 3D. Hoy terminas habiendo diseñado e imprimido más de 10 objetos únicos. Pusiste tu nombre en relieve, creaste un imán para la heladera, diseñaste una maceta con drenaje para una planta viva, y hoy completaste tu proyecto final completamente libre.<br><br>
+    <strong>Eso no es magia. Es dedicación, curiosidad y trabajo. ¡Eso eres tú, Mateo!</strong><br><br>
+    El mundo del diseño 3D es infinito — esto es solo el comienzo.
+  </div>
+  <div class="logros-finales">
+    <span class="logro-badge">🖨️ Impresor 3D</span>
+    <span class="logro-badge">🖥️ Diseñador CAD</span>
+    <span class="logro-badge">🔤 Maestro del Texto 3D</span>
+    <span class="logro-badge">🪞 Experto en Espejado</span>
+    <span class="logro-badge">🏗️ Ingeniero de Soportes</span>
+    <span class="logro-badge">🎓 Studio 3D Nivel 1</span>
+  </div>
+</div>
+
+</main>
+<footer class="foot">
+  <a href="../../clase14/v1/clase.html" class="btn-nav btn-prev">⬅️ Clase 14</a>
+  <button class="btn-reset" onclick="reset()">↺ Reiniciar</button>
+  <span class="btn-nav btn-fin">🏆 ¡Fin del curso!</span>
+</footer>
+<script>
+const KEY='studio3d-clase15',TOTAL=8;
+function load(){const s=JSON.parse(localStorage.getItem(KEY)||'{}');document.querySelectorAll('.scb').forEach(cb=>{if(s[cb.dataset.n]){cb.checked=true;mark(cb.dataset.n,true);}});upd();}
+function chk(cb){const n=cb.dataset.n;mark(n,cb.checked);const s=JSON.parse(localStorage.getItem(KEY)||'{}');s[n]=cb.checked;localStorage.setItem(KEY,JSON.stringify(s));upd();}
+function mark(n,on){const el=document.getElementById('s'+n);const num=el.querySelector('.s-num');if(on){el.classList.add('done');num.textContent='✓';}else{el.classList.remove('done');num.textContent=n;}}
+function upd(){const done=document.querySelectorAll('.scb:checked').length;const p=done/TOTAL*100;document.getElementById('pf').style.width=p+'%';document.getElementById('pt').textContent=done+' de '+TOTAL+' pasos completados';if(done===TOTAL){const c=document.getElementById('celeb');c.classList.add('on');c.scrollIntoView({behavior:'smooth'});megaConfetti();}}
+function reset(){if(!confirm('¿Reiniciar?'))return;localStorage.removeItem(KEY);document.querySelectorAll('.scb').forEach(cb=>{cb.checked=false;});for(let i=1;i<=TOTAL;i++)mark(i,false);document.getElementById('celeb').classList.remove('on');upd();}
+function megaConfetti(){const c=document.getElementById('cnf'),ctx=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const ps=Array.from({length:250},()=>({x:Math.random()*c.width,y:-30,r:Math.random()*10+4,d:Math.random()*4+1,col:['#6d28d9','#f97316','#22c55e','#f59e0b','#ec4899','#0ea5e9','white'][Math.floor(Math.random()*7)],ta:0,ts:Math.random()*.15+.05}));let f=0;(function draw(){ctx.clearRect(0,0,c.width,c.height);ps.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.col;ctx.fill();p.y+=p.d;p.ta+=p.ts;p.x+=Math.sin(p.ta)*2;if(p.y>c.height){p.y=-20;p.x=Math.random()*c.width;}});if(++f<600)requestAnimationFrame(draw);else ctx.clearRect(0,0,c.width,c.height);})();}
+load();
+</script>
+</body>
+</html>

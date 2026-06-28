@@ -3,10 +3,15 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Guía Studio 3D — Mateo</title>
+  <title>Guía de Clases — Studio 3D</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --m1: #f97316; --m2: #2563eb; --m3: #9333ea;
+      --m4: #16a34a; --m5: #d97706;
+    }
 
     body {
       font-family: 'Nunito', sans-serif;
@@ -14,208 +19,711 @@
       background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
       background-size: 22px 22px;
       min-height: 100vh;
-      padding: 28px 16px 64px;
+      padding: 24px 16px 64px;
       color: #1e293b;
     }
 
-    .header { text-align: center; margin-bottom: 28px; }
-    .header .icon { font-size: 3rem; display: block; margin-bottom: 8px; }
-    .header h1 { font-size: 1.8rem; font-weight: 900; }
-    .header .sub { color: #64748b; font-size: 0.88rem; margin-top: 5px; font-weight: 600; }
+    .header { text-align: center; margin-bottom: 24px; }
+    .header .icon { font-size: 2.8rem; display: block; margin-bottom: 6px; }
+    .header h1 { font-size: 1.7rem; font-weight: 900; }
+    .header .sub { color: #64748b; font-size: 0.85rem; margin-top: 4px; font-weight: 600; }
 
-    /* Search */
-    .search-wrap {
-      max-width: 580px; margin: 0 auto 28px;
-      position: relative;
+    /* Module filter */
+    .mod-filter {
+      display: flex; gap: 6px; justify-content: center;
+      flex-wrap: wrap; margin-bottom: 20px;
+      max-width: 640px; margin-inline: auto;
     }
-    .search-wrap input {
-      width: 100%; padding: 13px 18px 13px 44px;
-      border: 2px solid #e2e8f0; border-radius: 12px;
-      font-family: inherit; font-size: 0.95rem; font-weight: 700;
-      background: white; color: #1e293b;
-      outline: none; transition: border-color .2s;
+    .mod-btn {
+      padding: 7px 16px; border-radius: 99px; border: none;
+      font-family: inherit; font-size: 0.8rem; font-weight: 800;
+      cursor: pointer; background: white; color: #64748b;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06); transition: all .2s;
     }
-    .search-wrap input:focus { border-color: #4f46e5; }
-    .search-wrap input::placeholder { color: #94a3b8; font-weight: 600; }
-    .search-icon {
-      position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
-      font-size: 1.1rem; pointer-events: none;
-    }
+    .mod-btn:hover { transform: translateY(-1px); }
+    .mod-btn.active { color: white; box-shadow: 0 3px 12px rgba(0,0,0,.2); }
 
-    /* Section */
-    .section { max-width: 580px; margin: 0 auto 20px; }
-    .sec-header {
-      display: flex; align-items: center; gap: 10px;
-      padding: 12px 20px; border-radius: 12px 12px 0 0;
-      color: white; font-weight: 900; font-size: 0.95rem;
-    }
-    .sec-header .sec-icon { font-size: 1.3rem; }
-    .sec-header .sec-count { margin-left: auto; background: rgba(255,255,255,.2); padding: 2px 10px; border-radius: 99px; font-size: 0.75rem; }
+    /* Class list */
+    .class-list { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
 
-    .sec-body {
-      background: white; border-radius: 0 0 12px 12px;
-      box-shadow: 0 4px 16px rgba(0,0,0,.07);
-      overflow: hidden;
-    }
+    .cls-wrap { border-radius: 16px; overflow: hidden; box-shadow: 0 3px 14px rgba(0,0,0,.07); }
 
-    .term-card {
-      padding: 14px 20px;
-      border-bottom: 1px solid #f1f5f9;
+    .cls-header {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 18px; cursor: pointer; user-select: none;
+      background: white; border-bottom: 1px solid transparent;
       transition: background .15s;
     }
-    .term-card:last-child { border-bottom: none; }
-    .term-card:hover { background: #fafafa; }
+    .cls-header:hover { background: #fafafa; }
+    .cls-wrap.open .cls-header { border-bottom-color: #f1f5f9; }
 
-    .term-name {
-      font-size: 0.95rem; font-weight: 900; color: #1e293b;
-      display: flex; align-items: center; gap: 8px; margin-bottom: 4px;
+    .cls-num-badge {
+      width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; font-weight: 900; color: white;
     }
-    .term-emoji { font-size: 1.2rem; }
-    .term-def { font-size: 0.82rem; color: #475569; line-height: 1.55; font-weight: 600; }
-    .term-tip {
-      margin-top: 6px; font-size: 0.77rem; color: #7c3aed;
-      background: #faf5ff; border-radius: 8px; padding: 5px 10px;
-      font-weight: 700; display: inline-block;
+    .cls-hinfo { flex: 1; min-width: 0; }
+    .cls-htitle { font-size: 0.92rem; font-weight: 900; line-height: 1.3; }
+    .cls-hmeta { display: flex; gap: 8px; margin-top: 3px; flex-wrap: wrap; align-items: center; }
+
+    .badge {
+      font-size: 0.62rem; font-weight: 800; padding: 2px 8px; border-radius: 99px;
+    }
+    .b-print  { background: #fff7ed; color: #ea580c; }
+    .b-design { background: #eff6ff; color: #2563eb; }
+    .b-adv    { background: #faf5ff; color: #9333ea; }
+
+    .cls-dur { font-size: 0.72rem; color: #94a3b8; font-weight: 700; }
+    .cls-diff { font-size: 0.7rem; }
+    .cls-chevron { color: #cbd5e1; font-size: 1.2rem; transition: transform .25s; flex-shrink: 0; }
+    .cls-wrap.open .cls-chevron { transform: rotate(90deg); }
+
+    /* Guide content */
+    .cls-guide { display: none; background: white; }
+    .cls-wrap.open .cls-guide { display: block; }
+
+    .guide-section {
+      padding: 16px 20px;
+      border-bottom: 1px solid #f8fafc;
+    }
+    .guide-section:last-child { border-bottom: none; }
+
+    .gs-title {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 0.78rem; font-weight: 900; text-transform: uppercase;
+      letter-spacing: .6px; color: #94a3b8; margin-bottom: 10px;
     }
 
-    /* Empty state for search */
-    .empty-search {
-      display: none; text-align: center;
-      padding: 48px 20px; color: #94a3b8;
+    /* Objetivo */
+    .objetivo-text {
+      font-size: 0.92rem; font-weight: 700; color: #1e293b;
+      background: #f8fafc; border-radius: 10px; padding: 11px 14px;
+      border-left: 3px solid #4f46e5;
+      line-height: 1.5;
     }
-    .empty-search .icon { font-size: 2.5rem; margin-bottom: 10px; }
-    .empty-search p { font-size: 0.9rem; font-weight: 700; }
+
+    /* Necesitas */
+    .needs-list { display: flex; flex-direction: column; gap: 6px; }
+    .need-item {
+      display: flex; align-items: flex-start; gap: 8px;
+      font-size: 0.85rem; font-weight: 700; color: #334155;
+    }
+    .need-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+
+    /* Config Bambu */
+    .bambu-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    }
+    .bambu-item {
+      background: #f0f9ff; border-radius: 10px; padding: 10px 12px;
+      border: 1.5px solid #bae6fd;
+    }
+    .bambu-label { font-size: 0.68rem; font-weight: 900; color: #0284c7; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; }
+    .bambu-val { font-size: 0.88rem; font-weight: 800; color: #0c4a6e; }
+
+    /* Steps */
+    .steps-list { display: flex; flex-direction: column; gap: 8px; }
+    .step {
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    .step-num {
+      width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; font-weight: 900; color: white;
+      margin-top: 1px;
+    }
+    .step-text { font-size: 0.87rem; font-weight: 700; color: #334155; line-height: 1.5; flex: 1; }
+    .step-text strong { color: #1e293b; }
+
+    /* Subsection divider inside steps */
+    .step-divider {
+      font-size: 0.72rem; font-weight: 900; text-transform: uppercase;
+      letter-spacing: .5px; color: #94a3b8; padding: 4px 0 2px;
+      border-bottom: 1px solid #f1f5f9; margin-bottom: 4px;
+    }
+
+    /* Tips */
+    .tips-list { display: flex; flex-direction: column; gap: 8px; }
+    .tip {
+      display: flex; gap: 8px; align-items: flex-start;
+      background: #fefce8; border-radius: 10px; padding: 10px 12px;
+      border: 1.5px solid #fde68a;
+    }
+    .tip-icon { font-size: 1rem; flex-shrink: 0; }
+    .tip-text { font-size: 0.83rem; font-weight: 700; color: #78350f; line-height: 1.5; }
+
+    /* Extra materials alert */
+    .extra-alert {
+      background: #fff7ed; border: 2px solid #fed7aa; border-radius: 10px;
+      padding: 10px 14px; font-size: 0.83rem; font-weight: 800; color: #c2410c;
+      display: flex; gap: 8px; align-items: flex-start;
+    }
 
     footer { text-align: center; margin-top: 40px; color: #94a3b8; font-size: 0.75rem; font-weight: 700; }
 
     @media (max-width: 480px) {
-      .header h1 { font-size: 1.5rem; }
+      .cls-header { padding: 12px 14px; gap: 10px; }
+      .guide-section { padding: 14px 16px; }
+      .bambu-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
 <header class="header">
-  <span class="icon">📚</span>
-  <h1>Guía Studio 3D</h1>
-  <p class="sub">Todo lo que aprendemos en el taller de Mateo</p>
+  <span class="icon">📋</span>
+  <h1>Guía de Clases</h1>
+  <p class="sub">Studio 3D — Manual de Mateo · Bambu Lab A1</p>
 </header>
 
-<div class="search-wrap">
-  <span class="search-icon">🔍</span>
-  <input type="text" id="search" placeholder="Buscar un término..." oninput="filterTerms()"/>
-</div>
-
-<div id="content"></div>
-<div class="empty-search" id="empty">
-  <div class="icon">🤷</div>
-  <p>No encontré ese término.<br>¡Probá con otra palabra!</p>
-</div>
+<div class="mod-filter" id="mod-filter"></div>
+<div class="class-list" id="class-list"></div>
 
 <footer>Studio 3D — Manual de Mateo · Kodingo School</footer>
 
 <script>
-const SECTIONS = [
+const MOD_COLORS = ['#f97316','#2563eb','#9333ea','#16a34a','#d97706'];
+
+const CLASSES = [
+  /* ─── MÓDULO 1 ─────────────────────────────────── */
   {
-    id: 'impresora', color: '#f97316', icon: '🖨️', name: 'La Impresora',
-    terms: [
-      { name: 'Impresora 3D', emoji: '🖨️', def: 'Una máquina que crea objetos sólidos capa por capa, usando plástico caliente.', tip: null },
-      { name: 'Bambu Lab A1', emoji: '⚙️', def: 'La impresora 3D que usamos en el taller. Es muy rápida y fácil de usar.', tip: null },
-      { name: 'Filamento PLA', emoji: '🌽', def: 'El "hilo" de plástico que usa la impresora para crear objetos. ¡Está hecho de plantas de maíz y es ecológico!', tip: 'Dato curioso: viene en rollos y muchos colores diferentes' },
-      { name: 'Nozzle (pico)', emoji: '🔥', def: 'La punta de metal de la impresora por donde sale el plástico caliente. Se calienta hasta unos 200°C.', tip: '⚠️ ¡Nunca toques el nozzle cuando la impresora está encendida!' },
-      { name: 'Capa', emoji: '🥞', def: 'Una línea finísima de plástico. La impresora apila muchas capas una encima de otra hasta formar el objeto completo.', tip: null },
-      { name: 'Placa de impresión', emoji: '📋', def: 'La superficie plana donde el objeto empieza a crecer. El primer plástico tiene que pegarse bien acá.', tip: null },
-      { name: 'Temperatura', emoji: '🌡️', def: 'El calor necesario para derretir el filamento. La impresora lo controla sola.', tip: null },
-      { name: 'Adhesión', emoji: '🧲', def: 'Qué tan bien se pega el plástico a la placa al principio. Si no se pega, el objeto se mueve y sale mal.', tip: null },
-      { name: 'Soportes', emoji: '🏗️', def: 'Estructuras temporales que la impresora hace para sostener partes del objeto que están "en el aire". Se quitan cuando termina.', tip: 'Se usan cuando el objeto tiene partes que sobresalen mucho' },
+    num:1, mod:1, type:'print', dur:'30 min', diff:1,
+    name:'¡Hola impresora! Imprimimos un llavero',
+    objetivo:'Que Mateo conozca la Bambu Lab A1 por primera vez e imprima su primer objeto: un llavero con su nombre.',
+    needs:[
+      { icon:'🖨️', text:'Bambu Lab A1 encendida y calibrada' },
+      { icon:'🌽', text:'Filamento PLA (el color que Mateo elija)' },
+      { icon:'💻', text:'Computadora con Bambu Studio instalado' },
+      { icon:'📁', text:'Archivo STL de un llavero con "MATEO" — buscalo en makerworld.bambulab.com o generalo en Tinkercad con la herramienta Texto' },
+    ],
+    bambu:{ perfil:'0.20mm Standard', filamento:'PLA', infill:'15%', soportes:'No', extra:'Adhesión: Sí (primera capa)' },
+    steps:[
+      { s:'Abrí Makerworld (makerworld.bambulab.com) y buscá "name keychain". Descargá el STL con "MATEO".' },
+      { s:'Abrí Bambu Studio → arrastrá el STL o usá File → Open.' },
+      { s:'Seleccioná el perfil <strong>0.20mm Standard</strong> y filamento PLA.' },
+      { s:'Apretá <strong>Slice All</strong> para procesar el diseño.' },
+      { s:'Revisá el preview: ¿se ve bien el llavero con el nombre?' },
+      { s:'Conectá la A1 por wifi o usá tarjeta SD → apretá <strong>Print</strong>.' },
+      { s:'Observá con Mateo cómo la impresora crea el llavero capa por capa (unos 20 min).' },
+      { s:'Cuando termine, esperá 2-3 min a que la placa se enfríe. Doblá la placa flexible y retirá el llavero.' },
+    ],
+    tips:[
+      'Si el llavero no se pega bien al principio, revisá que la placa esté limpia (un poco de alcohol).',
+      '¡Sacá fotos de la primera impresión! Es un momento que Mateo va a recordar.',
+      'Makerworld ya tiene archivos optimizados para Bambu — no hace falta ajustar nada.',
     ]
   },
   {
-    id: 'bambu', color: '#0891b2', icon: '🔧', name: 'Bambu Studio',
-    terms: [
-      { name: 'Bambu Studio', emoji: '💻', def: 'El programa que traduce tu diseño 3D en instrucciones para la impresora. Es como el "traductor" entre tu diseño y la máquina.', tip: null },
-      { name: 'Altura de capa', emoji: '📏', def: 'Qué tan gruesa es cada capa de plástico. 0.2mm = normal. 0.1mm = muy fino y con más detalle.', tip: 'Capas más finas = más detalle pero más tiempo de impresión' },
-      { name: 'Relleno (infill)', emoji: '🕸️', def: 'La estructura del interior del objeto. 15% = bastante hueco. 100% = completamente sólido.', tip: 'Para la mayoría de objetos, 15-20% alcanza y ahorra filamento' },
-      { name: 'Velocidad de impresión', emoji: '⚡', def: 'Qué tan rápido se mueve la impresora. Más rápido = menos tiempo, pero a veces menos calidad.', tip: null },
-      { name: 'Tiempo de impresión', emoji: '⏱️', def: 'Cuánto tiempo tarda la impresora en terminar el objeto. Depende del tamaño, las capas y la velocidad.', tip: null },
-      { name: 'Archivo STL', emoji: '📁', def: 'El tipo de archivo que guarda tu diseño de Tinkercad. Bambu Studio lo lee para preparar la impresión.', tip: 'STL es el formato estándar para impresión 3D en todo el mundo' },
+    num:2, mod:1, type:'print', dur:'30 min', diff:1,
+    name:'¿Cómo funciona la magia? Observamos las capas',
+    objetivo:'Entender cómo la impresora construye objetos capa por capa, observando el proceso en vivo y viendo el relleno interno.',
+    needs:[
+      { icon:'🖨️', text:'Bambu Lab A1' },
+      { icon:'🌽', text:'Filamento PLA (diferente color al de clase 1, si es posible)' },
+      { icon:'💻', text:'Bambu Studio' },
+      { icon:'📁', text:'STL de una figura simple: un cubo de 30×30×30mm (se crea en 1 min en Tinkercad)' },
+    ],
+    bambu:{ perfil:'0.20mm Standard', filamento:'PLA', infill:'10%', soportes:'No', extra:'Paredes: 2 (para ver el relleno)' },
+    steps:[
+      { s:'En Tinkercad (o Bambu Studio si tiene una forma básica): creá o abrí un cubo de 30×30×30mm.' },
+      { s:'En Bambu Studio cambiá el <strong>infill a 10%</strong> — así el interior queda abierto y se puede ver la estructura.' },
+      { s:'Apretá Slice. <strong>Usá el slider de capas</strong> en el preview y mostráselo a Mateo: "¿ves cómo se va llenando capa por capa?"' },
+      { s:'Contá las capas juntos: un cubo de 30mm a 0.20mm tiene 150 capas.' },
+      { s:'Imprimí el cubo (unos 25 min).' },
+      { s:'Cuando termine, con un cuchillo o tijera, <strong>cortá el cubo a la mitad</strong> para que Mateo vea el relleno interior.' },
+      { s:'Preguntale: "¿Cuántas capas ves? ¿Cómo es la estructura de adentro?"' },
+    ],
+    tips:[
+      'El slider de capas en Bambu Studio es la mejor herramienta educativa — úsalo antes de imprimir.',
+      'Si tienen dos rollos de PLA de diferente color, podés pausar la impresión a mitad y cambiar el filamento para ver el cambio de color en las capas.',
+      'Guardá el cubo cortado como "material didáctico" para explicarle a otros.',
     ]
   },
   {
-    id: 'tinkercad', color: '#4f46e5', icon: '💻', name: 'Tinkercad',
-    terms: [
-      { name: 'Tinkercad', emoji: '🖥️', def: 'El programa que usamos para diseñar objetos en 3D desde la computadora. Es gratis y funciona en el navegador.', tip: 'tinkercad.com — ¡solo necesitas una cuenta!' },
-      { name: 'Plano de trabajo', emoji: '🟦', def: 'La "mesa virtual" donde construyes tu diseño. Todas las formas viven ahí.', tip: null },
-      { name: 'Formas básicas', emoji: '🔷', def: 'Los bloques con los que construyes: cajas, esferas, cilindros, conos... ¡Son como los LEGOs del diseño 3D!', tip: null },
-      { name: 'Mover en 3 ejes', emoji: '🧭', def: 'Mover el objeto en 3 direcciones: izquierda/derecha (X), adelante/atrás (Y), y arriba/abajo (Z).', tip: null },
-      { name: 'Rotar', emoji: '🔄', def: 'Girar el objeto en cualquier dirección usando las flechas curvas de Tinkercad.', tip: null },
-      { name: 'Escalar', emoji: '↔️', def: 'Agrandar o achicar el objeto. Se puede cambiar solo el ancho, el alto, o todo a la vez.', tip: 'Mantené Shift mientras escalás para que no se deforme' },
-      { name: 'Agrupar', emoji: '🔗', def: 'Juntar varias formas en una sola. Después se comportan como si fueran un único objeto.', tip: 'Seleccioná todo + Ctrl+G (o el botón Agrupar arriba)' },
-      { name: 'Forma agujero', emoji: '🕳️', def: 'Una forma especial color gris que, al agrupar con otra, la "come" y hace un hueco. ¡Es la varita mágica de Tinkercad!', tip: 'Ejemplo: un cilindro agujero dentro de una caja = porta-lápices' },
-      { name: 'Texto 3D', emoji: '🔤', def: 'Una herramienta de Tinkercad para poner letras y palabras en tus diseños, en relieve o como agujero.', tip: 'Podés cambiar la fuente, el tamaño y la altura del texto' },
-      { name: 'Espejado (mirror)', emoji: '🪞', def: 'Crear una copia invertida del objeto, como si lo vieras en un espejo. Muy útil para hacer sellos.', tip: 'Un sello necesita las letras espejadas para que salgan bien al usarlo' },
-      { name: 'Exportar STL', emoji: '📤', def: 'Guardar el diseño de Tinkercad como archivo STL para poder importarlo en Bambu Studio e imprimirlo.', tip: 'Exportar STL → abrir en Bambu Studio → ¡a imprimir!' },
+    num:3, mod:1, type:'print', dur:'45 min', diff:1,
+    name:'Imprimimos un marcador de libros',
+    objetivo:'Imprimir el primer objeto decorativo y útil descargando un diseño de internet. Aprender la diferencia entre 0.20mm y 0.15mm.',
+    needs:[
+      { icon:'🖨️', text:'Bambu Lab A1' },
+      { icon:'🌽', text:'Filamento PLA (el color favorito de Mateo)' },
+      { icon:'💻', text:'Bambu Studio + Makerworld' },
+      { icon:'📁', text:'STL de marcador de libros — buscá en Makerworld: "bookmark dinosaur", "bookmark star" o "bookmark rocket"' },
+    ],
+    bambu:{ perfil:'0.15mm Optimal', filamento:'PLA', infill:'15%', soportes:'No', extra:'Orientación: plano sobre la placa' },
+    steps:[
+      { s:'Abrí Makerworld → buscá "bookmark" → que Mateo elija el diseño que más le guste.' },
+      { s:'Descargá el STL y abrilo en Bambu Studio.' },
+      { s:'Cambiá el perfil a <strong>0.15mm Optimal</strong> — mejor detalle que 0.20mm.' },
+      { s:'Revisá que el marcador esté <strong>plano sobre la placa</strong> (rotalo si hace falta con el botón de orientar).' },
+      { s:'Slice → mostrá a Mateo cuántas capas tiene ahora vs el cubo de clase 2.' },
+      { s:'Imprimí (unos 35 min).' },
+      { s:'Retirar: doblá la placa flexible de la A1 — el objeto sale solo.' },
+      { s:'Opcional: Mateo puede decorar el marcador con marcadores permanentes o pinturas acrílicas.' },
+    ],
+    tips:[
+      '0.15mm da mucho más detalle — se nota en los bordes y decorados del marcador.',
+      'La placa flexible de la A1 es una de sus mejores características: doblala y los objetos planos salen sin esfuerzo.',
+      'Makerworld tiene la ventaja de que muchos archivos ya tienen perfiles de Bambu preconfigurados.',
+    ]
+  },
+
+  /* ─── MÓDULO 2 ─────────────────────────────────── */
+  {
+    num:4, mod:2, type:'design', dur:'45 min', diff:2,
+    name:'¡Hola Tinkercad! Mi primera forma en 3D',
+    objetivo:'Crear cuenta en Tinkercad y diseñar la primera forma 3D original de Mateo: mover, escalar y rotar formas básicas.',
+    needs:[
+      { icon:'💻', text:'Computadora o tablet con internet (tinkercad.com)' },
+      { icon:'👤', text:'Cuenta Tinkercad creada con el email del padre' },
+      { icon:'🖨️', text:'Bambu Lab A1 + filamento PLA' },
+    ],
+    bambu:{ perfil:'0.20mm Standard', filamento:'PLA', infill:'15%', soportes:'No', extra:'Tamaño máximo recomendado: 50×50×20mm' },
+    steps:[
+      { s:'Entrá a tinkercad.com → Sign In → New 3D Design.' },
+      { s:'Arrastrá una <strong>Box (Caja)</strong> del panel derecho al plano de trabajo.' },
+      { s:'Agarrá los cuadraditos blancos en los lados para cambiar las dimensiones: probá hacerla 40×40×10mm.' },
+      { s:'Arrastrá una <strong>Sphere (Esfera)</strong> y ponela al lado de la caja.' },
+      { s:'Seleccioná la esfera → usá las flechas curvas para rotarla.' },
+      { s:'Escalá la esfera: agarrá una esquina y arrastrá. Mantené <strong>Shift</strong> para escalar proporcional.' },
+      { s:'Explorá el panel de formas: cilindro, cono, pirámide, torus. Poné todas las que quieras.' },
+      { s:'Elegí la forma favorita de Mateo, personalizá dimensiones y exportá: <strong>Export → .STL</strong>.' },
+      { s:'Abrí en Bambu Studio → Slice → Print. ¡El primer objeto diseñado por Mateo!' },
+    ],
+    tips:[
+      'Las dimensiones en Tinkercad son en milímetros. 40×40mm es del tamaño de una caja de fósforos.',
+      'Dejá que Mateo haga todo él — tu rol es decirle qué hacer de palabra, no mover el mouse.',
+      'Si el diseño queda muy pequeño, puede resultar difícil de imprimir. Mínimo 10mm en cada dimensión.',
     ]
   },
   {
-    id: 'diseno', color: '#16a34a', icon: '🎨', name: 'Proceso de Diseño',
-    terms: [
-      { name: 'Boceto', emoji: '✏️', def: 'Un dibujo rápido en papel de tu idea antes de diseñarla en la computadora. Ayuda a pensar bien el proyecto.', tip: '¡Siempre dibujá primero! Es más fácil borrar en papel que deshacer en Tinkercad' },
-      { name: 'Diseño funcional', emoji: '🔨', def: 'Un objeto que sirve para algo real: guardar monedas, sostener lápices, decorar la heladera... No es solo bonito.', tip: null },
-      { name: 'Paredes y grosor', emoji: '🧱', def: 'Qué tan gruesas son las paredes del objeto. Si son muy finas, se puede romper fácil. Si son muy gruesas, usa mucho filamento.', tip: 'Para la mayoría de objetos, 2-3mm de pared está bien' },
-      { name: 'Iterar', emoji: '🔁', def: 'Mejorar el diseño poco a poco: probar, ver qué no funciona, cambiar, volver a probar. ¡Así trabajan todos los ingenieros!', tip: null },
-      { name: 'Escalar proporcionalmente', emoji: '📐', def: 'Agrandar o achicar el objeto manteniendo las mismas proporciones, para que no se deforme.', tip: null },
-      { name: 'Diseñar en serie', emoji: '🔢', def: 'Crear varias piezas iguales (o parecidas) siguiendo el mismo proceso. Ejemplo: 4 peones para un juego de mesa.', tip: null },
-      { name: 'Presentar el proyecto', emoji: '🗣️', def: 'Explicar a otros qué diseñaste, cómo lo hiciste y para qué sirve. Es una parte importante del proceso.', tip: 'Contá: ¿qué es?, ¿cómo lo hiciste?, ¿para quién es?' },
+    num:5, mod:2, type:'design', dur:'45 min', diff:2,
+    name:'Formas que se juntan y se cortan',
+    objetivo:'Aprender las dos herramientas más importantes de Tinkercad: Agrupar (juntar formas) y Forma Agujero (recortar material).',
+    needs:[
+      { icon:'💻', text:'Tinkercad — cuenta ya creada' },
+      { icon:'🖨️', text:'Bambu Lab A1 + filamento PLA' },
+    ],
+    bambu:{ perfil:'0.20mm Standard', filamento:'PLA', infill:'15%', soportes:'No', extra:null },
+    steps:[
+      { s:'Abrí un nuevo diseño en Tinkercad.' },
+      { s:'<strong>Ejercicio 1 — Agrupar:</strong> Poné una caja grande (50×30×20mm). Poné un cilindro encima (20mm diámetro × 30mm alto). Seleccioná los dos (clic + Shift) → apretá <strong>Group</strong> o Ctrl+G. ¡Ya son un solo objeto!' },
+      { s:'<strong>Ejercicio 2 — Forma Agujero:</strong> Poné una caja nueva (40×40×40mm). Poné otra caja más pequeña (32×32×45mm) dentro. En el panel derecho, cambiá la pequeña a <strong>Hole</strong> (agujero). Seleccioná las dos → Group. ¡La caja pequeña hizo un hueco!' },
+      { s:'Conversá con Mateo: "¿Para qué sirve este hueco? ¿Qué podría guardar acá?"' },
+      { s:'<strong>Proyecto libre:</strong> que Mateo diseñe una figura combinando al menos 2 formas. Ideas: cohete (cilindro + cono), árbol (cilindro + esfera), animal simple.' },
+      { s:'Cuando esté listo: Export → .STL → Bambu Studio → Print.' },
+    ],
+    tips:[
+      'Ungroup (Ctrl+Shift+G) separa las formas si Mateo quiere corregir algo.',
+      'La forma agujero se ve transparente/gris — eso indica que va a recortar.',
+      'Para un cohete: cilindro (cuerpo) + cono (punta) + 2 cajas (aletas), todo agrupado.',
+    ]
+  },
+  {
+    num:6, mod:2, type:'design', dur:'45 min', diff:2,
+    name:'Diseñamos un porta-lápices',
+    objetivo:'Primer objeto funcional: un porta-lápices que realmente sirva. Aprender a diseñar el interior de un objeto.',
+    needs:[
+      { icon:'💻', text:'Tinkercad' },
+      { icon:'📏', text:'Un lápiz real para medir (mide ~7mm de diámetro)' },
+      { icon:'🖨️', text:'Bambu Lab A1 + filamento PLA' },
+    ],
+    bambu:{ perfil:'0.20mm Standard', filamento:'PLA', infill:'20%', soportes:'No', extra:'Infill 20% para más resistencia' },
+    steps:[
+      { s:'Creá un <strong>Cilindro</strong> grande: 70mm diámetro × 80mm de alto.' },
+      { s:'Creá otro cilindro más pequeño: 62mm diámetro × 85mm de alto.' },
+      { s:'Convertí el cilindro pequeño en <strong>Hole</strong>.' },
+      { s:'Ponelo <strong>exactamente centrado</strong> dentro del grande: seleccioná los dos → usá <strong>Align</strong> → centrá en X e Y.' },
+      { s:'Group → ahora tenés un tubo hueco.' },
+      { s:'Creá una <strong>caja plana</strong> (70×70×3mm) como fondo del porta-lápices. Ponela en la base del tubo. Group todo.' },
+      { s:'Opcional: Usá la herramienta <strong>Text</strong> para agregar "MATEO" en un costado.' },
+      { s:'Export STL → Bambu Studio: subí el infill a 20% para que las paredes sean más resistentes → Print (unos 40 min).' },
+    ],
+    tips:[
+      'Un lápiz mide ~7mm. El hueco interior de 62mm alcanza para varios lápices y lapiceros.',
+      'Align (centrar) es esencial acá — si el agujero no está centrado, las paredes quedan disparejas.',
+      'Infill 20% hace el objeto más resistente para el uso diario.',
+    ]
+  },
+
+  /* ─── MÓDULO 3 ─────────────────────────────────── */
+  {
+    num:7, mod:3, type:'design', dur:'45 min', diff:2,
+    name:'Ponemos texto en 3D',
+    objetivo:'Aprender a agregar letras y palabras a los diseños, tanto en relieve (sobresalido) como grabado (hundido).',
+    needs:[
+      { icon:'💻', text:'Tinkercad' },
+      { icon:'🖨️', text:'Bambu Lab A1 + filamento PLA' },
+    ],
+    bambu:{ perfil:'0.20mm Standard', filamento:'PLA', infill:'15%', soportes:'No', extra:null },
+    steps:[
+      { s:'Creá una caja plana de <strong>100×35×3mm</strong> (la base de la placa).' },
+      { s:'En el panel de búsqueda de Tinkercad buscá <strong>"Text"</strong> → arrastrá al plano.' },
+      { s:'Hacé clic en el texto → cambiá a <strong>"MATEO"</strong>. Elegí la fuente que más le guste.' },
+      { s:'Ajustá el tamaño del texto para que entre en la placa. Altura recomendada: <strong>18-22mm</strong>, grosor: <strong>4mm</strong>.' },
+      { s:'<strong>Versión relieve:</strong> poné el texto ENCIMA de la caja (que sobresalga 2-3mm arriba). Group → el nombre queda en relieve.' },
+      { s:'<strong>Versión grabado:</strong> ponele el texto encima de la caja, convertilo en <strong>Hole</strong>, Group → el nombre queda hundido/grabado.' },
+      { s:'Hacé las dos versiones y que Mateo elija cuál le gusta más.' },
+      { s:'Export STL → Print.' },
+    ],
+    tips:[
+      'Fuentes gruesas (sans-serif) se imprimen mejor. Evitá fuentes muy delgadas o con serif.',
+      'Texto menor a 5mm de alto puede quedar mal impreso. Siempre usar 8mm o más.',
+      'Esta placa puede servir de base para el imán de la próxima clase.',
+    ]
+  },
+  {
+    num:8, mod:3, type:'adv', dur:'45 min', diff:3,
+    name:'Un imán para la heladera con mi nombre',
+    objetivo:'Crear un imán de heladera personalizado diseñando el hueco para el imán en la parte trasera del objeto.',
+    needs:[
+      { icon:'💻', text:'Tinkercad' },
+      { icon:'🧲', text:'Imán redondo: 10-12mm diámetro × 3mm grosor (comprar en ferretería o papelería)' },
+      { icon:'🔧', text:'Super glue / pegamento instantáneo' },
+      { icon:'🖨️', text:'Bambu Lab A1 + filamento PLA' },
+    ],
+    bambu:{ perfil:'0.15mm Optimal', filamento:'PLA', infill:'20%', soportes:'No', extra:'Imprimir con la parte TRASERA hacia arriba para mejor detalle en el frente' },
+    extra_alert:'⚠️ Comprá el imán ANTES de la clase. Medí el imán real y usá esas medidas + 0.5mm de tolerancia.',
+    steps:[
+      { s:'Tomá el diseño de la placa con texto de la clase 7 (o creá uno nuevo: caja 80×40×8mm + nombre en relieve).' },
+      { s:'Agregale una forma decorativa al frente: una estrella, un corazón, o un animal — que Mateo elija.' },
+      { s:'<strong>El hueco para el imán:</strong> Creá un cilindro con las medidas exactas del imán + 0.5mm (ej: imán de 12mm → cilindro de 12.5mm diámetro × 3.5mm alto).' },
+      { s:'Convertí el cilindro en <strong>Hole</strong>. Poné en la parte TRASERA de la placa, centrado.' },
+      { s:'Group todo → Export STL.' },
+      { s:'En Bambu Studio: orientá el objeto con el <strong>frente hacia abajo</strong> (la parte decorada) y la parte trasera (donde va el imán) hacia arriba.' },
+      { s:'Print con 0.15mm para máximo detalle en el frente.' },
+      { s:'Cuando termine: probá que el imán entre en el hueco. Pegá con super glue y dejá secar 5 min.' },
+    ],
+    tips:[
+      'La tolerancia de 0.5mm es porque la impresora siempre imprime un poquito más pequeño de lo diseñado.',
+      'Si el imán no entra, usá una lima o lija fina para agrandarlo un poco.',
+      '¡Este imán en la heladera va a quedar increíble!',
+    ]
+  },
+  {
+    num:9, mod:3, type:'adv', dur:'45 min', diff:3,
+    name:'Diseñamos un sello con mi inicial',
+    objetivo:'Crear un sello funcional con la inicial "M" aprendiendo el concepto de espejado (mirror) para que la letra salga correcta al sellar.',
+    needs:[
+      { icon:'💻', text:'Tinkercad' },
+      { icon:'🖨️', text:'Bambu Lab A1 + filamento PLA' },
+      { icon:'🖊️', text:'Almohadilla de sello con tinta (papelería)' },
+      { icon:'📄', text:'Hoja de papel para probar el sello' },
+    ],
+    bambu:{ perfil:'0.10mm Fine', filamento:'PLA', infill:'50%', soportes:'No', extra:'Imprimir con la letra hacia ARRIBA. Infill 50% para resistencia al sellar.' },
+    steps:[
+      { s:'Creá la base del sello: <strong>Caja 40×40×5mm</strong>.' },
+      { s:'Usá la herramienta <strong>Text</strong> → escribí la letra <strong>"M"</strong> → tamaño 28mm × grosor 4mm.' },
+      { s:'Poné la "M" sobre la caja (que sobresalga 3mm arriba).' },
+      { s:'<strong>¡MUY IMPORTANTE — Espejear!</strong> Seleccioná la letra → en el menú usá <strong>Mirror</strong> en el eje izquierda-derecha. La "M" debería verse al revés (como ꟽ). Si no se espejea, el sello va a imprimir al revés.' },
+      { s:'Group la letra + la base.' },
+      { s:'Ahora el mango: Creá un <strong>Cilindro</strong> de 28mm diámetro × 25mm alto.' },
+      { s:'Poné el cilindro en el <strong>lado de arriba</strong> de la caja (el lado sin la letra). Group todo.' },
+      { s:'Export STL. En Bambu Studio: imprimir con la <strong>letra hacia ARRIBA</strong> → 0.10mm Fine → Infill 50% → Print.' },
+      { s:'Cuando esté listo, probá el sello: tinta en la almohadilla → presioná sobre papel. ¿Salió la "M" correcta?' },
+    ],
+    tips:[
+      '0.10mm Fine da el máximo detalle posible — la letra va a quedar perfecta.',
+      'Infill 50% asegura que el sello no se dobla cuando lo presionás.',
+      'Para recordar el mirror: "el sello tiene que verse al revés para imprimir al derecho".',
+    ]
+  },
+
+  /* ─── MÓDULO 4 ─────────────────────────────────── */
+  {
+    num:10, mod:4, type:'adv', dur:'60 min', diff:4,
+    name:'Un monedero de dinosaurio',
+    objetivo:'Primer proyecto con soportes de impresión. Diseñar un monedero con caja + tapa con forma de dinosaurio.',
+    needs:[
+      { icon:'💻', text:'Tinkercad' },
+      { icon:'🖨️', text:'Bambu Lab A1 + filamento PLA' },
+      { icon:'🗃️', text:'Monedas reales para probar que entran (moneda de 1 sol: 22mm diámetro)' },
+    ],
+    bambu:{ perfil:'0.20mm Standard', filamento:'PLA', infill:'20%', soportes:'Sí (automático)', extra:'Imprimir la caja y la tapa como archivos separados' },
+    steps:[
+      { s:'<strong>Diseñar la CAJA:</strong> Caja 60×40×40mm. Dentro, un agujero 54×34×38mm centrado (deja 3mm de paredes y fondo). Group.' },
+      { s:'<strong>Diseñar la TAPA por separado:</strong> Caja 60×40×5mm. Decorá la superficie: ojos (cilindros pequeños en relieve), dientes (conos o prismas en relieve), agujeros de nariz. La tapa tiene que ser exactamente 60×40mm para que encaje.' },
+      { s:'Exportá <strong>2 STL separados</strong>: uno para la caja, otro para la tapa. (En Tinkercad: seleccioná solo la caja → Export. Luego solo la tapa → Export.)' },
+      { s:'En Bambu Studio, abrí la caja. Activá <strong>Soportes: Sí (automático)</strong>. Slice y mostrá a Mateo para qué sirven los soportes en el preview.' },
+      { s:'Imprimí la caja primero (~35 min). Retirá los soportes con una pinza o destornillador.' },
+      { s:'Imprimí la tapa (~25 min) sin soportes.' },
+      { s:'Probá que la tapa encaje. Si queda muy ajustada, lijá un poco los bordes.' },
+    ],
+    tips:[
+      'Los soportes de la A1 son automáticos y muy fáciles de quitar — no hace falta configurar nada.',
+      'Imprimir la caja y la tapa por separado evita necesitar muchos soportes.',
+      'Si la tapa no cierra bien, es porque las tolerancias cambian entre piezas — normal en el primer intento.',
+    ]
+  },
+  {
+    num:11, mod:4, type:'adv', dur:'60 min', diff:4,
+    name:'Una maceta para plantas pequeñas',
+    objetivo:'Diseñar un objeto con agujero de drenaje funcional y decoración orgánica. Pensar en el uso real del objeto.',
+    needs:[
+      { icon:'💻', text:'Tinkercad' },
+      { icon:'🖨️', text:'Bambu Lab A1 + filamento PLA' },
+      { icon:'🌱', text:'Una planta pequeña para probar que entra (opcional)' },
+    ],
+    bambu:{ perfil:'0.20mm Standard', filamento:'PLA', infill:'15%', soportes:'No', extra:'Imprimir parado, como queda en la vida real' },
+    steps:[
+      { s:'Creá el cuerpo de la maceta: <strong>Cilindro 80mm diámetro × 70mm alto</strong>.' },
+      { s:'Creá el agujero interior: Cilindro <strong>72mm diámetro × 65mm alto</strong> → Hole → centrado dentro → Group.' },
+      { s:'El fondo del agujero queda a 5mm de la base — eso es el fondo de la maceta.' },
+      { s:'<strong>Agujero de drenaje:</strong> Cilindro 8mm diámetro × 8mm alto → Hole → ponelo en el centro exacto de la base → Group.' },
+      { s:'Decoración opcional: creá formas pequeñas de animales (ranas, pajaritos) y pegálas en el exterior del cilindro.' },
+      { s:'Platito base: Cilindro plano 86mm diámetro × 5mm alto → ponelo debajo de la maceta → Group todo.' },
+      { s:'Export STL → Print (unos 55 min).' },
+    ],
+    tips:[
+      'PLA es suficientemente impermeable para plantas de interior con riego moderado.',
+      'El agujero de drenaje es fundamental — sin él, las raíces se pudren.',
+      'Para plantar: poné una piedrita pequeña sobre el agujero antes de la tierra para que no se tape.',
+    ]
+  },
+  {
+    num:12, mod:4, type:'adv', dur:'60 min', diff:4,
+    name:'Diseñamos las piezas de un juego de mesa',
+    objetivo:'Aprender a diseñar en serie: 4 peones diferentes pero con la misma base, todos en un solo trabajo de impresión.',
+    needs:[
+      { icon:'💻', text:'Tinkercad' },
+      { icon:'🖨️', text:'Bambu Lab A1 + filamento PLA' },
+      { icon:'🎲', text:'Un juego de mesa para ver cómo son los peones reales (referencia)' },
+    ],
+    bambu:{ perfil:'0.20mm Standard', filamento:'PLA', infill:'20%', soportes:'No', extra:'Los 4 peones juntos en el mismo archivo → un solo trabajo de impresión' },
+    steps:[
+      { s:'Creá el <strong>peón base</strong>: Cilindro 15mm diámetro × 5mm alto. Este será la base de todos los peones.' },
+      { s:'Creá la parte superior del peón 1: una esfera (10mm) encima de la base. Group.' },
+      { s:'Copiá la base (Ctrl+D) → cambiá la parte superior por otra forma: cilindro, cono, pirámide, estrella.' },
+      { s:'Hacé los 4 peones con formas diferentes en la parte superior.' },
+      { s:'Opcional: usá Text para poner un número (1-2-3-4) o inicial de nombre en la base de cada peón.' },
+      { s:'<strong>Poné los 4 peones juntos</strong> en el mismo plano de Tinkercad (separados entre sí). Export → un solo STL con los 4.' },
+      { s:'En Bambu Studio los 4 se imprimen a la vez. Slice → Print (~50 min todo junto).' },
+    ],
+    tips:[
+      'Copiar la base (Ctrl+D) asegura que todos los peones tienen exactamente el mismo tamaño.',
+      'La A1 puede imprimir todos en un solo trabajo sin problema — así ahorran tiempo.',
+      'Con pinturas acrílicas después pueden darle un color diferente a cada peón.',
+    ]
+  },
+
+  /* ─── MÓDULO 5 ─────────────────────────────────── */
+  {
+    num:13, mod:5, type:'adv', dur:'45 min', diff:3,
+    name:'Mi proyecto libre — elegimos y planeamos',
+    objetivo:'Que Mateo elija su proyecto final, lo piense bien y lo dibuje antes de diseñarlo en la computadora.',
+    needs:[
+      { icon:'📄', text:'Hojas de papel en blanco' },
+      { icon:'✏️', text:'Lápices y marcadores' },
+      { icon:'📏', text:'Regla para medir' },
+    ],
+    bambu:{ perfil:'—', filamento:'—', infill:'—', soportes:'Depende del diseño', extra:'No se imprime en esta clase' },
+    steps:[
+      { s:'Conversá con Mateo: "¿Qué objeto te gustaría crear para alguien?" Ideas: algo para mamá, algo para el cuarto, algo para jugar.' },
+      { s:'Que Mateo responda estas preguntas en voz alta: ¿Para qué sirve? ¿Quién lo va a usar? ¿Qué tamaño tiene que tener?' },
+      { s:'<strong>Dibujar el boceto:</strong> Mateo dibuja el objeto desde el frente, de costado y de arriba. No tiene que ser perfecto, solo entendible.' },
+      { s:'Anotar las medidas aproximadas en el boceto (en cm o mm).' },
+      { s:'<strong>Lista de ingredientes Tinkercad:</strong> ¿Qué formas básicas vas a necesitar? Ej: "2 cajas + 1 cilindro + texto".' },
+      { s:'Pensá juntos: ¿tiene partes que sobresalen en el aire? ¿Va a necesitar soportes? ¿Puede imprimirse de una vez?' },
+      { s:'Guardá el boceto. Es el "plano" para la próxima clase.' },
+    ],
+    tips:[
+      'Los mejores proyectos para 7 años: soporte para tablet, organizador de Legos, figura de su personaje favorito, nombre para la puerta del cuarto.',
+      'Si Mateo quiere algo muy complejo, ayudalo a simplificarlo: "¿qué es la parte más importante?"',
+      'No importa si el boceto queda feo — lo importante es pensar antes de diseñar.',
+    ]
+  },
+  {
+    num:14, mod:5, type:'adv', dur:'60 min', diff:5,
+    name:'Mi proyecto libre — diseñamos en Tinkercad',
+    objetivo:'Diseñar el proyecto completo en Tinkercad usando todo lo aprendido. La guía es el boceto de la clase anterior.',
+    needs:[
+      { icon:'📄', text:'El boceto dibujado en la clase 13' },
+      { icon:'💻', text:'Tinkercad' },
+      { icon:'📏', text:'Regla para medir referentes reales si hace falta' },
+    ],
+    bambu:{ perfil:'A definir según el diseño', filamento:'PLA', infill:'A definir', soportes:'Depende del diseño', extra:'No se imprime en esta clase — solo se diseña y se guarda' },
+    steps:[
+      { s:'Abrí Tinkercad con el <strong>boceto de papel al lado</strong> visible siempre.' },
+      { s:'Empezá por la <strong>forma más grande</strong> — la base o cuerpo principal del objeto.' },
+      { s:'Construí de grande a pequeño: primero la estructura, después los detalles.' },
+      { s:'Cada 10-15 min, pausá y preguntá: "¿Se parece a lo que dibujaste? ¿Cambiamos algo?"' },
+      { s:'Usá todas las herramientas aprendidas: formas, agrupar, agujero, texto, mirror.' },
+      { s:'Revisá que no haya formas flotando: todas deben tocar la base o estar unidas a otra forma.' },
+      { s:'Revisá dimensiones: ¿el objeto va a tener el tamaño correcto en la vida real?' },
+      { s:'Cuando Mateo esté satisfecho: <strong>Export → .STL → guardalo bien nombrado</strong> (ej: "proyecto-mateo-v1.stl").' },
+    ],
+    tips:[
+      'Guardá versiones con nombres distintos (v1, v2) — así pueden volver atrás si algo no queda bien.',
+      'Normal que el diseño cambie durante el proceso. Iterar es parte del trabajo de diseño.',
+      'Si algo es difícil de hacer en Tinkercad, simplificalo. El primer proyecto no tiene que ser perfecto.',
+    ]
+  },
+  {
+    num:15, mod:5, type:'print', dur:'45 min + impresión', diff:2,
+    name:'¡Lo imprimimos y lo presentamos!',
+    objetivo:'Imprimir el proyecto final de Mateo y presentárselo a la familia explicando qué hizo, cómo lo hizo y para qué sirve.',
+    needs:[
+      { icon:'📁', text:'STL del proyecto diseñado en clase 14' },
+      { icon:'🖨️', text:'Bambu Lab A1 + filamento PLA del color que Mateo elija' },
+      { icon:'📸', text:'Cámara o celular para documentar el proceso' },
+    ],
+    bambu:{ perfil:'Según el diseño (0.15 o 0.20mm)', filamento:'PLA', infill:'15-25% según la pieza', soportes:'Según lo analizado', extra:'Decidir la configuración juntos — Mateo ya sabe hacerlo' },
+    steps:[
+      { s:'Abrí el STL del proyecto en Bambu Studio.' },
+      { s:'<strong>Decidir la configuración juntos</strong> — que sea Mateo quien responda: ¿Necesita soportes? ¿Qué infill? ¿0.15mm o 0.20mm?' },
+      { s:'Slice → revisar el preview juntos: tiempo estimado, capas, soportes.' },
+      { s:'<strong>Print!</strong> Sacá fotos y video del inicio de la impresión.' },
+      { s:'Mientras se imprime, Mateo practica su presentación respondiendo: ¿Qué es esto? ¿Cómo lo hiciste? ¿Para quién es? ¿Qué fue lo más difícil?' },
+      { s:'Cuando termine: retirar, revisar si quedó bien, limar o limpiar si hace falta.' },
+      { s:'<strong>¡La presentación!</strong> Mateo le muestra el objeto a mamá, abuelos o amigos y lo explica.' },
+    ],
+    tips:[
+      '¡Este es el momento más importante del curso! La presentación vale tanto como el objeto.',
+      'Sacá video de la impresión para mostrarle a la familia — es muy emocionante ver el objeto crecer.',
+      'Si el primer intento no queda perfecto, está bien. El aprendizaje fue en el proceso completo.',
     ]
   }
 ];
 
-function renderAll(filter = '') {
-  const q = filter.toLowerCase().trim();
-  let totalShown = 0;
+const MODS = [
+  { num:0, label:'Todas', color:'#4f46e5' },
+  { num:1, label:'M1 · Imprimir', color:'#f97316' },
+  { num:2, label:'M2 · Diseños', color:'#2563eb' },
+  { num:3, label:'M3 · Texto', color:'#9333ea' },
+  { num:4, label:'M4 · Proyectos', color:'#16a34a' },
+  { num:5, label:'M5 · Final', color:'#d97706' },
+];
 
-  document.getElementById('content').innerHTML = SECTIONS.map(sec => {
-    const terms = q
-      ? sec.terms.filter(t =>
-          t.name.toLowerCase().includes(q) ||
-          t.def.toLowerCase().includes(q) ||
-          (t.tip && t.tip.toLowerCase().includes(q))
-        )
-      : sec.terms;
+const TYPE = {
+  print:  { label:'🖨️ Solo imprime', cls:'b-print' },
+  design: { label:'✏️ Diseña e imprime', cls:'b-design' },
+  adv:    { label:'⭐ Diseño avanzado', cls:'b-adv' },
+};
 
-    if (terms.length === 0) return '';
-    totalShown += terms.length;
+function stars(n) { return '⭐'.repeat(n) + '☆'.repeat(5-n); }
 
-    return `
-      <div class="section">
-        <div class="sec-header" style="background:${sec.color}">
-          <span class="sec-icon">${sec.icon}</span>
-          ${sec.name}
-          <span class="sec-count">${terms.length} términos</span>
-        </div>
-        <div class="sec-body">
-          ${terms.map(t => `
-            <div class="term-card">
-              <div class="term-name">
-                <span class="term-emoji">${t.emoji}</span>
-                ${t.name}
-              </div>
-              <div class="term-def">${t.def}</div>
-              ${t.tip ? `<div class="term-tip">💡 ${t.tip}</div>` : ''}
-            </div>`).join('')}
-        </div>
-      </div>`;
-  }).join('');
+let activeFilter = 0;
+let openClass = null;
 
-  document.getElementById('empty').style.display = (q && totalShown === 0) ? 'block' : 'none';
+function renderFilter() {
+  document.getElementById('mod-filter').innerHTML = MODS.map(m => `
+    <button class="mod-btn${m.num === activeFilter ? ' active' : ''}"
+      style="${m.num === activeFilter ? `background:${m.color}` : ''}"
+      onclick="setFilter(${m.num})">${m.label}</button>`).join('');
 }
 
-function filterTerms() {
-  renderAll(document.getElementById('search').value);
+function setFilter(n) {
+  activeFilter = n;
+  renderFilter();
+  renderList();
 }
 
-renderAll();
+function toggleClass(num) {
+  openClass = openClass === num ? null : num;
+  document.querySelectorAll('.cls-wrap').forEach(el => {
+    const n = parseInt(el.dataset.cls);
+    el.classList.toggle('open', n === openClass);
+  });
+  if (openClass !== null) {
+    const el = document.querySelector(`[data-cls="${openClass}"]`);
+    if (el) setTimeout(() => el.scrollIntoView({ behavior:'smooth', block:'nearest' }), 50);
+  }
+}
+
+function renderList() {
+  const filtered = activeFilter === 0 ? CLASSES : CLASSES.filter(c => c.mod === activeFilter);
+  const color = (mod) => MOD_COLORS[mod - 1];
+  const t = (c) => TYPE[c.type];
+
+  document.getElementById('class-list').innerHTML = filtered.map(c => `
+    <div class="cls-wrap${c.num === openClass ? ' open' : ''}" data-cls="${c.num}">
+
+      <div class="cls-header" onclick="toggleClass(${c.num})">
+        <div class="cls-num-badge" style="background:${color(c.mod)}">C${c.num}</div>
+        <div class="cls-hinfo">
+          <div class="cls-htitle">${c.name}</div>
+          <div class="cls-hmeta">
+            <span class="badge ${t(c).cls}">${t(c).label}</span>
+            <span class="cls-dur">⏱️ ${c.dur}</span>
+            <span class="cls-diff">${stars(c.diff)}</span>
+          </div>
+        </div>
+        <span class="cls-chevron">›</span>
+      </div>
+
+      <div class="cls-guide">
+
+        <div class="guide-section">
+          <div class="gs-title"><span>🎯</span> Objetivo</div>
+          <div class="objetivo-text">${c.objetivo}</div>
+        </div>
+
+        <div class="guide-section">
+          <div class="gs-title"><span>🛠️</span> Necesitás</div>
+          <div class="needs-list">
+            ${c.needs.map(n => `
+              <div class="need-item">
+                <span class="need-icon">${n.icon}</span>
+                <span>${n.text}</span>
+              </div>`).join('')}
+            ${c.extra_alert ? `<div class="extra-alert">⚠️ <span>${c.extra_alert}</span></div>` : ''}
+          </div>
+        </div>
+
+        ${c.bambu.perfil !== '—' ? `
+        <div class="guide-section">
+          <div class="gs-title"><span>⚙️</span> Configuración Bambu Lab A1</div>
+          <div class="bambu-grid">
+            <div class="bambu-item">
+              <div class="bambu-label">Perfil</div>
+              <div class="bambu-val">${c.bambu.perfil}</div>
+            </div>
+            <div class="bambu-item">
+              <div class="bambu-label">Filamento</div>
+              <div class="bambu-val">${c.bambu.filamento}</div>
+            </div>
+            <div class="bambu-item">
+              <div class="bambu-label">Infill</div>
+              <div class="bambu-val">${c.bambu.infill}</div>
+            </div>
+            <div class="bambu-item">
+              <div class="bambu-label">Soportes</div>
+              <div class="bambu-val">${c.bambu.soportes}</div>
+            </div>
+            ${c.bambu.extra ? `<div class="bambu-item" style="grid-column:1/-1">
+              <div class="bambu-label">Nota</div>
+              <div class="bambu-val">${c.bambu.extra}</div>
+            </div>` : ''}
+          </div>
+        </div>` : ''}
+
+        <div class="guide-section">
+          <div class="gs-title"><span>📋</span> Pasos</div>
+          <div class="steps-list">
+            ${c.steps.map((s, i) => `
+              <div class="step">
+                <div class="step-num" style="background:${color(c.mod)}">${i+1}</div>
+                <div class="step-text">${s.s}</div>
+              </div>`).join('')}
+          </div>
+        </div>
+
+        <div class="guide-section">
+          <div class="gs-title"><span>💡</span> Tips</div>
+          <div class="tips-list">
+            ${c.tips.map(tip => `
+              <div class="tip">
+                <span class="tip-icon">💡</span>
+                <span class="tip-text">${tip}</span>
+              </div>`).join('')}
+          </div>
+        </div>
+
+      </div>
+    </div>`).join('');
+}
+
+renderFilter();
+renderList();
 </script>
 </body>
 </html>

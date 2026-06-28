@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Clase 12 — Juego de mesa 🎲</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Nunito',sans-serif;background:#f0f9ff;color:#1e293b}.header{background:linear-gradient(135deg,#7c3aed,#a78bfa);color:white;padding:32px 24px}.mod-badge{font-size:12px;font-weight:800;letter-spacing:2px;opacity:.8;text-transform:uppercase;margin-bottom:8px}.header-title{font-size:26px;font-weight:900;line-height:1.2;margin-bottom:16px}.badges{display:flex;gap:8px;flex-wrap:wrap}.badge{background:rgba(255,255,255,.2);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:700}.progress-wrap{background:white;padding:12px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.1)}.progress-label{font-size:12px;font-weight:700;color:#64748b;margin-bottom:6px}.prog-bar{height:8px;background:#e2e8f0;border-radius:999px}.prog-fill{height:100%;background:linear-gradient(90deg,#a78bfa,#7c3aed);border-radius:999px;transition:width .4s ease}main{max-width:720px;margin:0 auto;padding:24px 16px 120px}.card{background:white;border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.06)}.card-title{font-size:20px;font-weight:800;margin-bottom:16px}.objetivo-box{font-size:16px;font-weight:700;line-height:1.6;color:#7c3aed;background:#faf5ff;padding:16px;border-radius:12px;border-left:4px solid #a78bfa}.resultado-tag{display:inline-block;background:#dcfce7;color:#15803d;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:800;margin-top:12px}.glos-item{border:2px solid #e9d5ff;border-radius:12px;padding:14px;margin-bottom:10px}.glos-term{font-size:16px;font-weight:800;color:#7c3aed;margin-bottom:4px}.glos-def{font-size:14px;color:#475569;line-height:1.5}.glos-tip{font-size:13px;color:#a78bfa;font-weight:700;margin-top:6px}.step{display:flex;gap:16px;align-items:flex-start;padding:16px;border-radius:12px;margin-bottom:12px;border:2px solid #e2e8f0;transition:all .3s}.step.done{background:#f5f3ff;border-color:#7c3aed}.s-num{width:40px;height:40px;min-width:40px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#64748b;transition:all .3s}.step.done .s-num{background:#7c3aed;color:white}.s-body{flex:1}.s-title{font-size:16px;font-weight:800;margin-bottom:8px}.s-cb{margin-left:auto;width:28px;height:28px;cursor:pointer;accent-color:#7c3aed}.sub{margin-top:8px}.sub-row{display:flex;gap:10px;margin-bottom:8px;font-size:14px;line-height:1.5}.sub-lbl{font-weight:900;color:#7c3aed;min-width:22px}.see{background:#f5f3ff;border:2px solid #7c3aed;border-radius:10px;padding:12px 14px;margin-top:10px;font-size:13px;font-weight:700;color:#5b21b6}.see::before{content:"✅ Lo que deberías ver: "}.warn{background:#fffbeb;border:2px solid #f59e0b;border-radius:10px;padding:12px 14px;margin-top:8px;font-size:13px;font-weight:700;color:#92400e}.warn::before{content:"⚠️ Si algo va mal: "}.yay{background:#fef3c7;border-radius:10px;padding:12px;margin-top:10px;font-size:14px;font-weight:800;color:#92400e;text-align:center}.wait-row{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:10px;background:#faf5ff;border:2px solid #e9d5ff;margin-bottom:8px;font-size:14px;font-weight:600}.wait-icon{font-size:20px;min-width:28px}.desafio{background:#fffbeb;border:3px solid #f59e0b;border-radius:16px;padding:20px}.desafio h3{font-size:18px;font-weight:900;color:#92400e;margin-bottom:8px}.desafio p{font-size:15px;color:#78350f;line-height:1.6}.cfg-card{background:#faf5ff;border:2px solid #e9d5ff}.cfg-table{width:100%;border-collapse:collapse}.cfg-table tr:nth-child(odd){background:#f5f3ff}.cfg-table td{padding:10px 14px;font-size:14px}.cfg-table td:first-child{font-weight:800;color:#7c3aed}.quiz-q{background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;padding:16px;margin-bottom:12px}.quiz-q p{font-size:15px;font-weight:800;margin-bottom:10px}.quiz-opts{list-style:none}.quiz-opts li{padding:8px 12px;border-radius:8px;margin-bottom:6px;font-size:14px;font-weight:600}.quiz-opts li.ok{background:#dcfce7;color:#15803d;font-weight:800}.quiz-opts li.no{color:#94a3b8}.padres-box{background:#f8fafc;border:2px solid #cbd5e1;border-radius:12px;padding:20px}.padres-box h3{font-size:15px;font-weight:800;margin-bottom:8px;color:#334155;margin-top:14px}.padres-box h3:first-child{margin-top:0}.padres-box ul{padding-left:16px}.padres-box li{font-size:14px;line-height:1.7;color:#475569}.prob{background:white;border:2px solid #fca5a5;border-radius:10px;padding:12px;margin-bottom:8px}.prob-t{font-weight:800;color:#dc2626;margin-bottom:4px;font-size:14px}.prob-fix{color:#475569;font-size:13px;line-height:1.5}.sabias{background:linear-gradient(135deg,#faf5ff,#f5f3ff);border:2px solid #e9d5ff}.sabias p{font-size:15px;line-height:1.6}.celeb{display:none;background:linear-gradient(135deg,#7c3aed,#5b21b6);border-radius:20px;padding:40px 24px;text-align:center;margin-top:20px}.celeb.on{display:block;animation:pop .6s ease}@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}.celeb-ico{font-size:64px;margin-bottom:16px;animation:bob 1s infinite}@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}.celeb-t{font-size:26px;font-weight:900;color:white;margin-bottom:12px}.celeb-txt{font-size:15px;color:#e9d5ff;line-height:1.7}#cnf{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999}.foot{position:fixed;bottom:0;left:0;right:0;background:white;border-top:2px solid #e2e8f0;padding:12px 24px;display:flex;gap:12px;justify-content:space-between;align-items:center;box-shadow:0 -4px 16px rgba(0,0,0,.1)}.btn-nav{padding:12px 24px;border-radius:999px;font-family:Nunito;font-size:15px;font-weight:800;border:none;cursor:pointer;text-decoration:none;display:inline-block}.btn-prev{background:#f1f5f9;color:#475569}.btn-next{background:linear-gradient(135deg,#7c3aed,#5b21b6);color:white}.btn-reset{font-size:12px;color:#94a3b8;background:none;border:none;cursor:pointer;font-family:Nunito;font-weight:700}@media(max-width:600px){.header-title{font-size:20px}main{padding:16px 12px 100px}}</style>
+</head>
+<body>
+<canvas id="cnf"></canvas>
+<header class="header">
+  <div class="mod-badge">Módulo 4 — Objetos Avanzados · Clase 12</div>
+  <div class="header-title">🎲 Juego de mesa — fichas y piezas</div>
+  <div class="badges">
+    <span class="badge">⏱️ 60 min clase</span>
+    <span class="badge">🖨️ 50 min impresión</span>
+    <span class="badge">⭐⭐⭐⭐ Dificultad 4/5</span>
+    <span class="badge">🎮 Diseña avanzado</span>
+  </div>
+</header>
+<div class="progress-wrap">
+  <div class="progress-label">Tu progreso: <span id="pt">0 de 11 pasos completados</span></div>
+  <div class="prog-bar"><div class="prog-fill" id="pf" style="width:0%"></div></div>
+</div>
+<main>
+
+<div class="card">
+  <div class="card-title">🎯 ¿Qué vas a lograr hoy?</div>
+  <div class="objetivo-box">Hoy vas a aprender el <strong>diseño en serie</strong>: diseñar UNA pieza perfecta y luego duplicarla varias veces con <strong>Ctrl+D</strong>. Vas a crear un juego de mesa sencillo (puede ser un Ta-Te-Ti, un Ludo básico o fichas de cualquier juego) con piezas idénticas que vienen de un solo diseño. ¡Producción en masa para un niño de 7 años!</div>
+  <span class="resultado-tag">🏆 Tu resultado: 6-10 fichas/peones idénticos para un juego de mesa, más el tablero base</span>
+</div>
+
+<div class="card">
+  <div class="card-title">🎮 Elige tu juego antes de empezar</div>
+  <div style="display:grid;gap:12px">
+    <div style="background:#faf5ff;border:2px solid #e9d5ff;border-radius:12px;padding:16px">
+      <p style="font-weight:900;color:#7c3aed;margin-bottom:8px">Opción A — Ta-Te-Ti (Tic-Tac-Toe)</p>
+      <p style="font-size:14px;color:#475569">5 piezas "X" + 5 piezas "O" + tablero base cuadriculado. Rápido y clásico.</p>
+    </div>
+    <div style="background:#f0fdf4;border:2px solid #bbf7d0;border-radius:12px;padding:16px">
+      <p style="font-weight:900;color:#15803d;margin-bottom:8px">Opción B — Peones genéricos</p>
+      <p style="font-size:14px;color:#475569">8 peones con forma de figura humana simple + tablero cuadriculado. Sirve para múltiples juegos.</p>
+    </div>
+    <div style="background:#fff7ed;border:2px solid #fed7aa;border-radius:12px;padding:16px">
+      <p style="font-weight:900;color:#c2410c;margin-bottom:8px">Opción C — Fichas personalizadas</p>
+      <p style="font-size:14px;color:#475569">10 fichas redondas con número o símbolo en relieve. Sirve para cualquier juego de conteo.</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">📖 Palabras de hoy</div>
+  <div class="glos-item">
+    <div class="glos-term">📋 Diseñar en serie</div>
+    <div class="glos-def">Diseñar un objeto una sola vez y luego duplicarlo muchas veces. En Tinkercad: <strong>Ctrl+D</strong> duplica el objeto seleccionado. En fábricas reales, este proceso se llama "manufactura en serie" — como una línea de automóviles.</div>
+    <div class="glos-tip">💡 Lego hace millones de piezas idénticas con el mismo molde. Tú vas a hacer algo similar: una pieza perfecta y muchas copias iguales.</div>
+  </div>
+  <div class="glos-item">
+    <div class="glos-term">♟️ Fichas / Peones</div>
+    <div class="glos-def">Las piezas que se mueven en un juego de mesa. Deben ser del mismo tamaño para que el juego sea justo. En ajedrez, cada tipo de pieza tiene forma diferente. En juegos sencillos, todas son iguales.</div>
+    <div class="glos-tip">💡 Los peones de los juegos de Ludo miden exactamente igual. Si uno fuera más grande, no entraría en los casilleros del tablero.</div>
+  </div>
+  <div class="glos-item">
+    <div class="glos-term">📐 Escalar diferentes tamaños</div>
+    <div class="glos-def">Hacer copias de la misma forma pero en tamaños diferentes. Un "rey" en ajedrez es más alto que un "peón" aunque tengan la misma base. Mismo diseño, escalado diferente en el eje Z (altura).</div>
+    <div class="glos-tip">💡 Para hacer un rey 150% más alto que un peón, escala solo en el eje Z al 150%.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">🚀 Paso a paso</div>
+
+  <div class="step" id="s1">
+    <div class="s-num">1</div>
+    <div class="s-body">
+      <div class="s-title">Diseña la pieza perfecta (el prototipo)</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Nuevo diseño Tinkercad → <strong>"Fichas Juego"</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span><strong>Para peones simples:</strong> Base circular (Cylinder) de 20mm diámetro y 5mm alto + cuerpo cilíndrico de 12mm diámetro y 20mm alto + cabeza esférica (Sphere) de 15mm. Todas centradas y grupadas.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span><strong>Para fichas redondas:</strong> Cylinder de 25mm diámetro y 5mm alto + texto (número "1") en relieve de 3mm.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span><strong>Para X/O de Ta-Te-Ti:</strong> Crea una X con dos Box rectangulares cruzados, o una O con Torus.</span></div>
+      </div>
+      <div class="see">Una sola pieza perfecta — el "prototipo" del que van a salir todas las copias. Bien centrada y con las medidas exactas.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="1" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s2">
+    <div class="s-num">2</div>
+    <div class="s-body">
+      <div class="s-title">Agrupa la pieza prototipo</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Selecciona todos los componentes de la pieza.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Ctrl + G → la pieza se convierte en un solo objeto agrupado.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>¡Importante! Siempre agrupar antes de duplicar — así cada copia es un objeto completo y no partes sueltas.</span></div>
+      </div>
+      <div class="see">La pieza prototipo agrupada como un solo objeto. Si haces clic en una parte, seleccionas todo junto.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="2" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s3">
+    <div class="s-num">3</div>
+    <div class="s-body">
+      <div class="s-title">¡Duplica con Ctrl+D! — La magia de la serie</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Con la pieza seleccionada, presiona <strong>Ctrl+D</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Aparece una copia exacta encima de la original. Muévela con las flechas del teclado o arrastrando para separarla.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Presiona <strong>Ctrl+D</strong> nuevamente → otra copia idéntica. Repite hasta tener <strong>5-6 piezas</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>Organiza las piezas en filas y columnas sobre el plano para ver todas juntas.</span></div>
+      </div>
+      <div class="see">5-6 piezas idénticas perfectamente copiadas sobre el plano de Tinkercad. ¡Es producción en serie!</div>
+      <div class="yay">🎉 ¡Ctrl+D es la magia del diseño en serie! Una pieza perfecta, infinitas copias iguales.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="3" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s4">
+    <div class="s-num">4</div>
+    <div class="s-body">
+      <div class="s-title">Haz el segundo tipo de pieza (si tu juego necesita dos tipos)</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span><strong>Para Ta-Te-Ti:</strong> Si hiciste las X, ahora crea las O (con Torus o con un Cylinder de agujero interior).</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span><strong>Para peones de 2 jugadores:</strong> Duplica los 5 peones. Escala los 5 nuevos al 110% de alto — serán del "otro jugador" pero un poquito más altos para diferenciarlos.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>En fábricas, esto se llama "variante del producto" — misma base, diferencias pequeñas para identificar lotes.</span></div>
+      </div>
+      <div class="see">Dos tipos de piezas sobre el plano — 5-6 de cada tipo. Diferenciadas por forma o tamaño.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="4" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s5">
+    <div class="s-num">5</div>
+    <div class="s-body">
+      <div class="s-title">Diseña el tablero (si hay tiempo)</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span><strong>Para Ta-Te-Ti:</strong> Un Box plano de 120×120×5mm + líneas divisorias (4 Box delgados de 5mm ancho y 2mm alto cruzados para crear la cuadrícula).</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span><strong>Para cualquier juego:</strong> Un Box plano de 150×150×5mm con una cuadrícula grabada en la superficie como agujeros de 2mm de profundidad.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Si no hay tiempo, el tablero puede imprimirse en la siguiente sesión o dibujarse en cartón.</span></div>
+      </div>
+      <div class="see">Un tablero plano con líneas que definen los casilleros. Las piezas caben perfectamente en cada casillero.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="5" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s6">
+    <div class="s-num">6</div>
+    <div class="s-body">
+      <div class="s-title">Exporta las piezas y el tablero por separado</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Selecciona solo las piezas de un tipo → Exportar → <strong>"fichas-jugador1.stl"</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Selecciona las piezas del otro tipo → Exportar → <strong>"fichas-jugador2.stl"</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Selecciona el tablero → Exportar → <strong>"tablero.stl"</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">d.</span><span>Importa TODOS a Bambu Studio juntos. Bambu Studio los organiza en la placa automáticamente.</span></div>
+      </div>
+      <div class="see">Bambu Studio muestra todas las piezas distribuidas en la placa de impresión — las fichas y el tablero listos para imprimir en una sola sesión.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="6" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s7">
+    <div class="s-num">7</div>
+    <div class="s-body">
+      <div class="s-title">Slice y verifica el tiempo</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Slice → verifica que todas las piezas se ven correctas.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>¿El tiempo total es manejable? (~50 minutos para fichas pequeñas + tablero).</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Si hay demasiadas piezas para el tiempo disponible, guarda algunas para otra sesión.</span></div>
+      </div>
+      <div class="see">El Slice muestra todas las piezas. Las fichas pequeñas se ven como pequeños objetos y el tablero plano.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="7" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s8">
+    <div class="s-num">8</div>
+    <div class="s-body">
+      <div class="s-title">Imprime todas las piezas del juego</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Enviar a Bambu Lab A1 → confirmar.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Observa cómo la impresora hace TODAS las piezas a la vez — la cabeza va de una a otra construyendo capas en paralelo.</span></div>
+      </div>
+      <div class="see">La impresora trabaja en todas las piezas simultáneamente, haciendo una capa de cada pieza antes de pasar a la siguiente capa.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="8" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s9">
+    <div class="s-num">9</div>
+    <div class="s-body">
+      <div class="s-title">Saca las piezas y cuenta</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Pitido → espera → dobla la placa → las piezas pequeñas saltan solas. ¡Cuidado de no perder ninguna!</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Cuenta todas las piezas. ¿Están todas? ¿Alguna se despegó antes de terminar?</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Verifica que todas las piezas son del mismo tamaño. Si una quedó diferente, es probable que se movió durante la impresión.</span></div>
+      </div>
+      <div class="see">Un puñado de piezas idénticas (o casi idénticas) sobre la mesa. Las fichas pequeñas son las primeras en saltar de la placa al doblarla.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="9" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s10">
+    <div class="s-num">10</div>
+    <div class="s-body">
+      <div class="s-title">Juega tu primera partida</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Arma el juego: tablero + piezas de cada jugador.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Juega una partida completa con alguien en casa.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Nota si hay algo que mejorar: ¿son las piezas demasiado pequeñas? ¿El tablero tiene el tamaño correcto? Anota para la versión 2.</span></div>
+      </div>
+      <div class="see">Una partida completa con piezas y tablero diseñados e impresos por Mateo. ¡Un juego 100% personalizado!</div>
+      <div class="yay">🎲 ¡Mateo creó su propio juego de mesa desde cero! ¡Diseñador + fabricante + jugador!</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="10" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s11">
+    <div class="s-num">11</div>
+    <div class="s-body">
+      <div class="s-title">Diseña la versión 2 del juego</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Basándote en la partida, ¿qué cambiarías? ¿Piezas más grandes? ¿Tablero más chico? ¿Agujeros en el tablero para que las piezas no se muevan?</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Anota en papel los cambios para la versión 2. Esto es lo que hacen los diseñadores de juegos profesionales — juegan, notan problemas, mejoran.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>¡La versión 2 la pueden hacer en casa como proyecto especial!</span></div>
+      </div>
+      <div class="see">Una lista de mejoras para la versión 2 del juego. El inicio del ciclo de diseño iterativo.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="11" onchange="chk(this)">
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">⏳ Mientras las piezas se imprimen... (50 min)</div>
+  <div class="wait-row"><span class="wait-icon">🎲</span><span><strong>Diseña las reglas del juego:</strong> Si estás haciendo fichas genéricas, inventa las reglas de un juego nuevo. Escríbelas en un papel. ¡Puedes inventar el tuyo propio!</span></div>
+  <div class="wait-row"><span class="wait-icon">📐</span><span><strong>Matemáticas del diseño en serie:</strong> Si cada pieza tarda 4 minutos en imprimir y tienes 6 piezas, ¿cuánto tardarían individualmente? (24 min) ¿Por qué al imprimirlas juntas tarda más de 4 min pero menos de 24 min?</span></div>
+  <div class="wait-row"><span class="wait-icon">🏭</span><span><strong>Piensa en la fábrica:</strong> Lego hace millones de piezas iguales. ¿Cómo crees que lo hacen? (Con moldes de inyección de plástico — una sola máquina puede hacer 1000 piezas por hora).</span></div>
+</div>
+
+<div class="card"><div class="desafio"><h3>💡 El desafío del día</h3><p>¿Puedes crear <strong>piezas diferenciadas por tamaño</strong> para representar el valor? Como en un juego de cartas donde el "7" vale más que el "1". Haz fichas con el mismo diseño base pero escala la altura: ficha-1 = 5mm, ficha-3 = 8mm, ficha-5 = 12mm.</p></div></div>
+
+<div class="card">
+  <div class="card-title">🤔 Mini quiz</div>
+  <div class="quiz-q"><p>1. ¿Qué hace Ctrl+D en Tinkercad?</p><ul class="quiz-opts"><li class="ok">a) Duplica el objeto seleccionado haciendo una copia exacta ✅</li><li class="no">b) Borra el objeto</li><li class="no">c) Lo convierte en agujero</li></ul></div>
+  <div class="quiz-q"><p>2. ¿Por qué es importante AGRUPAR (Ctrl+G) antes de duplicar con Ctrl+D?</p><ul class="quiz-opts"><li class="no">a) Porque Ctrl+D no funciona sin Ctrl+G</li><li class="ok">b) Para que cada copia sea un objeto completo y no partes sueltas ✅</li><li class="no">c) Para que las copias sean del mismo color</li></ul></div>
+  <div class="quiz-q"><p>3. Para imprimir 6 fichas iguales a la vez, ¿cuál es la ventaja de importar el archivo con todas juntas en Bambu Studio?</p><ul class="quiz-opts"><li class="ok">a) La impresora las hace todas a la vez, ahorrando tiempo de configuración ✅</li><li class="no">b) Las fichas quedan más resistentes cuando se imprimen juntas</li><li class="no">c) No hay ventaja — es más rápido imprimirlas de una en una</li></ul></div>
+</div>
+
+<div class="card cfg-card">
+  <div class="card-title" style="color:#7c3aed">⚙️ Configuración — Bambu Lab A1</div>
+  <table class="cfg-table">
+    <tr><td>🖨️ Impresora</td><td>Bambu Lab A1</td></tr>
+    <tr><td>🎨 Filamento</td><td>PLA</td></tr>
+    <tr><td>📐 Altura de capa</td><td>0.20mm Standard</td></tr>
+    <tr><td>⚡ Velocidad</td><td>Standard</td></tr>
+    <tr><td>🏗️ Soportes</td><td>No</td></tr>
+    <tr><td>🟫 Placa</td><td>Texturizada</td></tr>
+    <tr><td>🔁 Relleno</td><td>15%</td></tr>
+    <tr><td>🕐 Tiempo</td><td>~50 minutos (todas las piezas juntas)</td></tr>
+  </table>
+</div>
+
+<div class="card sabias"><div class="card-title">💡 ¿Sabías que...?</div><p>Los primeros juegos de mesa impresos en 3D aparecieron alrededor de 2012. Hoy hay comunidades de diseñadores de juegos que comparten sus diseños gratuitamente. Sitios como Thingiverse tienen miles de tableros y piezas descargables. Lo que hacen esos diseñadores adultos, tú lo estás aprendiendo ahora a los 7 años.</p></div>
+
+<div class="card">
+  <div class="card-title">🧑‍🏫 Para quien acompaña a Mateo</div>
+  <div class="padres-box">
+    <h3>✅ Lo que Mateo aprendió hoy</h3>
+    <ul><li>Diseño en serie: Ctrl+D para duplicar en Tinkercad</li><li>La importancia de agrupar antes de duplicar</li><li>Escalar para crear variantes del mismo objeto</li><li>Importar múltiples archivos STL en Bambu Studio para imprimirlos juntos</li></ul>
+    <h3>⚠️ Posibles problemas</h3>
+    <div class="prob"><div class="prob-t">Algunas piezas pequeñas no pegaron bien a la placa y quedaron mal impresas</div><div class="prob-fix">Para piezas pequeñas, activar la opción "Brim" en Bambu Studio (un borde extra al rededor de la pieza que mejora la adhesión). El brim se retira a mano después de imprimir.</div></div>
+    <div class="prob"><div class="prob-t">Las piezas no son del mismo tamaño</div><div class="prob-fix">Verificar en Tinkercad que todas las copias tienen exactamente las mismas dimensiones. Ctrl+D garantiza copias exactas, pero si alguien escaló una pieza accidentalmente, puede quedar diferente.</div></div>
+    <h3>🎲 Seguimiento: jugar el juego</h3>
+    <p style="font-size:14px;color:#475569;line-height:1.6">Jugar el juego en familia varias veces. Mateo notará cosas que mejoraría — esas observaciones son pensamiento de diseñador en acción. Anotar las ideas y, si es posible, implementar la versión 2 como proyecto especial.</p>
+  </div>
+</div>
+
+<div class="celeb" id="celeb">
+  <div class="celeb-ico">🎲</div>
+  <div class="celeb-t">¡Diseñador de juegos, Mateo!</div>
+  <div class="celeb-txt">Hoy creaste tu propio juego de mesa de principio a fin: diseñaste las piezas, las duplicaste en serie, las imprimiste y jugaste. Eso es exactamente lo que hacen los diseñadores de juegos profesionales como los de Lego o Hasbro — con una computadora más cara, pero el mismo proceso.<br><br><strong>¡Terminaste el Módulo 4! Solo queda el Módulo 5 — ¡El Proyecto Final! En las últimas 3 clases vas a diseñar TU propio objeto desde cero, sin indicaciones. Es tu momento de brillar como diseñador.</strong></div>
+</div>
+
+</main>
+<footer class="foot">
+  <a href="../../clase11/v1/clase.html" class="btn-nav btn-prev">⬅️ Clase 11</a>
+  <button class="btn-reset" onclick="reset()">↺ Reiniciar</button>
+  <a href="../../clase13/v1/clase.html" class="btn-nav btn-next">Clase 13 ➡️</a>
+</footer>
+<script>
+const KEY='studio3d-clase12',TOTAL=11;
+function load(){const s=JSON.parse(localStorage.getItem(KEY)||'{}');document.querySelectorAll('.scb').forEach(cb=>{if(s[cb.dataset.n]){cb.checked=true;mark(cb.dataset.n,true);}});upd();}
+function chk(cb){const n=cb.dataset.n;mark(n,cb.checked);const s=JSON.parse(localStorage.getItem(KEY)||'{}');s[n]=cb.checked;localStorage.setItem(KEY,JSON.stringify(s));upd();}
+function mark(n,on){const el=document.getElementById('s'+n);const num=el.querySelector('.s-num');if(on){el.classList.add('done');num.textContent='✓';}else{el.classList.remove('done');num.textContent=n;}}
+function upd(){const done=document.querySelectorAll('.scb:checked').length;const p=done/TOTAL*100;document.getElementById('pf').style.width=p+'%';document.getElementById('pt').textContent=done+' de '+TOTAL+' pasos completados';if(done===TOTAL){const c=document.getElementById('celeb');c.classList.add('on');c.scrollIntoView({behavior:'smooth'});confetti();}}
+function reset(){if(!confirm('¿Reiniciar?'))return;localStorage.removeItem(KEY);document.querySelectorAll('.scb').forEach(cb=>{cb.checked=false;});for(let i=1;i<=TOTAL;i++)mark(i,false);document.getElementById('celeb').classList.remove('on');upd();}
+function confetti(){const c=document.getElementById('cnf'),ctx=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const ps=Array.from({length:130},()=>({x:Math.random()*c.width,y:-10,r:Math.random()*7+3,d:Math.random()*3+1,col:['#7c3aed','#a78bfa','#f59e0b','#ec4899','#22c55e'][Math.floor(Math.random()*5)],ta:0,ts:Math.random()*.1+.05}));let f=0;(function draw(){ctx.clearRect(0,0,c.width,c.height);ps.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.col;ctx.fill();p.y+=p.d;p.ta+=p.ts;p.x+=Math.sin(p.ta);if(p.y>c.height){p.y=-10;p.x=Math.random()*c.width;}});if(++f<350)requestAnimationFrame(draw);else ctx.clearRect(0,0,c.width,c.height);})();}
+load();
+</script>
+</body>
+</html>
