@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Clase 6 — Porta-lápices ✏️</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',sans-serif;background:#f0f9ff;color:#1e293b}
+
+/* HEADER */
+.header{background:linear-gradient(135deg,#0369a1,#0ea5e9);color:white;padding:26px 24px}
+.mod-badge{font-size:12px;font-weight:800;letter-spacing:2px;opacity:.8;text-transform:uppercase;margin-bottom:8px}
+.header-title{font-size:24px;font-weight:900;line-height:1.2;margin-bottom:12px}
+.badges{display:flex;gap:7px;flex-wrap:wrap}
+.badge{background:rgba(255,255,255,.2);padding:5px 12px;border-radius:999px;font-size:12px;font-weight:700}
+
+/* PROGRESS */
+.progress-wrap{background:white;padding:10px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.progress-label{font-size:12px;font-weight:700;color:#64748b;margin-bottom:5px}
+.prog-bar{height:7px;background:#e2e8f0;border-radius:999px}
+.prog-fill{height:100%;background:linear-gradient(90deg,#0ea5e9,#22c55e);border-radius:999px;transition:width .4s ease}
+
+/* MAIN */
+main{max-width:860px;margin:0 auto;padding:18px 16px 120px}
+
+/* CARDS */
+.card{background:white;border-radius:16px;padding:20px;margin-bottom:14px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.card-title{font-size:17px;font-weight:800;margin-bottom:12px}
+
+/* OBJETIVO */
+.objetivo-box{font-size:15px;font-weight:700;line-height:1.6;color:#0369a1;background:#e0f2fe;padding:14px 16px;border-radius:12px;border-left:4px solid #0ea5e9}
+.resultado-tag{display:inline-block;background:#dcfce7;color:#15803d;padding:6px 14px;border-radius:999px;font-size:13px;font-weight:800;margin-top:10px}
+
+/* HERRAMIENTAS */
+.tools-wrap{display:flex;gap:8px;flex-wrap:wrap}
+.tool-pill{background:#f1f5f9;border:2px solid #e2e8f0;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:700}
+
+/* GRID 2 COLUMNAS */
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+@media(max-width:600px){.grid2{grid-template-columns:1fr}}
+
+/* GLOSARIO */
+.glos-item{border:2px solid #e0f2fe;border-radius:12px;padding:14px}
+.glos-term{font-size:15px;font-weight:800;color:#0369a1;margin-bottom:4px}
+.glos-def{font-size:13px;color:#475569;line-height:1.5}
+.glos-tip{font-size:12px;color:#0ea5e9;font-weight:700;margin-top:6px}
+
+/* PASOS */
+.step{display:flex;gap:13px;align-items:flex-start;padding:13px;border-radius:12px;margin-bottom:9px;border:2px solid #e2e8f0;transition:all .3s}
+.step.done{background:#f0fdf4;border-color:#22c55e}
+.s-num{width:34px;height:34px;min-width:34px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#64748b;transition:all .3s}
+.step.done .s-num{background:#22c55e;color:white}
+.s-body{flex:1}
+.s-title{font-size:14px;font-weight:800;margin-bottom:5px}
+.s-cb{margin-left:auto;width:24px;height:24px;cursor:pointer;accent-color:#22c55e}
+.sub{margin-top:5px}
+.sub-row{display:flex;gap:7px;margin-bottom:5px;font-size:13px;line-height:1.5}
+.sub-lbl{font-weight:900;color:#0369a1;min-width:18px}
+
+/* VER + WARN lado a lado */
+.step-feedback{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.see,.warn{flex:1;min-width:180px;border-radius:10px;padding:9px 12px;font-size:12px;font-weight:700;line-height:1.4}
+.see{background:#f0fdf4;border:2px solid #22c55e;color:#15803d}
+.see::before{content:"✅ Deberías ver: "}
+.warn{background:#fffbeb;border:2px solid #f59e0b;color:#92400e}
+.warn::before{content:"⚠️ Si algo va mal: "}
+.yay{background:#fef3c7;border-radius:10px;padding:9px;margin-top:8px;font-size:13px;font-weight:800;color:#92400e;text-align:center}
+
+/* TINKERCAD */
+.tink-card{background:#fdf4ff;border:2px solid #d8b4fe}
+.tink-block{background:#fdf4ff;border:2px solid #d8b4fe;border-radius:12px;padding:14px}
+.tink-h{font-size:13px;font-weight:800;color:#7c3aed;margin-bottom:8px}
+.tink-row{display:flex;gap:7px;margin-bottom:5px;font-size:13px;line-height:1.5}
+.tink-num{font-weight:900;color:#7c3aed;min-width:18px}
+.tink-see{background:#f5f3ff;border:2px solid #a78bfa;border-radius:8px;padding:9px 12px;margin-top:8px;font-size:12px;font-weight:700;color:#5b21b6}
+.tink-see::before{content:"🟣 En Tinkercad verás: "}
+
+/* ESPERA */
+.wait-card{background:#faf5ff;border:2px solid #e9d5ff;border-radius:12px;padding:14px}
+.wait-icon{font-size:22px;margin-bottom:6px;display:block}
+.wait-title{font-size:14px;font-weight:800;margin-bottom:3px}
+.wait-desc{font-size:13px;color:#475569;line-height:1.4}
+
+/* DESAFÍO */
+.desafio{background:#fffbeb;border:3px solid #f59e0b;border-radius:14px;padding:18px}
+.desafio h3{font-size:16px;font-weight:900;color:#92400e;margin-bottom:6px}
+.desafio p{font-size:13px;color:#78350f;line-height:1.6}
+
+/* QUIZ */
+.quiz-q{background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;padding:13px}
+.quiz-q p{font-size:13px;font-weight:800;margin-bottom:8px}
+.quiz-opts{list-style:none}
+.quiz-opts li{padding:5px 9px;border-radius:7px;margin-bottom:4px;font-size:12px;font-weight:600;color:#94a3b8}
+.quiz-opts li.ok{background:#dcfce7;color:#15803d;font-weight:800}
+
+/* CONFIG */
+.cfg-card{background:#f0f9ff;border:2px solid #bae6fd}
+.cfg-wrap{max-width:440px}
+.cfg-table{width:100%;border-collapse:collapse}
+.cfg-table tr:nth-child(odd){background:#e0f2fe}
+.cfg-table td{padding:7px 12px;font-size:13px}
+.cfg-table td:first-child{font-weight:800;color:#0369a1;width:50%}
+.cfg-note{font-size:13px;color:#0369a1;margin-bottom:10px;line-height:1.5}
+
+/* ACORDEÓN - GUÍA IMPRESORA */
+.acc-header{display:flex;justify-content:space-between;align-items:center;cursor:pointer;padding:11px 0;border-bottom:2px solid #e2e8f0;font-size:14px;font-weight:800;user-select:none}
+.acc-arrow{transition:transform .2s;font-style:normal}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.acc-step{display:flex;gap:10px;padding:10px;border-radius:9px;background:#f0f9ff;border:2px solid #bae6fd;margin:6px 0;font-size:13px;line-height:1.5}
+.acc-num{font-weight:900;color:#0369a1;min-width:18px}
+
+/* SABIAS */
+.sabias{background:linear-gradient(135deg,#fdf4ff,#fae8ff);border:2px solid #e9d5ff}
+.sabias p{font-size:13px;line-height:1.6}
+
+/* PADRES */
+.padres-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+@media(max-width:600px){.padres-grid{grid-template-columns:1fr}}
+.padres-block{background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;padding:13px}
+.padres-block h3{font-size:13px;font-weight:800;color:#334155;margin-bottom:7px}
+.padres-block ul{padding-left:14px}
+.padres-block li{font-size:12px;line-height:1.6;color:#475569}
+.prob{margin-bottom:8px}
+.prob-t{font-weight:800;color:#dc2626;font-size:12px;margin-bottom:3px}
+.prob-fix{color:#475569;font-size:12px;line-height:1.5}
+.padres-refuerzo{background:#f0fdf4;border:2px solid #bbf7d0;border-radius:12px;padding:13px;font-size:13px;color:#15803d;line-height:1.6}
+.padres-refuerzo strong{display:block;margin-bottom:4px;font-size:14px}
+
+/* CELEBRACIÓN */
+.celeb{display:none;background:linear-gradient(135deg,#fbbf24,#f59e0b);border-radius:20px;padding:34px 24px;text-align:center;margin-top:14px}
+.celeb.on{display:block;animation:pop .6s ease}
+@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+.celeb-ico{font-size:52px;margin-bottom:12px;animation:bob 1s infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.celeb-t{font-size:21px;font-weight:900;color:#451a03;margin-bottom:10px}
+.celeb-txt{font-size:13px;color:#78350f;line-height:1.7}
+
+#cnf{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999}
+
+/* FOOTER */
+.foot{position:fixed;bottom:0;left:0;right:0;background:white;border-top:2px solid #e2e8f0;padding:10px 20px;display:flex;gap:10px;justify-content:space-between;align-items:center;box-shadow:0 -4px 16px rgba(0,0,0,.1)}
+.btn-nav{padding:10px 20px;border-radius:999px;font-family:Nunito;font-size:14px;font-weight:800;border:none;cursor:pointer;text-decoration:none;display:inline-block}
+.btn-prev{background:#f1f5f9;color:#475569}
+.btn-next{background:linear-gradient(135deg,#0ea5e9,#0369a1);color:white}
+.btn-reset{font-size:12px;color:#94a3b8;background:none;border:none;cursor:pointer;font-family:Nunito;font-weight:700}
+
+@media(max-width:600px){.header-title{font-size:18px}main{padding:14px 12px 100px}}
+</style>
+</head>
+<body>
+<canvas id="cnf"></canvas>
+
+<header class="header">
+  <div class="mod-badge">Módulo 2 — ¡Mis Primeros Diseños! · Clase 6</div>
+  <div class="header-title">✏️ Diseñamos un porta-lápices</div>
+  <div class="badges">
+    <span class="badge">⏱️ 45 min clase</span>
+    <span class="badge">🖨️ 40 min impresión</span>
+    <span class="badge">⭐⭐ Dificultad 2/5</span>
+    <span class="badge">🎨 Diseña e imprime</span>
+    <span class="badge">🔩 Sin soportes</span>
+  </div>
+</header>
+
+<div class="progress-wrap">
+  <div class="progress-label">Tu progreso: <span id="pt">0 de 10 pasos completados</span></div>
+  <div class="prog-bar"><div class="prog-fill" id="pf" style="width:0%"></div></div>
+</div>
+
+<main>
+
+<!-- OBJETIVO -->
+<div class="card">
+  <div class="card-title">🎯 ¿Qué vas a lograr hoy?</div>
+  <div class="objetivo-box">¿Recuerdas la varita mágica de recortar de la Clase 5? Hoy la vas a usar para crear algo que realmente puedes usar en la vida real: un <strong>porta-lápices</strong>. Va a tener un hueco adentro (para guardar los lápices) y paredes sólidas afuera. ¡Tu primer objeto 100% funcional!</div>
+  <span class="resultado-tag">🏆 Resultado: Un porta-lápices que sostiene tus lápices y lapiceros de verdad</span>
+</div>
+
+<!-- HERRAMIENTAS -->
+<div class="card">
+  <div class="card-title">🛠️ Herramientas de hoy</div>
+  <div class="tools-wrap">
+    <span class="tool-pill">🌐 Tinkercad — ya la conoces</span>
+    <span class="tool-pill">🖥️ Bambu Studio — ya la conoces</span>
+    <span class="tool-pill">🖨️ Bambu Lab A1</span>
+    <span class="tool-pill">📐 Herramienta Align (nueva hoy)</span>
+  </div>
+</div>
+
+<!-- GLOSARIO - GRID 2 COLS -->
+<div class="card">
+  <div class="card-title">📖 Palabras de hoy</div>
+  <div class="grid2">
+    <div class="glos-item">
+      <div class="glos-term">🏗️ Diseño funcional</div>
+      <div class="glos-def">Un objeto que tiene una función real: sirve para algo. El porta-lápices no es solo bonito — tiene que aguantar lápices reales sin romperse.</div>
+      <div class="glos-tip">💡 Todo lo que usas (una silla, un vaso, una mochila) es diseño funcional. ¡Hoy te unes al club!</div>
+    </div>
+    <div class="glos-item">
+      <div class="glos-term">🧱 Paredes y grosor</div>
+      <div class="glos-def">El grosor de las paredes del objeto. Si son muy delgadas se puede romper; si son muy gruesas, usa mucho plástico y tarda más.</div>
+      <div class="glos-tip">💡 Un vaso de vidrio tiene paredes de ~3-4mm. Nosotros haremos 5mm — suficiente para ser resistente.</div>
+    </div>
+    <div class="glos-item">
+      <div class="glos-term">🕳️ Interior del objeto</div>
+      <div class="glos-def">El espacio vacío de adentro. El interior debe ser lo suficientemente ancho para que entren los lápices (~50mm de diámetro).</div>
+      <div class="glos-tip">💡 Como diseñar una taza: tienes que pensar en cuánto líquido va adentro, no solo en cómo se ve afuera.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PASOS - columna única -->
+<div class="card">
+  <div class="card-title">🚀 Paso a paso</div>
+
+  <div class="step" id="s1">
+    <div class="s-num">1</div>
+    <div class="s-body">
+      <div class="s-title">Planea las medidas en papel ANTES de abrir Tinkercad</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Con el adulto, acuerda las medidas: <strong>70mm alto · 60mm exterior · 50mm interior · 5mm de pared</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Anótalas en un papel — son tu "plano de arquitecto".</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Decide: ¿cilíndrico o rectangular? (Recomendamos cilíndrico — más fácil de imprimir).</span></div>
+      </div>
+      <div class="step-feedback">
+        <div class="see">Un papel con las medidas: Exterior 60mm, Interior 50mm, Alto 70mm, Pared 5mm.</div>
+      </div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="1" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s2">
+    <div class="s-num">2</div>
+    <div class="s-body">
+      <div class="s-title">Abre Tinkercad y crea el cilindro exterior</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Ve a tinkercad.com → Nuevo diseño → nómbralo <strong>"Porta-lápices Mateo"</strong>.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Arrastra un <strong>Cylinder</strong> al plano y ajusta: <strong>60mm ancho · 60mm largo · 70mm alto</strong>.</span></div>
+      </div>
+      <div class="step-feedback">
+        <div class="see">Un cilindro naranja de 60mm de diámetro y 70mm de alto sobre el plano.</div>
+      </div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="2" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s3">
+    <div class="s-num">3</div>
+    <div class="s-body">
+      <div class="s-title">Crea el cilindro interior (el hueco)</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Arrastra un segundo <strong>Cylinder</strong>. Ajusta: <strong>50mm ancho · 50mm largo · 65mm alto</strong> (5mm menos que el exterior = fondo sólido).</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Con este cilindro seleccionado, clic en <strong>"Hole"</strong> en el panel derecho. Se vuelve transparente con rayas.</span></div>
+      </div>
+      <div class="step-feedback">
+        <div class="see">Un cilindro naranja (exterior) y uno transparente-rayado (el agujero) sobre el plano.</div>
+        <div class="warn">El agujero debe ser MÁS PEQUEÑO (50mm vs 60mm). Si son iguales, las paredes quedarán de 0mm de grosor.</div>
+      </div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="3" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s4">
+    <div class="s-num">4</div>
+    <div class="s-body">
+      <div class="s-title">Centra el agujero con la herramienta Align</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Selecciona ambos cilindros → barra de arriba → <strong>"Align"</strong> → clic en el punto central de X y de Y.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>El agujero debe quedar <strong>arriba</strong> del exterior, no enterrado desde abajo (así queda el fondo sólido).</span></div>
+      </div>
+      <div class="step-feedback">
+        <div class="see">El cilindro transparente centrado encima del naranja, dejando 5mm de fondo y 5mm de paredes.</div>
+      </div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="4" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s5">
+    <div class="s-num">5</div>
+    <div class="s-body">
+      <div class="s-title">Agrupa — ¡El porta-lápices toma forma!</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Selecciona todo y presiona <strong>Ctrl + G</strong>. ¡El agujero desaparece y deja el hueco interior!</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Rota la vista para verlo desde arriba — parece un anillo.</span></div>
+      </div>
+      <div class="step-feedback">
+        <div class="see">Un cilindro naranja con hueco circular en la parte superior. Desde arriba: un anillo de 5mm de grosor.</div>
+      </div>
+      <div class="yay">🎉 ¡El porta-lápices tiene forma! Ya puedes ver el interior vacío desde arriba.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="5" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s6">
+    <div class="s-num">6</div>
+    <div class="s-body">
+      <div class="s-title">Verifica el grosor de las paredes</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Desde arriba: ¿ves un anillo de ~5mm? (60mm exterior – 50mm interior) ÷ 2 = 5mm de cada lado.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>¿Lo quieres más resistente? Haz el hueco de 48mm y el exterior de 60mm → 6mm de pared.</span></div>
+      </div>
+      <div class="step-feedback">
+        <div class="see">Un anillo naranja de ~5mm de grosor rodeando un espacio vacío central circular.</div>
+      </div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="6" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s7">
+    <div class="s-num">7</div>
+    <div class="s-body">
+      <div class="s-title">Exporta como STL</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Botón <strong>"Exportar"</strong> arriba a la derecha → <strong>".STL"</strong>. Se descarga a la carpeta Descargas.</span></div>
+      </div>
+      <div class="step-feedback">
+        <div class="see">Archivo .stl en la carpeta Descargas, listo para abrir en Bambu Studio.</div>
+      </div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="7" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s8">
+    <div class="s-num">8</div>
+    <div class="s-body">
+      <div class="s-title">Abre en Bambu Studio y verifica con Slice</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Arrastra el .stl a Bambu Studio. Configuración: Textured PEI · PLA · 0.20mm Standard.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Clic en <strong>Slice</strong> → desliza el slider hasta la mitad. ¿Ves el hueco interior en la vista de capas?</span></div>
+      </div>
+      <div class="step-feedback">
+        <div class="see">En capas, el porta-lápices se ve como un anillo — el hueco es claramente visible. Tiempo estimado: ~40 min.</div>
+      </div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="8" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s9">
+    <div class="s-num">9</div>
+    <div class="s-body">
+      <div class="s-title">Envía a imprimir y confirma en la Bambu Lab A1</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Botón Print → Bambu Lab A1 → confirmar en la pantalla táctil (botón verde ▶).</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Observa cómo la impresora construye un anillo en cada capa — exterior sólido y hueco interior a la vez.</span></div>
+      </div>
+      <div class="step-feedback">
+        <div class="see">La cabeza de la impresora traza un anillo perfecto en cada capa, construyendo las paredes del porta-lápices.</div>
+      </div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="9" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s10">
+    <div class="s-num">10</div>
+    <div class="s-body">
+      <div class="s-title">Saca el porta-lápices y pruébalo con tus lápices</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Pitido "Print Complete" → espera 3 min → dobla la placa → el objeto se suelta solo.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Pon varios lápices adentro. ¿Entran bien? ¿El fondo es sólido? ¡Ponlo en tu escritorio!</span></div>
+      </div>
+      <div class="step-feedback">
+        <div class="see">Un cilindro hueco que sostiene lápices. Paredes sólidas, fondo sin agujero, ¡listo para usar!</div>
+      </div>
+      <div class="yay">🎉 ¡Mateo diseñó e imprimió su primer objeto 100% funcional!</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="10" onchange="chk(this)">
+  </div>
+</div>
+
+<!-- TINKERCAD - GRID 2 COLS -->
+<div class="card tink-card">
+  <div class="card-title" style="color:#7c3aed">🟠 Tinkercad — La técnica del cilindro hueco</div>
+  <div class="grid2">
+    <div class="tink-block">
+      <div class="tink-h">🔑 La fórmula del objeto hueco</div>
+      <div class="tink-row"><span class="tink-num">→</span><span><strong>Exterior:</strong> La forma visible. Define el tamaño total.</span></div>
+      <div class="tink-row"><span class="tink-num">→</span><span><strong>Agujero interior:</strong> La misma forma más pequeña convertida en Hole. Define el hueco.</span></div>
+      <div class="tink-row"><span class="tink-num">→</span><span><strong>Grosor de pared = (Exterior − Interior) ÷ 2.</strong> Ejemplo: (60−50)÷2 = 5mm.</span></div>
+      <div class="tink-row"><span class="tink-num">→</span><span><strong>Fondo sólido:</strong> Agujero 5mm más corto que el exterior (65mm vs 70mm).</span></div>
+      <div class="tink-see">Desde arriba, el porta-lápices parece un anillo naranja — eso son las 5mm de pared alrededor del hueco.</div>
+    </div>
+    <div class="tink-block">
+      <div class="tink-h">📐 Herramienta Align — centrado perfecto</div>
+      <div class="tink-row"><span class="tink-num">1.</span><span>Selecciona todas las formas que quieres centrar entre sí.</span></div>
+      <div class="tink-row"><span class="tink-num">2.</span><span>En la barra de arriba, busca el ícono <strong>"Align"</strong> (dos líneas paralelas con flechas).</span></div>
+      <div class="tink-row"><span class="tink-num">3.</span><span>Haz clic en el punto <strong>central</strong> del eje X y del eje Y — ¡las formas se centran solas!</span></div>
+      <div class="tink-see">Las formas se mueven automáticamente para que sus centros coincidan. Mucho más preciso que mover a mano.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MIENTRAS ESPERA - GRID 2 COLS -->
+<div class="card">
+  <div class="card-title">⏳ Mientras la impresora trabaja... (40 min)</div>
+  <div class="grid2">
+    <div class="wait-card">
+      <span class="wait-icon">👀</span>
+      <div class="wait-title">Observa las capas</div>
+      <div class="wait-desc">Cada capa es un anillo. ¿Cuántos anillos ves acumularse conforme sube la impresión?</div>
+    </div>
+    <div class="wait-card">
+      <span class="wait-icon">📐</span>
+      <div class="wait-title">¿Cuántos lápices entran?</div>
+      <div class="wait-desc">Un lápiz normal tiene ~7mm de diámetro. ¿Cuántos lápices de 7mm caben en 50mm de espacio?</div>
+    </div>
+    <div class="wait-card">
+      <span class="wait-icon">✏️</span>
+      <div class="wait-title">Diseña la próxima versión</div>
+      <div class="wait-desc">¿Qué cambiarías? ¿Más alto, más ancho, forma cuadrada, con decoración exterior?</div>
+    </div>
+    <div class="wait-card">
+      <span class="wait-icon">🎨</span>
+      <div class="wait-title">Elige el próximo color</div>
+      <div class="wait-desc">Si pudieras elegir cualquier color de filamento para la próxima impresión, ¿cuál sería?</div>
+    </div>
+  </div>
+</div>
+
+<!-- DESAFÍO -->
+<div class="card">
+  <div class="desafio">
+    <h3>💡 El desafío del día</h3>
+    <p>¿Te atreves a agregar una <strong>decoración en el exterior</strong> del porta-lápices? Antes de exportar el STL, agrega letras en relieve con tu nombre o un diseño de estrella. Usa lo que aprendiste sobre formas + agrupación.</p>
+  </div>
+</div>
+
+<!-- QUIZ - GRID 2 COLS -->
+<div class="card">
+  <div class="card-title">🤔 Mini quiz</div>
+  <div class="grid2">
+    <div class="quiz-q">
+      <p>1. Si el exterior mide 60mm y quieres 5mm de pared, ¿cuánto mide el hueco interior?</p>
+      <ul class="quiz-opts">
+        <li class="no">a) 60mm (igual que el exterior)</li>
+        <li class="ok">b) 50mm — (60 − 5×2 = 50) ✅</li>
+        <li class="no">c) 55mm</li>
+      </ul>
+    </div>
+    <div class="quiz-q">
+      <p>2. ¿Por qué el cilindro agujero tiene 65mm si el porta-lápices mide 70mm?</p>
+      <ul class="quiz-opts">
+        <li class="ok">a) Para dejar un fondo sólido de 5mm en la base ✅</li>
+        <li class="no">b) Porque Tinkercad no permite cilindros de 70mm</li>
+        <li class="no">c) Para ahorrar plástico</li>
+      </ul>
+    </div>
+    <div class="quiz-q">
+      <p>3. ¿Qué herramienta de Tinkercad centra dos formas perfectamente?</p>
+      <ul class="quiz-opts">
+        <li class="no">a) Group (Ctrl+G)</li>
+        <li class="ok">b) Align (Alinear) ✅</li>
+        <li class="no">c) Hole</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIG - tabla compacta -->
+<div class="card cfg-card">
+  <div class="card-title" style="color:#0369a1">⚙️ Configuración — Bambu Lab A1</div>
+  <p class="cfg-note">El cilindro es naturalmente resistente — con 15% de infill es suficiente para sostener lápices sin problema.</p>
+  <div class="cfg-wrap">
+    <table class="cfg-table">
+      <tr><td>🖨️ Impresora</td><td>Bambu Lab A1</td></tr>
+      <tr><td>🎨 Filamento</td><td>PLA</td></tr>
+      <tr><td>📐 Altura de capa</td><td>0.20mm Standard</td></tr>
+      <tr><td>⚡ Velocidad</td><td>Standard</td></tr>
+      <tr><td>🏗️ Soportes</td><td>No</td></tr>
+      <tr><td>🟫 Placa</td><td>Texturizada</td></tr>
+      <tr><td>🔁 Relleno</td><td>15%</td></tr>
+      <tr><td>🕐 Tiempo</td><td>~40 minutos</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- GUÍA IMPRESORA - ACORDEÓN -->
+<div class="card">
+  <div class="card-title">🖨️ Guía de la Bambu Lab A1</div>
+
+  <div class="acc-header" onclick="tog(this)"><span>Paso 1 — Enciende la impresora</span><span class="acc-arrow">▼</span></div>
+  <div class="acc-body" style="max-height:200px">
+    <div class="acc-step"><span class="acc-num">→</span><span>El botón de encendido está en el lateral derecho. La pantalla táctil se ilumina, aparece el logo de Bambu Lab y los motores se despiertan. ¡Es como despertar a un robot!</span></div>
+  </div>
+
+  <div class="acc-header" onclick="tog(this)"><span>Paso 2 — Revisa el filamento</span><span class="acc-arrow">▼</span></div>
+  <div class="acc-body" style="max-height:200px">
+    <div class="acc-step"><span class="acc-num">→</span><span>El filamento entra por un tubo transparente hasta la cabeza. Si el color visible es el que quieres imprimir, ¡está listo! Si necesitas cambiar: menú táctil → Filamento → Cambiar filamento.</span></div>
+  </div>
+
+  <div class="acc-header" onclick="tog(this)"><span>Paso 3 — Abre Bambu Studio</span><span class="acc-arrow">▼</span></div>
+  <div class="acc-body" style="max-height:200px">
+    <div class="acc-step"><span class="acc-num">→</span><span>Arrastra el .stl exportado de Tinkercad a Bambu Studio. Verás el porta-lápices sobre una placa virtual. En el panel derecho verifica: PLA · 0.20mm · sin soportes · placa texturizada.</span></div>
+  </div>
+
+  <div class="acc-header" onclick="tog(this)"><span>Paso 4 — Envía a imprimir</span><span class="acc-arrow">▼</span></div>
+  <div class="acc-body">
+    <div class="acc-step"><span class="acc-num">1.</span><span>Clic en <strong>Slice</strong> — aparece la vista de capas con colores. Desliza el slider hasta la mitad y verifica que se vea el hueco interior.</span></div>
+    <div class="acc-step"><span class="acc-num">2.</span><span>Clic en <strong>Print</strong> → selecciona Bambu Lab A1 → la impresora muestra una notificación en su pantalla.</span></div>
+    <div class="acc-step"><span class="acc-num">3.</span><span>Mateo presiona el botón verde ▶ en la pantalla táctil. ¡Ya está! La impresora sabe qué hacer.</span></div>
+  </div>
+
+  <div class="acc-header" onclick="tog(this)"><span>Paso 5 — La impresora se prepara sola</span><span class="acc-arrow">▼</span></div>
+  <div class="acc-body">
+    <div class="acc-step"><span class="acc-num">1.</span><span>La cama se calienta (2-3 min) — la pantalla muestra la temperatura subiendo. Como el horno antes de cocinar.</span></div>
+    <div class="acc-step"><span class="acc-num">2.</span><span>Auto-nivelación: la cabeza toca la placa en varios puntos haciendo "tick-tick-tick". Sola — para que todo quede perfectamente plano.</span></div>
+    <div class="acc-step"><span class="acc-num">3.</span><span>Purge line en el borde — normal, se descarta. ¡Luego empieza la impresión!</span></div>
+  </div>
+
+  <div class="acc-header" onclick="tog(this)"><span>Paso 6 — Observa la primera capa</span><span class="acc-arrow">▼</span></div>
+  <div class="acc-body">
+    <div class="acc-step"><span class="acc-num">→</span><span>La primera capa debe quedar aplastada y brillante. Sonido bueno: zumbido suave y constante. Sonido de problema: chasquidos o filamento que no pega. "Es como los cimientos de una casa — si está bien, todo lo demás también lo estará."</span></div>
+  </div>
+
+  <div class="acc-header" onclick="tog(this)"><span>Paso 7 — Saca el porta-lápices</span><span class="acc-arrow">▼</span></div>
+  <div class="acc-body">
+    <div class="acc-step"><span class="acc-num">1.</span><span>Espera el pitido "Print Complete" + 3 min para que se enfríe. Si lo sacas caliente puede deformarse.</span></div>
+    <div class="acc-step"><span class="acc-num">2.</span><span>Levanta la placa de las agarraderas y dóblala levemente — el porta-lápices se suelta solo gracias a la textura.</span></div>
+    <div class="acc-step"><span class="acc-num">3.</span><span>Los restos de la purge line en el borde se sacan fácil con los dedos. ¡El porta-lápices está listo!</span></div>
+  </div>
+</div>
+
+<!-- SABIAS -->
+<div class="card sabias">
+  <div class="card-title">💡 ¿Sabías que...?</div>
+  <p>El mismo principio que usaste hoy (cilindro exterior + agujero interior) es el que usan los ingenieros para diseñar tuberías, columnas de edificios y latas de refresco. Los cilindros huecos son increíblemente fuertes para su peso — por eso los huesos de los animales también son huecos por dentro.</p>
+</div>
+
+<!-- PADRES - GRID 2 COLS -->
+<div class="card">
+  <div class="card-title">🧑‍🏫 Para quien acompaña a Mateo</div>
+  <div class="padres-grid">
+    <div class="padres-block">
+      <h3>✅ Lo que Mateo aprendió hoy</h3>
+      <ul>
+        <li>Cómo diseñar objetos huecos con la técnica exterior + agujero interior</li>
+        <li>Cómo calcular grosor de paredes: (exterior − interior) ÷ 2</li>
+        <li>Cómo usar Align para centrar formas perfectamente</li>
+      </ul>
+    </div>
+    <div class="padres-block">
+      <h3>⚠️ Posibles problemas</h3>
+      <div class="prob">
+        <div class="prob-t">Paredes muy delgadas — la impresión falla</div>
+        <div class="prob-fix">Si el grosor es menor a 3mm hay problemas. Verificar que el cilindro interior sea al menos 6mm más pequeño (3mm de pared por lado).</div>
+      </div>
+      <div class="prob">
+        <div class="prob-t">El fondo no existe — hay agujeros en la base</div>
+        <div class="prob-fix">El cilindro agujero empezó desde la base en lugar de arriba. Deshacer (Ctrl+Z), mover el agujero hacia arriba dejando 5mm en la base.</div>
+      </div>
+    </div>
+  </div>
+  <div class="padres-refuerzo">
+    <strong>🏠 Cómo reforzar en casa</strong>
+    Colocar el porta-lápices en el escritorio de Mateo y usarlo genuinamente. En unos días, preguntarle si cambiaría algo del diseño. Esto fomenta el pensamiento iterativo de un diseñador real.
+  </div>
+</div>
+
+<!-- CELEBRACIÓN -->
+<div class="celeb" id="celeb">
+  <div class="celeb-ico">✏️</div>
+  <div class="celeb-t">¡Diseñador funcional, Mateo!</div>
+  <div class="celeb-txt">Hoy diste el salto más importante: pasaste de hacer figuras decorativas a crear algo que realmente se usa. Tu porta-lápices está en tu escritorio, sostiene tus lápices y lo hiciste desde cero con matemáticas y diseño. ¡Eso es ingeniería!<br><br><strong>La próxima clase vas a aprender cómo poner texto en 3D. ¿Imaginas tu nombre en relieve sobre un objeto que diseñaste tú mismo?</strong></div>
+</div>
+
+</main>
+
+<footer class="foot">
+  <a href="../../clase5/v1/clase.html" class="btn-nav btn-prev">⬅️ Clase 5</a>
+  <button class="btn-reset" onclick="reset()">↺ Reiniciar</button>
+  <a href="../../clase7/v1/clase.html" class="btn-nav btn-next">Clase 7 ➡️</a>
+</footer>
+
+<script>
+const KEY='studio3d-clase6',TOTAL=10;
+function load(){const s=JSON.parse(localStorage.getItem(KEY)||'{}');document.querySelectorAll('.scb').forEach(cb=>{if(s[cb.dataset.n]){cb.checked=true;mark(cb.dataset.n,true);}});upd();}
+function chk(cb){const n=cb.dataset.n;mark(n,cb.checked);const s=JSON.parse(localStorage.getItem(KEY)||'{}');s[n]=cb.checked;localStorage.setItem(KEY,JSON.stringify(s));upd();}
+function mark(n,on){const el=document.getElementById('s'+n);const num=el.querySelector('.s-num');if(on){el.classList.add('done');num.textContent='✓';}else{el.classList.remove('done');num.textContent=n;}}
+function upd(){const done=document.querySelectorAll('.scb:checked').length;const p=done/TOTAL*100;document.getElementById('pf').style.width=p+'%';document.getElementById('pt').textContent=done+' de '+TOTAL+' pasos completados';if(done===TOTAL){const c=document.getElementById('celeb');c.classList.add('on');c.scrollIntoView({behavior:'smooth'});confetti();}}
+function reset(){if(!confirm('¿Reiniciar?'))return;localStorage.removeItem(KEY);document.querySelectorAll('.scb').forEach(cb=>{cb.checked=false;});for(let i=1;i<=TOTAL;i++)mark(i,false);document.getElementById('celeb').classList.remove('on');upd();}
+function tog(h){const b=h.nextElementSibling;const arrow=h.querySelector('.acc-arrow');if(b.style.maxHeight&&b.style.maxHeight!=='0px'){b.style.maxHeight=null;arrow.textContent='▼';}else{b.style.maxHeight=b.scrollHeight+'px';arrow.textContent='▲';}}
+function confetti(){const c=document.getElementById('cnf'),ctx=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const ps=Array.from({length:130},()=>({x:Math.random()*c.width,y:-10,r:Math.random()*7+3,d:Math.random()*3+1,col:['#0ea5e9','#22c55e','#f59e0b','#ec4899','#8b5cf6'][Math.floor(Math.random()*5)],ta:0,ts:Math.random()*.1+.05}));let f=0;(function draw(){ctx.clearRect(0,0,c.width,c.height);ps.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.col;ctx.fill();p.y+=p.d;p.ta+=p.ts;p.x+=Math.sin(p.ta);if(p.y>c.height){p.y=-10;p.x=Math.random()*c.width;}});if(++f<350)requestAnimationFrame(draw);else ctx.clearRect(0,0,c.width,c.height);})();}
+// Abrir primeros 3 acordeones por defecto
+document.querySelectorAll('.acc-body').forEach((b,i)=>{if(i<3){b.style.maxHeight=b.scrollHeight+'px';b.previousElementSibling.querySelector('.acc-arrow').textContent='▲';}});
+load();
+</script>
+</body>
+</html>

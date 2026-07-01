@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Clase 1 — ¡Hola impresora! 🖨️</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',sans-serif;background:#f0f9ff;color:#1e293b}
+
+/* HEADER */
+.header{background:linear-gradient(135deg,#0369a1,#0ea5e9);color:white;padding:26px 24px}
+.mod-badge{font-size:12px;font-weight:800;letter-spacing:2px;opacity:.8;text-transform:uppercase;margin-bottom:8px}
+.header-title{font-size:24px;font-weight:900;line-height:1.2;margin-bottom:12px}
+.badges{display:flex;gap:7px;flex-wrap:wrap}
+.badge{background:rgba(255,255,255,.2);padding:5px 12px;border-radius:999px;font-size:12px;font-weight:700}
+
+/* PROGRESS */
+.progress-wrap{background:white;padding:10px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.progress-label{font-size:12px;font-weight:700;color:#64748b;margin-bottom:5px}
+.prog-bar{height:7px;background:#e2e8f0;border-radius:999px}
+.prog-fill{height:100%;background:linear-gradient(90deg,#0ea5e9,#22c55e);border-radius:999px;transition:width .4s ease}
+
+/* MAIN */
+main{max-width:860px;margin:0 auto;padding:18px 16px 120px}
+
+/* CARDS */
+.card{background:white;border-radius:16px;padding:20px;margin-bottom:14px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.card-title{font-size:17px;font-weight:800;margin-bottom:12px}
+
+/* OBJETIVO */
+.objetivo-box{font-size:15px;font-weight:700;line-height:1.6;color:#0369a1;background:#e0f2fe;padding:14px 16px;border-radius:12px;border-left:4px solid #0ea5e9}
+.resultado-tag{display:inline-block;background:#dcfce7;color:#15803d;padding:6px 14px;border-radius:999px;font-size:13px;font-weight:800;margin-top:10px}
+
+/* HERRAMIENTAS */
+.tools-wrap{display:flex;gap:8px;flex-wrap:wrap}
+.tool-pill{background:#f1f5f9;border:2px solid #e2e8f0;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:700}
+
+/* GRID 2 COLUMNAS */
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+@media(max-width:600px){.grid2{grid-template-columns:1fr}}
+
+/* GLOSARIO */
+.glos-item{border:2px solid #e0f2fe;border-radius:12px;padding:14px}
+.glos-term{font-size:15px;font-weight:800;color:#0369a1;margin-bottom:4px}
+.glos-def{font-size:13px;color:#475569;line-height:1.5}
+.glos-tip{font-size:12px;color:#0ea5e9;font-weight:700;margin-top:6px}
+
+/* PASOS */
+.step{display:flex;gap:13px;align-items:flex-start;padding:13px;border-radius:12px;margin-bottom:9px;border:2px solid #e2e8f0;transition:all .3s}
+.step.done{background:#f0fdf4;border-color:#22c55e}
+.s-num{width:34px;height:34px;min-width:34px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#64748b;transition:all .3s}
+.step.done .s-num{background:#22c55e;color:white}
+.s-body{flex:1}
+.s-title{font-size:14px;font-weight:800;margin-bottom:5px}
+.s-cb{margin-left:auto;width:24px;height:24px;cursor:pointer;accent-color:#22c55e}
+.sub{margin-top:5px}
+.sub-row{display:flex;gap:7px;margin-bottom:5px;font-size:13px;line-height:1.5}
+.sub-lbl{font-weight:900;color:#0369a1;min-width:18px}
+
+/* VER + WARN lado a lado */
+.step-feedback{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.see,.warn{flex:1;min-width:180px;border-radius:10px;padding:9px 12px;font-size:12px;font-weight:700;line-height:1.4}
+.see{background:#f0fdf4;border:2px solid #22c55e;color:#15803d}
+.see::before{content:"✅ Deberías ver: "}
+.warn{background:#fffbeb;border:2px solid #f59e0b;color:#92400e}
+.warn::before{content:"⚠️ Si algo va mal: "}
+.yay{background:#fef3c7;border-radius:10px;padding:9px;margin-top:8px;font-size:13px;font-weight:800;color:#92400e;text-align:center}
+
+/* ESPERA */
+.wait-card{background:#faf5ff;border:2px solid #e9d5ff;border-radius:12px;padding:14px}
+.wait-icon{font-size:22px;margin-bottom:6px;display:block}
+.wait-title{font-size:14px;font-weight:800;margin-bottom:3px}
+.wait-desc{font-size:13px;color:#475569;line-height:1.4}
+
+/* DESAFÍO */
+.desafio{background:#fffbeb;border:3px solid #f59e0b;border-radius:14px;padding:18px}
+.desafio h3{font-size:16px;font-weight:900;color:#92400e;margin-bottom:6px}
+.desafio p{font-size:13px;color:#78350f;line-height:1.6}
+
+/* QUIZ */
+.quiz-q{background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;padding:13px}
+.quiz-q p{font-size:13px;font-weight:800;margin-bottom:8px}
+.quiz-opts{list-style:none}
+.quiz-opts li{padding:5px 9px;border-radius:7px;margin-bottom:4px;font-size:12px;font-weight:600;color:#94a3b8}
+.quiz-opts li.ok{background:#dcfce7;color:#15803d;font-weight:800}
+
+/* CONFIG */
+.cfg-card{background:#f0f9ff;border:2px solid #bae6fd}
+.cfg-wrap{max-width:440px}
+.cfg-table{width:100%;border-collapse:collapse}
+.cfg-table tr:nth-child(odd){background:#e0f2fe}
+.cfg-table td{padding:7px 12px;font-size:13px}
+.cfg-table td:first-child{font-weight:800;color:#0369a1;width:50%}
+.cfg-note{font-size:13px;color:#0369a1;margin-bottom:10px;line-height:1.5}
+
+/* ACORDEÓN - GUÍA IMPRESORA */
+.acc-header{display:flex;justify-content:space-between;align-items:center;cursor:pointer;padding:11px 0;border-bottom:2px solid #e2e8f0;font-size:14px;font-weight:800;user-select:none}
+.acc-arrow{transition:transform .2s;font-style:normal}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.acc-step{display:flex;gap:10px;padding:10px;border-radius:9px;background:#f0f9ff;border:2px solid #bae6fd;margin:6px 0;font-size:13px;line-height:1.5}
+.acc-num{font-weight:900;color:#0369a1;min-width:18px}
+
+/* SABIAS */
+.sabias{background:linear-gradient(135deg,#fdf4ff,#fae8ff);border:2px solid #e9d5ff}
+.sabias p{font-size:13px;line-height:1.6}
+
+/* PADRES */
+.padres-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+@media(max-width:600px){.padres-grid{grid-template-columns:1fr}}
+.padres-block{background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;padding:13px}
+.padres-block h3{font-size:13px;font-weight:800;color:#334155;margin-bottom:7px}
+.padres-block ul{padding-left:14px}
+.padres-block li{font-size:12px;line-height:1.6;color:#475569}
+.prob{margin-bottom:8px}
+.prob-t{font-weight:800;color:#dc2626;font-size:12px;margin-bottom:3px}
+.prob-fix{color:#475569;font-size:12px;line-height:1.5}
+.padres-refuerzo{background:#f0fdf4;border:2px solid #bbf7d0;border-radius:12px;padding:13px;font-size:13px;color:#15803d;line-height:1.6}
+.padres-refuerzo strong{display:block;margin-bottom:4px;font-size:14px}
+
+/* CELEBRACIÓN */
+.celeb{display:none;background:linear-gradient(135deg,#fbbf24,#f59e0b);border-radius:20px;padding:34px 24px;text-align:center;margin-top:14px}
+.celeb.on{display:block;animation:pop .6s ease}
+@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+.celeb-ico{font-size:52px;margin-bottom:12px;animation:bob 1s infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.celeb-t{font-size:21px;font-weight:900;color:#451a03;margin-bottom:10px}
+.celeb-txt{font-size:13px;color:#78350f;line-height:1.7}
+
+#cnf{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999}
+
+/* FOOTER */
+.foot{position:fixed;bottom:0;left:0;right:0;background:white;border-top:2px solid #e2e8f0;padding:10px 20px;display:flex;gap:10px;justify-content:space-between;align-items:center;box-shadow:0 -4px 16px rgba(0,0,0,.1)}
+.btn-nav{padding:10px 20px;border-radius:999px;font-family:Nunito;font-size:14px;font-weight:800;border:none;cursor:pointer;text-decoration:none;display:inline-block}
+.btn-prev{background:#f1f5f9;color:#475569}
+.btn-next{background:linear-gradient(135deg,#0ea5e9,#0369a1);color:white}
+.btn-reset{font-size:12px;color:#94a3b8;background:none;border:none;cursor:pointer;font-family:Nunito;font-weight:700}
+
+@media(max-width:600px){.header-title{font-size:18px}main{padding:14px 12px 100px}}
+</style>
+</head>
+<body>
+<canvas id="cnf"></canvas>
+
+<header class="header">
+  <div class="mod-badge">Módulo 1 — ¡Primero Imprimimos! · Clase 1 de 3</div>
+  <div class="header-title">🖨️ ¡Hola impresora! Imprimimos un llavero con tu nombre</div>
+  <div class="badges">
+    <span class="badge">⏱️ 30 min clase</span>
+    <span class="badge">🖨️ 20 min impresión</span>
+    <span class="badge">⭐ Dificultad 1/5</span>
+    <span class="badge">🔰 Solo observamos e imprimimos</span>
+  </div>
+</header>
+
+<div class="progress-wrap">
+  <div class="progress-label">Tu progreso: <span id="pt">0 de 7 pasos completados</span></div>
+  <div class="prog-bar"><div class="prog-fill" id="pf" style="width:0%"></div></div>
+</div>
+
+<main>
+
+<!-- OBJETIVO -->
+<div class="card">
+  <div class="card-title">🎯 ¿Qué vas a lograr hoy?</div>
+  <div class="objetivo-box">Imprimir un llavero con tu nombre usando Bambu Studio. No vas a diseñar hoy — solo vas a observar cómo funciona la impresora y presionar el botón de imprimir.</div>
+  <span class="resultado-tag">🏆 Resultado: Un llavero con tu nombre impreso en PLA</span>
+</div>
+
+<!-- HERRAMIENTAS -->
+<div class="card">
+  <div class="card-title">🛠️ Herramientas de hoy</div>
+  <div class="tools-wrap">
+    <span class="tool-pill">🖥️ Bambu Studio (software)</span>
+    <span class="tool-pill">🖨️ Bambu Lab A1</span>
+    <span class="tool-pill">🗂️ Archivo llavero (proporcionado)</span>
+  </div>
+</div>
+
+<!-- GLOSARIO - GRID 2 COLS -->
+<div class="card">
+  <div class="card-title">📖 Palabras de hoy</div>
+  <div class="grid2">
+    <div class="glos-item">
+      <div class="glos-term">🖨️ Impresora 3D</div>
+      <div class="glos-def">Máquina que crea objetos reales capa por capa, como un sandwich de plástico. No como una impresora de papel — esta construye objetos sólidos.</div>
+      <div class="glos-tip">💡 La Bambu Lab A1 puede imprimir objetos hasta de 256×256×256mm.</div>
+    </div>
+    <div class="glos-item">
+      <div class="glos-term">🧵 Filamento PLA</div>
+      <div class="glos-def">El "plástico" que usa la impresora, en forma de hilo enroscado. PLA viene de plantas de maíz — ¡es más ecológico que el plástico normal!</div>
+      <div class="glos-tip">💡 Hay filamentos de todos los colores, ¡y hasta brillan en la oscuridad!</div>
+    </div>
+    <div class="glos-item">
+      <div class="glos-term">📏 Capa</div>
+      <div class="glos-def">Cada pasada de plástico que pone la impresora. Un llavero de 3mm de alto tiene ~15 capas de 0.2mm cada una.</div>
+      <div class="glos-tip">💡 Como construir una pared con ladrillos, pero los ladrillos son de plástico líquido que se endurece al instante.</div>
+    </div>
+    <div class="glos-item">
+      <div class="glos-term">🖥️ Bambu Studio</div>
+      <div class="glos-def">El software donde "programas" la impresora: le dices qué imprimir, con qué calidad y cuánto relleno.</div>
+      <div class="glos-tip">💡 La impresora no entiende Tinkercad directamente — necesita el idioma de Bambu Studio.</div>
+    </div>
+    <div class="glos-item">
+      <div class="glos-term">🟫 Placa de impresión</div>
+      <div class="glos-def">La superficie donde se construye el objeto. Es flexible para que el objeto salga solo al doblarla.</div>
+      <div class="glos-tip">💡 Debe estar limpia y sin grasa — una huella dactilar puede hacer que el objeto no pegue.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PASOS -->
+<div class="card">
+  <div class="card-title">🚀 Paso a paso</div>
+
+  <div class="step" id="s1">
+    <div class="s-num">1</div>
+    <div class="s-body">
+      <div class="s-title">Consigue el archivo del llavero</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>El adulto que te acompaña tiene el archivo .STL del llavero con tu nombre "MATEO".</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Si no lo tiene, pueden descargar un llavero de texto desde Makerworld.com (buscar "text keychain").</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Guarda el archivo en Descargas.</span></div>
+      </div>
+      <div class="step-feedback">
+        <div class="see">Un archivo .stl en la carpeta Descargas de la computadora.</div>
+        <div class="warn">El archivo debe terminar en .stl — no .obj ni .3mf (todavía).</div>
+      </div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="1" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s2">
+    <div class="s-num">2</div>
+    <div class="s-body">
+      <div class="s-title">Abre Bambu Studio</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Doble clic en el ícono de Bambu Studio. Aparece una placa de impresión virtual en 3D.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Arrastra el archivo .stl del llavero a la placa virtual. El llavero aparece sobre la placa.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Si no aparece centrado, clic derecho → "Center".</span></div>
+      </div>
+      <div class="step-feedback">
+        <div class="see">El llavero con "MATEO" aparece sobre la placa virtual de Bambu Studio.</div>
+      </div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="2" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s3">
+    <div class="s-num">3</div>
+    <div class="s-body">
+      <div class="s-title">Revisa la configuración</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>En el panel derecho, verifica: Impresora = Bambu Lab A1, Filamento = PLA, Calidad = 0.20mm Standard.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Soportes: OFF (el llavero es plano, no los necesita).</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Placa: Textured PEI (la texturizada — para que el objeto salga bien).</span></div>
+      </div>
+      <div class="step-feedback">
+        <div class="see">Panel derecho con Bambu Lab A1 · PLA · 0.20mm · sin soportes.</div>
+      </div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="3" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s4">
+    <div class="s-num">4</div>
+    <div class="s-body">
+      <div class="s-title">Slice — ¡La magia del software!</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Clic en el botón "Slice" (arriba a la derecha). La computadora piensa unos segundos.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Aparece la vista de capas con colores. Desliza el slider para ver cómo se construye capa por capa.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Abajo aparece el tiempo estimado: ~20 minutos.</span></div>
+      </div>
+      <div class="step-feedback">
+        <div class="see">La vista de capas del llavero. El texto "MATEO" es visible en las capas superiores.</div>
+      </div>
+      <div class="yay">🎉 ¡El Slice convierte el diseño 3D en instrucciones que entiende la impresora! Son miles de coordenadas XYZ.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="4" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s5">
+    <div class="s-num">5</div>
+    <div class="s-body">
+      <div class="s-title">Envía a imprimir</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Clic en "Print" → Selecciona "Bambu Lab A1" → Confirm.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>La impresora recibe el archivo por WiFi. La pantalla táctil muestra una notificación.</span></div>
+      </div>
+      <div class="step-feedback">
+        <div class="see">La pantalla de la Bambu Lab A1 muestra el nombre del archivo y pide confirmación.</div>
+      </div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="5" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s6">
+    <div class="s-num">6</div>
+    <div class="s-body">
+      <div class="s-title">Confirma en la impresora y observa</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>En la pantalla táctil de la Bambu Lab A1, presiona el botón verde ▶.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>La impresora se calienta (2-3 min), hace auto-nivelación (tick-tick-tick), purge line... ¡y empieza!</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>Observa las primeras capas — cada pasada de plástico construye el llavero de abajo hacia arriba.</span></div>
+      </div>
+      <div class="step-feedback">
+        <div class="see">La cabeza de la impresora traza las letras "MATEO" en plástico. Las capas se acumulan.</div>
+      </div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="6" onchange="chk(this)">
+  </div>
+
+  <div class="step" id="s7">
+    <div class="s-num">7</div>
+    <div class="s-body">
+      <div class="s-title">¡Toca el botón de tu primer objeto!</div>
+      <div class="sub">
+        <div class="sub-row"><span class="sub-lbl">a.</span><span>Espera el pitido "Print Complete". Deja enfriar 2-3 minutos.</span></div>
+        <div class="sub-row"><span class="sub-lbl">b.</span><span>Dobla la placa suavemente — el llavero se suelta solo.</span></div>
+        <div class="sub-row"><span class="sub-lbl">c.</span><span>¡Tómalo en tus manos! Es tuyo. Lo hiciste tú (con ayuda de la impresora).</span></div>
+      </div>
+      <div class="step-feedback">
+        <div class="see">Un llavero de PLA con "MATEO" en relieve. Sólido, con las letras claramente visibles.</div>
+      </div>
+      <div class="yay">🎉 ¡Tu primer objeto impreso en 3D! Guárdalo — en la Clase 15 lo compararás con tu proyecto final.</div>
+    </div>
+    <input type="checkbox" class="s-cb scb" data-n="7" onchange="chk(this)">
+  </div>
+</div>
+
+<!-- MIENTRAS ESPERA - GRID 2 COLS -->
+<div class="card">
+  <div class="card-title">⏳ Mientras la impresora trabaja... (20 min)</div>
+  <div class="grid2">
+    <div class="wait-card">
+      <span class="wait-icon">✏️</span>
+      <div class="wait-title">Dibuja la impresora</div>
+      <div class="wait-desc">Observa bien la Bambu Lab A1 y dibújala en papel. ¿Cuántas partes puedes identificar?</div>
+    </div>
+    <div class="wait-card">
+      <span class="wait-icon">🔍</span>
+      <div class="wait-title">¿Cómo se llaman las partes?</div>
+      <div class="wait-desc">Eje X, eje Y, eje Z, boquilla (nozzle), placa, bobina de filamento. ¿Puedes señalarlas?</div>
+    </div>
+    <div class="wait-card">
+      <span class="wait-icon">🌡️</span>
+      <div class="wait-title">Mira las temperaturas</div>
+      <div class="wait-desc">En la pantalla de la impresora se ven dos números: temperatura de la cama y del nozzle. ¿Cuántos grados marcan?</div>
+    </div>
+    <div class="wait-card">
+      <span class="wait-icon">💭</span>
+      <div class="wait-title">Piensa: ¿qué imprimirías?</div>
+      <div class="wait-desc">Si pudieras elegir cualquier cosa para imprimir en 3D, ¿qué sería? (Recuerda: cabe en 256×256×256mm)</div>
+    </div>
+  </div>
+</div>
+
+<!-- DESAFÍO -->
+<div class="card">
+  <div class="desafio">
+    <h3>💡 El desafío del día</h3>
+    <p>Busca en Makerworld.com (con un adulto) diseños de llaveros. ¿Encuentras alguno que te gustaría imprimir en la próxima clase? Guarda el enlace para mostrárselo al adulto.</p>
+  </div>
+</div>
+
+<!-- QUIZ - GRID 2 COLS -->
+<div class="card">
+  <div class="card-title">🤔 Mini quiz</div>
+  <div class="grid2">
+    <div class="quiz-q">
+      <p>1. ¿De qué material está hecho el filamento PLA?</p>
+      <ul class="quiz-opts">
+        <li>a) Petróleo (como el plástico normal)</li>
+        <li class="ok">b) Plantas de maíz — es más ecológico ✅</li>
+        <li>c) Metal fundido</li>
+      </ul>
+    </div>
+    <div class="quiz-q">
+      <p>2. ¿Qué hace el programa Bambu Studio?</p>
+      <ul class="quiz-opts">
+        <li>a) Diseña los objetos en 3D</li>
+        <li class="ok">b) Convierte el diseño en instrucciones para la impresora (Slice) ✅</li>
+        <li>c) Controla el WiFi de la impresora</li>
+      </ul>
+    </div>
+    <div class="quiz-q">
+      <p>3. ¿Por qué cada objeto se imprime capa por capa?</p>
+      <ul class="quiz-opts">
+        <li>a) Porque la impresora es lenta y no puede hacerlo de otra forma</li>
+        <li>b) Para ahorrar plástico</li>
+        <li class="ok">c) Porque el plástico líquido necesita solidificarse antes de poner la siguiente capa ✅</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIG -->
+<div class="card cfg-card">
+  <div class="card-title" style="color:#0369a1">⚙️ Configuración — Bambu Lab A1</div>
+  <p class="cfg-note">El llavero es pequeño y plano — configuración mínima, sin soportes, impresión rápida.</p>
+  <div class="cfg-wrap">
+    <table class="cfg-table">
+      <tr><td>🖨️ Impresora</td><td>Bambu Lab A1</td></tr>
+      <tr><td>🎨 Filamento</td><td>PLA</td></tr>
+      <tr><td>📐 Altura de capa</td><td>0.20mm Standard</td></tr>
+      <tr><td>🏗️ Soportes</td><td>No</td></tr>
+      <tr><td>🟫 Placa</td><td>Textured PEI</td></tr>
+      <tr><td>🕐 Tiempo</td><td>~20 minutos</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- GUÍA IMPRESORA - ACORDEÓN -->
+<div class="card">
+  <div class="card-title">🖨️ Guía de la Bambu Lab A1</div>
+
+  <div class="acc-header" onclick="tog(this)"><span>Paso 1 — Enciende la impresora</span><span class="acc-arrow">▼</span></div>
+  <div class="acc-body">
+    <div class="acc-step"><span class="acc-num">→</span><span>El botón de encendido está en el lateral. La pantalla táctil se ilumina y los motores se despiertan con un sonido suave.</span></div>
+  </div>
+
+  <div class="acc-header" onclick="tog(this)"><span>Paso 2 — Verifica el filamento</span><span class="acc-arrow">▼</span></div>
+  <div class="acc-body">
+    <div class="acc-step"><span class="acc-num">→</span><span>Mira el tubo transparente: ¿el color es el que quieres? Si necesitas cambiar: menú → Filamento → Cambiar.</span></div>
+  </div>
+
+  <div class="acc-header" onclick="tog(this)"><span>Paso 3 — Abre Bambu Studio y carga el archivo</span><span class="acc-arrow">▼</span></div>
+  <div class="acc-body">
+    <div class="acc-step"><span class="acc-num">→</span><span>Arrastra el .stl del llavero. Verifica PLA · 0.20mm · sin soportes.</span></div>
+  </div>
+
+  <div class="acc-header" onclick="tog(this)"><span>Paso 4 — Slice y envía a imprimir</span><span class="acc-arrow">▼</span></div>
+  <div class="acc-body">
+    <div class="acc-step"><span class="acc-num">→</span><span>Clic en Slice → verifica capas → Print → Bambu Lab A1 → Confirm.</span></div>
+  </div>
+
+  <div class="acc-header" onclick="tog(this)"><span>Paso 5 — La impresora se prepara sola</span><span class="acc-arrow">▼</span></div>
+  <div class="acc-body">
+    <div class="acc-step"><span class="acc-num">→</span><span>Calentamiento (~3 min), auto-nivelación (tick-tick-tick), purge line → ¡empieza!</span></div>
+  </div>
+
+  <div class="acc-header" onclick="tog(this)"><span>Paso 6 — Observa la primera capa</span><span class="acc-arrow">▼</span></div>
+  <div class="acc-body">
+    <div class="acc-step"><span class="acc-num">→</span><span>Debe quedar aplastada y brillante. Si el plástico no pega o suena raro, avisar al adulto.</span></div>
+  </div>
+
+  <div class="acc-header" onclick="tog(this)"><span>Paso 7 — Saca el llavero</span><span class="acc-arrow">▼</span></div>
+  <div class="acc-body">
+    <div class="acc-step"><span class="acc-num">→</span><span>Pitido "Print Complete" → espera 2 min → dobla la placa → el llavero sale solo.</span></div>
+  </div>
+</div>
+
+<!-- SABIAS -->
+<div class="card sabias">
+  <div class="card-title">💡 ¿Sabías que...?</div>
+  <p>Los cohetes de la NASA tienen partes impresas en 3D. El motor Rutherford del cohete Electron de Rocket Lab es 95% impreso en 3D. Lo que aprendiste hoy es literalmente tecnología espacial.</p>
+</div>
+
+<!-- PADRES -->
+<div class="card">
+  <div class="card-title">🧑‍🏫 Para quien acompaña a Mateo</div>
+  <div class="padres-grid">
+    <div class="padres-block">
+      <h3>✅ Lo que Mateo aprendió hoy</h3>
+      <ul>
+        <li>Cómo funciona una impresora 3D FDM (Fused Deposition Modeling)</li>
+        <li>Qué es el filamento PLA y por qué es especial</li>
+        <li>Cómo usar Bambu Studio para preparar e imprimir un archivo</li>
+        <li>El proceso completo: archivo → Slice → envío → impresión → resultado</li>
+      </ul>
+    </div>
+    <div class="padres-block">
+      <h3>⚠️ Posibles problemas</h3>
+      <div class="prob">
+        <div class="prob-t">El objeto no pega a la placa</div>
+        <div class="prob-fix">La placa tiene grasa o suciedad. Limpiar con alcohol isopropílico y un paño seco. También verificar que la temperatura de cama esté en 55°C.</div>
+      </div>
+      <div class="prob">
+        <div class="prob-t">El filamento hace "pop" o chasquidos</div>
+        <div class="prob-fix">El filamento absorbió humedad. No es urgente para esta clase, pero guardar la bobina en bolsa zip con sílica gel para las próximas clases.</div>
+      </div>
+    </div>
+  </div>
+  <div class="padres-refuerzo">
+    <strong>🏠 Cómo reforzar en casa</strong>
+    Mostrar el llavero a toda la familia y dejar que Mateo explique cómo funciona la impresora 3D con sus propias palabras. La explicación refuerza el aprendizaje más que cualquier actividad.
+  </div>
+</div>
+
+<!-- CELEBRACIÓN -->
+<div class="celeb" id="celeb">
+  <div class="celeb-ico">🖨️</div>
+  <div class="celeb-t">⭐ ¡Lo lograste, Mateo!</div>
+  <div class="celeb-txt">Hoy aprendiste algo que la mayoría de adultos no sabe hacer: programar e imprimir un objeto en 3D. Ese llavero con tu nombre es el primero de muchos objetos que vas a crear. Guárdalo bien.<br><br><strong>En la próxima clase vas a ver CÓMO funciona la magia por dentro — imprimirás un cubo y observarás cada capa mientras se construye. ¡El detective de la impresión 3D!</strong></div>
+</div>
+
+</main>
+
+<footer class="foot">
+  <span class="btn-nav btn-prev" style="opacity:.4;cursor:default">⬅️ Inicio</span>
+  <button class="btn-reset" onclick="reset()">↺ Reiniciar</button>
+  <a href="../../clase2/v1/clase.html" class="btn-nav btn-next">Clase 2 ➡️</a>
+</footer>
+
+<script>
+const KEY='studio3d-clase1',TOTAL=7;
+function load(){const s=JSON.parse(localStorage.getItem(KEY)||'{}');document.querySelectorAll('.scb').forEach(cb=>{if(s[cb.dataset.n]){cb.checked=true;mark(cb.dataset.n,true);}});upd();}
+function chk(cb){const n=cb.dataset.n;mark(n,cb.checked);const s=JSON.parse(localStorage.getItem(KEY)||'{}');s[n]=cb.checked;localStorage.setItem(KEY,JSON.stringify(s));upd();}
+function mark(n,on){const el=document.getElementById('s'+n);const num=el.querySelector('.s-num');if(on){el.classList.add('done');num.textContent='✓';}else{el.classList.remove('done');num.textContent=n;}}
+function upd(){const done=document.querySelectorAll('.scb:checked').length;const p=done/TOTAL*100;document.getElementById('pf').style.width=p+'%';document.getElementById('pt').textContent=done+' de '+TOTAL+' pasos completados';if(done===TOTAL){const c=document.getElementById('celeb');c.classList.add('on');c.scrollIntoView({behavior:'smooth'});confetti();}}
+function reset(){if(!confirm('¿Reiniciar?'))return;localStorage.removeItem(KEY);document.querySelectorAll('.scb').forEach(cb=>{cb.checked=false;});for(let i=1;i<=TOTAL;i++)mark(i,false);document.getElementById('celeb').classList.remove('on');upd();}
+function tog(h){const b=h.nextElementSibling;const arrow=h.querySelector('.acc-arrow');if(b.style.maxHeight&&b.style.maxHeight!=='0px'){b.style.maxHeight=null;arrow.textContent='▼';}else{b.style.maxHeight=b.scrollHeight+'px';arrow.textContent='▲';}}
+function confetti(){const c=document.getElementById('cnf'),ctx=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const ps=Array.from({length:130},()=>({x:Math.random()*c.width,y:-10,r:Math.random()*7+3,d:Math.random()*3+1,col:['#0ea5e9','#22c55e','#f59e0b','#ec4899','#8b5cf6'][Math.floor(Math.random()*5)],ta:0,ts:Math.random()*.1+.05}));let f=0;(function draw(){ctx.clearRect(0,0,c.width,c.height);ps.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.col;ctx.fill();p.y+=p.d;p.ta+=p.ts;p.x+=Math.sin(p.ta);if(p.y>c.height){p.y=-10;p.x=Math.random()*c.width;}});if(++f<350)requestAnimationFrame(draw);else ctx.clearRect(0,0,c.width,c.height);})();}
+// Abrir primeros 3 acordeones por defecto
+document.querySelectorAll('.acc-body').forEach((b,i)=>{if(i<3){b.style.maxHeight=b.scrollHeight+'px';b.previousElementSibling.querySelector('.acc-arrow').textContent='▲';}});
+load();
+</script>
+</body>
+</html>

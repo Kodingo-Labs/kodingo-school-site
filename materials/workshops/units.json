@@ -2,10 +2,20 @@
   {
     "subject": "workshops",
     "type": "sessions",
-    "grade": "5to",
+    "level": "basico",
+    "unit": "1",
+    "name": "Introducción a la Impresión 3D",
+    "activeVersion": "v1",
+    "versions": ["v1"],
+    "materials": ["project", "guide", "quiz"],
+    "emoji": "🖨️"
+  },
+  {
+    "subject": "workshops",
+    "type": "sessions",
+    "level": "avanzado",
     "unit": "1",
     "name": "Studio 3D — Avanzado",
-    "level": "avanzado",
     "activeVersion": "v1",
     "versions": ["v1"],
     "materials": ["project", "guide", "quiz"],

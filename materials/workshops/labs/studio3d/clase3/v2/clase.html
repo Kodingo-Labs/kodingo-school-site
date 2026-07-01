@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clase 3 — Marcador de libros 📖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',sans-serif;background:#f0f9ff;color:#1e293b}
+.header{background:linear-gradient(135deg,#0369a1,#0ea5e9);color:white;padding:26px 24px}
+.mod-badge{font-size:12px;font-weight:800;letter-spacing:2px;opacity:.8;text-transform:uppercase;margin-bottom:8px}
+.header-title{font-size:24px;font-weight:900;line-height:1.2;margin-bottom:12px}
+.badges{display:flex;gap:7px;flex-wrap:wrap}
+.badge{background:rgba(255,255,255,.2);padding:5px 12px;border-radius:999px;font-size:12px;font-weight:700}
+.progress-wrap{background:white;padding:10px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.progress-label{font-size:12px;font-weight:700;color:#64748b;margin-bottom:5px}
+.prog-bar{height:7px;background:#e2e8f0;border-radius:999px}
+.prog-fill{height:100%;background:linear-gradient(90deg,#0ea5e9,#22c55e);border-radius:999px;transition:width .4s ease}
+main{max-width:860px;margin:0 auto;padding:18px 16px 120px}
+.card{background:white;border-radius:16px;padding:20px;margin-bottom:14px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.card-title{font-size:17px;font-weight:800;margin-bottom:12px}
+.objetivo-box{font-size:15px;font-weight:700;line-height:1.6;color:#0369a1;background:#e0f2fe;padding:14px 16px;border-radius:12px;border-left:4px solid #0ea5e9}
+.resultado-tag{display:inline-block;background:#dcfce7;color:#15803d;padding:6px 14px;border-radius:999px;font-size:13px;font-weight:800;margin-top:10px}
+.tools-wrap{display:flex;gap:8px;flex-wrap:wrap}
+.tool-pill{background:#f1f5f9;border:2px solid #e2e8f0;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:700}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+@media(max-width:600px){.grid2{grid-template-columns:1fr}}
+.glos-item{border:2px solid #e0f2fe;border-radius:12px;padding:14px}
+.glos-term{font-size:15px;font-weight:800;color:#0369a1;margin-bottom:4px}
+.glos-def{font-size:13px;color:#475569;line-height:1.5}
+.glos-tip{font-size:12px;color:#0ea5e9;font-weight:700;margin-top:6px}
+.step{display:flex;gap:13px;align-items:flex-start;padding:13px;border-radius:12px;margin-bottom:9px;border:2px solid #e2e8f0;transition:all .3s}
+.step.done{background:#f0fdf4;border-color:#22c55e}
+.s-num{width:34px;height:34px;min-width:34px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#64748b;transition:all .3s}
+.step.done .s-num{background:#22c55e;color:white}
+.s-body{flex:1}
+.s-title{font-size:14px;font-weight:800;margin-bottom:5px}
+.s-cb{margin-left:auto;width:24px;height:24px;cursor:pointer;accent-color:#22c55e}
+.sub{margin-top:5px}
+.sub-row{display:flex;gap:7px;margin-bottom:5px;font-size:13px;line-height:1.5}
+.sub-lbl{font-weight:900;color:#0369a1;min-width:18px}
+.step-feedback{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.see,.warn{flex:1;min-width:180px;border-radius:10px;padding:9px 12px;font-size:12px;font-weight:700;line-height:1.4}
+.see{background:#f0fdf4;border:2px solid #22c55e;color:#15803d}
+.see::before{content:"✅ Deberías ver: "}
+.warn{background:#fffbeb;border:2px solid #f59e0b;color:#92400e}
+.warn::before{content:"⚠️ Si algo va mal: "}
+.yay{background:#fef3c7;border-radius:10px;padding:9px;margin-top:8px;font-size:13px;font-weight:800;color:#92400e;text-align:center}
+.wait-card{background:#faf5ff;border:2px solid #e9d5ff;border-radius:12px;padding:14px}
+.wait-icon{font-size:22px;margin-bottom:6px;display:block}
+.wait-title{font-size:14px;font-weight:800;margin-bottom:3px}
+.wait-desc{font-size:13px;color:#475569;line-height:1.4}
+.desafio{background:#fffbeb;border:3px solid #f59e0b;border-radius:14px;padding:18px}
+.desafio h3{font-size:16px;font-weight:900;color:#92400e;margin-bottom:6px}
+.desafio p{font-size:13px;color:#78350f;line-height:1.6}
+.quiz-q{background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;padding:13px}
+.quiz-q p{font-size:13px;font-weight:800;margin-bottom:8px}
+.quiz-opts{list-style:none}
+.quiz-opts li{padding:5px 9px;border-radius:7px;margin-bottom:4px;font-size:12px;font-weight:600;color:#94a3b8}
+.quiz-opts li.ok{background:#dcfce7;color:#15803d;font-weight:800}
+.cfg-card{background:#f0f9ff;border:2px solid #bae6fd}
+.cfg-wrap{max-width:440px}
+.cfg-table{width:100%;border-collapse:collapse}
+.cfg-table tr:nth-child(odd){background:#e0f2fe}
+.cfg-table td{padding:7px 12px;font-size:13px}
+.cfg-table td:first-child{font-weight:800;color:#0369a1;width:50%}
+.cfg-note{font-size:13px;color:#0369a1;margin-bottom:10px;line-height:1.5}
+.acc-header{display:flex;justify-content:space-between;align-items:center;cursor:pointer;padding:11px 0;border-bottom:2px solid #e2e8f0;font-size:14px;font-weight:800;user-select:none}
+.acc-arrow{transition:transform .2s;font-style:normal}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.acc-step{display:flex;gap:10px;padding:10px;border-radius:9px;background:#f0f9ff;border:2px solid #bae6fd;margin:6px 0;font-size:13px;line-height:1.5}
+.acc-num{font-weight:900;color:#0369a1;min-width:18px}
+.sabias{background:linear-gradient(135deg,#fdf4ff,#fae8ff);border:2px solid #e9d5ff}
+.sabias p{font-size:13px;line-height:1.6}
+.padres-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+@media(max-width:600px){.padres-grid{grid-template-columns:1fr}}
+.padres-block{background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;padding:13px}
+.padres-block h3{font-size:13px;font-weight:800;color:#334155;margin-bottom:7px}
+.padres-block ul{padding-left:14px}
+.padres-block li{font-size:12px;line-height:1.6;color:#475569}
+.prob{margin-bottom:8px}
+.prob-t{font-weight:800;color:#dc2626;font-size:12px;margin-bottom:3px}
+.prob-fix{color:#475569;font-size:12px;line-height:1.5}
+.padres-refuerzo{background:#f0fdf4;border:2px solid #bbf7d0;border-radius:12px;padding:13px;font-size:13px;color:#15803d;line-height:1.6}
+.padres-refuerzo strong{display:block;margin-bottom:4px;font-size:14px}
+.celeb{display:none;background:linear-gradient(135deg,#fbbf24,#f59e0b);border-radius:20px;padding:34px 24px;text-align:center;margin-top:14px}
+.celeb.on{display:block;animation:pop .6s ease}
+@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+.celeb-ico{font-size:52px;margin-bottom:12px;animation:bob 1s infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.celeb-t{font-size:21px;font-weight:900;color:#451a03;margin-bottom:10px}
+.celeb-txt{font-size:13px;color:#78350f;line-height:1.7}
+#cnf{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999}
+.foot{position:fixed;bottom:0;left:0;right:0;background:white;border-top:2px solid #e2e8f0;padding:10px 20px;display:flex;gap:10px;justify-content:space-between;align-items:center;box-shadow:0 -4px 16px rgba(0,0,0,.1)}
+.btn-nav{padding:10px 20px;border-radius:999px;font-family:Nunito;font-size:14px;font-weight:800;border:none;cursor:pointer;text-decoration:none;display:inline-block}
+.btn-prev{background:#f1f5f9;color:#475569}
+.btn-next{background:linear-gradient(135deg,#0ea5e9,#0369a1);color:white}
+.btn-reset{font-size:12px;color:#94a3b8;background:none;border:none;cursor:pointer;font-family:Nunito;font-weight:700}
+@media(max-width:600px){.header-title{font-size:18px}main{padding:14px 12px 100px}}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="mod-badge">Módulo 1 — ¡Primero Imprimimos! · Clase 3 de 3</div>
+  <div class="header-title">📖 Imprimimos un marcador de libros</div>
+  <div class="badges">
+    <span class="badge">⏱️ 45 min clase</span>
+    <span class="badge">🖨️ 35 min impresión</span>
+    <span class="badge">⭐ Dificultad 1/5</span>
+    <span class="badge">🔰 Solo observamos e imprimimos</span>
+  </div>
+</header>
+
+<div class="progress-wrap">
+  <div class="progress-label" id="prog-label">Progreso: 0 / 7 pasos</div>
+  <div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+</div>
+
+<main>
+
+  <!-- OBJETIVO -->
+  <div class="card">
+    <div class="card-title">🎯 Objetivo de hoy</div>
+    <div class="objetivo-box">
+      Imprimir un marcador de libros con calidad 0.15mm — más detallado que el llavero. Vas a descubrir cómo la altura de capa afecta la calidad del resultado.
+    </div>
+    <span class="resultado-tag">🏆 Resultado: Un marcador de libros con detalles finos listo para usar en tu libro favorito</span>
+  </div>
+
+  <!-- HERRAMIENTAS -->
+  <div class="card">
+    <div class="card-title">🛠️ Herramientas de hoy</div>
+    <div class="tools-wrap">
+      <span class="tool-pill">🖥️ Bambu Studio</span>
+      <span class="tool-pill">🖨️ Bambu Lab A1</span>
+      <span class="tool-pill">🗂️ Archivo marcador (proporcionado)</span>
+    </div>
+  </div>
+
+  <!-- GLOSARIO -->
+  <div class="card">
+    <div class="card-title">📚 Palabras clave</div>
+    <div class="grid2">
+      <div class="glos-item">
+        <div class="glos-term">📏 Altura de capa</div>
+        <div class="glos-def">El grosor de cada capa que imprime la máquina. A 0.20mm Standard el resultado es bueno. A 0.15mm Optimal el resultado es más suave y detallado.</div>
+        <div class="glos-tip">💡 0.15mm es más fino que una hoja de papel estándar (0.10mm). ¡La impresora hace cosas que cuesta ver a simple vista!</div>
+      </div>
+      <div class="glos-item">
+        <div class="glos-term">⏱️ Tiempo de impresión</div>
+        <div class="glos-def">A menor altura de capa, más capas = más tiempo. Un marcador a 0.20mm tarda ~25 min. A 0.15mm tarda ~35 min.</div>
+        <div class="glos-tip">💡 La joyería impresa en 3D usa capas de 0.05mm — tarda horas pero el detalle es increíble.</div>
+      </div>
+      <div class="glos-item">
+        <div class="glos-term">🟫 Adhesión a la placa</div>
+        <div class="glos-def">Cómo el primer layer "pega" a la superficie de impresión. Es el paso más crítico de cualquier impresión.</div>
+        <div class="glos-tip">💡 Si la primera capa no pega bien, nada de lo que venga después importará — el objeto se va a despegar y la impresión falla.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PASOS -->
+  <div class="card">
+    <div class="card-title">📋 Pasos de la clase</div>
+
+    <!-- Paso 1 -->
+    <div class="step" id="step-1">
+      <div class="s-num">1</div>
+      <div class="s-body">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="s-title">Abre Bambu Studio y carga el marcador</div>
+          <input type="checkbox" class="s-cb" data-step="1" onchange="markStep(1,this.checked)">
+        </div>
+        <div class="sub">
+          <div class="sub-row"><span class="sub-lbl">a.</span><span>Abre Bambu Studio. Arrastra el archivo .stl del marcador a la placa virtual.</span></div>
+          <div class="sub-row"><span class="sub-lbl">b.</span><span>El marcador es plano y largo (aprox 150mm × 30mm × 3mm).</span></div>
+          <div class="sub-row"><span class="sub-lbl">c.</span><span>Orienta el marcador de forma que la cara decorada quede ARRIBA (hacia el cielo).</span></div>
+        </div>
+        <div class="step-feedback">
+          <div class="see">Un marcador plano sobre la placa de Bambu Studio, con la cara decorada visible desde arriba.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 2 -->
+    <div class="step" id="step-2">
+      <div class="s-num">2</div>
+      <div class="s-body">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="s-title">Cambia la calidad a 0.15mm Optimal</div>
+          <input type="checkbox" class="s-cb" data-step="2" onchange="markStep(2,this.checked)">
+        </div>
+        <div class="sub">
+          <div class="sub-row"><span class="sub-lbl">a.</span><span>En el panel derecho → Calidad → cambia de "0.20mm Standard" a "0.15mm Optimal".</span></div>
+          <div class="sub-row"><span class="sub-lbl">b.</span><span>El tiempo estimado aumenta de ~25 a ~35 minutos. ¿Vale la pena? ¡Sí! Los detalles serán mucho mejores.</span></div>
+        </div>
+        <div class="step-feedback">
+          <div class="see">El panel de calidad mostrando "0.15mm Optimal" seleccionado.</div>
+          <div class="warn">No uses 0.10mm Ultra para esta clase — tarda demasiado (~60 min) y queremos terminar en el tiempo de clase.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 3 -->
+    <div class="step" id="step-3">
+      <div class="s-num">3</div>
+      <div class="s-body">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="s-title">Verifica la adhesión</div>
+          <input type="checkbox" class="s-cb" data-step="3" onchange="markStep(3,this.checked)">
+        </div>
+        <div class="sub">
+          <div class="sub-row"><span class="sub-lbl">a.</span><span>En Bambu Studio verifica que la placa sea Textured PEI (texturizada).</span></div>
+          <div class="sub-row"><span class="sub-lbl">b.</span><span>En la impresora física, verifica que la placa esté limpia (sin grasa ni suciedad).</span></div>
+          <div class="sub-row"><span class="sub-lbl">c.</span><span>Si la placa tiene restos de impresiones anteriores, limpiar con alcohol isopropílico.</span></div>
+        </div>
+        <div class="step-feedback">
+          <div class="see">La placa texturizada seleccionada en el software. La placa física limpia y sin residuos.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 4 -->
+    <div class="step" id="step-4">
+      <div class="s-num">4</div>
+      <div class="s-body">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="s-title">Slice y revisa el tiempo</div>
+          <input type="checkbox" class="s-cb" data-step="4" onchange="markStep(4,this.checked)">
+        </div>
+        <div class="sub">
+          <div class="sub-row"><span class="sub-lbl">a.</span><span>Clic en Slice. Observa el tiempo estimado — debe ser ~35 minutos para 0.15mm.</span></div>
+          <div class="sub-row"><span class="sub-lbl">b.</span><span>Desliza el slider hasta la capa 1 y mira qué tan fino es el primer layer.</span></div>
+          <div class="sub-row"><span class="sub-lbl">c.</span><span>Compara mentalmente: a 0.20mm tendrías ~150 capas, a 0.15mm tienes ~200 capas para el mismo objeto.</span></div>
+        </div>
+        <div class="step-feedback">
+          <div class="see">El Slice muestra ~200 capas y ~35 minutos. La primera capa del marcador se ve sólida y plana.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 5 -->
+    <div class="step" id="step-5">
+      <div class="s-num">5</div>
+      <div class="s-body">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="s-title">Envía a imprimir</div>
+          <input type="checkbox" class="s-cb" data-step="5" onchange="markStep(5,this.checked)">
+        </div>
+        <div class="sub">
+          <div class="sub-row"><span class="sub-lbl">a.</span><span>Print → Bambu Lab A1 → Confirm. La impresora recibe el trabajo.</span></div>
+          <div class="sub-row"><span class="sub-lbl">b.</span><span>Confirma en la pantalla táctil.</span></div>
+        </div>
+        <div class="step-feedback">
+          <div class="see">La Bambu Lab A1 comienza la secuencia de calentamiento.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 6 -->
+    <div class="step" id="step-6">
+      <div class="s-num">6</div>
+      <div class="s-body">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="s-title">Observa la diferencia con el llavero de la Clase 1</div>
+          <input type="checkbox" class="s-cb" data-step="6" onchange="markStep(6,this.checked)">
+        </div>
+        <div class="sub">
+          <div class="sub-row"><span class="sub-lbl">a.</span><span>Las capas son más finas — la cabeza se mueve más veces para la misma altura.</span></div>
+          <div class="sub-row"><span class="sub-lbl">b.</span><span>El detalle del marcador (texto o decoración) debería verse más nítido que el llavero.</span></div>
+          <div class="sub-row"><span class="sub-lbl">c.</span><span>Compara la velocidad del movimiento: ¿va más lento? (Más capas = más tiempo total, pero velocidad similar).</span></div>
+        </div>
+        <div class="step-feedback">
+          <div class="see">El marcador tomando forma capa por capa. Los detalles finos ya son visibles en la impresión.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 7 -->
+    <div class="step" id="step-7">
+      <div class="s-num">7</div>
+      <div class="s-body">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="s-title">Saca el marcador y úsalo</div>
+          <input type="checkbox" class="s-cb" data-step="7" onchange="markStep(7,this.checked)">
+        </div>
+        <div class="sub">
+          <div class="sub-row"><span class="sub-lbl">a.</span><span>Pitido → espera 3 min → dobla la placa → el marcador se suelta.</span></div>
+          <div class="sub-row"><span class="sub-lbl">b.</span><span>Pasa el dedo por la superficie decorada. ¿Notas que es más suave que el llavero de la Clase 1?</span></div>
+          <div class="sub-row"><span class="sub-lbl">c.</span><span>Pon el marcador en tu libro favorito. ¡Tu primera herramienta funcional impresa en 3D!</span></div>
+        </div>
+        <div class="step-feedback">
+          <div class="see">Un marcador de PLA con acabado más suave que el llavero. Los detalles finos son claramente visibles.</div>
+        </div>
+        <div class="yay">🎉 ¡Completaste el Módulo 1! Ya sabes imprimir con diferentes calidades y entiendes cómo funcionan las capas.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MIENTRAS ESPERAS -->
+  <div class="card">
+    <div class="card-title">⏳ Mientras esperas (35 min)</div>
+    <div class="grid2">
+      <div class="wait-card">
+        <span class="wait-icon">📚</span>
+        <div class="wait-title">Elige el libro</div>
+        <div class="wait-desc">Mientras espera el marcador, decide qué libro vas a marcar. ¿Cuál es tu libro favorito ahora mismo?</div>
+      </div>
+      <div class="wait-card">
+        <span class="wait-icon">🔍</span>
+        <div class="wait-title">Compara calidades</div>
+        <div class="wait-desc">Pon el llavero de la Clase 1 (0.20mm) al lado del marcador recién impreso (0.15mm). ¿Puedes sentir la diferencia de textura con el dedo?</div>
+      </div>
+      <div class="wait-card">
+        <span class="wait-icon">✏️</span>
+        <div class="wait-title">Diseña el próximo</div>
+        <div class="wait-desc">En papel, dibuja cómo sería un marcador que tú diseñarías. ¿Qué forma tendría? ¿Qué texto o imagen llevaría?</div>
+      </div>
+      <div class="wait-card">
+        <span class="wait-icon">💭</span>
+        <div class="wait-title">Piensa en la escala</div>
+        <div class="wait-desc">Un marcador de 150mm de largo. La impresora puede hacer objetos de hasta 256mm. ¿Qué objetos cotidianos cabrían dentro de esa máquina?</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DESAFÍO -->
+  <div class="card">
+    <div class="desafio">
+      <h3>🏆 Desafío del día</h3>
+      <p>Vuelve a Bambu Studio y haz Slice del mismo marcador con 0.20mm. Compara: ¿cuántas capas menos? ¿Cuánto tiempo ahorra? ¿Se ve diferente en el Slice? Esto te muestra por qué los profesionales eligen la calidad según el uso.</p>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="card">
+    <div class="card-title">🧠 ¿Qué aprendiste?</div>
+    <div class="grid2">
+      <div class="quiz-q">
+        <p>¿Cuál da más detalle — 0.20mm o 0.15mm de altura de capa?</p>
+        <ul class="quiz-opts">
+          <li>a) 0.20mm — capas más gruesas dan más detalle</li>
+          <li class="ok">b) 0.15mm — capas más finas = más detalle y superficie más suave</li>
+          <li>c) Son iguales — la altura de capa no afecta el detalle</li>
+        </ul>
+      </div>
+      <div class="quiz-q">
+        <p>¿Por qué es tan importante que la primera capa pegue bien a la placa?</p>
+        <ul class="quiz-opts">
+          <li>a) Para ahorrar filamento en las primeras capas</li>
+          <li class="ok">b) Porque si la primera capa no pega, el objeto se despega y la impresión falla completamente</li>
+          <li>c) Para que el objeto salga más rápido de la placa al terminar</li>
+        </ul>
+      </div>
+      <div class="quiz-q">
+        <p>¿Cuántas capas tiene un marcador de 3mm de alto impreso a 0.15mm?</p>
+        <ul class="quiz-opts">
+          <li>a) 15 capas</li>
+          <li class="ok">b) 20 capas — 3mm ÷ 0.15mm = 20</li>
+          <li>c) 30 capas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONFIGURACIÓN DE IMPRESIÓN -->
+  <div class="card cfg-card">
+    <div class="card-title">⚙️ Configuración de impresión</div>
+    <p class="cfg-note">Usamos 0.15mm Optimal para máximo detalle en el texto y decoración del marcador. Más capas = más tiempo, pero el resultado vale la pena.</p>
+    <div class="cfg-wrap">
+      <table class="cfg-table">
+        <tr><td>🖨️ Impresora</td><td>Bambu Lab A1</td></tr>
+        <tr><td>🎨 Filamento</td><td>PLA</td></tr>
+        <tr><td>📐 Altura de capa</td><td>0.15mm Optimal</td></tr>
+        <tr><td>🏗️ Soportes</td><td>No</td></tr>
+        <tr><td>🟫 Placa</td><td>Textured PEI</td></tr>
+        <tr><td>🔁 Relleno</td><td>15%</td></tr>
+        <tr><td>🕐 Tiempo</td><td>~35 minutos</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- GUÍA DE IMPRESORA (ACCORDION) -->
+  <div class="card">
+    <div class="card-title">🖨️ Guía rápida de la impresora</div>
+
+    <div class="acc-header" onclick="toggleAcc('acc1')">
+      <span>1. Enciende la impresora</span>
+      <em class="acc-arrow" id="arr-acc1">▼</em>
+    </div>
+    <div class="acc-body" id="acc1" style="max-height:200px">
+      <div class="acc-step"><span class="acc-num">→</span><span>Botón lateral, pantalla táctil se ilumina.</span></div>
+    </div>
+
+    <div class="acc-header" onclick="toggleAcc('acc2')">
+      <span>2. Verifica el filamento</span>
+      <em class="acc-arrow" id="arr-acc2">▼</em>
+    </div>
+    <div class="acc-body" id="acc2" style="max-height:200px">
+      <div class="acc-step"><span class="acc-num">→</span><span>Tubo transparente: ¿el color correcto? Limpia la placa si tiene residuos.</span></div>
+    </div>
+
+    <div class="acc-header" onclick="toggleAcc('acc3')">
+      <span>3. Carga el marcador en Bambu Studio</span>
+      <em class="acc-arrow" id="arr-acc3">▼</em>
+    </div>
+    <div class="acc-body" id="acc3" style="max-height:200px">
+      <div class="acc-step"><span class="acc-num">→</span><span>Arrastra el STL. Verifica PLA · 0.15mm Optimal · placa texturizada.</span></div>
+    </div>
+
+    <div class="acc-header" onclick="toggleAcc('acc4')">
+      <span>4. Slice y envía</span>
+      <em class="acc-arrow" id="arr-acc4">▼</em>
+    </div>
+    <div class="acc-body" id="acc4">
+      <div class="acc-step"><span class="acc-num">→</span><span>Verifica ~35 min en el estimado → Print → Bambu Lab A1 → Confirm.</span></div>
+    </div>
+
+    <div class="acc-header" onclick="toggleAcc('acc5')">
+      <span>5. La impresora se prepara</span>
+      <em class="acc-arrow" id="arr-acc5">▼</em>
+    </div>
+    <div class="acc-body" id="acc5">
+      <div class="acc-step"><span class="acc-num">→</span><span>Calentamiento, auto-nivelación, purge line → ¡empieza!</span></div>
+    </div>
+
+    <div class="acc-header" onclick="toggleAcc('acc6')">
+      <span>6. Observa la primera capa del marcador</span>
+      <em class="acc-arrow" id="arr-acc6">▼</em>
+    </div>
+    <div class="acc-body" id="acc6">
+      <div class="acc-step"><span class="acc-num">→</span><span>Debe quedar perfectamente plana. Si el marcador es largo, las esquinas también deben pegar bien.</span></div>
+    </div>
+
+    <div class="acc-header" onclick="toggleAcc('acc7')">
+      <span>7. Saca el marcador</span>
+      <em class="acc-arrow" id="arr-acc7">▼</em>
+    </div>
+    <div class="acc-body" id="acc7">
+      <div class="acc-step"><span class="acc-num">→</span><span>Pitido → espera 3 min → dobla placa → examina la superficie.</span></div>
+    </div>
+  </div>
+
+  <!-- SABÍAS QUE -->
+  <div class="card sabias">
+    <div class="card-title">💡 ¿Sabías que…?</div>
+    <p>Los joyeros usan impresoras 3D con capas de 0.05mm (¡la mitad de lo que usamos hoy!) para crear moldes de anillos y collares. El detalle es tan fino que es imposible verlo sin lupa. La industria de la joyería fue una de las primeras en adoptar la impresión 3D.</p>
+  </div>
+
+  <!-- PARA PADRES -->
+  <div class="card">
+    <div class="card-title">👨‍👩‍👧 Para papá y mamá</div>
+    <div class="padres-grid">
+      <div class="padres-block">
+        <h3>📝 Lo que Mateo aprendió (Resumen Módulo 1)</h3>
+        <ul>
+          <li>Cómo operar la Bambu Lab A1 de forma independiente</li>
+          <li>Qué es la altura de capa y cómo afecta la calidad (0.20mm vs 0.15mm)</li>
+          <li>Qué es el infill y cómo afecta la resistencia</li>
+          <li>El proceso completo de impresión: archivo → software → impresora → resultado</li>
+        </ul>
+      </div>
+      <div class="padres-block">
+        <h3>🔧 Posibles problemas</h3>
+        <div class="prob">
+          <div class="prob-t">El marcador se despega durante la impresión</div>
+          <div class="prob-fix">La placa puede tener grasa (huella dactilar). Limpiar con alcohol isopropílico. También verificar que la temperatura de la cama esté en 55°C.</div>
+        </div>
+        <div class="prob">
+          <div class="prob-t">Los bordes del marcador se levantan (warping)</div>
+          <div class="prob-fix">El PLA puede contraerse al enfriarse en objetos largos. Agregar un "brim" en Bambu Studio (opción en las configuraciones de placa) para anclar mejor los bordes.</div>
+        </div>
+      </div>
+    </div>
+    <div class="padres-refuerzo">
+      <strong>💚 Refuerzo en casa</strong>
+      Invitar a Mateo a tocar el llavero de la Clase 1 (0.20mm) y el marcador de hoy (0.15mm) y describir la diferencia de textura. Este tipo de observación táctil refuerza la comprensión de la altura de capa mucho mejor que explicarlo.
+    </div>
+  </div>
+
+  <!-- CELEBRACIÓN -->
+  <div class="celeb" id="celeb">
+    <div class="celeb-ico">📖</div>
+    <div class="celeb-t">📖 ¡Módulo 1 completado, Mateo!</div>
+    <div class="celeb-txt">En 3 clases pasaste de no saber nada sobre impresión 3D a imprimir con diferentes calidades, entender el infill y el proceso completo. Ese marcador en tu libro favorito es la prueba.<br><br><strong>¡En la Clase 4 arranca el Módulo 2 — Mis Primeros Diseños! Vas a abrir Tinkercad por primera vez y diseñar tu primer objeto 3D. No solo vas a imprimir — ¡vas a CREAR!</strong></div>
+  </div>
+
+</main>
+
+<!-- CONFETTI CANVAS -->
+<canvas id="cnf"></canvas>
+
+<!-- FOOTER NAV -->
+<div class="foot">
+  <a href="../../clase2/v1/clase.html" class="btn-nav btn-prev">← Clase 2</a>
+  <button class="btn-reset" onclick="resetProgress()">Reiniciar</button>
+  <a href="../../clase4/v1/clase.html" class="btn-nav btn-next">Clase 4 →</a>
+</div>
+
+<script>
+const KEY = 'studio3d-clase3';
+const TOTAL = 7;
+const COLORS = ['#0ea5e9','#22c55e','#f59e0b','#ec4899','#8b5cf6'];
+
+// Load saved state
+let done = JSON.parse(localStorage.getItem(KEY) || '{}');
+
+function updateProgress() {
+  const count = Object.values(done).filter(Boolean).length;
+  document.getElementById('prog-label').textContent = 'Progreso: ' + count + ' / ' + TOTAL + ' pasos';
+  document.getElementById('prog-fill').style.width = (count / TOTAL * 100) + '%';
+  if (count === TOTAL) {
+    document.getElementById('celeb').classList.add('on');
+    launchConfetti();
+  }
+}
+
+function markStep(n, checked) {
+  done[n] = checked;
+  localStorage.setItem(KEY, JSON.stringify(done));
+  const el = document.getElementById('step-' + n);
+  if (checked) el.classList.add('done'); else el.classList.remove('done');
+  updateProgress();
+}
+
+function resetProgress() {
+  done = {};
+  localStorage.removeItem(KEY);
+  for (let i = 1; i <= TOTAL; i++) {
+    const el = document.getElementById('step-' + i);
+    if (el) el.classList.remove('done');
+    const cb = document.querySelector('[data-step="' + i + '"]');
+    if (cb) cb.checked = false;
+  }
+  document.getElementById('celeb').classList.remove('on');
+  updateProgress();
+}
+
+// Restore checkboxes on load
+document.querySelectorAll('.s-cb').forEach(cb => {
+  const n = parseInt(cb.dataset.step);
+  if (done[n]) {
+    cb.checked = true;
+    document.getElementById('step-' + n).classList.add('done');
+  }
+});
+updateProgress();
+
+// Accordion
+function toggleAcc(id) {
+  const body = document.getElementById(id);
+  const arrow = document.getElementById('arr-' + id);
+  const isOpen = body.style.maxHeight && body.style.maxHeight !== '0px';
+  if (isOpen) {
+    body.style.maxHeight = '0px';
+    arrow.style.transform = 'rotate(0deg)';
+  } else {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    arrow.style.transform = 'rotate(180deg)';
+  }
+}
+
+// Open first 3 accordion sections by default (already open via inline style for 1-3)
+// acc4-7 start closed (no inline max-height set means they start at 0 via CSS)
+// We already set acc1, acc2, acc3 open via inline style in HTML
+// For acc4-7 they default to max-height:0 from CSS
+
+// Confetti
+function launchConfetti() {
+  const canvas = document.getElementById('cnf');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const pieces = Array.from({length: 120}, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height - canvas.height,
+    r: Math.random() * 7 + 4,
+    d: Math.random() * 3 + 1,
+    color: COLORS[Math.floor(Math.random() * COLORS.length)],
+    tilt: Math.random() * 10 - 5,
+    tiltSpeed: Math.random() * 0.1 + 0.05
+  }));
+  let frame = 0;
+  function draw() {
+    if (frame > 200) { ctx.clearRect(0, 0, canvas.width, canvas.height); return; }
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    pieces.forEach(p => {
+      p.y += p.d;
+      p.tilt += p.tiltSpeed;
+      ctx.beginPath();
+      ctx.ellipse(p.x, p.y, p.r, p.r / 2, p.tilt, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.fill();
+      if (p.y > canvas.height) { p.y = -10; p.x = Math.random() * canvas.width; }
+    });
+    frame++;
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+</script>
+</body>
+</html>
