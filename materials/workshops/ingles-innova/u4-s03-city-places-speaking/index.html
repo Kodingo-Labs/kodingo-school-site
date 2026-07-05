@@ -45,6 +45,10 @@
   th { background: #1CB0F61a; }
   
 .ejercicio { margin: 16px 0; }
+.ejercicio.multiple-choice { margin: 10px 0; }
+.pregunta-opciones { margin: 0 0 8px; font-weight: 600; }
+.opciones { display: flex; flex-wrap: wrap; gap: 8px; }
+.opciones .opcion { margin: 0; }
 .chip-palabra, .btn-revisar, .btn-reiniciar, .opcion, .btn-autocheck {
   cursor: pointer; border: 2px solid #d1d5db; border-radius: 10px; background: white;
   padding: 6px 14px; margin: 4px; font-size: 0.95em; font-family: inherit;
@@ -68,6 +72,13 @@
 .opcion:disabled { cursor: default; }
 .fila-vf { margin: 10px 0; }
 .fila-vf .afirmacion { display: block; margin-bottom: 4px; }
+.reintentar-caja { min-height: 1.6em; margin-top: 6px; }
+.btn-reintentar {
+  cursor: pointer; border: 2px solid #d1d5db; border-radius: 10px; background: #f3f4f6;
+  padding: 6px 14px; font-size: 0.9em; font-family: inherit;
+}
+.btn-reintentar:disabled { cursor: not-allowed; opacity: 0.6; }
+.btn-reintentar:not(:disabled):hover { border-color: #9ca3af; }
 .matching-progreso { font-weight: 600; color: #6b7280; margin: 4px 0 12px; }
 .matching-tablero { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
 .matching-columna { display: flex; flex-direction: column; gap: 10px; min-width: 170px; }
@@ -233,38 +244,38 @@
 🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a movie theater and there is a shopping mall.">▶ Escuchar</button> <em>"There is a movie theater and there is a shopping mall."</em>
 🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="Are there any music stores?">▶ Escuchar</button> <em>"Are there any music stores?"</em>
 🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="Yes, there is a music store near my house.">▶ Escuchar</button> <em>"Yes, there is a music store near my house."</em></p>
-<div class="ejercicio autocheck" id="auto-13">
+<div class="ejercicio autocheck" id="auto-23">
   <p>Practicá el diálogo en voz alta y después armá tu propia respuesta usando &quot;computer store&quot; y &quot;pet shop&quot;.</p>
 
   <button type="button" class="btn-autocheck" onclick="autocheckToggle(this)">✅ Ya lo practiqué en voz alta</button>
 </div></div>
 <div class="bloque bloque-ordenar"><h2>🧩 Ordená la oración</h2>
-<div class="ejercicio ordenar-palabras" id="ord-14" data-respuesta="What places are there in your city?">
-  <div class="banco-palabras"><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">what</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">there</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">your city</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">places</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">are</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">in</button></div>
+<div class="ejercicio ordenar-palabras" id="ord-24" data-respuesta="What places are there in your city?">
+  <div class="banco-palabras"><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">what</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">places</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">there</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">your city</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">are</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">in</button></div>
   <div class="respuesta-armada" aria-label="Tu oración"></div>
   <div class="ejercicio-acciones">
-    <button type="button" class="btn-revisar" onclick="ordenarRevisar('ord-14')">Revisar</button>
-    <button type="button" class="btn-reiniciar" onclick="ordenarReiniciar('ord-14')">Reiniciar</button>
+    <button type="button" class="btn-revisar" onclick="ordenarRevisar('ord-24')">Revisar</button>
+    <button type="button" class="btn-reiniciar" onclick="ordenarReiniciar('ord-24')">Reiniciar</button>
   </div>
   <div class="feedback"></div>
 </div>
 
-<div class="ejercicio ordenar-palabras" id="ord-15" data-respuesta="There is a pet shop in my city.">
-  <div class="banco-palabras"><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">is</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">pet shop</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">my city</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">a</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">there</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">in</button></div>
+<div class="ejercicio ordenar-palabras" id="ord-25" data-respuesta="There is a pet shop in my city.">
+  <div class="banco-palabras"><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">my city</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">pet shop</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">there</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">in</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">is</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">a</button></div>
   <div class="respuesta-armada" aria-label="Tu oración"></div>
   <div class="ejercicio-acciones">
-    <button type="button" class="btn-revisar" onclick="ordenarRevisar('ord-15')">Revisar</button>
-    <button type="button" class="btn-reiniciar" onclick="ordenarReiniciar('ord-15')">Reiniciar</button>
+    <button type="button" class="btn-revisar" onclick="ordenarRevisar('ord-25')">Revisar</button>
+    <button type="button" class="btn-reiniciar" onclick="ordenarReiniciar('ord-25')">Reiniciar</button>
   </div>
   <div class="feedback"></div>
 </div></div>
 <div class="bloque bloque-juego"><h2>🎮 ¡Hora de jugar! (Word Order)</h2>
-<div class="ejercicio ordenar-palabras" id="ord-16" data-respuesta="There is a computer store.">
-  <div class="banco-palabras"><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">is</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">store</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">there</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">computer</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">a</button></div>
+<div class="ejercicio ordenar-palabras" id="ord-26" data-respuesta="There is a computer store.">
+  <div class="banco-palabras"><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">a</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">is</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">computer</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">store</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">there</button></div>
   <div class="respuesta-armada" aria-label="Tu oración"></div>
   <div class="ejercicio-acciones">
-    <button type="button" class="btn-revisar" onclick="ordenarRevisar('ord-16')">Revisar</button>
-    <button type="button" class="btn-reiniciar" onclick="ordenarReiniciar('ord-16')">Reiniciar</button>
+    <button type="button" class="btn-revisar" onclick="ordenarRevisar('ord-26')">Revisar</button>
+    <button type="button" class="btn-reiniciar" onclick="ordenarReiniciar('ord-26')">Reiniciar</button>
   </div>
   <div class="feedback"></div>
 </div>
@@ -432,12 +443,44 @@ function opcionClick(btn) {
   const correcta = btn.getAttribute('data-correcta') === 'true';
   grupo.querySelectorAll('.opcion').forEach((b) => (b.disabled = true));
   btn.classList.add(correcta ? 'correcto' : 'incorrecto');
-  if (!correcta) {
-    const buena = grupo.querySelector('.opcion[data-correcta="true"]');
-    if (buena) buena.classList.add('correcto');
-  }
   grupo.dataset.resuelto = 'true';
   if (grupo === cont) cont.dataset.completado = 'true';
+  mostrarReintentar(grupo);
+}
+
+function mostrarReintentar(grupo) {
+  const caja = grupo.querySelector('.reintentar-caja');
+  if (!caja) return;
+  let segundos = 10;
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'btn-reintentar';
+  btn.disabled = true;
+  btn.textContent = `🔁 Volvé a intentar en ${segundos}s`;
+  caja.innerHTML = '';
+  caja.appendChild(btn);
+  const intervalo = setInterval(() => {
+    segundos -= 1;
+    if (segundos <= 0) {
+      clearInterval(intervalo);
+      btn.disabled = false;
+      btn.textContent = '🔁 Intentar de nuevo';
+    } else {
+      btn.textContent = `🔁 Volvé a intentar en ${segundos}s`;
+    }
+  }, 1000);
+  btn.onclick = () => reiniciarGrupo(grupo, caja);
+}
+
+function reiniciarGrupo(grupo, caja) {
+  grupo.querySelectorAll('.opcion').forEach((b) => {
+    b.disabled = false;
+    b.classList.remove('correcto', 'incorrecto');
+  });
+  delete grupo.dataset.resuelto;
+  const cont = grupo.closest('.ejercicio');
+  if (cont) delete cont.dataset.completado;
+  caja.innerHTML = '';
 }
 
 function matchingClickTermino(btn) {

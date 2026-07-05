@@ -45,6 +45,10 @@
   th { background: #1CB0F61a; }
   
 .ejercicio { margin: 16px 0; }
+.ejercicio.multiple-choice { margin: 10px 0; }
+.pregunta-opciones { margin: 0 0 8px; font-weight: 600; }
+.opciones { display: flex; flex-wrap: wrap; gap: 8px; }
+.opciones .opcion { margin: 0; }
 .chip-palabra, .btn-revisar, .btn-reiniciar, .opcion, .btn-autocheck {
   cursor: pointer; border: 2px solid #d1d5db; border-radius: 10px; background: white;
   padding: 6px 14px; margin: 4px; font-size: 0.95em; font-family: inherit;
@@ -68,6 +72,13 @@
 .opcion:disabled { cursor: default; }
 .fila-vf { margin: 10px 0; }
 .fila-vf .afirmacion { display: block; margin-bottom: 4px; }
+.reintentar-caja { min-height: 1.6em; margin-top: 6px; }
+.btn-reintentar {
+  cursor: pointer; border: 2px solid #d1d5db; border-radius: 10px; background: #f3f4f6;
+  padding: 6px 14px; font-size: 0.9em; font-family: inherit;
+}
+.btn-reintentar:disabled { cursor: not-allowed; opacity: 0.6; }
+.btn-reintentar:not(:disabled):hover { border-color: #9ca3af; }
 .matching-progreso { font-weight: 600; color: #6b7280; margin: 4px 0 12px; }
 .matching-tablero { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
 .matching-columna { display: flex; flex-direction: column; gap: 10px; min-width: 170px; }
@@ -234,19 +245,19 @@
 🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="She cooks delicious food. She wants to be a chef.">▶ Escuchar</button> <em>"She cooks delicious food. She wants to be a chef."</em>
 🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="He takes care of animals. He wants to be a vet.">▶ Escuchar</button> <em>"He takes care of animals. He wants to be a vet."</em></p></div>
 <div class="bloque bloque-completar"><h2>✍️ Completá la oración</h2>
-<div class="ejercicio completar-oraciones" id="inp-32">
+<div class="ejercicio completar-oraciones" id="inp-63">
   <div class="fila-completar">She cooks delicious food. She wants to be a <input type="text" class="input-completar" data-respuesta="chef" size="10">.</div><div class="fila-completar">He takes care of animals. He wants to be a <input type="text" class="input-completar" data-respuesta="vet" size="10">.</div>
   <div class="ejercicio-acciones">
-    <button type="button" class="btn-revisar" onclick="completarRevisar('inp-32')">Revisar</button>
+    <button type="button" class="btn-revisar" onclick="completarRevisar('inp-63')">Revisar</button>
   </div>
   <div class="feedback"></div>
 </div></div>
 <div class="bloque bloque-juego"><h2>🎮 ¡Hora de jugar! (Matching)</h2>
-<div class="ejercicio matching" id="match-33" data-seleccionado="" data-total="4" data-encontrados="0">
+<div class="ejercicio matching" id="match-64" data-seleccionado="" data-total="4" data-encontrados="0">
   <p class="matching-progreso">0 / 4 emparejados</p>
   <div class="matching-tablero">
     <div class="matching-columna"><button type="button" class="matching-termino" data-idx="0" onclick="matchingClickTermino(this)"><span class="matching-texto">Runs and jumps every day</span></button><button type="button" class="matching-termino" data-idx="1" onclick="matchingClickTermino(this)"><span class="matching-texto">Teaches math to children</span></button><button type="button" class="matching-termino" data-idx="2" onclick="matchingClickTermino(this)"><span class="matching-texto">Cooks delicious food</span></button><button type="button" class="matching-termino" data-idx="3" onclick="matchingClickTermino(this)"><span class="matching-texto">Takes care of animals</span></button></div>
-    <div class="matching-columna"><button type="button" class="matching-definicion" data-idx="0" onclick="matchingClickDefinicion(this)"><span class="matching-texto">athlete</span></button><button type="button" class="matching-definicion" data-idx="3" onclick="matchingClickDefinicion(this)"><span class="matching-texto">vet</span></button><button type="button" class="matching-definicion" data-idx="1" onclick="matchingClickDefinicion(this)"><span class="matching-texto">teacher</span></button><button type="button" class="matching-definicion" data-idx="2" onclick="matchingClickDefinicion(this)"><span class="matching-texto">chef</span></button></div>
+    <div class="matching-columna"><button type="button" class="matching-definicion" data-idx="0" onclick="matchingClickDefinicion(this)"><span class="matching-texto">athlete</span></button><button type="button" class="matching-definicion" data-idx="1" onclick="matchingClickDefinicion(this)"><span class="matching-texto">teacher</span></button><button type="button" class="matching-definicion" data-idx="3" onclick="matchingClickDefinicion(this)"><span class="matching-texto">vet</span></button><button type="button" class="matching-definicion" data-idx="2" onclick="matchingClickDefinicion(this)"><span class="matching-texto">chef</span></button></div>
   </div>
 </div>
 
@@ -413,12 +424,44 @@ function opcionClick(btn) {
   const correcta = btn.getAttribute('data-correcta') === 'true';
   grupo.querySelectorAll('.opcion').forEach((b) => (b.disabled = true));
   btn.classList.add(correcta ? 'correcto' : 'incorrecto');
-  if (!correcta) {
-    const buena = grupo.querySelector('.opcion[data-correcta="true"]');
-    if (buena) buena.classList.add('correcto');
-  }
   grupo.dataset.resuelto = 'true';
   if (grupo === cont) cont.dataset.completado = 'true';
+  mostrarReintentar(grupo);
+}
+
+function mostrarReintentar(grupo) {
+  const caja = grupo.querySelector('.reintentar-caja');
+  if (!caja) return;
+  let segundos = 10;
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'btn-reintentar';
+  btn.disabled = true;
+  btn.textContent = `🔁 Volvé a intentar en ${segundos}s`;
+  caja.innerHTML = '';
+  caja.appendChild(btn);
+  const intervalo = setInterval(() => {
+    segundos -= 1;
+    if (segundos <= 0) {
+      clearInterval(intervalo);
+      btn.disabled = false;
+      btn.textContent = '🔁 Intentar de nuevo';
+    } else {
+      btn.textContent = `🔁 Volvé a intentar en ${segundos}s`;
+    }
+  }, 1000);
+  btn.onclick = () => reiniciarGrupo(grupo, caja);
+}
+
+function reiniciarGrupo(grupo, caja) {
+  grupo.querySelectorAll('.opcion').forEach((b) => {
+    b.disabled = false;
+    b.classList.remove('correcto', 'incorrecto');
+  });
+  delete grupo.dataset.resuelto;
+  const cont = grupo.closest('.ejercicio');
+  if (cont) delete cont.dataset.completado;
+  caja.innerHTML = '';
 }
 
 function matchingClickTermino(btn) {

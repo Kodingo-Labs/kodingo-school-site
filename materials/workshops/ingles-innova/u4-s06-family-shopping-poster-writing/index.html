@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<title>Mi mapa de la ciudad</title>
+<title>Mi póster de compras familiares</title>
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&display=swap");
   body {
@@ -236,45 +236,44 @@
 </div>
 
   <div class="leccion-card">
-    <h1>Mi mapa de la ciudad</h1>
-<h2>¡Hola, cartógrafos! 🗺️</h2>
-<p>Hoy vamos a "escuchar" (leer en voz alta) una descripción de un mapa y ubicar los lugares. ¡Poné mucha atención! 👂</p>
-<div class="bloque bloque-listening"><h2>🎧 Escuchá: "Mi mapa de la ciudad"</h2>
-<p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a school next to the park.">▶ Escuchar</button> <em>"There is a school next to the park."</em>
-🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a hospital near the school.">▶ Escuchar</button> <em>"There is a hospital near the school."</em>
-🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a bank in the town center.">▶ Escuchar</button> <em>"There is a bank in the town center."</em>
-🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a post office next to the bank.">▶ Escuchar</button> <em>"There is a post office next to the bank."</em>
-🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a supermarket near the bus stop.">▶ Escuchar</button> <em>"There is a supermarket near the bus stop."</em></p>
-<div class="ejercicio multiple-choice" id="mc-17">
-  <p class="pregunta-opciones">¿Qué hay al lado de la school?</p>
-  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The hospital.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The bank.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">The park.</button></div>
-  <div class="reintentar-caja"></div>
-</div>
-
-<div class="ejercicio multiple-choice" id="mc-18">
-  <p class="pregunta-opciones">¿Qué hay cerca de la school?</p>
-  <div class="opciones"><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">The hospital.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The post office.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The supermarket.</button></div>
-  <div class="reintentar-caja"></div>
-</div>
-
-<div class="ejercicio multiple-choice" id="mc-19">
-  <p class="pregunta-opciones">¿Qué hay cerca de la bus stop?</p>
-  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The bank.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">The supermarket.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The school.</button></div>
-  <div class="reintentar-caja"></div>
-</div></div>
-<div class="bloque bloque-completar"><h2>✍️ Completá la oración</h2>
-<div class="ejercicio completar-oraciones" id="inp-20">
-  <div class="fila-completar">There is a <input type="text" class="input-completar" data-respuesta="post office" size="10"> next to the bank.</div><div class="fila-completar">There is a <input type="text" class="input-completar" data-respuesta="supermarket" size="10"> near the bus stop.</div><div class="fila-completar">There is a <input type="text" class="input-completar" data-respuesta="bank" size="10"> in the town center.</div>
+    <h1>Mi póster de compras familiares</h1>
+<h2>¡Hola, artistas! 🎨</h2>
+<p>Hoy vas a armar un póster sobre 4 cosas que tu familia usa o compra más. ¡Vamos a practicar las oraciones primero!</p>
+<p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="My family buys more roses than balloons.">▶ Escuchar</button> <em>"My family buys more roses than balloons."</em></p>
+<div class="bloque bloque-ordenar"><h2>🧩 Ordená la oración</h2>
+<div class="ejercicio ordenar-palabras" id="ord-45" data-respuesta="My family buys more roses than balloons.">
+  <div class="banco-palabras"><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">more</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">roses</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">my</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">balloons</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">than</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">buys</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">family</button></div>
+  <div class="respuesta-armada" aria-label="Tu oración"></div>
   <div class="ejercicio-acciones">
-    <button type="button" class="btn-revisar" onclick="completarRevisar('inp-20')">Revisar</button>
+    <button type="button" class="btn-revisar" onclick="ordenarRevisar('ord-45')">Revisar</button>
+    <button type="button" class="btn-reiniciar" onclick="ordenarReiniciar('ord-45')">Reiniciar</button>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<div class="ejercicio ordenar-palabras" id="ord-46" data-respuesta="We buy more cards than jeans.">
+  <div class="banco-palabras"><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">jeans</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">more</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">cards</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">buy</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">than</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">we</button></div>
+  <div class="respuesta-armada" aria-label="Tu oración"></div>
+  <div class="ejercicio-acciones">
+    <button type="button" class="btn-revisar" onclick="ordenarRevisar('ord-46')">Revisar</button>
+    <button type="button" class="btn-reiniciar" onclick="ordenarReiniciar('ord-46')">Reiniciar</button>
   </div>
   <div class="feedback"></div>
 </div></div>
-<div class="bloque bloque-juego"><h2>🎮 ¡Hora de jugar! (Riddle)</h2>
-<div class="reveal-card" id="rv-21"><button type="button" class="reveal-pregunta" onclick="revealToggle('rv-21')"><span class="reveal-icono">❓</span><span class="reveal-texto">I&#x27;m thinking of a place where you send letters... what is it?</span><span class="reveal-flecha">▼</span></button><div class="reveal-respuesta"><p>🔊 post office</p></div></div>
-<div class="reveal-card" id="rv-22"><button type="button" class="reveal-pregunta" onclick="revealToggle('rv-22')"><span class="reveal-icono">❓</span><span class="reveal-texto">I&#x27;m thinking of a place where you buy food for your family... what is it?</span><span class="reveal-flecha">▼</span></button><div class="reveal-respuesta"><p>🔊 supermarket</p></div></div>
+<div class="bloque bloque-escritura"><h2>✏️ Escribí</h2>
+<p>Elegí 4 cosas que tu familia compra o usa más (por ejemplo: <strong>a pair of jeans, birthday cards, a bouquet of roses, craft supplies</strong>) y armá tu póster con 3 o 4 oraciones usando "more...than".</p>
+<div class="ejercicio autocheck" id="auto-47">
+  <p>Escribí tus 3 o 4 oraciones para el póster. Ejemplo: &quot;My family buys more birthday cards than picture frames.&quot;</p>
+  <textarea class="textarea-produccion" placeholder="Escribí tu respuesta acá..."></textarea>
+  <button type="button" class="btn-autocheck" onclick="autocheckToggle(this)">✅ Ya lo escribí</button>
+</div></div>
+<div class="bloque bloque-juego"><h2>🎮 ¡Hora de jugar! (Word Search)</h2>
+<div class="ejercicio word-search" id="ws-48" data-inicio="" data-palabras="JEANS,CARDS,ROSES">
+  <table class="ws-grid"><tr><td class="ws-celda" data-row="0" data-col="0" data-letra="J" onclick="wordSearchClick(this)">J</td><td class="ws-celda" data-row="0" data-col="1" data-letra="E" onclick="wordSearchClick(this)">E</td><td class="ws-celda" data-row="0" data-col="2" data-letra="A" onclick="wordSearchClick(this)">A</td><td class="ws-celda" data-row="0" data-col="3" data-letra="N" onclick="wordSearchClick(this)">N</td><td class="ws-celda" data-row="0" data-col="4" data-letra="S" onclick="wordSearchClick(this)">S</td><td class="ws-celda" data-row="0" data-col="5" data-letra="X" onclick="wordSearchClick(this)">X</td></tr><tr><td class="ws-celda" data-row="1" data-col="0" data-letra="C" onclick="wordSearchClick(this)">C</td><td class="ws-celda" data-row="1" data-col="1" data-letra="A" onclick="wordSearchClick(this)">A</td><td class="ws-celda" data-row="1" data-col="2" data-letra="R" onclick="wordSearchClick(this)">R</td><td class="ws-celda" data-row="1" data-col="3" data-letra="D" onclick="wordSearchClick(this)">D</td><td class="ws-celda" data-row="1" data-col="4" data-letra="S" onclick="wordSearchClick(this)">S</td><td class="ws-celda" data-row="1" data-col="5" data-letra="X" onclick="wordSearchClick(this)">X</td></tr><tr><td class="ws-celda" data-row="2" data-col="0" data-letra="R" onclick="wordSearchClick(this)">R</td><td class="ws-celda" data-row="2" data-col="1" data-letra="O" onclick="wordSearchClick(this)">O</td><td class="ws-celda" data-row="2" data-col="2" data-letra="S" onclick="wordSearchClick(this)">S</td><td class="ws-celda" data-row="2" data-col="3" data-letra="E" onclick="wordSearchClick(this)">E</td><td class="ws-celda" data-row="2" data-col="4" data-letra="S" onclick="wordSearchClick(this)">S</td><td class="ws-celda" data-row="2" data-col="5" data-letra="X" onclick="wordSearchClick(this)">X</td></tr></table>
+  <div class="ws-lista"><span class="ws-palabra" data-palabra="JEANS">JEANS</span><span class="ws-palabra" data-palabra="CARDS">CARDS</span><span class="ws-palabra" data-palabra="ROSES">ROSES</span></div>
+</div>
 
-<p>¡Excelente trabajo, explorador/a! 🎉</p></div>
+<p>¡Genial, tu póster va a quedar increíble! 🎉</p></div>
   </div>
   
 <button type="button" class="btn-constancia-flotante" onclick="abrirConstancia()">📋 Constancia</button>
@@ -286,8 +285,8 @@
       <p class="constancia-emoji">📜</p>
       <h2>Constancia de lección completada</h2>
       <p class="constancia-leccion" id="constancia-leccion"
-         data-titulo="Mi mapa de la ciudad"
-         data-leccion-id="u4-s02-map-locations-listening"></p>
+         data-titulo="Mi póster de compras familiares"
+         data-leccion-id="u4-s06-family-shopping-poster-writing"></p>
       <div class="constancia-datos">
         <div class="constancia-dato">
           <span class="constancia-etiqueta">Estudiante</span>

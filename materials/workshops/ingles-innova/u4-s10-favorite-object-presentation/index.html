@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<title>Mi mapa de la ciudad</title>
+<title>¡Te presento mi objeto favorito!</title>
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&display=swap");
   body {
@@ -236,45 +236,40 @@
 </div>
 
   <div class="leccion-card">
-    <h1>Mi mapa de la ciudad</h1>
-<h2>¡Hola, cartógrafos! 🗺️</h2>
-<p>Hoy vamos a "escuchar" (leer en voz alta) una descripción de un mapa y ubicar los lugares. ¡Poné mucha atención! 👂</p>
-<div class="bloque bloque-listening"><h2>🎧 Escuchá: "Mi mapa de la ciudad"</h2>
-<p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a school next to the park.">▶ Escuchar</button> <em>"There is a school next to the park."</em>
-🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a hospital near the school.">▶ Escuchar</button> <em>"There is a hospital near the school."</em>
-🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a bank in the town center.">▶ Escuchar</button> <em>"There is a bank in the town center."</em>
-🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a post office next to the bank.">▶ Escuchar</button> <em>"There is a post office next to the bank."</em>
-🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a supermarket near the bus stop.">▶ Escuchar</button> <em>"There is a supermarket near the bus stop."</em></p>
-<div class="ejercicio multiple-choice" id="mc-17">
-  <p class="pregunta-opciones">¿Qué hay al lado de la school?</p>
-  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The hospital.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The bank.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">The park.</button></div>
-  <div class="reintentar-caja"></div>
-</div>
+    <h1>¡Te presento mi objeto favorito!</h1>
+<h2>¡Hola, estrella de la presentación! 🌟</h2>
+<p>¡Hoy es el gran día! Vas a presentar tu objeto favorito usando lo que preparaste la sesión pasada.</p>
+<div class="bloque bloque-oral"><h2>🗣️ Practicá en voz alta</h2>
+<p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="Hello! Today I want to talk about my favorite thing.">▶ Escuchar</button> <em>"Hello! Today I want to talk about my favorite thing."</em></p>
+<p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="My favorite thing is this turquoise necklace.">▶ Escuchar</button> <em>"My favorite thing is this turquoise necklace."</em></p>
+<p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="It is the most beautiful necklace I have.">▶ Escuchar</button> <em>"It is the most beautiful necklace I have."</em></p>
+<p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="It is more special than my bracelet or my earrings.">▶ Escuchar</button> <em>"It is more special than my bracelet or my earrings."</em></p>
+<p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="Thank you for listening!">▶ Escuchar</button> <em>"Thank you for listening!"</em></p>
+<div class="ejercicio autocheck" id="auto-80">
+  <p>Practicá tu presentación en voz alta usando tu propio objeto favorito y al menos un superlativo (the most, the best).</p>
 
-<div class="ejercicio multiple-choice" id="mc-18">
-  <p class="pregunta-opciones">¿Qué hay cerca de la school?</p>
-  <div class="opciones"><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">The hospital.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The post office.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The supermarket.</button></div>
-  <div class="reintentar-caja"></div>
-</div>
-
-<div class="ejercicio multiple-choice" id="mc-19">
-  <p class="pregunta-opciones">¿Qué hay cerca de la bus stop?</p>
-  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The bank.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">The supermarket.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The school.</button></div>
-  <div class="reintentar-caja"></div>
+  <button type="button" class="btn-autocheck" onclick="autocheckToggle(this)">✅ Ya lo practiqué en voz alta</button>
 </div></div>
 <div class="bloque bloque-completar"><h2>✍️ Completá la oración</h2>
-<div class="ejercicio completar-oraciones" id="inp-20">
-  <div class="fila-completar">There is a <input type="text" class="input-completar" data-respuesta="post office" size="10"> next to the bank.</div><div class="fila-completar">There is a <input type="text" class="input-completar" data-respuesta="supermarket" size="10"> near the bus stop.</div><div class="fila-completar">There is a <input type="text" class="input-completar" data-respuesta="bank" size="10"> in the town center.</div>
+<div class="ejercicio completar-oraciones" id="inp-81">
+  <div class="fila-completar">My favorite thing is the <input type="text" class="input-completar" data-respuesta="most" size="10"> beautiful necklace I have.</div><div class="fila-completar">It is <input type="text" class="input-completar" data-respuesta="more" size="10"> special than my bracelet.</div><div class="fila-completar">This is the <input type="text" class="input-completar" data-respuesta="best" size="10"> thing I own.</div>
   <div class="ejercicio-acciones">
-    <button type="button" class="btn-revisar" onclick="completarRevisar('inp-20')">Revisar</button>
+    <button type="button" class="btn-revisar" onclick="completarRevisar('inp-81')">Revisar</button>
   </div>
   <div class="feedback"></div>
 </div></div>
-<div class="bloque bloque-juego"><h2>🎮 ¡Hora de jugar! (Riddle)</h2>
-<div class="reveal-card" id="rv-21"><button type="button" class="reveal-pregunta" onclick="revealToggle('rv-21')"><span class="reveal-icono">❓</span><span class="reveal-texto">I&#x27;m thinking of a place where you send letters... what is it?</span><span class="reveal-flecha">▼</span></button><div class="reveal-respuesta"><p>🔊 post office</p></div></div>
-<div class="reveal-card" id="rv-22"><button type="button" class="reveal-pregunta" onclick="revealToggle('rv-22')"><span class="reveal-icono">❓</span><span class="reveal-texto">I&#x27;m thinking of a place where you buy food for your family... what is it?</span><span class="reveal-flecha">▼</span></button><div class="reveal-respuesta"><p>🔊 supermarket</p></div></div>
+<div class="bloque bloque-juego"><h2>🎮 ¡Hora de jugar! (Word Order)</h2>
+<div class="ejercicio ordenar-palabras" id="ord-82" data-respuesta="This is my favorite thing.">
+  <div class="banco-palabras"><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">this</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">thing</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">favorite</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">is</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">my</button></div>
+  <div class="respuesta-armada" aria-label="Tu oración"></div>
+  <div class="ejercicio-acciones">
+    <button type="button" class="btn-revisar" onclick="ordenarRevisar('ord-82')">Revisar</button>
+    <button type="button" class="btn-reiniciar" onclick="ordenarReiniciar('ord-82')">Reiniciar</button>
+  </div>
+  <div class="feedback"></div>
+</div>
 
-<p>¡Excelente trabajo, explorador/a! 🎉</p></div>
+<p>¡Felicitaciones por tu presentación! 🎉</p></div>
   </div>
   
 <button type="button" class="btn-constancia-flotante" onclick="abrirConstancia()">📋 Constancia</button>
@@ -286,8 +281,8 @@
       <p class="constancia-emoji">📜</p>
       <h2>Constancia de lección completada</h2>
       <p class="constancia-leccion" id="constancia-leccion"
-         data-titulo="Mi mapa de la ciudad"
-         data-leccion-id="u4-s02-map-locations-listening"></p>
+         data-titulo="¡Te presento mi objeto favorito!"
+         data-leccion-id="u4-s10-favorite-object-presentation"></p>
       <div class="constancia-datos">
         <div class="constancia-dato">
           <span class="constancia-etiqueta">Estudiante</span>

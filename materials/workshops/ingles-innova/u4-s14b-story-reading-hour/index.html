@@ -45,6 +45,10 @@
   th { background: #1CB0F61a; }
   
 .ejercicio { margin: 16px 0; }
+.ejercicio.multiple-choice { margin: 10px 0; }
+.pregunta-opciones { margin: 0 0 8px; font-weight: 600; }
+.opciones { display: flex; flex-wrap: wrap; gap: 8px; }
+.opciones .opcion { margin: 0; }
 .chip-palabra, .btn-revisar, .btn-reiniciar, .opcion, .btn-autocheck {
   cursor: pointer; border: 2px solid #d1d5db; border-radius: 10px; background: white;
   padding: 6px 14px; margin: 4px; font-size: 0.95em; font-family: inherit;
@@ -68,6 +72,13 @@
 .opcion:disabled { cursor: default; }
 .fila-vf { margin: 10px 0; }
 .fila-vf .afirmacion { display: block; margin-bottom: 4px; }
+.reintentar-caja { min-height: 1.6em; margin-top: 6px; }
+.btn-reintentar {
+  cursor: pointer; border: 2px solid #d1d5db; border-radius: 10px; background: #f3f4f6;
+  padding: 6px 14px; font-size: 0.9em; font-family: inherit;
+}
+.btn-reintentar:disabled { cursor: not-allowed; opacity: 0.6; }
+.btn-reintentar:not(:disabled):hover { border-color: #9ca3af; }
 .matching-progreso { font-weight: 600; color: #6b7280; margin: 4px 0 12px; }
 .matching-tablero { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
 .matching-columna { display: flex; flex-direction: column; gap: 10px; min-width: 170px; }
@@ -233,18 +244,37 @@
 🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="He buys a book about space.">▶ Escuchar</button> <em>"He buys a book about space."</em>
 🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="Then, he goes to a restaurant and eats a pizza.">▶ Escuchar</button> <em>"Then, he goes to a restaurant and eats a pizza."</em>
 🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="Finally, there is a park where Ben plays with his friends.">▶ Escuchar</button> <em>"Finally, there is a park where Ben plays with his friends."</em></p>
-<div class="reveal-card" id="rv-53"><button type="button" class="reveal-pregunta" onclick="revealToggle('rv-53')"><span class="reveal-icono">❓</span><span class="reveal-texto">¿Cómo llega Ben a la bookstore?</span><span class="reveal-flecha">▼</span></button><div class="reveal-respuesta"><p>💡 He takes the bus.</p></div></div>
-<div class="reveal-card" id="rv-54"><button type="button" class="reveal-pregunta" onclick="revealToggle('rv-54')"><span class="reveal-icono">❓</span><span class="reveal-texto">¿Qué compra?</span><span class="reveal-flecha">▼</span></button><div class="reveal-respuesta"><p>💡 A book about space.</p></div></div>
-<div class="reveal-card" id="rv-55"><button type="button" class="reveal-pregunta" onclick="revealToggle('rv-55')"><span class="reveal-icono">❓</span><span class="reveal-texto">¿Qué come en el restaurant?</span><span class="reveal-flecha">▼</span></button><div class="reveal-respuesta"><p>💡 A pizza.</p></div></div>
-<div class="reveal-card" id="rv-56"><button type="button" class="reveal-pregunta" onclick="revealToggle('rv-56')"><span class="reveal-icono">❓</span><span class="reveal-texto">¿Dónde juega al final?</span><span class="reveal-flecha">▼</span></button><div class="reveal-respuesta"><p>💡 At the park.</p></div></div></div>
+<div class="ejercicio multiple-choice" id="mc-103">
+  <p class="pregunta-opciones">¿Cómo llega Ben a la bookstore?</p>
+  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">He walks.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">He takes the bus.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">He rides his bike.</button></div>
+  <div class="reintentar-caja"></div>
+</div>
+
+<div class="ejercicio multiple-choice" id="mc-104">
+  <p class="pregunta-opciones">¿Qué compra?</p>
+  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">A book about dinosaurs.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">A book about space.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">A toy.</button></div>
+  <div class="reintentar-caja"></div>
+</div>
+
+<div class="ejercicio multiple-choice" id="mc-105">
+  <p class="pregunta-opciones">¿Qué come en el restaurant?</p>
+  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">A sandwich.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">A pizza.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">An ice cream.</button></div>
+  <div class="reintentar-caja"></div>
+</div>
+
+<div class="ejercicio multiple-choice" id="mc-106">
+  <p class="pregunta-opciones">¿Dónde juega al final?</p>
+  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">At the bookstore.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">At the restaurant.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">At the park.</button></div>
+  <div class="reintentar-caja"></div>
+</div></div>
 <div class="bloque bloque-oral"><h2>🗣️ Practicá en voz alta</h2>
-<div class="ejercicio autocheck" id="auto-57">
+<div class="ejercicio autocheck" id="auto-107">
   <p>Contá &quot;Ben&#x27;s Perfect Day&quot; con tus propias palabras, usando 🔊 para las partes en inglés.</p>
 
   <button type="button" class="btn-autocheck" onclick="autocheckToggle(this)">✅ Ya lo practiqué en voz alta</button>
 </div></div>
 <div class="bloque bloque-juego"><h2>🎮 ¡Hora de jugar! (Matching)</h2>
-<div class="ejercicio matching" id="match-58" data-seleccionado="" data-total="4" data-encontrados="0">
+<div class="ejercicio matching" id="match-108" data-seleccionado="" data-total="4" data-encontrados="0">
   <p class="matching-progreso">0 / 4 emparejados</p>
   <div class="matching-tablero">
     <div class="matching-columna"><button type="button" class="matching-termino" data-idx="0" onclick="matchingClickTermino(this)"><span class="matching-texto">bookstore</span></button><button type="button" class="matching-termino" data-idx="1" onclick="matchingClickTermino(this)"><span class="matching-texto">restaurant</span></button><button type="button" class="matching-termino" data-idx="2" onclick="matchingClickTermino(this)"><span class="matching-texto">park</span></button><button type="button" class="matching-termino" data-idx="3" onclick="matchingClickTermino(this)"><span class="matching-texto">bus stop</span></button></div>
@@ -415,12 +445,44 @@ function opcionClick(btn) {
   const correcta = btn.getAttribute('data-correcta') === 'true';
   grupo.querySelectorAll('.opcion').forEach((b) => (b.disabled = true));
   btn.classList.add(correcta ? 'correcto' : 'incorrecto');
-  if (!correcta) {
-    const buena = grupo.querySelector('.opcion[data-correcta="true"]');
-    if (buena) buena.classList.add('correcto');
-  }
   grupo.dataset.resuelto = 'true';
   if (grupo === cont) cont.dataset.completado = 'true';
+  mostrarReintentar(grupo);
+}
+
+function mostrarReintentar(grupo) {
+  const caja = grupo.querySelector('.reintentar-caja');
+  if (!caja) return;
+  let segundos = 10;
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'btn-reintentar';
+  btn.disabled = true;
+  btn.textContent = `🔁 Volvé a intentar en ${segundos}s`;
+  caja.innerHTML = '';
+  caja.appendChild(btn);
+  const intervalo = setInterval(() => {
+    segundos -= 1;
+    if (segundos <= 0) {
+      clearInterval(intervalo);
+      btn.disabled = false;
+      btn.textContent = '🔁 Intentar de nuevo';
+    } else {
+      btn.textContent = `🔁 Volvé a intentar en ${segundos}s`;
+    }
+  }, 1000);
+  btn.onclick = () => reiniciarGrupo(grupo, caja);
+}
+
+function reiniciarGrupo(grupo, caja) {
+  grupo.querySelectorAll('.opcion').forEach((b) => {
+    b.disabled = false;
+    b.classList.remove('correcto', 'incorrecto');
+  });
+  delete grupo.dataset.resuelto;
+  const cont = grupo.closest('.ejercicio');
+  if (cont) delete cont.dataset.completado;
+  caja.innerHTML = '';
 }
 
 function matchingClickTermino(btn) {

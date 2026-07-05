@@ -45,6 +45,10 @@
   th { background: #1CB0F61a; }
   
 .ejercicio { margin: 16px 0; }
+.ejercicio.multiple-choice { margin: 10px 0; }
+.pregunta-opciones { margin: 0 0 8px; font-weight: 600; }
+.opciones { display: flex; flex-wrap: wrap; gap: 8px; }
+.opciones .opcion { margin: 0; }
 .chip-palabra, .btn-revisar, .btn-reiniciar, .opcion, .btn-autocheck {
   cursor: pointer; border: 2px solid #d1d5db; border-radius: 10px; background: white;
   padding: 6px 14px; margin: 4px; font-size: 0.95em; font-family: inherit;
@@ -68,6 +72,13 @@
 .opcion:disabled { cursor: default; }
 .fila-vf { margin: 10px 0; }
 .fila-vf .afirmacion { display: block; margin-bottom: 4px; }
+.reintentar-caja { min-height: 1.6em; margin-top: 6px; }
+.btn-reintentar {
+  cursor: pointer; border: 2px solid #d1d5db; border-radius: 10px; background: #f3f4f6;
+  padding: 6px 14px; font-size: 0.9em; font-family: inherit;
+}
+.btn-reintentar:disabled { cursor: not-allowed; opacity: 0.6; }
+.btn-reintentar:not(:disabled):hover { border-color: #9ca3af; }
 .matching-progreso { font-weight: 600; color: #6b7280; margin: 4px 0 12px; }
 .matching-tablero { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
 .matching-columna { display: flex; flex-direction: column; gap: 10px; min-width: 170px; }
@@ -232,23 +243,23 @@
 🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="Where do you want to go?">▶ Escuchar</button> <em>"Where do you want to go?"</em>
 🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="I want to go to the park!">▶ Escuchar</button> <em>"I want to go to the park!"</em></p>
 <div class="bloque bloque-oral"><h2>🗣️ Practicá en voz alta</h2>
-<div class="ejercicio autocheck" id="auto-49">
+<div class="ejercicio autocheck" id="auto-99">
   <p>Practicá preguntando a un compañero &quot;Where do you want to go?&quot; y respondiendo con un lugar del mapa.</p>
 
   <button type="button" class="btn-autocheck" onclick="autocheckToggle(this)">✅ Ya lo practiqué en voz alta</button>
 </div></div>
 <div class="bloque bloque-ordenar"><h2>🧩 Ordená la oración</h2>
-<div class="ejercicio ordenar-palabras" id="ord-50" data-respuesta="Where do you want to go?">
-  <div class="banco-palabras"><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">you</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">to</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">want</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">where</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">go</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">do</button></div>
+<div class="ejercicio ordenar-palabras" id="ord-100" data-respuesta="Where do you want to go?">
+  <div class="banco-palabras"><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">go</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">want</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">to</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">you</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">where</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">do</button></div>
   <div class="respuesta-armada" aria-label="Tu oración"></div>
   <div class="ejercicio-acciones">
-    <button type="button" class="btn-revisar" onclick="ordenarRevisar('ord-50')">Revisar</button>
-    <button type="button" class="btn-reiniciar" onclick="ordenarReiniciar('ord-50')">Reiniciar</button>
+    <button type="button" class="btn-revisar" onclick="ordenarRevisar('ord-100')">Revisar</button>
+    <button type="button" class="btn-reiniciar" onclick="ordenarReiniciar('ord-100')">Reiniciar</button>
   </div>
   <div class="feedback"></div>
 </div></div>
 <div class="bloque bloque-juego"><h2>🎮 ¡Hora de jugar! (Word Search)</h2>
-<div class="ejercicio word-search" id="ws-51" data-inicio="" data-palabras="PARK,SHOP,MOVIE">
+<div class="ejercicio word-search" id="ws-101" data-inicio="" data-palabras="PARK,SHOP,MOVIE">
   <table class="ws-grid"><tr><td class="ws-celda" data-row="0" data-col="0" data-letra="P" onclick="wordSearchClick(this)">P</td><td class="ws-celda" data-row="0" data-col="1" data-letra="A" onclick="wordSearchClick(this)">A</td><td class="ws-celda" data-row="0" data-col="2" data-letra="R" onclick="wordSearchClick(this)">R</td><td class="ws-celda" data-row="0" data-col="3" data-letra="K" onclick="wordSearchClick(this)">K</td><td class="ws-celda" data-row="0" data-col="4" data-letra="X" onclick="wordSearchClick(this)">X</td></tr><tr><td class="ws-celda" data-row="1" data-col="0" data-letra="S" onclick="wordSearchClick(this)">S</td><td class="ws-celda" data-row="1" data-col="1" data-letra="H" onclick="wordSearchClick(this)">H</td><td class="ws-celda" data-row="1" data-col="2" data-letra="O" onclick="wordSearchClick(this)">O</td><td class="ws-celda" data-row="1" data-col="3" data-letra="P" onclick="wordSearchClick(this)">P</td><td class="ws-celda" data-row="1" data-col="4" data-letra="X" onclick="wordSearchClick(this)">X</td></tr><tr><td class="ws-celda" data-row="2" data-col="0" data-letra="M" onclick="wordSearchClick(this)">M</td><td class="ws-celda" data-row="2" data-col="1" data-letra="O" onclick="wordSearchClick(this)">O</td><td class="ws-celda" data-row="2" data-col="2" data-letra="V" onclick="wordSearchClick(this)">V</td><td class="ws-celda" data-row="2" data-col="3" data-letra="I" onclick="wordSearchClick(this)">I</td><td class="ws-celda" data-row="2" data-col="4" data-letra="E" onclick="wordSearchClick(this)">E</td></tr></table>
   <div class="ws-lista"><span class="ws-palabra" data-palabra="PARK">PARK</span><span class="ws-palabra" data-palabra="SHOP">SHOP</span><span class="ws-palabra" data-palabra="MOVIE">MOVIE</span></div>
 </div>
@@ -416,12 +427,44 @@ function opcionClick(btn) {
   const correcta = btn.getAttribute('data-correcta') === 'true';
   grupo.querySelectorAll('.opcion').forEach((b) => (b.disabled = true));
   btn.classList.add(correcta ? 'correcto' : 'incorrecto');
-  if (!correcta) {
-    const buena = grupo.querySelector('.opcion[data-correcta="true"]');
-    if (buena) buena.classList.add('correcto');
-  }
   grupo.dataset.resuelto = 'true';
   if (grupo === cont) cont.dataset.completado = 'true';
+  mostrarReintentar(grupo);
+}
+
+function mostrarReintentar(grupo) {
+  const caja = grupo.querySelector('.reintentar-caja');
+  if (!caja) return;
+  let segundos = 10;
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'btn-reintentar';
+  btn.disabled = true;
+  btn.textContent = `🔁 Volvé a intentar en ${segundos}s`;
+  caja.innerHTML = '';
+  caja.appendChild(btn);
+  const intervalo = setInterval(() => {
+    segundos -= 1;
+    if (segundos <= 0) {
+      clearInterval(intervalo);
+      btn.disabled = false;
+      btn.textContent = '🔁 Intentar de nuevo';
+    } else {
+      btn.textContent = `🔁 Volvé a intentar en ${segundos}s`;
+    }
+  }, 1000);
+  btn.onclick = () => reiniciarGrupo(grupo, caja);
+}
+
+function reiniciarGrupo(grupo, caja) {
+  grupo.querySelectorAll('.opcion').forEach((b) => {
+    b.disabled = false;
+    b.classList.remove('correcto', 'incorrecto');
+  });
+  delete grupo.dataset.resuelto;
+  const cont = grupo.closest('.ejercicio');
+  if (cont) delete cont.dataset.completado;
+  caja.innerHTML = '';
 }
 
 function matchingClickTermino(btn) {

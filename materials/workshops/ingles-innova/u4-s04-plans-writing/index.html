@@ -45,6 +45,10 @@
   th { background: #1CB0F61a; }
   
 .ejercicio { margin: 16px 0; }
+.ejercicio.multiple-choice { margin: 10px 0; }
+.pregunta-opciones { margin: 0 0 8px; font-weight: 600; }
+.opciones { display: flex; flex-wrap: wrap; gap: 8px; }
+.opciones .opcion { margin: 0; }
 .chip-palabra, .btn-revisar, .btn-reiniciar, .opcion, .btn-autocheck {
   cursor: pointer; border: 2px solid #d1d5db; border-radius: 10px; background: white;
   padding: 6px 14px; margin: 4px; font-size: 0.95em; font-family: inherit;
@@ -68,6 +72,13 @@
 .opcion:disabled { cursor: default; }
 .fila-vf { margin: 10px 0; }
 .fila-vf .afirmacion { display: block; margin-bottom: 4px; }
+.reintentar-caja { min-height: 1.6em; margin-top: 6px; }
+.btn-reintentar {
+  cursor: pointer; border: 2px solid #d1d5db; border-radius: 10px; background: #f3f4f6;
+  padding: 6px 14px; font-size: 0.9em; font-family: inherit;
+}
+.btn-reintentar:disabled { cursor: not-allowed; opacity: 0.6; }
+.btn-reintentar:not(:disabled):hover { border-color: #9ca3af; }
 .matching-progreso { font-weight: 600; color: #6b7280; margin: 4px 0 12px; }
 .matching-tablero { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
 .matching-columna { display: flex; flex-direction: column; gap: 10px; min-width: 170px; }
@@ -232,22 +243,22 @@
 🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="I want to see a movie, so I&#x27;m going to the movie theater.">▶ Escuchar</button> <em>"I want to see a movie, so I&#x27;m going to the movie theater."</em>
 🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="I want to mail a letter, so I&#x27;m going to the post office.">▶ Escuchar</button> <em>"I want to mail a letter, so I&#x27;m going to the post office."</em></p>
 <div class="bloque bloque-escritura"><h2>✏️ Escribí</h2>
-<div class="ejercicio autocheck" id="auto-17">
+<div class="ejercicio autocheck" id="auto-36">
   <p>Completá con tu propia idea: &quot;I want to ___, so I&#x27;m going to ___.&quot; Elegí entre: buy a computer, put gas in the car.</p>
   <textarea class="textarea-produccion" placeholder="Escribí tu respuesta acá..."></textarea>
   <button type="button" class="btn-autocheck" onclick="autocheckToggle(this)">✅ Ya lo escribí</button>
 </div></div>
 <div class="bloque bloque-spelling"><h2>🔤 Deletreo (Spelling)</h2>
-<div class="ejercicio spelling-gap" id="inp-18">
+<div class="ejercicio spelling-gap" id="inp-37">
   <div class="fila-completar"><span class="palabra-gap">b_y fr_its</span> <input type="text" class="input-completar" data-respuesta="buy fruits" size="12"></div><div class="fila-completar"><span class="palabra-gap">m_il a l_tter</span> <input type="text" class="input-completar" data-respuesta="mail a letter" size="12"></div><div class="fila-completar"><span class="palabra-gap">p_t g_s in the car</span> <input type="text" class="input-completar" data-respuesta="put gas in the car" size="12"></div>
   <div class="ejercicio-acciones">
-    <button type="button" class="btn-revisar" onclick="completarRevisar('inp-18')">Revisar</button>
+    <button type="button" class="btn-revisar" onclick="completarRevisar('inp-37')">Revisar</button>
   </div>
   <div class="feedback"></div>
 </div></div>
 <div class="bloque bloque-juego"><h2>🎮 ¡Hora de jugar! (True or False)</h2>
-<div class="ejercicio true-false" id="tf-19">
-  <div class="fila-vf"><span class="afirmacion">You buy fruits at the post office.</span><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">Verdadero</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">Falso</button></div><div class="fila-vf"><span class="afirmacion">You mail a letter at the post office.</span><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">Verdadero</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">Falso</button></div><div class="fila-vf"><span class="afirmacion">You put gas in the car at the supermarket.</span><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">Verdadero</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">Falso</button></div>
+<div class="ejercicio true-false" id="tf-38">
+  <div class="fila-vf"><span class="afirmacion">You buy fruits at the post office.</span><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">Verdadero</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">Falso</button><div class="reintentar-caja"></div></div><div class="fila-vf"><span class="afirmacion">You mail a letter at the post office.</span><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">Verdadero</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">Falso</button><div class="reintentar-caja"></div></div><div class="fila-vf"><span class="afirmacion">You put gas in the car at the supermarket.</span><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">Verdadero</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">Falso</button><div class="reintentar-caja"></div></div>
 </div>
 
 <p>¡Muy bien, ya sabés planear tu día! 🎉</p></div>
@@ -413,12 +424,44 @@ function opcionClick(btn) {
   const correcta = btn.getAttribute('data-correcta') === 'true';
   grupo.querySelectorAll('.opcion').forEach((b) => (b.disabled = true));
   btn.classList.add(correcta ? 'correcto' : 'incorrecto');
-  if (!correcta) {
-    const buena = grupo.querySelector('.opcion[data-correcta="true"]');
-    if (buena) buena.classList.add('correcto');
-  }
   grupo.dataset.resuelto = 'true';
   if (grupo === cont) cont.dataset.completado = 'true';
+  mostrarReintentar(grupo);
+}
+
+function mostrarReintentar(grupo) {
+  const caja = grupo.querySelector('.reintentar-caja');
+  if (!caja) return;
+  let segundos = 10;
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'btn-reintentar';
+  btn.disabled = true;
+  btn.textContent = `🔁 Volvé a intentar en ${segundos}s`;
+  caja.innerHTML = '';
+  caja.appendChild(btn);
+  const intervalo = setInterval(() => {
+    segundos -= 1;
+    if (segundos <= 0) {
+      clearInterval(intervalo);
+      btn.disabled = false;
+      btn.textContent = '🔁 Intentar de nuevo';
+    } else {
+      btn.textContent = `🔁 Volvé a intentar en ${segundos}s`;
+    }
+  }, 1000);
+  btn.onclick = () => reiniciarGrupo(grupo, caja);
+}
+
+function reiniciarGrupo(grupo, caja) {
+  grupo.querySelectorAll('.opcion').forEach((b) => {
+    b.disabled = false;
+    b.classList.remove('correcto', 'incorrecto');
+  });
+  delete grupo.dataset.resuelto;
+  const cont = grupo.closest('.ejercicio');
+  if (cont) delete cont.dataset.completado;
+  caja.innerHTML = '';
 }
 
 function matchingClickTermino(btn) {

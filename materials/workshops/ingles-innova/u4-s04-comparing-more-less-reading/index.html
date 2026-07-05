@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<title>Mi mapa de la ciudad</title>
+<title>Más o menos: comparando tiendas</title>
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&display=swap");
   body {
@@ -236,45 +236,47 @@
 </div>
 
   <div class="leccion-card">
-    <h1>Mi mapa de la ciudad</h1>
-<h2>¡Hola, cartógrafos! 🗺️</h2>
-<p>Hoy vamos a "escuchar" (leer en voz alta) una descripción de un mapa y ubicar los lugares. ¡Poné mucha atención! 👂</p>
-<div class="bloque bloque-listening"><h2>🎧 Escuchá: "Mi mapa de la ciudad"</h2>
-<p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a school next to the park.">▶ Escuchar</button> <em>"There is a school next to the park."</em>
-🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a hospital near the school.">▶ Escuchar</button> <em>"There is a hospital near the school."</em>
-🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a bank in the town center.">▶ Escuchar</button> <em>"There is a bank in the town center."</em>
-🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a post office next to the bank.">▶ Escuchar</button> <em>"There is a post office next to the bank."</em>
-🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a supermarket near the bus stop.">▶ Escuchar</button> <em>"There is a supermarket near the bus stop."</em></p>
-<div class="ejercicio multiple-choice" id="mc-17">
-  <p class="pregunta-opciones">¿Qué hay al lado de la school?</p>
-  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The hospital.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The bank.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">The park.</button></div>
+    <h1>Más o menos: comparando tiendas</h1>
+<h2>¡Hola, comparadores/as! 👋</h2>
+<p>Hoy vamos a aprender a comparar cosas usando <em>more</em> (más) y <em>less</em> (menos). ¡Vamos a leer sobre dos tiendas de joyas!</p>
+<div class="bloque bloque-lectura"><h2>📖 Lectura: "Two Jewelry Shops"</h2>
+<p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There are two jewelry shops in town: Silver Star and Golden Sun.">▶ Escuchar</button> <em>"There are two jewelry shops in town: Silver Star and Golden Sun."</em></p>
+<p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="Silver Star has more necklaces than Golden Sun.">▶ Escuchar</button> <em>"Silver Star has more necklaces than Golden Sun."</em></p>
+<p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="But Golden Sun has less bracelets than Silver Star.">▶ Escuchar</button> <em>"But Golden Sun has less bracelets than Silver Star."</em></p>
+<p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="The turquoise necklace at Silver Star is more expensive than the silver earrings.">▶ Escuchar</button> <em>"The turquoise necklace at Silver Star is more expensive than the silver earrings."</em></p>
+<p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="The beaded bracelet at Golden Sun is less expensive than the necklace.">▶ Escuchar</button> <em>"The beaded bracelet at Golden Sun is less expensive than the necklace."</em></p>
+<p><strong>¿Entendiste la lectura?</strong> Elegí la opción correcta para cada pregunta.</p>
+<div class="ejercicio multiple-choice" id="mc-31">
+  <p class="pregunta-opciones">Which shop has more necklaces?</p>
+  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">Golden Sun.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">Silver Star.</button></div>
   <div class="reintentar-caja"></div>
 </div>
 
-<div class="ejercicio multiple-choice" id="mc-18">
-  <p class="pregunta-opciones">¿Qué hay cerca de la school?</p>
-  <div class="opciones"><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">The hospital.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The post office.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The supermarket.</button></div>
+<div class="ejercicio multiple-choice" id="mc-32">
+  <p class="pregunta-opciones">Which shop has less bracelets?</p>
+  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">Silver Star.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">Golden Sun.</button></div>
   <div class="reintentar-caja"></div>
 </div>
 
-<div class="ejercicio multiple-choice" id="mc-19">
-  <p class="pregunta-opciones">¿Qué hay cerca de la bus stop?</p>
-  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The bank.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">The supermarket.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The school.</button></div>
+<div class="ejercicio multiple-choice" id="mc-33">
+  <p class="pregunta-opciones">Is the turquoise necklace more expensive than the silver earrings?</p>
+  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">No, it is cheaper.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">Yes, it is.</button></div>
   <div class="reintentar-caja"></div>
 </div></div>
 <div class="bloque bloque-completar"><h2>✍️ Completá la oración</h2>
-<div class="ejercicio completar-oraciones" id="inp-20">
-  <div class="fila-completar">There is a <input type="text" class="input-completar" data-respuesta="post office" size="10"> next to the bank.</div><div class="fila-completar">There is a <input type="text" class="input-completar" data-respuesta="supermarket" size="10"> near the bus stop.</div><div class="fila-completar">There is a <input type="text" class="input-completar" data-respuesta="bank" size="10"> in the town center.</div>
+<div class="ejercicio completar-oraciones" id="inp-34">
+  <div class="fila-completar">Silver Star has <input type="text" class="input-completar" data-respuesta="more" size="10"> necklaces than Golden Sun.</div><div class="fila-completar">Golden Sun has <input type="text" class="input-completar" data-respuesta="less" size="10"> bracelets than Silver Star.</div><div class="fila-completar">The necklace is <input type="text" class="input-completar" data-respuesta="more" size="10"> expensive than the earrings.</div>
   <div class="ejercicio-acciones">
-    <button type="button" class="btn-revisar" onclick="completarRevisar('inp-20')">Revisar</button>
+    <button type="button" class="btn-revisar" onclick="completarRevisar('inp-34')">Revisar</button>
   </div>
   <div class="feedback"></div>
 </div></div>
-<div class="bloque bloque-juego"><h2>🎮 ¡Hora de jugar! (Riddle)</h2>
-<div class="reveal-card" id="rv-21"><button type="button" class="reveal-pregunta" onclick="revealToggle('rv-21')"><span class="reveal-icono">❓</span><span class="reveal-texto">I&#x27;m thinking of a place where you send letters... what is it?</span><span class="reveal-flecha">▼</span></button><div class="reveal-respuesta"><p>🔊 post office</p></div></div>
-<div class="reveal-card" id="rv-22"><button type="button" class="reveal-pregunta" onclick="revealToggle('rv-22')"><span class="reveal-icono">❓</span><span class="reveal-texto">I&#x27;m thinking of a place where you buy food for your family... what is it?</span><span class="reveal-flecha">▼</span></button><div class="reveal-respuesta"><p>🔊 supermarket</p></div></div>
+<div class="bloque bloque-juego"><h2>🎮 ¡Hora de jugar! (True or False)</h2>
+<div class="ejercicio true-false" id="tf-35">
+  <div class="fila-vf"><span class="afirmacion">Silver Star has more necklaces than Golden Sun.</span><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">Verdadero</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">Falso</button><div class="reintentar-caja"></div></div><div class="fila-vf"><span class="afirmacion">The bracelet is more expensive than the necklace.</span><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">Verdadero</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">Falso</button><div class="reintentar-caja"></div></div><div class="fila-vf"><span class="afirmacion">Golden Sun has less bracelets than Silver Star.</span><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">Verdadero</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">Falso</button><div class="reintentar-caja"></div></div>
+</div>
 
-<p>¡Excelente trabajo, explorador/a! 🎉</p></div>
+<p>¡Genial, lo lograste! 🎉</p></div>
   </div>
   
 <button type="button" class="btn-constancia-flotante" onclick="abrirConstancia()">📋 Constancia</button>
@@ -286,8 +288,8 @@
       <p class="constancia-emoji">📜</p>
       <h2>Constancia de lección completada</h2>
       <p class="constancia-leccion" id="constancia-leccion"
-         data-titulo="Mi mapa de la ciudad"
-         data-leccion-id="u4-s02-map-locations-listening"></p>
+         data-titulo="Más o menos: comparando tiendas"
+         data-leccion-id="u4-s04-comparing-more-less-reading"></p>
       <div class="constancia-datos">
         <div class="constancia-dato">
           <span class="constancia-etiqueta">Estudiante</span>

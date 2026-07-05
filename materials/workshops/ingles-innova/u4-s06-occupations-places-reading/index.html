@@ -45,6 +45,10 @@
   th { background: #1CB0F61a; }
   
 .ejercicio { margin: 16px 0; }
+.ejercicio.multiple-choice { margin: 10px 0; }
+.pregunta-opciones { margin: 0 0 8px; font-weight: 600; }
+.opciones { display: flex; flex-wrap: wrap; gap: 8px; }
+.opciones .opcion { margin: 0; }
 .chip-palabra, .btn-revisar, .btn-reiniciar, .opcion, .btn-autocheck {
   cursor: pointer; border: 2px solid #d1d5db; border-radius: 10px; background: white;
   padding: 6px 14px; margin: 4px; font-size: 0.95em; font-family: inherit;
@@ -68,6 +72,13 @@
 .opcion:disabled { cursor: default; }
 .fila-vf { margin: 10px 0; }
 .fila-vf .afirmacion { display: block; margin-bottom: 4px; }
+.reintentar-caja { min-height: 1.6em; margin-top: 6px; }
+.btn-reintentar {
+  cursor: pointer; border: 2px solid #d1d5db; border-radius: 10px; background: #f3f4f6;
+  padding: 6px 14px; font-size: 0.9em; font-family: inherit;
+}
+.btn-reintentar:disabled { cursor: not-allowed; opacity: 0.6; }
+.btn-reintentar:not(:disabled):hover { border-color: #9ca3af; }
 .matching-progreso { font-weight: 600; color: #6b7280; margin: 4px 0 12px; }
 .matching-tablero { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
 .matching-columna { display: flex; flex-direction: column; gap: 10px; min-width: 170px; }
@@ -233,19 +244,33 @@
 <p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="Ana wants to be a singer. She sings at the restaurant.">▶ Escuchar</button> <em>"Ana wants to be a singer. She sings at the restaurant."</em></p>
 <p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="Leo wants to be an actor. He practices every day.">▶ Escuchar</button> <em>"Leo wants to be an actor. He practices every day."</em></p>
 <p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="Sofia wants to be a vet. She loves animals.">▶ Escuchar</button> <em>"Sofia wants to be a vet. She loves animals."</em></p>
-<div class="reveal-card" id="rv-23"><button type="button" class="reveal-pregunta" onclick="revealToggle('rv-23')"><span class="reveal-icono">❓</span><span class="reveal-texto">¿Qué quiere ser Max?</span><span class="reveal-flecha">▼</span></button><div class="reveal-respuesta"><p>💡 A writer.</p></div></div>
-<div class="reveal-card" id="rv-24"><button type="button" class="reveal-pregunta" onclick="revealToggle('rv-24')"><span class="reveal-icono">❓</span><span class="reveal-texto">¿Dónde canta Ana?</span><span class="reveal-flecha">▼</span></button><div class="reveal-respuesta"><p>💡 At the restaurant.</p></div></div>
-<div class="reveal-card" id="rv-25"><button type="button" class="reveal-pregunta" onclick="revealToggle('rv-25')"><span class="reveal-icono">❓</span><span class="reveal-texto">¿Qué quiere ser Sofia?</span><span class="reveal-flecha">▼</span></button><div class="reveal-respuesta"><p>💡 A vet.</p></div></div></div>
+<div class="ejercicio multiple-choice" id="mc-49">
+  <p class="pregunta-opciones">¿Qué quiere ser Max?</p>
+  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">A singer.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">A writer.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">An actor.</button></div>
+  <div class="reintentar-caja"></div>
+</div>
+
+<div class="ejercicio multiple-choice" id="mc-50">
+  <p class="pregunta-opciones">¿Dónde canta Ana?</p>
+  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">At the bookstore.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">At the restaurant.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">At home.</button></div>
+  <div class="reintentar-caja"></div>
+</div>
+
+<div class="ejercicio multiple-choice" id="mc-51">
+  <p class="pregunta-opciones">¿Qué quiere ser Sofia?</p>
+  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">An actor.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">A writer.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">A vet.</button></div>
+  <div class="reintentar-caja"></div>
+</div></div>
 <div class="bloque bloque-completar"><h2>✍️ Completá la oración</h2>
-<div class="ejercicio completar-oraciones" id="inp-26">
+<div class="ejercicio completar-oraciones" id="inp-52">
   <div class="fila-completar">Max wants to be a <input type="text" class="input-completar" data-respuesta="writer" size="10">.</div><div class="fila-completar">Ana wants to be a <input type="text" class="input-completar" data-respuesta="singer" size="10">.</div><div class="fila-completar">Sofia wants to be a <input type="text" class="input-completar" data-respuesta="vet" size="10">.</div>
   <div class="ejercicio-acciones">
-    <button type="button" class="btn-revisar" onclick="completarRevisar('inp-26')">Revisar</button>
+    <button type="button" class="btn-revisar" onclick="completarRevisar('inp-52')">Revisar</button>
   </div>
   <div class="feedback"></div>
 </div></div>
 <div class="bloque bloque-juego"><h2>🎮 ¡Hora de jugar! (Word Search)</h2>
-<div class="ejercicio word-search" id="ws-27" data-inicio="" data-palabras="ACTOR,SINGER,WRITER,VET">
+<div class="ejercicio word-search" id="ws-53" data-inicio="" data-palabras="ACTOR,SINGER,WRITER,VET">
   <table class="ws-grid"><tr><td class="ws-celda" data-row="0" data-col="0" data-letra="A" onclick="wordSearchClick(this)">A</td><td class="ws-celda" data-row="0" data-col="1" data-letra="C" onclick="wordSearchClick(this)">C</td><td class="ws-celda" data-row="0" data-col="2" data-letra="T" onclick="wordSearchClick(this)">T</td><td class="ws-celda" data-row="0" data-col="3" data-letra="O" onclick="wordSearchClick(this)">O</td><td class="ws-celda" data-row="0" data-col="4" data-letra="R" onclick="wordSearchClick(this)">R</td><td class="ws-celda" data-row="0" data-col="5" data-letra="X" onclick="wordSearchClick(this)">X</td></tr><tr><td class="ws-celda" data-row="1" data-col="0" data-letra="S" onclick="wordSearchClick(this)">S</td><td class="ws-celda" data-row="1" data-col="1" data-letra="I" onclick="wordSearchClick(this)">I</td><td class="ws-celda" data-row="1" data-col="2" data-letra="N" onclick="wordSearchClick(this)">N</td><td class="ws-celda" data-row="1" data-col="3" data-letra="G" onclick="wordSearchClick(this)">G</td><td class="ws-celda" data-row="1" data-col="4" data-letra="E" onclick="wordSearchClick(this)">E</td><td class="ws-celda" data-row="1" data-col="5" data-letra="R" onclick="wordSearchClick(this)">R</td></tr><tr><td class="ws-celda" data-row="2" data-col="0" data-letra="W" onclick="wordSearchClick(this)">W</td><td class="ws-celda" data-row="2" data-col="1" data-letra="R" onclick="wordSearchClick(this)">R</td><td class="ws-celda" data-row="2" data-col="2" data-letra="I" onclick="wordSearchClick(this)">I</td><td class="ws-celda" data-row="2" data-col="3" data-letra="T" onclick="wordSearchClick(this)">T</td><td class="ws-celda" data-row="2" data-col="4" data-letra="E" onclick="wordSearchClick(this)">E</td><td class="ws-celda" data-row="2" data-col="5" data-letra="R" onclick="wordSearchClick(this)">R</td></tr><tr><td class="ws-celda" data-row="3" data-col="0" data-letra="X" onclick="wordSearchClick(this)">X</td><td class="ws-celda" data-row="3" data-col="1" data-letra="X" onclick="wordSearchClick(this)">X</td><td class="ws-celda" data-row="3" data-col="2" data-letra="V" onclick="wordSearchClick(this)">V</td><td class="ws-celda" data-row="3" data-col="3" data-letra="E" onclick="wordSearchClick(this)">E</td><td class="ws-celda" data-row="3" data-col="4" data-letra="T" onclick="wordSearchClick(this)">T</td><td class="ws-celda" data-row="3" data-col="5" data-letra="X" onclick="wordSearchClick(this)">X</td></tr></table>
   <div class="ws-lista"><span class="ws-palabra" data-palabra="ACTOR">ACTOR</span><span class="ws-palabra" data-palabra="SINGER">SINGER</span><span class="ws-palabra" data-palabra="WRITER">WRITER</span><span class="ws-palabra" data-palabra="VET">VET</span></div>
 </div>
@@ -413,12 +438,44 @@ function opcionClick(btn) {
   const correcta = btn.getAttribute('data-correcta') === 'true';
   grupo.querySelectorAll('.opcion').forEach((b) => (b.disabled = true));
   btn.classList.add(correcta ? 'correcto' : 'incorrecto');
-  if (!correcta) {
-    const buena = grupo.querySelector('.opcion[data-correcta="true"]');
-    if (buena) buena.classList.add('correcto');
-  }
   grupo.dataset.resuelto = 'true';
   if (grupo === cont) cont.dataset.completado = 'true';
+  mostrarReintentar(grupo);
+}
+
+function mostrarReintentar(grupo) {
+  const caja = grupo.querySelector('.reintentar-caja');
+  if (!caja) return;
+  let segundos = 10;
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'btn-reintentar';
+  btn.disabled = true;
+  btn.textContent = `🔁 Volvé a intentar en ${segundos}s`;
+  caja.innerHTML = '';
+  caja.appendChild(btn);
+  const intervalo = setInterval(() => {
+    segundos -= 1;
+    if (segundos <= 0) {
+      clearInterval(intervalo);
+      btn.disabled = false;
+      btn.textContent = '🔁 Intentar de nuevo';
+    } else {
+      btn.textContent = `🔁 Volvé a intentar en ${segundos}s`;
+    }
+  }, 1000);
+  btn.onclick = () => reiniciarGrupo(grupo, caja);
+}
+
+function reiniciarGrupo(grupo, caja) {
+  grupo.querySelectorAll('.opcion').forEach((b) => {
+    b.disabled = false;
+    b.classList.remove('correcto', 'incorrecto');
+  });
+  delete grupo.dataset.resuelto;
+  const cont = grupo.closest('.ejercicio');
+  if (cont) delete cont.dataset.completado;
+  caja.innerHTML = '';
 }
 
 function matchingClickTermino(btn) {

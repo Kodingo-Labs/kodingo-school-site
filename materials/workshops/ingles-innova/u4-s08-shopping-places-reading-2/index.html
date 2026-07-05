@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<title>Mi mapa de la ciudad</title>
+<title>Buscando información en la tienda</title>
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&display=swap");
   body {
@@ -236,45 +236,51 @@
 </div>
 
   <div class="leccion-card">
-    <h1>Mi mapa de la ciudad</h1>
-<h2>¡Hola, cartógrafos! 🗺️</h2>
-<p>Hoy vamos a "escuchar" (leer en voz alta) una descripción de un mapa y ubicar los lugares. ¡Poné mucha atención! 👂</p>
-<div class="bloque bloque-listening"><h2>🎧 Escuchá: "Mi mapa de la ciudad"</h2>
-<p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a school next to the park.">▶ Escuchar</button> <em>"There is a school next to the park."</em>
-🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a hospital near the school.">▶ Escuchar</button> <em>"There is a hospital near the school."</em>
-🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a bank in the town center.">▶ Escuchar</button> <em>"There is a bank in the town center."</em>
-🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a post office next to the bank.">▶ Escuchar</button> <em>"There is a post office next to the bank."</em>
-🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a supermarket near the bus stop.">▶ Escuchar</button> <em>"There is a supermarket near the bus stop."</em></p>
-<div class="ejercicio multiple-choice" id="mc-17">
-  <p class="pregunta-opciones">¿Qué hay al lado de la school?</p>
-  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The hospital.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The bank.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">The park.</button></div>
+    <h1>Buscando información en la tienda</h1>
+<h2>¡Hola, detectives de compras! 🕵️</h2>
+<p>Hoy vas a leer un texto sobre las tiendas del pueblo y buscar información específica. ¡A leer con atención!</p>
+<div class="bloque bloque-lectura"><h2>📖 Lectura: "Four Stores in Town"</h2>
+<p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There are four stores in town: the department store, the market, the grocery store, and the shoes store.">▶ Escuchar</button> <em>"There are four stores in town: the department store, the market, the grocery store, and the shoes store."</em></p>
+<p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="The department store is the biggest store in town.">▶ Escuchar</button> <em>"The department store is the biggest store in town."</em></p>
+<p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="The market is the cheapest place to buy fruit.">▶ Escuchar</button> <em>"The market is the cheapest place to buy fruit."</em></p>
+<p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="The shoes store has the most expensive shoes.">▶ Escuchar</button> <em>"The shoes store has the most expensive shoes."</em></p>
+<p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="The grocery store is the closest store to my house.">▶ Escuchar</button> <em>"The grocery store is the closest store to my house."</em></p>
+<p><strong>¿Encontraste la información?</strong> Elegí la opción correcta para cada pregunta.</p>
+<div class="ejercicio multiple-choice" id="mc-65">
+  <p class="pregunta-opciones">Which is the biggest store?</p>
+  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The market.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">The department store.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The shoes store.</button></div>
   <div class="reintentar-caja"></div>
 </div>
 
-<div class="ejercicio multiple-choice" id="mc-18">
-  <p class="pregunta-opciones">¿Qué hay cerca de la school?</p>
-  <div class="opciones"><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">The hospital.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The post office.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The supermarket.</button></div>
+<div class="ejercicio multiple-choice" id="mc-66">
+  <p class="pregunta-opciones">Which is the cheapest place to buy fruit?</p>
+  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The grocery store.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">The market.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The department store.</button></div>
   <div class="reintentar-caja"></div>
 </div>
 
-<div class="ejercicio multiple-choice" id="mc-19">
-  <p class="pregunta-opciones">¿Qué hay cerca de la bus stop?</p>
-  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The bank.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">The supermarket.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The school.</button></div>
+<div class="ejercicio multiple-choice" id="mc-67">
+  <p class="pregunta-opciones">Which store has the most expensive shoes?</p>
+  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The department store.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The grocery store.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">The shoes store.</button></div>
   <div class="reintentar-caja"></div>
 </div></div>
 <div class="bloque bloque-completar"><h2>✍️ Completá la oración</h2>
-<div class="ejercicio completar-oraciones" id="inp-20">
-  <div class="fila-completar">There is a <input type="text" class="input-completar" data-respuesta="post office" size="10"> next to the bank.</div><div class="fila-completar">There is a <input type="text" class="input-completar" data-respuesta="supermarket" size="10"> near the bus stop.</div><div class="fila-completar">There is a <input type="text" class="input-completar" data-respuesta="bank" size="10"> in the town center.</div>
+<div class="ejercicio completar-oraciones" id="inp-68">
+  <div class="fila-completar">The department store is the <input type="text" class="input-completar" data-respuesta="biggest" size="10"> store in town.</div><div class="fila-completar">The market is the <input type="text" class="input-completar" data-respuesta="cheapest" size="10"> place to buy fruit.</div><div class="fila-completar">The shoes store has the <input type="text" class="input-completar" data-respuesta="most" size="10"> expensive shoes.</div>
   <div class="ejercicio-acciones">
-    <button type="button" class="btn-revisar" onclick="completarRevisar('inp-20')">Revisar</button>
+    <button type="button" class="btn-revisar" onclick="completarRevisar('inp-68')">Revisar</button>
   </div>
   <div class="feedback"></div>
 </div></div>
-<div class="bloque bloque-juego"><h2>🎮 ¡Hora de jugar! (Riddle)</h2>
-<div class="reveal-card" id="rv-21"><button type="button" class="reveal-pregunta" onclick="revealToggle('rv-21')"><span class="reveal-icono">❓</span><span class="reveal-texto">I&#x27;m thinking of a place where you send letters... what is it?</span><span class="reveal-flecha">▼</span></button><div class="reveal-respuesta"><p>🔊 post office</p></div></div>
-<div class="reveal-card" id="rv-22"><button type="button" class="reveal-pregunta" onclick="revealToggle('rv-22')"><span class="reveal-icono">❓</span><span class="reveal-texto">I&#x27;m thinking of a place where you buy food for your family... what is it?</span><span class="reveal-flecha">▼</span></button><div class="reveal-respuesta"><p>🔊 supermarket</p></div></div>
+<div class="bloque bloque-juego"><h2>🎮 ¡Hora de jugar! (Matching)</h2>
+<div class="ejercicio matching" id="match-69" data-seleccionado="" data-total="4" data-encontrados="0">
+  <p class="matching-progreso">0 / 4 emparejados</p>
+  <div class="matching-tablero">
+    <div class="matching-columna"><button type="button" class="matching-termino" data-idx="0" onclick="matchingClickTermino(this)"><span class="matching-texto">department store</span></button><button type="button" class="matching-termino" data-idx="1" onclick="matchingClickTermino(this)"><span class="matching-texto">market</span></button><button type="button" class="matching-termino" data-idx="2" onclick="matchingClickTermino(this)"><span class="matching-texto">shoes store</span></button><button type="button" class="matching-termino" data-idx="3" onclick="matchingClickTermino(this)"><span class="matching-texto">grocery store</span></button></div>
+    <div class="matching-columna"><button type="button" class="matching-definicion" data-idx="0" onclick="matchingClickDefinicion(this)"><span class="matching-texto">The biggest store in town</span></button><button type="button" class="matching-definicion" data-idx="1" onclick="matchingClickDefinicion(this)"><span class="matching-texto">The cheapest place to buy fruit</span></button><button type="button" class="matching-definicion" data-idx="3" onclick="matchingClickDefinicion(this)"><span class="matching-texto">The closest store to my house</span></button><button type="button" class="matching-definicion" data-idx="2" onclick="matchingClickDefinicion(this)"><span class="matching-texto">Has the most expensive shoes</span></button></div>
+  </div>
+</div>
 
-<p>¡Excelente trabajo, explorador/a! 🎉</p></div>
+<p>¡Genial, lo lograste! 🎉</p></div>
   </div>
   
 <button type="button" class="btn-constancia-flotante" onclick="abrirConstancia()">📋 Constancia</button>
@@ -286,8 +292,8 @@
       <p class="constancia-emoji">📜</p>
       <h2>Constancia de lección completada</h2>
       <p class="constancia-leccion" id="constancia-leccion"
-         data-titulo="Mi mapa de la ciudad"
-         data-leccion-id="u4-s02-map-locations-listening"></p>
+         data-titulo="Buscando información en la tienda"
+         data-leccion-id="u4-s08-shopping-places-reading-2"></p>
       <div class="constancia-datos">
         <div class="constancia-dato">
           <span class="constancia-etiqueta">Estudiante</span>

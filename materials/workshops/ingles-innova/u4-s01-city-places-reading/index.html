@@ -45,6 +45,10 @@
   th { background: #1CB0F61a; }
   
 .ejercicio { margin: 16px 0; }
+.ejercicio.multiple-choice { margin: 10px 0; }
+.pregunta-opciones { margin: 0 0 8px; font-weight: 600; }
+.opciones { display: flex; flex-wrap: wrap; gap: 8px; }
+.opciones .opcion { margin: 0; }
 .chip-palabra, .btn-revisar, .btn-reiniciar, .opcion, .btn-autocheck {
   cursor: pointer; border: 2px solid #d1d5db; border-radius: 10px; background: white;
   padding: 6px 14px; margin: 4px; font-size: 0.95em; font-family: inherit;
@@ -68,6 +72,13 @@
 .opcion:disabled { cursor: default; }
 .fila-vf { margin: 10px 0; }
 .fila-vf .afirmacion { display: block; margin-bottom: 4px; }
+.reintentar-caja { min-height: 1.6em; margin-top: 6px; }
+.btn-reintentar {
+  cursor: pointer; border: 2px solid #d1d5db; border-radius: 10px; background: #f3f4f6;
+  padding: 6px 14px; font-size: 0.9em; font-family: inherit;
+}
+.btn-reintentar:disabled { cursor: not-allowed; opacity: 0.6; }
+.btn-reintentar:not(:disabled):hover { border-color: #9ca3af; }
 .matching-progreso { font-weight: 600; color: #6b7280; margin: 4px 0 12px; }
 .matching-tablero { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
 .matching-columna { display: flex; flex-direction: column; gap: 10px; min-width: 170px; }
@@ -234,14 +245,28 @@
 <p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="Then, she is hungry. There is a restaurant near the bookstore.">▶ Escuchar</button> <em>"Then, she is hungry. There is a restaurant near the bookstore."</em></p>
 <p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="Lily eats a pizza at the restaurant. Yummy!">▶ Escuchar</button> <em>"Lily eats a pizza at the restaurant. Yummy!"</em></p>
 <p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="After lunch, she goes to the park and plays with her dog.">▶ Escuchar</button> <em>"After lunch, she goes to the park and plays with her dog."</em></p>
-<p><strong>¿Entendiste la historia?</strong> Tocá cada pregunta para revelar la respuesta.</p>
-<div class="reveal-card" id="rv-1"><button type="button" class="reveal-pregunta" onclick="revealToggle('rv-1')"><span class="reveal-icono">❓</span><span class="reveal-texto">¿Adónde quiere ir Lily primero?</span><span class="reveal-flecha">▼</span></button><div class="reveal-respuesta"><p>💡 To the bookstore.</p></div></div>
-<div class="reveal-card" id="rv-2"><button type="button" class="reveal-pregunta" onclick="revealToggle('rv-2')"><span class="reveal-icono">❓</span><span class="reveal-texto">¿Qué compra en la bookstore?</span><span class="reveal-flecha">▼</span></button><div class="reveal-respuesta"><p>💡 A book about dinosaurs.</p></div></div>
-<div class="reveal-card" id="rv-3"><button type="button" class="reveal-pregunta" onclick="revealToggle('rv-3')"><span class="reveal-icono">❓</span><span class="reveal-texto">¿Adónde va después del restaurant?</span><span class="reveal-flecha">▼</span></button><div class="reveal-respuesta"><p>💡 To the park.</p></div></div></div>
+<p><strong>¿Entendiste la historia?</strong> Elegí la opción correcta para cada pregunta.</p>
+<div class="ejercicio multiple-choice" id="mc-1">
+  <p class="pregunta-opciones">¿Adónde quiere ir Lily primero?</p>
+  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">To the park.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">To the bookstore.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">To the restaurant.</button></div>
+  <div class="reintentar-caja"></div>
+</div>
+
+<div class="ejercicio multiple-choice" id="mc-2">
+  <p class="pregunta-opciones">¿Qué compra en la bookstore?</p>
+  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">A book about animals.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">A book about dinosaurs.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">A pizza.</button></div>
+  <div class="reintentar-caja"></div>
+</div>
+
+<div class="ejercicio multiple-choice" id="mc-3">
+  <p class="pregunta-opciones">¿Adónde va después del restaurant?</p>
+  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">To the bus stop.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">To the bookstore.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">To the park.</button></div>
+  <div class="reintentar-caja"></div>
+</div></div>
 <div class="bloque bloque-ordenar"><h2>🧩 Ordená la oración</h2>
 <p>Armá la oración correcta clickeando las palabras en orden.</p>
 <div class="ejercicio ordenar-palabras" id="ord-4" data-respuesta="There is a restaurant near the bookstore.">
-  <div class="banco-palabras"><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">there</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">is</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">near</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">a</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">restaurant</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">the bookstore</button></div>
+  <div class="banco-palabras"><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">is</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">near</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">there</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">restaurant</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">a</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">the bookstore</button></div>
   <div class="respuesta-armada" aria-label="Tu oración"></div>
   <div class="ejercicio-acciones">
     <button type="button" class="btn-revisar" onclick="ordenarRevisar('ord-4')">Revisar</button>
@@ -251,7 +276,7 @@
 </div>
 
 <div class="ejercicio ordenar-palabras" id="ord-5" data-respuesta="There is a bus stop in my city.">
-  <div class="banco-palabras"><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">there</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">my city</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">stop</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">bus</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">a</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">is</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">in</button></div>
+  <div class="banco-palabras"><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">there</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">bus</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">my city</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">a</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">is</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">in</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">stop</button></div>
   <div class="respuesta-armada" aria-label="Tu oración"></div>
   <div class="ejercicio-acciones">
     <button type="button" class="btn-revisar" onclick="ordenarRevisar('ord-5')">Revisar</button>
@@ -265,7 +290,7 @@
   <p class="matching-progreso">0 / 4 emparejados</p>
   <div class="matching-tablero">
     <div class="matching-columna"><button type="button" class="matching-termino" data-idx="0" onclick="matchingClickTermino(this)"><span class="matching-texto">bus stop</span></button><button type="button" class="matching-termino" data-idx="1" onclick="matchingClickTermino(this)"><span class="matching-texto">bookstore</span></button><button type="button" class="matching-termino" data-idx="2" onclick="matchingClickTermino(this)"><span class="matching-texto">restaurant</span></button><button type="button" class="matching-termino" data-idx="3" onclick="matchingClickTermino(this)"><span class="matching-texto">park</span></button></div>
-    <div class="matching-columna"><button type="button" class="matching-definicion" data-idx="1" onclick="matchingClickDefinicion(this)"><span class="matching-texto">A place to buy books</span></button><button type="button" class="matching-definicion" data-idx="2" onclick="matchingClickDefinicion(this)"><span class="matching-texto">A place to eat food</span></button><button type="button" class="matching-definicion" data-idx="0" onclick="matchingClickDefinicion(this)"><span class="matching-texto">A place where you wait for the bus</span></button><button type="button" class="matching-definicion" data-idx="3" onclick="matchingClickDefinicion(this)"><span class="matching-texto">A place to play outside</span></button></div>
+    <div class="matching-columna"><button type="button" class="matching-definicion" data-idx="2" onclick="matchingClickDefinicion(this)"><span class="matching-texto">A place to eat food</span></button><button type="button" class="matching-definicion" data-idx="0" onclick="matchingClickDefinicion(this)"><span class="matching-texto">A place where you wait for the bus</span></button><button type="button" class="matching-definicion" data-idx="1" onclick="matchingClickDefinicion(this)"><span class="matching-texto">A place to buy books</span></button><button type="button" class="matching-definicion" data-idx="3" onclick="matchingClickDefinicion(this)"><span class="matching-texto">A place to play outside</span></button></div>
   </div>
 </div>
 
@@ -432,12 +457,44 @@ function opcionClick(btn) {
   const correcta = btn.getAttribute('data-correcta') === 'true';
   grupo.querySelectorAll('.opcion').forEach((b) => (b.disabled = true));
   btn.classList.add(correcta ? 'correcto' : 'incorrecto');
-  if (!correcta) {
-    const buena = grupo.querySelector('.opcion[data-correcta="true"]');
-    if (buena) buena.classList.add('correcto');
-  }
   grupo.dataset.resuelto = 'true';
   if (grupo === cont) cont.dataset.completado = 'true';
+  mostrarReintentar(grupo);
+}
+
+function mostrarReintentar(grupo) {
+  const caja = grupo.querySelector('.reintentar-caja');
+  if (!caja) return;
+  let segundos = 10;
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'btn-reintentar';
+  btn.disabled = true;
+  btn.textContent = `🔁 Volvé a intentar en ${segundos}s`;
+  caja.innerHTML = '';
+  caja.appendChild(btn);
+  const intervalo = setInterval(() => {
+    segundos -= 1;
+    if (segundos <= 0) {
+      clearInterval(intervalo);
+      btn.disabled = false;
+      btn.textContent = '🔁 Intentar de nuevo';
+    } else {
+      btn.textContent = `🔁 Volvé a intentar en ${segundos}s`;
+    }
+  }, 1000);
+  btn.onclick = () => reiniciarGrupo(grupo, caja);
+}
+
+function reiniciarGrupo(grupo, caja) {
+  grupo.querySelectorAll('.opcion').forEach((b) => {
+    b.disabled = false;
+    b.classList.remove('correcto', 'incorrecto');
+  });
+  delete grupo.dataset.resuelto;
+  const cont = grupo.closest('.ejercicio');
+  if (cont) delete cont.dataset.completado;
+  caja.innerHTML = '';
 }
 
 function matchingClickTermino(btn) {

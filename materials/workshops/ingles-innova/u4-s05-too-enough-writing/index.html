@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<title>Mi mapa de la ciudad</title>
+<title>Demasiado caro... o justo lo que necesito</title>
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&display=swap");
   body {
@@ -236,45 +236,36 @@
 </div>
 
   <div class="leccion-card">
-    <h1>Mi mapa de la ciudad</h1>
-<h2>¡Hola, cartógrafos! 🗺️</h2>
-<p>Hoy vamos a "escuchar" (leer en voz alta) una descripción de un mapa y ubicar los lugares. ¡Poné mucha atención! 👂</p>
-<div class="bloque bloque-listening"><h2>🎧 Escuchá: "Mi mapa de la ciudad"</h2>
-<p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a school next to the park.">▶ Escuchar</button> <em>"There is a school next to the park."</em>
-🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a hospital near the school.">▶ Escuchar</button> <em>"There is a hospital near the school."</em>
-🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a bank in the town center.">▶ Escuchar</button> <em>"There is a bank in the town center."</em>
-🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a post office next to the bank.">▶ Escuchar</button> <em>"There is a post office next to the bank."</em>
-🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="There is a supermarket near the bus stop.">▶ Escuchar</button> <em>"There is a supermarket near the bus stop."</em></p>
-<div class="ejercicio multiple-choice" id="mc-17">
-  <p class="pregunta-opciones">¿Qué hay al lado de la school?</p>
-  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The hospital.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The bank.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">The park.</button></div>
-  <div class="reintentar-caja"></div>
-</div>
-
-<div class="ejercicio multiple-choice" id="mc-18">
-  <p class="pregunta-opciones">¿Qué hay cerca de la school?</p>
-  <div class="opciones"><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">The hospital.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The post office.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The supermarket.</button></div>
-  <div class="reintentar-caja"></div>
-</div>
-
-<div class="ejercicio multiple-choice" id="mc-19">
-  <p class="pregunta-opciones">¿Qué hay cerca de la bus stop?</p>
-  <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The bank.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">The supermarket.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The school.</button></div>
-  <div class="reintentar-caja"></div>
+    <h1>Demasiado caro... o justo lo que necesito</h1>
+<h2>¡Hola, escritores/as! ✏️</h2>
+<p>Hoy vas a completar una hoja de trabajo sobre el <em>craft fair</em>, usando <em>too</em> (demasiado) y <em>enough</em> (suficiente).</p>
+<p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="This picture frame is too expensive for me.">▶ Escuchar</button> <em>"This picture frame is too expensive for me."</em></p>
+<p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="I don&#x27;t have enough money for the balloons.">▶ Escuchar</button> <em>"I don&#x27;t have enough money for the balloons."</em></p>
+<div class="bloque bloque-escritura"><h2>✏️ Escribí</h2>
+<p>Mirá estas cosas del craft fair: <strong>a picture frame, a bunch of balloons, craft supplies</strong>. Escribí 2 o 3 oraciones usando <em>too</em> o <em>enough</em>.</p>
+<div class="ejercicio autocheck" id="auto-42">
+  <p>Escribí tus oraciones. Ejemplo: &quot;The craft supplies are cheap enough to buy today.&quot;</p>
+  <textarea class="textarea-produccion" placeholder="Escribí tu respuesta acá..."></textarea>
+  <button type="button" class="btn-autocheck" onclick="autocheckToggle(this)">✅ Ya lo escribí</button>
 </div></div>
 <div class="bloque bloque-completar"><h2>✍️ Completá la oración</h2>
-<div class="ejercicio completar-oraciones" id="inp-20">
-  <div class="fila-completar">There is a <input type="text" class="input-completar" data-respuesta="post office" size="10"> next to the bank.</div><div class="fila-completar">There is a <input type="text" class="input-completar" data-respuesta="supermarket" size="10"> near the bus stop.</div><div class="fila-completar">There is a <input type="text" class="input-completar" data-respuesta="bank" size="10"> in the town center.</div>
+<div class="ejercicio completar-oraciones" id="inp-43">
+  <div class="fila-completar">This picture frame is too <input type="text" class="input-completar" data-respuesta="expensive" size="10">.</div><div class="fila-completar">I don&#x27;t have <input type="text" class="input-completar" data-respuesta="enough" size="10"> money for the balloons.</div><div class="fila-completar">The craft supplies are cheap <input type="text" class="input-completar" data-respuesta="enough" size="10"> to buy today.</div>
   <div class="ejercicio-acciones">
-    <button type="button" class="btn-revisar" onclick="completarRevisar('inp-20')">Revisar</button>
+    <button type="button" class="btn-revisar" onclick="completarRevisar('inp-43')">Revisar</button>
   </div>
   <div class="feedback"></div>
 </div></div>
-<div class="bloque bloque-juego"><h2>🎮 ¡Hora de jugar! (Riddle)</h2>
-<div class="reveal-card" id="rv-21"><button type="button" class="reveal-pregunta" onclick="revealToggle('rv-21')"><span class="reveal-icono">❓</span><span class="reveal-texto">I&#x27;m thinking of a place where you send letters... what is it?</span><span class="reveal-flecha">▼</span></button><div class="reveal-respuesta"><p>🔊 post office</p></div></div>
-<div class="reveal-card" id="rv-22"><button type="button" class="reveal-pregunta" onclick="revealToggle('rv-22')"><span class="reveal-icono">❓</span><span class="reveal-texto">I&#x27;m thinking of a place where you buy food for your family... what is it?</span><span class="reveal-flecha">▼</span></button><div class="reveal-respuesta"><p>🔊 supermarket</p></div></div>
+<div class="bloque bloque-juego"><h2>🎮 ¡Hora de jugar! (Spelling)</h2>
+<div class="ejercicio spelling-gap" id="inp-44">
+  <div class="fila-completar"><span class="palabra-gap">fr_me</span> <input type="text" class="input-completar" data-respuesta="frame" size="12"></div><div class="fila-completar"><span class="palabra-gap">b_ll__ns</span> <input type="text" class="input-completar" data-respuesta="balloons" size="12"></div><div class="fila-completar"><span class="palabra-gap">s_ppl_es</span> <input type="text" class="input-completar" data-respuesta="supplies" size="12"></div>
+  <div class="ejercicio-acciones">
+    <button type="button" class="btn-revisar" onclick="completarRevisar('inp-44')">Revisar</button>
+  </div>
+  <div class="feedback"></div>
+</div>
 
-<p>¡Excelente trabajo, explorador/a! 🎉</p></div>
+<p>¡Genial, lo lograste! 🎉</p></div>
   </div>
   
 <button type="button" class="btn-constancia-flotante" onclick="abrirConstancia()">📋 Constancia</button>
@@ -286,8 +277,8 @@
       <p class="constancia-emoji">📜</p>
       <h2>Constancia de lección completada</h2>
       <p class="constancia-leccion" id="constancia-leccion"
-         data-titulo="Mi mapa de la ciudad"
-         data-leccion-id="u4-s02-map-locations-listening"></p>
+         data-titulo="Demasiado caro... o justo lo que necesito"
+         data-leccion-id="u4-s05-too-enough-writing"></p>
       <div class="constancia-datos">
         <div class="constancia-dato">
           <span class="constancia-etiqueta">Estudiante</span>

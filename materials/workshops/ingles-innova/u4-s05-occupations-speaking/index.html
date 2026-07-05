@@ -45,6 +45,10 @@
   th { background: #1CB0F61a; }
   
 .ejercicio { margin: 16px 0; }
+.ejercicio.multiple-choice { margin: 10px 0; }
+.pregunta-opciones { margin: 0 0 8px; font-weight: 600; }
+.opciones { display: flex; flex-wrap: wrap; gap: 8px; }
+.opciones .opcion { margin: 0; }
 .chip-palabra, .btn-revisar, .btn-reiniciar, .opcion, .btn-autocheck {
   cursor: pointer; border: 2px solid #d1d5db; border-radius: 10px; background: white;
   padding: 6px 14px; margin: 4px; font-size: 0.95em; font-family: inherit;
@@ -68,6 +72,13 @@
 .opcion:disabled { cursor: default; }
 .fila-vf { margin: 10px 0; }
 .fila-vf .afirmacion { display: block; margin-bottom: 4px; }
+.reintentar-caja { min-height: 1.6em; margin-top: 6px; }
+.btn-reintentar {
+  cursor: pointer; border: 2px solid #d1d5db; border-radius: 10px; background: #f3f4f6;
+  padding: 6px 14px; font-size: 0.9em; font-family: inherit;
+}
+.btn-reintentar:disabled { cursor: not-allowed; opacity: 0.6; }
+.btn-reintentar:not(:disabled):hover { border-color: #9ca3af; }
 .matching-progreso { font-weight: 600; color: #6b7280; margin: 4px 0 12px; }
 .matching-tablero { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
 .matching-columna { display: flex; flex-direction: column; gap: 10px; min-width: 170px; }
@@ -232,26 +243,26 @@
 <div class="bloque bloque-oral"><h2>🗣️ Practicá en voz alta</h2>
 <p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="I want to be a doctor.">▶ Escuchar</button> <em>"I want to be a doctor."</em>
 🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="I want to be an athlete.">▶ Escuchar</button> <em>"I want to be an athlete."</em></p>
-<div class="ejercicio autocheck" id="auto-20">
+<div class="ejercicio autocheck" id="auto-39">
   <p>Practicá decir: &quot;I want to be a ___&quot; con tu profesión favorita.</p>
 
   <button type="button" class="btn-autocheck" onclick="autocheckToggle(this)">✅ Ya lo practiqué en voz alta</button>
 </div></div>
 <div class="bloque bloque-ordenar"><h2>🧩 Ordená la oración</h2>
-<div class="ejercicio ordenar-palabras" id="ord-21" data-respuesta="I want to be a teacher.">
-  <div class="banco-palabras"><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">I</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">be</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">a</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">want</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">teacher</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">to</button></div>
+<div class="ejercicio ordenar-palabras" id="ord-40" data-respuesta="I want to be a teacher.">
+  <div class="banco-palabras"><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">want</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">be</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">a</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">teacher</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">I</button><button type="button" class="chip-palabra" onclick="ordenarClickBanco(this)">to</button></div>
   <div class="respuesta-armada" aria-label="Tu oración"></div>
   <div class="ejercicio-acciones">
-    <button type="button" class="btn-revisar" onclick="ordenarRevisar('ord-21')">Revisar</button>
-    <button type="button" class="btn-reiniciar" onclick="ordenarReiniciar('ord-21')">Reiniciar</button>
+    <button type="button" class="btn-revisar" onclick="ordenarRevisar('ord-40')">Revisar</button>
+    <button type="button" class="btn-reiniciar" onclick="ordenarReiniciar('ord-40')">Reiniciar</button>
   </div>
   <div class="feedback"></div>
 </div></div>
 <div class="bloque bloque-juego"><h2>🎮 ¡Hora de jugar! (Spelling Gap)</h2>
-<div class="ejercicio spelling-gap" id="inp-22">
+<div class="ejercicio spelling-gap" id="inp-41">
   <div class="fila-completar"><span class="palabra-gap">d_ct_r</span> <input type="text" class="input-completar" data-respuesta="doctor" size="12"></div><div class="fila-completar"><span class="palabra-gap">te_ch_r</span> <input type="text" class="input-completar" data-respuesta="teacher" size="12"></div><div class="fila-completar"><span class="palabra-gap">p_l_t</span> <input type="text" class="input-completar" data-respuesta="pilot" size="12"></div>
   <div class="ejercicio-acciones">
-    <button type="button" class="btn-revisar" onclick="completarRevisar('inp-22')">Revisar</button>
+    <button type="button" class="btn-revisar" onclick="completarRevisar('inp-41')">Revisar</button>
   </div>
   <div class="feedback"></div>
 </div>
@@ -419,12 +430,44 @@ function opcionClick(btn) {
   const correcta = btn.getAttribute('data-correcta') === 'true';
   grupo.querySelectorAll('.opcion').forEach((b) => (b.disabled = true));
   btn.classList.add(correcta ? 'correcto' : 'incorrecto');
-  if (!correcta) {
-    const buena = grupo.querySelector('.opcion[data-correcta="true"]');
-    if (buena) buena.classList.add('correcto');
-  }
   grupo.dataset.resuelto = 'true';
   if (grupo === cont) cont.dataset.completado = 'true';
+  mostrarReintentar(grupo);
+}
+
+function mostrarReintentar(grupo) {
+  const caja = grupo.querySelector('.reintentar-caja');
+  if (!caja) return;
+  let segundos = 10;
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'btn-reintentar';
+  btn.disabled = true;
+  btn.textContent = `🔁 Volvé a intentar en ${segundos}s`;
+  caja.innerHTML = '';
+  caja.appendChild(btn);
+  const intervalo = setInterval(() => {
+    segundos -= 1;
+    if (segundos <= 0) {
+      clearInterval(intervalo);
+      btn.disabled = false;
+      btn.textContent = '🔁 Intentar de nuevo';
+    } else {
+      btn.textContent = `🔁 Volvé a intentar en ${segundos}s`;
+    }
+  }, 1000);
+  btn.onclick = () => reiniciarGrupo(grupo, caja);
+}
+
+function reiniciarGrupo(grupo, caja) {
+  grupo.querySelectorAll('.opcion').forEach((b) => {
+    b.disabled = false;
+    b.classList.remove('correcto', 'incorrecto');
+  });
+  delete grupo.dataset.resuelto;
+  const cont = grupo.closest('.ejercicio');
+  if (cont) delete cont.dataset.completado;
+  caja.innerHTML = '';
 }
 
 function matchingClickTermino(btn) {
