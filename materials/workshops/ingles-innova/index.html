@@ -2,37 +2,86 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<title>ingles-innova — kodingo school</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ingles Innova — kodingo school</title>
 <style>
-  body { font-family: -apple-system, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; color: #1f2937; }
-  h1 { font-size: 1.4em; }
-  h2 { font-size: 1.1em; margin-top: 28px; }
-  h3 { font-size: 0.95em; color: #555; margin: 14px 0 4px; }
-  ul { padding-left: 1.2em; }
-  a { color: #1CB0F6; text-decoration: none; }
-  a:hover { text-decoration: underline; }
+  @import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&display=swap");
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Baloo 2', 'Trebuchet MS', sans-serif; background: #FFF8E7; color: #3C3C3C;
+    margin: 0; padding: 48px 20px; min-height: 100vh; line-height: 1.5;
+  }
+  .page-card {
+    max-width: 760px; margin: 0 auto; background: white; border-radius: 20px;
+    padding: 40px 44px; box-shadow: 0 6px 28px rgba(0,0,0,0.10);
+  }
+  .page-card h1 { margin: 0 0 6px; font-size: 1.9em; color: #58CC02; }
+  .subtitulo { color: #8a8a8a; margin: 0 0 8px; font-size: 0.95em; }
+  .grado-pill {
+    display: inline-block; background: #58CC02; color: white;
+    font-weight: 700; font-size: 0.8em; letter-spacing: 0.02em;
+    padding: 5px 14px; border-radius: 999px; margin: 26px 0 2px;
+  }
+  .unidad-titulo {
+    margin: 16px 0 10px; font-size: 1em; color: #1CB0F6; font-weight: 700;
+    border-bottom: 2px solid #1CB0F633; padding-bottom: 4px;
+  }
+  .sesiones { display: flex; flex-direction: column; gap: 8px; margin: 0 0 4px; padding: 0; list-style: none; }
+  .sesion-link {
+    display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px;
+    background: #1CB0F612; border-left: 4px solid #1CB0F6;
+    color: #3C3C3C; text-decoration: none; font-weight: 600;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .sesion-link:hover { transform: translateX(4px); box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+  .sesion-num {
+    flex: none; width: 26px; height: 26px; border-radius: 50%; background: #58CC02;
+    color: white; font-size: 0.78em; font-weight: 700; display: flex; align-items: center; justify-content: center;
+  }
+  .boton {
+    display: inline-block; margin-top: 30px; padding: 9px 20px; border-radius: 999px;
+    background: #58CC02; color: white; text-decoration: none; font-weight: 700; font-size: 0.88em;
+    transition: filter 0.1s ease, transform 0.1s ease;
+  }
+  .boton:hover { filter: brightness(1.08); transform: scale(1.02); }
+  .boton-grande { padding: 14px 30px; font-size: 1.05em; margin-top: 22px; }
+  .materia-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px; margin: 8px 0 0; padding: 0; list-style: none;
+  }
+  .materia-card {
+    display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 30px 16px;
+    border-radius: 16px; text-decoration: none; color: white; font-weight: 700; font-size: 1.05em;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.12); transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .materia-card:hover { transform: translateY(-4px); box-shadow: 0 8px 18px rgba(0,0,0,0.16); }
+  .materia-emoji { font-size: 2.3em; }
 </style>
 </head>
 <body>
-<h1>🇬🇧 ingles-innova</h1>
-<h2>G2</h2>
-<h3>U4</h3><ul>
-<li><a href="u4-s01-city-places-reading/index.html">Un paseo por la ciudad</a></li>
-<li><a href="u4-s02-map-locations-listening/index.html">Mi mapa de la ciudad</a></li>
-<li><a href="u4-s03-city-places-speaking/index.html">¿Qué hay en tu ciudad?</a></li>
-<li><a href="u4-s04-plans-writing/index.html">¿Qué querés hacer hoy?</a></li>
-<li><a href="u4-s05-occupations-speaking/index.html">¿Qué querés ser de grande?</a></li>
-<li><a href="u4-s06-occupations-places-reading/index.html">El cuento de los oficios</a></li>
-<li><a href="u4-s07-ideal-city-writing/index.html">Mi ciudad ideal</a></li>
-<li><a href="u4-s08-occupations-listening/index.html">Escuchando profesiones</a></li>
-<li><a href="u4-s09-city-places-reading-2/index.html">Lugares de mi ciudad</a></li>
-<li><a href="u4-s10-occupations-writing/index.html">Lo que queremos ser</a></li>
-<li><a href="u4-s11-map-brainstorming/index.html">Preparando mi presentación</a></li>
-<li><a href="u4-s12-map-oral-presentation-1/index.html">Mi presentación: el mapa de mi barrio (parte 1)</a></li>
-<li><a href="u4-s13-map-oral-presentation-2/index.html">Mi presentación: el mapa de mi barrio (parte 2)</a></li>
-<li><a href="u4-s14a-occupations-listening-test/index.html">Evaluación: profesiones</a></li>
-<li><a href="u4-s14b-story-reading-hour/index.html">Hora del cuento</a></li>
+  <div class="page-card">
+    <h1>🇬🇧 Ingles Innova</h1>
+<p class="subtitulo">15 lección(es) publicada(s)</p>
+<div class="grado-pill">G2</div>
+<h2 class="unidad-titulo">U4</h2>
+<ul class="sesiones">
+<li><a class="sesion-link" href="u4-s01-city-places-reading/index.html"><span class="sesion-num">1</span>Un paseo por la ciudad</a></li>
+<li><a class="sesion-link" href="u4-s02-map-locations-listening/index.html"><span class="sesion-num">2</span>Mi mapa de la ciudad</a></li>
+<li><a class="sesion-link" href="u4-s03-city-places-speaking/index.html"><span class="sesion-num">3</span>¿Qué hay en tu ciudad?</a></li>
+<li><a class="sesion-link" href="u4-s04-plans-writing/index.html"><span class="sesion-num">4</span>¿Qué querés hacer hoy?</a></li>
+<li><a class="sesion-link" href="u4-s05-occupations-speaking/index.html"><span class="sesion-num">5</span>¿Qué querés ser de grande?</a></li>
+<li><a class="sesion-link" href="u4-s06-occupations-places-reading/index.html"><span class="sesion-num">6</span>El cuento de los oficios</a></li>
+<li><a class="sesion-link" href="u4-s07-ideal-city-writing/index.html"><span class="sesion-num">7</span>Mi ciudad ideal</a></li>
+<li><a class="sesion-link" href="u4-s08-occupations-listening/index.html"><span class="sesion-num">8</span>Escuchando profesiones</a></li>
+<li><a class="sesion-link" href="u4-s09-city-places-reading-2/index.html"><span class="sesion-num">9</span>Lugares de mi ciudad</a></li>
+<li><a class="sesion-link" href="u4-s10-occupations-writing/index.html"><span class="sesion-num">10</span>Lo que queremos ser</a></li>
+<li><a class="sesion-link" href="u4-s11-map-brainstorming/index.html"><span class="sesion-num">11</span>Preparando mi presentación</a></li>
+<li><a class="sesion-link" href="u4-s12-map-oral-presentation-1/index.html"><span class="sesion-num">12</span>Mi presentación: el mapa de mi barrio (parte 1)</a></li>
+<li><a class="sesion-link" href="u4-s13-map-oral-presentation-2/index.html"><span class="sesion-num">13</span>Mi presentación: el mapa de mi barrio (parte 2)</a></li>
+<li><a class="sesion-link" href="u4-s14a-occupations-listening-test/index.html"><span class="sesion-num">14</span>Evaluación: profesiones</a></li>
+<li><a class="sesion-link" href="u4-s14b-story-reading-hour/index.html"><span class="sesion-num">15</span>Hora del cuento</a></li>
 </ul>
-<p><a href="../index.html">← Todas las materias</a></p>
+<a class="boton" href="../index.html">← Todas las materias</a>
+  </div>
 </body>
 </html>
