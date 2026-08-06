@@ -137,6 +137,70 @@
 .btn-autocheck.hecho { background: #dcfce7; border-color: #16a34a; }
 
   
+.progreso-barra-wrap { display: flex; align-items: center; gap: 10px; margin: 0 0 22px; }
+.progreso-barra { flex: 1; height: 10px; border-radius: 999px; background: #e5e7eb; overflow: hidden; }
+.progreso-relleno {
+  height: 100%; width: 0%; background: #16a34a; border-radius: 999px;
+  transition: width 0.35s ease;
+}
+.progreso-texto { font-size: 0.82em; font-weight: 700; color: #6b7280; white-space: nowrap; }
+
+.ejercicio, .reveal-card { position: relative; }
+.ejercicio.ejercicio-completado::after, .reveal-card.ejercicio-completado::after {
+  content: "✅ Ya lo hiciste"; position: absolute; top: -12px; right: 10px;
+  background: #16a34a; color: white; font-size: 0.68em; font-weight: 700;
+  padding: 2px 10px; border-radius: 999px; box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+  animation: progreso-marcado 0.4s ease;
+}
+@keyframes progreso-marcado {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ejercicio-chispa {
+  position: absolute; top: -14px; right: 14px; font-size: 1.15em; pointer-events: none;
+  animation: chispa-flotar 0.9s ease forwards;
+}
+@keyframes chispa-flotar {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+  25% { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--chispa-x, 20px), -46px) scale(1.15) rotate(var(--chispa-rot, 20deg)); }
+}
+
+.confeti-pieza {
+  position: fixed; top: -20px; width: 8px; height: 14px; pointer-events: none; z-index: 200;
+  animation-name: confeti-caer; animation-timing-function: linear; animation-fill-mode: forwards;
+}
+@keyframes confeti-caer {
+  to { transform: translateY(110vh) rotate(var(--confeti-rot, 360deg)); opacity: 0.85; }
+}
+
+.celebracion-leccion {
+  display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+  align-items: center; justify-content: center; z-index: 90;
+}
+.celebracion-leccion.abierta { display: flex; }
+.celebracion-panel {
+  width: 90%; max-width: 320px; background: white; border-radius: 18px; padding: 30px 26px;
+  text-align: center; box-shadow: 0 12px 44px rgba(0,0,0,0.3); animation: celebracion-entrada 0.35s ease;
+}
+@keyframes celebracion-entrada {
+  from { opacity: 0; transform: scale(0.85) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.celebracion-panel .celebracion-emoji { font-size: 2.6em; margin: 0 0 4px; }
+.celebracion-panel h2 { margin: 0 0 6px; }
+.celebracion-panel p { margin: 0 0 18px; color: #6b7280; font-size: 0.92em; }
+.celebracion-panel button {
+  border: none; border-radius: 999px; padding: 10px 26px; cursor: pointer;
+  font-weight: 700; font-size: 0.92em; background: #16a34a; color: white;
+}
+
+@media print {
+  .progreso-barra-wrap, .confeti-pieza, .celebracion-leccion { display: none !important; }
+}
+
+  
 .btn-constancia-flotante {
   position: fixed; bottom: 20px; right: 20px; z-index: 50;
   border: none; border-radius: 999px; padding: 12px 20px; font-size: 0.95em; font-weight: 600;
@@ -242,6 +306,14 @@
 </div>
 
   <div class="leccion-card">
+    
+<div class="progreso-barra-wrap" id="progreso-barra-wrap">
+  <div class="progreso-barra">
+    <div class="progreso-relleno" id="progreso-relleno"></div>
+  </div>
+  <span class="progreso-texto" id="progreso-texto"></span>
+</div>
+
     <h1>Escuchá: dispositivos del futuro</h1>
 <h2>¡Hola de nuevo! 👋</h2>
 <p>Vas a "escuchar" (leyendo) una descripción de tres dispositivos increíbles. 🎧</p>
@@ -250,26 +322,26 @@
 <p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="Will the computer be foldable? Yes, it will! It&#x27;s a foldable PC.">▶ Escuchar</button> <em>"Will the computer be foldable? Yes, it will! It&#x27;s a foldable PC."</em></p>
 <p>🔊 <button class="escuchar-btn" onclick="speakText(this)" data-text="Will people need wings to fly? No, they won&#x27;t. They will use a flying suit.">▶ Escuchar</button> <em>"Will people need wings to fly? No, they won&#x27;t. They will use a flying suit."</em></p>
 <p><strong>¿Qué escuchaste?</strong> Elegí la opción correcta.</p>
-<div class="ejercicio multiple-choice" id="mc-1">
+<div class="ejercicio multiple-choice" id="mc-166">
   <p class="pregunta-opciones">Will the TV screen be transparent?</p>
   <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">No, it won&#x27;t.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">Yes, it will.</button></div>
   <div class="reintentar-caja"></div>
 </div>
 
-<div class="ejercicio multiple-choice" id="mc-2">
+<div class="ejercicio multiple-choice" id="mc-167">
   <p class="pregunta-opciones">What is foldable?</p>
   <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The TV screen.</button><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">The flying suit.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">The PC.</button></div>
   <div class="reintentar-caja"></div>
 </div>
 
-<div class="ejercicio multiple-choice" id="mc-3">
+<div class="ejercicio multiple-choice" id="mc-168">
   <p class="pregunta-opciones">Do people need wings to fly in the future?</p>
   <div class="opciones"><button type="button" class="opcion" data-correcta="false" onclick="opcionClick(this)">Yes, they will.</button><button type="button" class="opcion" data-correcta="true" onclick="opcionClick(this)">No, they won&#x27;t.</button></div>
   <div class="reintentar-caja"></div>
 </div></div>
 <div class="bloque bloque-juego"><h2>🎮 ¡Hora de jugar! (Word Search)</h2>
 <p>Buscá estas palabras en la grilla: CAR, SUIT, SCREEN, JEANS, BATTERY, SHIP.</p>
-<div class="ejercicio word-search" id="ws-4" data-inicio="" data-palabras="CAR,SUIT,SCREEN,JEANS,BATTERY,SHIP">
+<div class="ejercicio word-search" id="ws-169" data-inicio="" data-palabras="CAR,SUIT,SCREEN,JEANS,BATTERY,SHIP">
   <table class="ws-grid"><tr><td class="ws-celda" data-row="0" data-col="0" data-letra="C" onclick="wordSearchClick(this)">C</td><td class="ws-celda" data-row="0" data-col="1" data-letra="A" onclick="wordSearchClick(this)">A</td><td class="ws-celda" data-row="0" data-col="2" data-letra="R" onclick="wordSearchClick(this)">R</td><td class="ws-celda" data-row="0" data-col="3" data-letra="X" onclick="wordSearchClick(this)">X</td><td class="ws-celda" data-row="0" data-col="4" data-letra="Y" onclick="wordSearchClick(this)">Y</td><td class="ws-celda" data-row="0" data-col="5" data-letra="Z" onclick="wordSearchClick(this)">Z</td><td class="ws-celda" data-row="0" data-col="6" data-letra="W" onclick="wordSearchClick(this)">W</td><td class="ws-celda" data-row="0" data-col="7" data-letra="V" onclick="wordSearchClick(this)">V</td></tr><tr><td class="ws-celda" data-row="1" data-col="0" data-letra="S" onclick="wordSearchClick(this)">S</td><td class="ws-celda" data-row="1" data-col="1" data-letra="U" onclick="wordSearchClick(this)">U</td><td class="ws-celda" data-row="1" data-col="2" data-letra="I" onclick="wordSearchClick(this)">I</td><td class="ws-celda" data-row="1" data-col="3" data-letra="T" onclick="wordSearchClick(this)">T</td><td class="ws-celda" data-row="1" data-col="4" data-letra="X" onclick="wordSearchClick(this)">X</td><td class="ws-celda" data-row="1" data-col="5" data-letra="Y" onclick="wordSearchClick(this)">Y</td><td class="ws-celda" data-row="1" data-col="6" data-letra="Z" onclick="wordSearchClick(this)">Z</td><td class="ws-celda" data-row="1" data-col="7" data-letra="W" onclick="wordSearchClick(this)">W</td></tr><tr><td class="ws-celda" data-row="2" data-col="0" data-letra="S" onclick="wordSearchClick(this)">S</td><td class="ws-celda" data-row="2" data-col="1" data-letra="C" onclick="wordSearchClick(this)">C</td><td class="ws-celda" data-row="2" data-col="2" data-letra="R" onclick="wordSearchClick(this)">R</td><td class="ws-celda" data-row="2" data-col="3" data-letra="E" onclick="wordSearchClick(this)">E</td><td class="ws-celda" data-row="2" data-col="4" data-letra="E" onclick="wordSearchClick(this)">E</td><td class="ws-celda" data-row="2" data-col="5" data-letra="N" onclick="wordSearchClick(this)">N</td><td class="ws-celda" data-row="2" data-col="6" data-letra="X" onclick="wordSearchClick(this)">X</td><td class="ws-celda" data-row="2" data-col="7" data-letra="F" onclick="wordSearchClick(this)">F</td></tr><tr><td class="ws-celda" data-row="3" data-col="0" data-letra="J" onclick="wordSearchClick(this)">J</td><td class="ws-celda" data-row="3" data-col="1" data-letra="E" onclick="wordSearchClick(this)">E</td><td class="ws-celda" data-row="3" data-col="2" data-letra="A" onclick="wordSearchClick(this)">A</td><td class="ws-celda" data-row="3" data-col="3" data-letra="N" onclick="wordSearchClick(this)">N</td><td class="ws-celda" data-row="3" data-col="4" data-letra="S" onclick="wordSearchClick(this)">S</td><td class="ws-celda" data-row="3" data-col="5" data-letra="X" onclick="wordSearchClick(this)">X</td><td class="ws-celda" data-row="3" data-col="6" data-letra="Y" onclick="wordSearchClick(this)">Y</td><td class="ws-celda" data-row="3" data-col="7" data-letra="Z" onclick="wordSearchClick(this)">Z</td></tr><tr><td class="ws-celda" data-row="4" data-col="0" data-letra="B" onclick="wordSearchClick(this)">B</td><td class="ws-celda" data-row="4" data-col="1" data-letra="A" onclick="wordSearchClick(this)">A</td><td class="ws-celda" data-row="4" data-col="2" data-letra="T" onclick="wordSearchClick(this)">T</td><td class="ws-celda" data-row="4" data-col="3" data-letra="T" onclick="wordSearchClick(this)">T</td><td class="ws-celda" data-row="4" data-col="4" data-letra="E" onclick="wordSearchClick(this)">E</td><td class="ws-celda" data-row="4" data-col="5" data-letra="R" onclick="wordSearchClick(this)">R</td><td class="ws-celda" data-row="4" data-col="6" data-letra="Y" onclick="wordSearchClick(this)">Y</td><td class="ws-celda" data-row="4" data-col="7" data-letra="X" onclick="wordSearchClick(this)">X</td></tr><tr><td class="ws-celda" data-row="5" data-col="0" data-letra="S" onclick="wordSearchClick(this)">S</td><td class="ws-celda" data-row="5" data-col="1" data-letra="H" onclick="wordSearchClick(this)">H</td><td class="ws-celda" data-row="5" data-col="2" data-letra="I" onclick="wordSearchClick(this)">I</td><td class="ws-celda" data-row="5" data-col="3" data-letra="P" onclick="wordSearchClick(this)">P</td><td class="ws-celda" data-row="5" data-col="4" data-letra="X" onclick="wordSearchClick(this)">X</td><td class="ws-celda" data-row="5" data-col="5" data-letra="Y" onclick="wordSearchClick(this)">Y</td><td class="ws-celda" data-row="5" data-col="6" data-letra="Z" onclick="wordSearchClick(this)">Z</td><td class="ws-celda" data-row="5" data-col="7" data-letra="W" onclick="wordSearchClick(this)">W</td></tr></table>
   <div class="ws-lista"><span class="ws-palabra" data-palabra="CAR">CAR</span><span class="ws-palabra" data-palabra="SUIT">SUIT</span><span class="ws-palabra" data-palabra="SCREEN">SCREEN</span><span class="ws-palabra" data-palabra="JEANS">JEANS</span><span class="ws-palabra" data-palabra="BATTERY">BATTERY</span><span class="ws-palabra" data-palabra="SHIP">SHIP</span></div>
 </div>
@@ -309,6 +381,16 @@
     <div class="constancia-acciones">
       <button type="button" onclick="copiarConstanciaComoImagen()">🖼️ Copiar como imagen</button>
     </div>
+  </div>
+</div>
+
+  
+<div class="celebracion-leccion" id="celebracion-leccion">
+  <div class="celebracion-panel">
+    <p class="celebracion-emoji">🎉</p>
+    <h2>¡Lección completada!</h2>
+    <p>Hiciste todos los ejercicios de esta lección. ¡Muy bien!</p>
+    <button type="button" onclick="cerrarCelebracion()">Genial</button>
   </div>
 </div>
 
@@ -401,6 +483,7 @@ function ordenarRevisar(wid) {
     feedback.className = 'feedback incorrecto';
   }
   cont.dataset.completado = 'true';
+  actualizarProgresoEjercicio(cont);
 }
 function ordenarReiniciar(wid) {
   const cont = document.getElementById(wid);
@@ -427,6 +510,7 @@ function completarRevisar(wid) {
   feedback.textContent = todasCorrectas ? '✅ ¡Todo correcto!' : '❌ Revisá las marcadas en rojo.';
   feedback.className = 'feedback ' + (todasCorrectas ? 'correcto' : 'incorrecto');
   cont.dataset.completado = 'true';
+  actualizarProgresoEjercicio(cont);
 }
 
 function opcionClick(btn) {
@@ -439,6 +523,7 @@ function opcionClick(btn) {
   btn.classList.add(correcta ? 'correcto' : 'incorrecto');
   grupo.dataset.resuelto = 'true';
   if (grupo === cont) cont.dataset.completado = 'true';
+  actualizarProgresoEjercicio(cont);
   mostrarReintentar(grupo);
 }
 
@@ -473,7 +558,10 @@ function reiniciarGrupo(grupo, caja) {
   });
   delete grupo.dataset.resuelto;
   const cont = grupo.closest('.ejercicio');
-  if (cont) delete cont.dataset.completado;
+  if (cont) {
+    delete cont.dataset.completado;
+    actualizarProgresoEjercicio(cont);
+  }
   caja.innerHTML = '';
 }
 
@@ -499,7 +587,10 @@ function matchingClickDefinicion(btn) {
     const total = Number(cont.dataset.total);
     const progreso = cont.querySelector('.matching-progreso');
     progreso.textContent = encontrados + ' / ' + total + ' emparejados';
-    if (encontrados === total) cont.classList.add('completo');
+    if (encontrados === total) {
+      cont.classList.add('completo');
+      actualizarProgresoEjercicio(cont);
+    }
   } else {
     btn.classList.add('incorrecto');
     setTimeout(() => btn.classList.remove('incorrecto'), 500);
@@ -550,11 +641,13 @@ function wordSearchClick(celda) {
     celdas.forEach((c) => c.classList.add('encontrada'));
     const item = cont.querySelector('.ws-palabra[data-palabra="' + encontrada + '"]');
     if (item) item.classList.add('encontrada-item');
+    actualizarProgresoEjercicio(cont);
   }
 }
 
 function autocheckToggle(btn) {
   btn.classList.toggle('hecho');
+  actualizarProgresoEjercicio(btn.closest('.ejercicio'));
 }
 
     
@@ -580,6 +673,106 @@ function contarProgreso() {
   return { completados: completados, total: ejercicios.length };
 }
 
+function idLeccionActual() {
+  const el = document.getElementById('constancia-leccion');
+  return (el && el.dataset.leccionId) || 'sin-id';
+}
+
+function claveProgreso(leccionId) {
+  return 'kodingo_progreso_' + leccionId;
+}
+
+function leerProgresoGuardado() {
+  try { return JSON.parse(localStorage.getItem(claveProgreso(idLeccionActual())) || '{}'); }
+  catch (err) { return {}; }
+}
+
+function guardarProgresoEjercicio(wid, completado) {
+  if (!wid) return;
+  const mapa = leerProgresoGuardado();
+  if (completado) mapa[wid] = true; else delete mapa[wid];
+  try { localStorage.setItem(claveProgreso(idLeccionActual()), JSON.stringify(mapa)); }
+  catch (err) { /* localStorage no disponible (ej. navegación privada) — seguimos sin recordar */ }
+}
+
+function actualizarBarraProgreso() {
+  const relleno = document.getElementById('progreso-relleno');
+  const texto = document.getElementById('progreso-texto');
+  if (!relleno || !texto) return;
+  const progreso = contarProgreso();
+  const pct = progreso.total > 0 ? Math.round((progreso.completados / progreso.total) * 100) : 0;
+  relleno.style.width = pct + '%';
+  texto.textContent = progreso.completados + ' / ' + progreso.total;
+}
+
+const COLORES_CONFETI = ['#16a34a', '#6366f1', '#f59e0b', '#ef4444', '#06b6d4', '#ec4899'];
+let leccionCelebrada = false;
+
+function lanzarConfeti(cantidad) {
+  for (let i = 0; i < cantidad; i++) {
+    const pieza = document.createElement('div');
+    pieza.className = 'confeti-pieza';
+    pieza.style.left = Math.random() * 100 + 'vw';
+    pieza.style.background = COLORES_CONFETI[Math.floor(Math.random() * COLORES_CONFETI.length)];
+    pieza.style.setProperty('--confeti-rot', (Math.random() * 720 - 360) + 'deg');
+    pieza.style.animationDuration = (1.6 + Math.random() * 1.2) + 's';
+    document.body.appendChild(pieza);
+    setTimeout(() => pieza.remove(), 3000);
+  }
+}
+
+function celebrarEjercicio(ej) {
+  const emojis = ['✨', '🎉', '⭐'];
+  for (let i = 0; i < 3; i++) {
+    const chispa = document.createElement('span');
+    chispa.className = 'ejercicio-chispa';
+    chispa.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    chispa.style.setProperty('--chispa-x', (Math.random() * 40 - 20) + 'px');
+    chispa.style.setProperty('--chispa-rot', (Math.random() * 40 - 20) + 'deg');
+    chispa.style.right = (10 + Math.random() * 20) + 'px';
+    ej.appendChild(chispa);
+    setTimeout(() => chispa.remove(), 900);
+  }
+}
+
+function celebrarLeccionCompleta() {
+  lanzarConfeti(60);
+  const overlay = document.getElementById('celebracion-leccion');
+  if (overlay) overlay.classList.add('abierta');
+}
+
+function cerrarCelebracion() {
+  document.getElementById('celebracion-leccion').classList.remove('abierta');
+}
+
+function actualizarProgresoEjercicio(ej) {
+  if (!ej || !ej.id) return;
+  const yaEstaba = leerProgresoGuardado()[ej.id] === true;
+  const completado = ejercicioCompletado(ej);
+  guardarProgresoEjercicio(ej.id, completado);
+  ej.classList.toggle('ejercicio-completado', completado);
+  actualizarBarraProgreso();
+  if (!completado) return;
+  if (!yaEstaba) celebrarEjercicio(ej);
+  const progreso = contarProgreso();
+  if (progreso.total > 0 && progreso.completados === progreso.total && !leccionCelebrada) {
+    leccionCelebrada = true;
+    celebrarLeccionCompleta();
+  }
+}
+
+function restaurarProgresoGuardado() {
+  const guardado = leerProgresoGuardado();
+  Object.keys(guardado).forEach((wid) => {
+    const ej = document.getElementById(wid);
+    if (ej) ej.classList.add('ejercicio-completado');
+  });
+  actualizarBarraProgreso();
+}
+
+document.addEventListener('DOMContentLoaded', restaurarProgresoGuardado);
+
+    
 function abrirConstancia() {
   const progreso = contarProgreso();
 
