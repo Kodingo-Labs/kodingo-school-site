@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Impresion 3D — kodingo school</title>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap");
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Fredoka', 'Trebuchet MS', sans-serif; background: #F7F7F2; color: #2B2B2B;
+    margin: 0; padding: 48px 20px; min-height: 100vh; line-height: 1.5;
+  }
+  .page-card {
+    max-width: 760px; margin: 0 auto; background: white; border-radius: 20px;
+    padding: 40px 44px; box-shadow: 0 6px 28px rgba(0,0,0,0.10);
+  }
+  .page-card h1 { margin: 0 0 6px; font-size: 1.9em; color: #FF6B35; }
+  .subtitulo { color: #8a8a8a; margin: 0 0 8px; font-size: 0.95em; }
+  .grado-pill {
+    display: inline-block; background: #FF6B35; color: white;
+    font-weight: 700; font-size: 0.8em; letter-spacing: 0.02em;
+    padding: 5px 14px; border-radius: 999px; margin: 26px 0 2px;
+  }
+  .unidad-titulo {
+    margin: 16px 0 10px; font-size: 1em; color: #2EC4B6; font-weight: 700;
+    border-bottom: 2px solid #2EC4B633; padding-bottom: 4px;
+  }
+  .sesiones { display: flex; flex-direction: column; gap: 8px; margin: 0 0 4px; padding: 0; list-style: none; }
+  .sesion-link {
+    display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px;
+    background: #2EC4B612; border-left: 4px solid #2EC4B6;
+    color: #2B2B2B; text-decoration: none; font-weight: 600;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .sesion-link:hover { transform: translateX(4px); box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+  .sesion-num {
+    flex: none; width: 26px; height: 26px; border-radius: 50%; background: #FF6B35;
+    color: white; font-size: 0.78em; font-weight: 700; display: flex; align-items: center; justify-content: center;
+  }
+  .boton {
+    display: inline-block; margin-top: 30px; padding: 9px 20px; border-radius: 999px;
+    background: #FF6B35; color: white; text-decoration: none; font-weight: 700; font-size: 0.88em;
+    transition: filter 0.1s ease, transform 0.1s ease;
+  }
+  .boton:hover { filter: brightness(1.08); transform: scale(1.02); }
+  .boton-grande { padding: 14px 30px; font-size: 1.05em; margin-top: 22px; }
+  .materia-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px; margin: 8px 0 0; padding: 0; list-style: none;
+  }
+  .materia-card {
+    display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 30px 16px;
+    border-radius: 16px; text-decoration: none; color: white; font-weight: 700; font-size: 1.05em;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.12); transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .materia-card:hover { transform: translateY(-4px); box-shadow: 0 8px 18px rgba(0,0,0,0.16); }
+  .materia-emoji { font-size: 2.3em; }
+  .hero { text-align: center; }
+  .hero h1 { font-size: 2.4em; }
+</style>
+</head>
+<body>
+  <div class="page-card">
+    <h1>🖨️ Impresion 3D</h1>
+<p class="subtitulo">10 lección(es) publicada(s)</p>
+<div class="grado-pill">General</div>
+<h2 class="unidad-titulo">General</h2>
+<ul class="sesiones">
+<li><a class="sesion-link" href="impresion-3d-basico-clase-01/index.html"><span class="sesion-num">1</span>¿Qué es la impresión 3D?</a></li>
+<li><a class="sesion-link" href="impresion-3d-basico-clase-02/index.html"><span class="sesion-num">2</span>Conociendo la Bambu Lab A1</a></li>
+<li><a class="sesion-link" href="impresion-3d-basico-clase-03/index.html"><span class="sesion-num">3</span>Bambu Studio: primeros pasos</a></li>
+<li><a class="sesion-link" href="impresion-3d-basico-clase-04/index.html"><span class="sesion-num">4</span>Tinkercad: el patio de figuras</a></li>
+<li><a class="sesion-link" href="impresion-3d-basico-clase-05/index.html"><span class="sesion-num">5</span>Mover, girar, escalar</a></li>
+<li><a class="sesion-link" href="impresion-3d-basico-clase-06/index.html"><span class="sesion-num">6</span>Agujeros, vaciados y texto</a></li>
+<li><a class="sesion-link" href="impresion-3d-basico-clase-07/index.html"><span class="sesion-num">7</span>Materiales: el PLA y sus colores</a></li>
+<li><a class="sesion-link" href="impresion-3d-basico-clase-08/index.html"><span class="sesion-num">8</span>Orientación y soportes básicos</a></li>
+<li><a class="sesion-link" href="impresion-3d-basico-clase-09/index.html"><span class="sesion-num">9</span>Mi primer proyecto propio</a></li>
+<li><a class="sesion-link" href="impresion-3d-basico-clase-10/index.html"><span class="sesion-num">10</span>Cuidado básico y evaluación del módulo</a></li>
+</ul>
+<a class="boton" href="../index.html">← Todas las materias</a>
+  </div>
+</body>
+</html>
