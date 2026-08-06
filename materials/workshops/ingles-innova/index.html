@@ -22,11 +22,7 @@
     font-weight: 700; font-size: 0.8em; letter-spacing: 0.02em;
     padding: 5px 14px; border-radius: 999px; margin: 26px 0 2px;
   }
-  .unidad-titulo {
-    margin: 16px 0 10px; font-size: 1em; color: #1CB0F6; font-weight: 700;
-    border-bottom: 2px solid #1CB0F633; padding-bottom: 4px;
-  }
-  .sesiones { display: flex; flex-direction: column; gap: 8px; margin: 0 0 4px; padding: 0; list-style: none; }
+  .sesiones { display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; list-style: none; }
   .sesion-link {
     display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px;
     background: #1CB0F612; border-left: 4px solid #1CB0F6;
@@ -34,6 +30,44 @@
     transition: transform 0.12s ease, box-shadow 0.12s ease;
   }
   .sesion-link:hover { transform: translateX(4px); box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+
+  /* Acordeón de grado → grilla de unidades → acordeón de sesiones. Todo
+     colapsado por defecto (salvo el primer grado) para que la página no
+     crezca sin límite a medida que se agregan más unidades/grados — ver
+     CLAUDE.md #15. Sin JS: son <details> nativos. */
+  .grado-section { margin: 22px 0 0; border: none; }
+  .grado-section summary {
+    cursor: pointer; list-style: none; display: flex; align-items: center; gap: 10px;
+  }
+  .grado-section summary::-webkit-details-marker { display: none; }
+  .grado-section summary::before {
+    content: "▸"; display: inline-block; color: #58CC02; font-size: 0.8em;
+    transition: transform 0.15s ease;
+  }
+  .grado-section[open] > summary::before { transform: rotate(90deg); }
+  .unidades-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    align-items: start; gap: 14px; margin: 14px 0 4px; padding: 0; list-style: none;
+  }
+  .unidad-card {
+    border: none; border-radius: 14px; background: #1CB0F60d; overflow: hidden;
+  }
+  .unidad-card summary {
+    cursor: pointer; list-style: none; padding: 14px 16px; display: flex;
+    align-items: center; justify-content: space-between; gap: 8px;
+    font-weight: 700; color: #3C3C3C;
+  }
+  .unidad-card summary::-webkit-details-marker { display: none; }
+  .unidad-card summary .unidad-nombre { flex: 1; }
+  .unidad-card summary .unidad-count {
+    flex: none; font-size: 0.75em; font-weight: 600; color: #1CB0F6;
+    background: #1CB0F622; padding: 3px 9px; border-radius: 999px;
+  }
+  .unidad-card summary::after {
+    content: "▾"; flex: none; color: #1CB0F6; transition: transform 0.15s ease;
+  }
+  .unidad-card[open] summary::after { transform: rotate(180deg); }
+  .unidad-card .sesiones { padding: 0 14px 14px; }
   .sesion-num {
     flex: none; width: 26px; height: 26px; border-radius: 50%; background: #58CC02;
     color: white; font-size: 0.78em; font-weight: 700; display: flex; align-items: center; justify-content: center;
@@ -64,8 +98,11 @@
   <div class="page-card">
     <h1>🇬🇧 Ingles Innova</h1>
 <p class="subtitulo">49 lección(es) publicada(s)</p>
-<div class="grado-pill">2do grado</div>
-<h2 class="unidad-titulo">Unidad 4</h2>
+<details class="grado-section" open>
+<summary><span class="grado-pill" style="margin:0;">2do grado</span> <span class="subtitulo" style="margin:0;">2 unidad(es) · 27 sesión(es)</span></summary>
+<div class="unidades-grid">
+<details class="unidad-card">
+<summary><span class="unidad-nombre">Unidad 4</span><span class="unidad-count">15 sesión(es)</span></summary>
 <ul class="sesiones">
 <li><a class="sesion-link" href="u4-s01-city-places-reading/index.html"><span class="sesion-num">1</span>Un paseo por la ciudad</a></li>
 <li><a class="sesion-link" href="u4-s02-map-locations-listening/index.html"><span class="sesion-num">2</span>Mi mapa de la ciudad</a></li>
@@ -83,7 +120,9 @@
 <li><a class="sesion-link" href="u4-s14a-occupations-listening-test/index.html"><span class="sesion-num">14</span>Evaluación: profesiones</a></li>
 <li><a class="sesion-link" href="u4-s14b-story-reading-hour/index.html"><span class="sesion-num">15</span>Hora del cuento</a></li>
 </ul>
-<h2 class="unidad-titulo">Unidad 5</h2>
+</details>
+<details class="unidad-card">
+<summary><span class="unidad-nombre">Unidad 5</span><span class="unidad-count">12 sesión(es)</span></summary>
 <ul class="sesiones">
 <li><a class="sesion-link" href="u5-s01-telling-time-reading/index.html"><span class="sesion-num">1</span>¿Qué hora es?</a></li>
 <li><a class="sesion-link" href="u5-s02-morning-routine-listening/index.html"><span class="sesion-num">2</span>Mi día, paso a paso</a></li>
@@ -98,8 +137,14 @@
 <li><a class="sesion-link" href="u5-s11-my-routine-brainstorming/index.html"><span class="sesion-num">11</span>Preparo mi presentación: mi rutina</a></li>
 <li><a class="sesion-link" href="u5-s12-my-routine-presentation/index.html"><span class="sesion-num">12</span>¡Presento mi rutina!</a></li>
 </ul>
-<div class="grado-pill">5to grado</div>
-<h2 class="unidad-titulo">Unidad 4</h2>
+</details>
+</div>
+</details>
+<details class="grado-section">
+<summary><span class="grado-pill" style="margin:0;">5to grado</span> <span class="subtitulo" style="margin:0;">2 unidad(es) · 22 sesión(es)</span></summary>
+<div class="unidades-grid">
+<details class="unidad-card">
+<summary><span class="unidad-nombre">Unidad 4</span><span class="unidad-count">11 sesión(es)</span></summary>
 <ul class="sesiones">
 <li><a class="sesion-link" href="u4-s01-shopping-places-reading/index.html"><span class="sesion-num">1</span>De compras por la ciudad</a></li>
 <li><a class="sesion-link" href="u4-s02-describing-things-writing/index.html"><span class="sesion-num">2</span>Cosas grandes, cosas chiquitas</a></li>
@@ -113,7 +158,9 @@
 <li><a class="sesion-link" href="u4-s10-favorite-object-presentation/index.html"><span class="sesion-num">10</span>¡Te presento mi objeto favorito!</a></li>
 <li><a class="sesion-link" href="u4-s11-story-reading-hour/index.html"><span class="sesion-num">11</span>Hora del cuento: un día de compras</a></li>
 </ul>
-<h2 class="unidad-titulo">Unidad 5</h2>
+</details>
+<details class="unidad-card">
+<summary><span class="unidad-nombre">Unidad 5</span><span class="unidad-count">11 sesión(es)</span></summary>
 <ul class="sesiones">
 <li><a class="sesion-link" href="u5-s01-future-inventions-reading/index.html"><span class="sesion-num">1</span>Inventos del futuro</a></li>
 <li><a class="sesion-link" href="u5-s02-predictions-writing/index.html"><span class="sesion-num">2</span>Predicciones para el futuro</a></li>
@@ -127,6 +174,9 @@
 <li><a class="sesion-link" href="u5-s10-poster-final-writing/index.html"><span class="sesion-num">10</span>Mi póster del futuro (versión final)</a></li>
 <li><a class="sesion-link" href="u5-s11-gullivers-travels-reading/index.html"><span class="sesion-num">11</span>Hora de lectura: el viaje de Gulliver al futuro</a></li>
 </ul>
+</details>
+</div>
+</details>
 <a class="boton" href="../index.html">← Todas las materias</a>
   </div>
 </body>
