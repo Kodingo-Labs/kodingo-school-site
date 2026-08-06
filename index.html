@@ -17,11 +17,6 @@
   }
   .page-card h1 { margin: 0 0 6px; font-size: 1.9em; color: #4f46e5; }
   .subtitulo { color: #8a8a8a; margin: 0 0 8px; font-size: 0.95em; }
-  .grado-pill {
-    display: inline-block; background: #4f46e5; color: white;
-    font-weight: 700; font-size: 0.8em; letter-spacing: 0.02em;
-    padding: 5px 14px; border-radius: 999px; margin: 26px 0 2px;
-  }
   .sesiones { display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; list-style: none; }
   .sesion-link {
     display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px;
@@ -31,43 +26,24 @@
   }
   .sesion-link:hover { transform: translateX(4px); box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
 
-  /* Acordeón de grado → grilla de unidades → acordeón de sesiones. Todo
-     colapsado por defecto (salvo el primer grado) para que la página no
-     crezca sin límite a medida que se agregan más unidades/grados — ver
-     CLAUDE.md #15. Sin JS: son <details> nativos. */
-  .grado-section { margin: 22px 0 0; border: none; }
-  .grado-section summary {
-    cursor: pointer; list-style: none; display: flex; align-items: center; gap: 10px;
+  /* Filtro grado → unidad: se elige con pills y solo se ve el panel de esa
+     combinación (ver deploy_site.py, _generar_indice_materia) — a diferencia
+     de listar o acordeonar todo, esto muestra el contenido de una sola
+     unidad a la vez y escala igual de bien con 2 unidades que con 20. */
+  .filtro-grupo { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 0; }
+  .filtro-pill {
+    border: none; cursor: pointer; font-family: inherit; font-weight: 700; font-size: 0.85em;
+    padding: 8px 16px; border-radius: 999px; background: #6366f118; color: #1f2937;
+    transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
   }
-  .grado-section summary::-webkit-details-marker { display: none; }
-  .grado-section summary::before {
-    content: "▸"; display: inline-block; color: #4f46e5; font-size: 0.8em;
-    transition: transform 0.15s ease;
-  }
-  .grado-section[open] > summary::before { transform: rotate(90deg); }
-  .unidades-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    align-items: start; gap: 14px; margin: 14px 0 4px; padding: 0; list-style: none;
-  }
-  .unidad-card {
-    border: none; border-radius: 14px; background: #6366f10d; overflow: hidden;
-  }
-  .unidad-card summary {
-    cursor: pointer; list-style: none; padding: 14px 16px; display: flex;
-    align-items: center; justify-content: space-between; gap: 8px;
-    font-weight: 700; color: #1f2937;
-  }
-  .unidad-card summary::-webkit-details-marker { display: none; }
-  .unidad-card summary .unidad-nombre { flex: 1; }
-  .unidad-card summary .unidad-count {
-    flex: none; font-size: 0.75em; font-weight: 600; color: #6366f1;
-    background: #6366f122; padding: 3px 9px; border-radius: 999px;
-  }
-  .unidad-card summary::after {
-    content: "▾"; flex: none; color: #6366f1; transition: transform 0.15s ease;
-  }
-  .unidad-card[open] summary::after { transform: rotate(180deg); }
-  .unidad-card .sesiones { padding: 0 14px 14px; }
+  .filtro-pill:hover { transform: translateY(-1px); }
+  .filtro-pill.activo { background: #4f46e5; color: white; }
+  .filtro-unidades { margin-top: 10px; }
+  .panel-unidad { margin-top: 22px; }
+  .panel-unidad[hidden] { display: none; }
+  .panel-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px; }
+  .panel-header h2 { margin: 0; font-size: 1.15em; color: #4f46e5; }
+  .panel-header .subtitulo { margin: 0; }
   .sesion-num {
     flex: none; width: 26px; height: 26px; border-radius: 50%; background: #4f46e5;
     color: white; font-size: 0.78em; font-weight: 700; display: flex; align-items: center; justify-content: center;
